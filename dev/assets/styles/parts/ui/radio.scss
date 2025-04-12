@@ -1,0 +1,82 @@
+@import '../../mixins/vw';
+
+.radio {
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &__label {
+    position: relative;
+    display: grid;
+    cursor: pointer;
+    @include dim(pl, 34, 34);
+    @include dim(pr, 34, 34);
+  }
+
+  &__input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    display: none;
+
+    &:checked ~ .radio__decore::before {
+      background-color: $white;
+    }
+
+    &:checked ~ .radio__decore::after {
+      opacity: 1;
+    }
+  }
+
+  &__text {
+    @include dim(fz, 18, 16);
+    @include merge;
+    white-space: nowrap;
+    font-weight: 500;
+    line-height: 100%;
+    transition: color $transition;
+  }
+
+  &__decore {
+    position: absolute;
+    top: 50%;
+    left: 1px;
+    transform: translateY(-50%);
+    @include dim(w, 26, 26);
+    @include merge;
+    aspect-ratio: 1 / 1;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &::before {
+      width: 100%;
+      height: 100%;
+      border: 1px solid;
+      border-radius: 100px;
+      background-color: transparent;
+      border-color: $bg-accent;
+      transition:
+        border-color $transition,
+        background-color $transition;
+    }
+
+    &::after {
+      @include dim(w, 12, 12);
+      aspect-ratio: 1 / 1;
+      @include merge;
+      border-radius: 100px;
+      background-color: $bg-accent;
+      opacity: 0;
+      transition: opacity $transition;
+    }
+  }
+}

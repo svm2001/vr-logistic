@@ -1,0 +1,210 @@
+@import '../../mixins/vw';
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: $white;
+  width: fit-content;
+  cursor: pointer;
+  overflow: hidden;
+  transition: .2s;
+  text-decoration: none;
+
+  &__text {
+    font-family: $primary-font;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: $transition;
+    @include dim('gap', 16, 16);
+    @include merge;
+  }
+
+  &__dot {
+    border-radius: 50%;
+    border-width: 2px;
+    border-style: solid;
+    aspect-ratio: 1/1;
+    transition: .2s ease-in-out;
+  }
+
+  &__icon {
+    aspect-ratio: 1 / 1;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &-size-default {
+    @include dim('h', 85, 85);
+    @include dim('br', 20, 20);
+    @include dim('pl', 75, 75);
+    @include dim('pr', 75, 75);
+    @include dim('gap', 16, 16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include merge;
+
+    .btn__text {
+      @include dim('fz', 20, 20);
+    }
+
+    .btn__dot {
+      @include dim('w', 15, 15);
+      @include merge;
+    }
+
+    .btn__icon {
+      @include dim('w', 24, 24);
+      @include merge;
+    }
+  }
+
+  &-size-default.btn-icon {
+    @include dim('w', 68, 32);
+    @include dim('h', 68, 32);
+    @include dim('br', 20, 20);
+    @include merge;
+    padding: 0;
+  }
+
+  &-size-small {
+    @include dim('h', 44, 44);
+    @include dim('br', 10, 10);
+    @include dim('pl', 15, 15);
+    @include dim('pr', 15, 15);
+    @include dim('gap', 10, 10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include merge;
+
+    .btn__dot {
+      @include dim('w', 10, 10);
+      @include merge;
+    }
+
+    .btn__text {
+      @include dim('fz', 14, 14);
+      @include merge;
+    }
+
+    .btn__icon {
+      @include dim('w', 20, 20);
+      @include merge;
+    }
+  }
+
+  &-size-small.btn-icon {
+    @include dim('w', 44, 32);
+    @include dim('h', 44, 32);
+    @include dim('br', 10, 10);
+    @include merge;
+    padding: 0;
+  }
+  
+  &-variant-primary {
+    background-color: $white;
+    border: 1px solid $btn-bg-default;
+    @include merge;
+
+    .btn__dot {
+      border-color: $icon-accent;
+    }
+
+    .btn__text {
+      font-weight: 700;
+      color: $btn-text-minimal;
+    }
+
+    &:hover {
+      background-color: $btn-bg-hover;
+      border-color: $btn-bg-hover;
+
+      .btn__text {
+        color: $white;
+      }
+
+      .btn__dot {
+        border-color: $white;
+        background-color: $white;
+      }
+    }
+
+    &:active {
+      background-color: $btn-bg-active;
+    }
+
+    &:focus-visible .btn__dot {
+      border-color: $icon-accent;
+      background-color: $icon-accent;
+    }
+  }
+
+  &-variant-secondary {
+    background-color: $btn-bg-default;
+    border: 1px solid $btn-bg-default;
+
+    .btn__text {
+      font-weight: 700;
+      color: $white;
+    }
+
+    &:hover {
+      background-color: $btn-bg-hover;
+      border-color: $btn-bg-hover;
+
+      .btn__text {
+        color: $white;
+      }
+
+      .btn__dot {
+        border-color: $white;
+        background-color: $white;
+      }
+    }
+
+    &:active {
+      background-color: $btn-bg-active;
+    }
+
+    &:focus-visible .btn__dot {
+      border-color: $white;
+      background-color: $white;
+    }
+  }
+
+  &.disabled {
+    outline: none;
+    cursor: default;
+    user-select: none;
+    pointer-events: none;
+    background-color: $btn-bg-disabled;
+    border-color: $btn-bg-disabled;
+
+    .btn__text {
+      color: $btn-text-disabled;
+      user-select: none;
+    }
+
+    .btn__dot {
+      border-color: $btn-text-disabled;
+      background-color: $btn-text-disabled;
+    }
+  }
+}

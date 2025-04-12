@@ -1,0 +1,39 @@
+@import '../../mixins/vw';
+
+.h1 {
+  @include dim('fz', 60, 30);
+  @include merge;
+  line-height: 130%;
+  font-weight: 700;
+}
+
+.h2 {
+  @include dim('fz', 25, 25);
+  @include merge;
+  line-height: 130%;
+  font-weight: 400;
+}
+
+.h3 {
+  @include dim('fz', 50, 35);
+  @include merge;
+  line-height: 130%;
+  font-weight: 700;
+}
+
+.h4 {
+  @include dim('fz', 35, 30);
+  @include merge;
+  line-height: 130%;
+  font-weight: 600;
+}
+
+@media (max-width: 1200px) {
+  .h3 {
+    font-weight: 600;
+  }
+
+  .h4 {
+    font-weight: 700;
+  }
+}

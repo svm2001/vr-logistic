@@ -1,0 +1,27 @@
+block vars
+
+-
+    const layoutLinks = [
+        {
+            title: 'Pages',
+            url: '/',
+        },
+        {
+            title: 'Components',
+            url: '/components.html',
+        },
+        {
+            title: 'UI-kit',
+            url: '/ui-kit.html',
+        }
+    ]
+
+.dev-layout
+    .dev-layout__header
+        img(src='./assets/images/favicon.ico')
+        .container
+            .dev-layout__header-inner
+                each link in layoutLinks
+                    a(href=link.url)= link.title
+
+block content

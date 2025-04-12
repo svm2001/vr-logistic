@@ -1,0 +1,129 @@
+extends ../../layouts/dev-layout
+block vars
+block content
+  include ../../ui/title
+  include ../../ui/text
+  include ../../ui/btn
+  include ../../ui/checkbox
+  include ../../ui/radio
+  .dev-container
+    .ui-container 
+      .ui-block
+        span.ui-title Заголовки 
+        .ui-headings.ui-inner
+          - const uiTitles = ['H1 Title', 'H2 Title', 'H3 Title', 'H4 Title']
+          each title, index in uiTitles
+            +title({
+              text: title,
+              variant: (index + 1).toString()
+            })
+      .ui-block
+      - const textVariants = ['xxl', 'xl', 'l', 'm', 's', 'xs', 'xxs', 'xxxs']
+      - const uiTexts = ['Text XXL', 'Text XL', 'Text L', 'Text M', 'Text S', 'Text XS', 'Text XXS', 'Text XXXS']
+        span.ui-title Текста
+        .ui-texts.ui-inner
+          each text, index in uiTexts
+            +text({
+              text: text,
+              variant: textVariants[index]
+            })
+        .ui-texts.ui-inner
+          each text, index in uiTexts
+            +text({
+              text: text,
+              variant: textVariants[index],
+              weight: 'medium'
+            })   
+        .ui-texts.ui-inner
+          each text, index in uiTexts
+            +text({
+              text: text,
+              variant: textVariants[index],
+              weight: 'bold'
+            })        
+      .ui-block   
+        span.ui-title Кнопки 
+        .ui-buttons.ui-inner
+          -
+            const buttons = [
+              { name: 'Button primary big', type: 'button' },
+              { name: 'Button big disabled', type: 'button', disabled: true },
+              { name: 'Личный кабинет', type: 'button', size: 'small' },
+              { name: 'Button small disabled', type: 'button', size: 'small', disabled: true },
+
+              { name: 'Button secondary big', type: 'button', variant: 'secondary' },
+              { name: 'Button big disabled', type: 'button', variant: 'secondary', disabled: true },
+              { name: 'Button secondary small', type: 'button', variant: 'secondary', size: 'small' },
+              { name: 'Button small disabled', type: 'button', variant: 'secondary', size: 'small', disabled: true },
+
+              { name: 'Link primary big', type: 'link' },
+              { name: 'Link big disabled', type: 'link', disabled: true },
+              { name: 'Link primary small', type: 'link', size: 'small' },
+              { name: 'Link small disabled', type: 'link', size: 'small', disabled: true },
+
+              { name: 'Link secondary big', type: 'link', variant: 'secondary' },
+              { name: 'Link small disabled', type: 'link', variant: 'secondary', disabled: true },
+              { name: 'Link secondary small', type: 'link', variant: 'secondary', size: 'small' },
+              { name: 'Link small disabled', type: 'link', size: 'small', variant: 'secondary', disabled: true },
+
+              { name: 'Button with dot', type: 'button', dot: true },
+              { name: 'Button with dot', type: 'button', dot: true, disabled: true },
+              { name: 'Button with dot', type: 'button', size: 'small', dot: true },
+              { name: 'Button with dot', type: 'button', size: 'small', disabled: true, dot: true },
+
+              { name: 'Button with dot', type: 'button', dot: true, variant: 'secondary' },
+              { name: 'Button with dot', type: 'button', dot: true, disabled: true, variant: 'secondary' },
+              { name: 'Button with dot', type: 'button', size: 'small', dot: true, variant: 'secondary' },
+              { name: 'Button with dot', type: 'button', size: 'small', disabled: true, dot: true, variant: 'secondary' },
+
+              { name: 'Button with icon', type: 'button', icon: true, iconName: 'vite', iconPosition: 'left' },
+              { name: 'Button with icon', type: 'button', icon: true, iconName: 'vite', iconPosition: 'left', disabled: true },
+              { name: 'Button with icon', type: 'button', icon: true, iconName: 'vite', iconPosition: 'left', size: 'small' },
+              { name: 'Button with icon', type: 'button', icon: true, iconName: 'vite', iconPosition: 'left', size: 'small', disabled: true },
+
+              { name: 'Button with icon', type: 'button', icon: true, iconName: 'vite', iconPosition: 'right', variant: 'secondary' },
+              { name: 'Button with icon', type: 'button', icon: true, iconName: 'vite', iconPosition: 'left', disabled: true, iconPosition: 'right', variant: 'secondary' },
+              { name: 'Button with icon', type: 'button', icon: true, iconName: 'vite', iconPosition: 'left', size: 'small', iconPosition: 'right', variant: 'secondary' },
+              { name: 'Button with icon', type: 'button', icon: true, iconName: 'vite', iconPosition: 'left', size: 'small', disabled: true, iconPosition: 'right', variant: 'secondary' },
+              
+              { name: '', icon: true, iconName: 'vite' },
+              { name: '', icon: true, iconName: 'vite', disabled: true },
+              { name: '', icon: true, iconName: 'vite', size: 'small' },
+              { name: '', icon: true, iconName: 'vite', disabled: true, size: 'small' },
+              
+              { name: '', icon: true, iconName: 'vite', variant: 'secondary' },
+              { name: '', icon: true, iconName: 'vite', disabled: true, variant: 'secondary' },
+              { name: '', icon: true, iconName: 'vite', size: 'small', variant: 'secondary' },
+              { name: '', icon: true, iconName: 'vite', disabled: true, size: 'small', variant: 'secondary' }
+            ]
+          each button in buttons
+            +btn(button)
+      .ui-block   
+        span.ui-title Чекбоксы 
+        .ui-checkboxes.ui-inner
+          -
+            const checkboxes = [
+              { name: 'checkbox1', text: 'Checked Checkbox', checked: true },
+              { name: 'checkbox2', text: 'Unchecked Checkbox', checked: false },
+              { name: 'checkbox3', text: 'Disabled Checkbox', checked: false, disabled: true },
+              { name: 'checkbox4', custom: true }
+            ]
+          each checkbox in checkboxes
+            if checkbox.custom
+              +checkbox()
+                span Custom Checkbox
+                img(src="/images/arrow-r.svg")
+            else
+              +checkbox(checkbox)
+      .ui-block   
+        span.ui-title Радиокнопки
+        .ui-checkboxes.ui-inner
+          -
+            const radios = [
+              { text: 'Radio 1', name: 'radio1', checked: true },
+              { text: 'Radio 2', name: 'radio1' },
+              { text: 'Radio Disabled', disabled: true, checked: true },
+              { text: 'Radio Disabled', disabled: true }
+            ]
+          each radio in radios
+            +radio(radio)     

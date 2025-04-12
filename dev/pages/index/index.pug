@@ -1,0 +1,14 @@
+extends ../../layouts/dev-layout
+block vars
+block content
+    -
+        const layoutNavlinks = [
+            {
+                title: 'Home',
+                url: '/home.html'
+            },
+        ]
+    .container
+      .layout-nav
+            each link in layoutNavlinks
+                a(href=link.url)= link.title

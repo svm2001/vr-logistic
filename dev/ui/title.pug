@@ -1,0 +1,18 @@
+-
+  const defaultTitleProps = {
+    text: 'Heading',
+    variant: '1',
+    classes: '',
+  }
+
+
+mixin title(props = defaultTitleProps, ...dataset)
+  -
+    const validVariants = ['1', '2', '3', '4', '5', '6']
+    const checkProps = {
+      text: props.text ? props.text : defaultTitleProps.text,
+      variant: props.variant ? props.variant : defaultTitleProps.variant,
+      classes: props.classes ? props.classes : defaultTitleProps.classes,
+    }
+
+  #{'h' + checkProps.variant}.title(class=`h${checkProps.variant} ${checkProps.classes}`)&attributes(...dataset)= checkProps.text

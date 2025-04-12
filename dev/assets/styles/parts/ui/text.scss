@@ -1,0 +1,63 @@
+@import '../../mixins/vw';
+
+.text {
+  &--regular {
+    font-weight: 400;
+  }
+
+  &--medium {
+    font-weight: 500;
+  }
+
+  &--bold {
+    font-weight: 700;
+  }
+
+  &--xxl {
+    @include dim('fz', 75, 30);
+    @include merge;
+    line-height: 100%;
+  }
+
+  &--xl {
+    @include dim('fz', 35, 25);
+    @include merge;
+    line-height: 140%;
+  }
+
+  &--l {
+    @include dim('fz', 30, 20);
+    @include merge;
+    line-height: 130%;
+  }
+
+  &--m {
+    @include dim('fz', 22, 20);
+    @include merge;
+    line-height: 135%;
+  }
+
+  &--s {
+    @include dim('fz', 20, 20);
+    @include merge;
+    line-height: 120%;
+  }
+
+  &--xs {
+    @include dim('fz', 18, 18);
+    @include merge;
+    line-height: 120%;
+  }
+
+  &--xxs {
+    @include dim('fz', 16, 16);
+    @include merge;
+    line-height: 130%;
+  }
+
+  &--xxxs {
+    @include dim('fz', 16, 16);
+    @include merge;
+    line-height: 140%;
+  }
+}

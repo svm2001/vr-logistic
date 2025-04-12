@@ -1,0 +1,96 @@
+include ./icon
+
+-
+  const defaultBtnProps = {
+      type: 'button',
+      name: '',
+      link: 'javascript:void(0);',
+      target: '_self',
+      icon: false,
+      iconName: 'vite',
+      iconPosition: 'left',
+      disabled: false,
+      classes: '',
+      size: 'default',
+      variant: 'primary',
+      dot: false,
+  }
+
+mixin btn(props = defaultBtnProps, ...dataset)
+  -
+    const checkProps = {
+        type: props.type ? props.type : defaultBtnProps.type,
+        name: props.name ? props.name : defaultBtnProps.name,
+        link: props.link ? props.link : defaultBtnProps.link,
+        target: props.target ? props.target : defaultBtnProps.target,
+        icon: props.icon ? props.icon : defaultBtnProps.icon,
+        iconName: props.iconName ? props.iconName : defaultBtnProps.iconName,
+        iconPosition: props.iconPosition ? props.iconPosition : defaultBtnProps.iconPosition,
+        disabled: props.disabled ? props.disabled : defaultBtnProps.disabled,
+        classes: props.classes ? props.classes : defaultBtnProps.classes,
+        size: props.size ? props.size : defaultBtnProps.size,
+        variant: props.variant ? props.variant : defaultBtnProps.variant,
+        dot: props.dot ? props.dot : defaultBtnProps.dot
+    }
+
+  if (checkProps.type === 'button' || checkProps.type === 'submit')
+    button.btn(
+      type=checkProps.type,
+      class=`
+        ${checkProps.classes}
+        ${checkProps.disabled ? 'disabled' : ''}
+        btn-size-${checkProps.size}
+        btn-variant-${checkProps.variant}
+        ${checkProps.dot ? 'btn-dot' : ''}
+        ${checkProps.name === '' ? 'btn-icon' : ''}
+      `
+    )&attributes(...dataset)
+      if checkProps.icon
+        if checkProps.iconPosition === 'left'
+          span.btn__icon
+            +icon(checkProps.iconName)
+        if checkProps.name !== ''
+          span.btn__text= checkProps.name
+        if checkProps.iconPosition === 'right'
+          span.btn__icon
+            +icon(checkProps.iconName)
+      else 
+        if checkProps.name !== ''
+          span.btn__text= checkProps.name
+            if checkProps.dot
+              span.btn__dot
+  else if (checkProps.type === 'link')
+    a.btn(
+      href=checkProps.link,
+      target=checkProps.target === "_self" ? "" : checkProps.target,
+      class=checkProps.disabled ? `
+        ${checkProps.classes}
+        disabled
+        btn-size-${checkProps.size}
+        btn-variant-${checkProps.variant}
+        ${checkProps.dot ? 'btn-dot' : ''}
+        ${checkProps.name === '' ? 'btn-icon' : ''}
+      ` : `
+        ${checkProps.classes}
+        btn-size-${checkProps.size}
+        btn-variant-${checkProps.variant}
+        ${checkProps.dot ? 'btn-dot' : ''}
+        ${checkProps.name === '' ? 'btn-icon' : ''}
+      `
+    )&attributes(...dataset)
+      if checkProps.icon
+        if checkProps.iconPosition === 'left'
+          span.btn__icon
+            +icon(checkProps.iconName)
+        if checkProps.name !== ''
+          span.btn__text= checkProps.name
+        if checkProps.iconPosition === 'right'
+          span.btn__icon
+            +icon(checkProps.iconName)
+      else 
+        if checkProps.name !== ''
+          span.btn__text= checkProps.name
+            if checkProps.dot
+              span.btn__dot
+  else
+    p Button not found

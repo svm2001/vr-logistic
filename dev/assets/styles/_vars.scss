@@ -1,0 +1,103 @@
+:root {
+  --primary-font: Montserrat, sans-serif;
+  --white: #ffffff;
+  --black: #000000;
+  --icon-primary: #ffffff;
+  --icon-secondary: #494949;
+  --icon-minimal: #BFBFBF;
+  --icon-dark-green: #124F2E;
+  --icon-accent: #43B02A;
+  --bg-primary: #ffffff;
+  --bg-secondary: #FAFAFA;
+  --bg-secondary-light: #FDFDFD;
+  --bg-accent: #09361E;
+  --bg-minimal: #124F2E;
+  --bg-green: #43B02A;
+  --bg-green-light: #BDDDBD;
+  --text-primary: #494949;
+  --text-invert: #FFFFFF;
+  --text-minimal: #BFBFBF;
+  --text-minimal-dark: #A3A3A3;
+  --text-accent: #43B02A;
+  --text-secondary: #124F2E;
+  --text-green-light: #BDDDBD;
+  --logo-invert: #FFFFFF;
+  --logo-green: #43B02A;
+  --logo-dark-green: #124F2E;
+  --btn-text-primary: #494949;
+  --btn-text-invert: #FFFFFF;
+  --btn-text-minimal: #43B02A;
+  --btn-text-secondary: #124F2E;
+  --btn-text-disabled: #A3A3A3;
+  --btn-bg-default: #43B02A;
+  --btn-bg-hover: #124F2E;
+  --btn-bg-focus: #43B02A;
+  --btn-bg-active: #09361E;
+  --btn-bg-disabled: #D9DDDD;
+  --btn-bg-invert: #D9DDDD;
+  --tg: #1C64D9;
+  --vk: #0050D2;
+  --dzen: #515151;
+  --instagram: #D23B94;
+  --tiktok: #222222;
+  --facebook: #0866FF;
+  --youtube: #F50021;
+  --transition: ease-in-out .3s;
+}
+
+// Fonts
+$primary-font: var(--primary-font);
+
+// colors
+$white: var(--white);
+$black: var(--black);
+
+$icon-primary: var(--icon-primary);
+$icon-secondary: var(--icon-secondary);
+$icon-minimal: var(--icon-minimal);
+$icon-dark-green: var(--icon-dark-green);
+$icon-accent: var(--icon-accent);
+
+$bg-primary: var(--bg-primary);
+$bg-secondary: var(--bg-secondary);
+$bg-secondary-light: var(--bg-secondary-light);
+$bg-accent: var(--bg-accent);
+$bg-minimal: var(--bg-minimal);
+$bg-green: var(--bg-green);
+$bg-green-light: var(--bg-green-light);
+
+$text-primary: var(--text-primary);
+$text-invert: var(--text-invert);
+$text-minimal: var(--text-minimal);
+$text-minimal-dark: var(--text-minimal-dark);
+$text-accent: var(--text-accent);
+$text-secondary: var(--text-secondary);
+$text-green-light: var(--text-green-light);
+
+$logo-invert: var(--logo-invert);
+$logo-green: var(--logo-green);
+$logo-dark-green: var(--logo-dark-green);
+
+$btn-text-primary: var(--btn-text-primary);
+$btn-text-invert: var(--btn-text-invert);
+$btn-text-minimal: var(--btn-text-minimal);
+$btn-text-secondary: var(--btn-text-secondary);
+$btn-text-disabled: var(--btn-text-disabled);
+
+$btn-bg-default: var(--btn-bg-default);
+$btn-bg-hover: var(--btn-bg-hover);
+$btn-bg-focus: var(--btn-bg-focus);
+$btn-bg-active: var(--btn-bg-active);
+$btn-bg-disabled: var(--btn-bg-disabled);
+$btn-bg-invert: var(--btn-bg-invert);
+
+$tg: var(--tg);
+$vk: var(--vk);
+$dzen: var(--dzen);
+$instagram: var(--instagram);
+$tiktok: var(--tiktok);
+$facebook: var(--facebook);
+$youtube: var(--youtube);
+
+// Other
+$transition: var(--transition);

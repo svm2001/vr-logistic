@@ -1,0 +1,21 @@
+-
+  const defaultTextProps = {
+    text: 'text',
+    variant: 'l',
+    classes: '',
+    weight: 'regular'
+  }
+
+
+mixin text(props = defaultTextProps, ...dataset)
+  -
+    const validVariants = ['xxl', 'xl', 'l', 'm', 's', 'xs', 'xxs', 'xxxs']
+    const validWeights = ['regular', 'medium', 'bold']
+    const checkProps = {
+      text: props.text ? props.text : defaultTextProps.text,
+      variant: props.variant ? props.variant : defaultTextProps.variant,
+      classes: props.classes ? props.classes : defaultTextProps.classes,
+      weight: validWeights.includes(props.weight) ? props.weight : defaultTextProps.weight,
+    }
+
+  p.text(class=`text--${checkProps.variant} text--${checkProps.weight} ${checkProps.classes}`)&attributes(...dataset)= checkProps.text
