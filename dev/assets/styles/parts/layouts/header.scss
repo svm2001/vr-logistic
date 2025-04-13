@@ -20,7 +20,6 @@
 
   &__logo {
     @include dim('w', 219, 181);
-    @include dim('fz', 60, 60);
     @include merge;
     display: block;
 
