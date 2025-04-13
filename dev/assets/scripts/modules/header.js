@@ -10,8 +10,6 @@ export default function header() {
       ? header.classList.add('scrollable')
       : header.classList.remove('scrollable')
 
-  
-
   window.addEventListener('scroll', checkScroll, { passive: true })
   checkScroll()
 }
