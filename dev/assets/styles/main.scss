@@ -6,3 +6,6 @@
 @import './libs';
 @import './mixins';
 @import './common';
+
+// сквозные компоненты, которые используются везде
+@import './parts/components/consulft-form.scss'

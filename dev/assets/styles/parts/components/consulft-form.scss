@@ -1,0 +1,53 @@
+@import '../../mixins/vw';
+
+.consultForm {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  @include dim('gap', 168, 168);
+  @include merge;
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    @include dim('gap', 30, 30);
+    @include dim('w', 532, 532);
+    @include merge;
+
+    p {
+      line-height: 140%;
+    }
+  }
+
+  &__form {
+    display: grid;
+    align-items: center;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    @include dim('grid-row-gap', 39, 39);
+    @include dim('grid-column-gap', 20, 20);
+    @include merge;
+
+    &>div {
+      width: 100%;
+    }
+
+    .btn {
+      width: 100%;
+    }
+  }
+
+  &__link {
+    text-decoration: underline;
+    color: $text-accent;
+    transition: .1s;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  input {
+    width: 100%;
+  }
+}

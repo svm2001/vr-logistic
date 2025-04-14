@@ -1,6 +1,14 @@
 extends ../../layouts/layout
 block vars
 block content
-    .wrapper 
-        .container Home page
+    include ../../components/hero
+    include ../../components/about
+    include ../../components/consult-form
+    include ../../modal-windows/modal
+
+    .wrapper
+        +hero
+        +about
+    +modal({ id: 'consult-form', classes: 'consult__form' })  
+        +consult-form
 

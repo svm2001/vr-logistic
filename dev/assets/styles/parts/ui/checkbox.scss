@@ -11,6 +11,10 @@
     pointer-events: none;
   }
 
+  &.input--error .checkbox__decore:before {
+    border: 1px solid red;
+  }
+
   &__label {
     position: relative;
     display: flex;

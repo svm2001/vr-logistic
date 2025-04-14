@@ -27,6 +27,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+    white-space: nowrap;
     transition: $transition;
     @include dim('gap', 16, 16);
     @include merge;
@@ -50,22 +51,22 @@ button {
   }
 
   &-size-default {
-    @include dim('h', 85, 85);
+    @include dim('h', 60, 60);
     @include dim('br', 20, 20);
-    @include dim('pl', 75, 75);
-    @include dim('pr', 75, 75);
-    @include dim('gap', 16, 16);
+    @include dim('pl', 40, 20);
+    @include dim('pr', 40, 20);
+    @include dim('gap', 20, 20);
     display: flex;
     align-items: center;
     justify-content: center;
     @include merge;
 
     .btn__text {
-      @include dim('fz', 20, 20);
+      @include dim('fz', 18, 18);
     }
 
     .btn__dot {
-      @include dim('w', 15, 15);
+      @include dim('w', 14, 14);
       @include merge;
     }
 
@@ -76,15 +77,15 @@ button {
   }
 
   &-size-default.btn-icon {
-    @include dim('w', 68, 32);
-    @include dim('h', 68, 32);
+    @include dim('w', 40, 40);
+    @include dim('h', 40, 40);
     @include dim('br', 20, 20);
     @include merge;
     padding: 0;
   }
 
   &-size-small {
-    @include dim('h', 44, 44);
+    @include dim('h', 40, 32);
     @include dim('br', 10, 10);
     @include dim('pl', 15, 15);
     @include dim('pr', 15, 15);
@@ -117,7 +118,7 @@ button {
     @include merge;
     padding: 0;
   }
-  
+
   &-variant-primary {
     background-color: $white;
     border: 1px solid $btn-bg-default;

@@ -1,66 +1,38 @@
 -
-  const defaultHeaderProps = {
+  const defaultHeroProps = {
       classes: '',
+      title: 'Международная логистика и таможенное оформление',
+      video: './video/video.webm',
+      videoType: 'video/webm',
+      buttonText: 'Оставить заявку',
   }
 
-mixin header(props = defaultHeaderProps, ...dataset)
+mixin hero(props = defaultHeroProps, ...dataset)
   -
     const checkProps = {
-        links: props.links ? props.links : defaultHeaderProps.links,
-        classes: props.classes ? props.classes : defaultHeaderProps.classes,
+        classes: props.classes ? props.classes : defaultHeroProps.classes,
+        title: props.title ? props.title : defaultHeroProps.title,
+        video: props.video ? props.video : defaultHeroProps.video,
+        videoType: props.videoType ? props.videoType : defaultHeroProps.videoType,
+        buttonText: props.buttonText ? props.buttonText : defaultHeroProps.buttonText,
     }
-    //- TODO: в будущем добавить "href" свойство для навигации и передать в шаблон
-    const headerNav = [
-      {
-        name: 'О компании',
-      },
-      {
-        name: 'Услуги',
-      },
-      {
-        name: 'Экспертиза',
-      },
-      {
-        name: 'Новости',
-      },
-      {
-        name: 'Карьера',
-      },
-      {
-        name: 'Контакты',
-      }
-    ]
+
+  include ../ui/title
   include ../ui/btn
-  header.header(class=`${checkProps.classes}`)&attributes(...dataset)
-    .container
-      .header__wrapper
-        a.header__logo(href="/")
-          img(src="./icons/logo/logo-header.svg" alt="vr-logistic-logo")
-        nav.header__nav 
-          each nav in headerNav 
-            a.header__nav-item(href='javascript:void(0);')= nav.name
-        .header__info 
-          +btn({
-            classes: 'header__custom-btn',
-            name: '',
-            icon: true,
-            iconName: 'search',
-            size: 'small',
-          }, { title: 'Поиск' })
-          .header__info-btns 
-            +btn({
-              name: 'Обратная связь',
-              variant: 'secondary',
-              size: 'small'
-            })
-            +btn({
-              name: 'Личный кабинет',
-              size: 'small',
-              type: 'link',
-              target: '_blank'
-            })
-          +btn({
-            classes: 'header__custom-btn',
-            name: 'EN',
-            size: 'small',
-          }, { title: 'Выбрать язык' })  
+  section.hero(class=`${checkProps.classes}`)&attributes(...dataset)
+      video(playsinline autoplay muted loop)
+          source(src=checkProps.video, type=checkProps.videoType)
+      .container
+          .hero__inner
+              +title({
+                  classes: 'hero__title',
+                  text: checkProps.title,
+                  variant: '1'
+              })
+              +btn({
+                  classes: 'hero__btn',
+                  name: checkProps.buttonText,
+                  dot: true,
+              }, { 'data-hystmodal': '#consult-form' })
+              
+

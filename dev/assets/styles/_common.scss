@@ -106,3 +106,8 @@ body.lock {
   @include dim('pt', 90, 96);
   @include merge;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
