@@ -1,8 +1,356 @@
 .footer {
-  padding: 50px 0;
-  background-color: darkslategray;
+
+  background-color: $bg-minimal;
   margin-top: auto;
   display: flex;
   align-items: center;
   color: $white;
+
+  a{
+    cursor: pointer;
+  }
+  
+  &>.container{
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    @include dim('pt', 50, 41);
+    @include dim('pb', 50, 41);
+    @include merge;
+  }
+
+  &__column {
+      display: flex;
+      flex-direction: column;
+      width: max-content;
+      @include dim('max-w', 424, 320);
+      @include merge;
+      color: $white;
+  }
+
+  &__logo {
+      width: 100%;
+      @include dim('h', 63, 32);
+      @include dim('max-w', 400, 209);
+      @include dim('mb', 88, 60);
+      @include merge;
+      img{
+        width: 100%;
+      }
+  }
+
+  &__buttons {
+      display: flex;
+      @include dim('gap', 15, 10);
+      @include dim('mb', 40, 10);
+      @include merge;
+      .btn{
+        // width: 100%;
+      }
+  }
+
+  &__social {
+      display: flex;
+      @include dim('gap', 22, 10);
+      @include merge;
+  }
+
+  &__callback.btn{
+  }
+
+  &__account.btn{
+    svg{
+      path{
+        fill:$icon-accent; 
+      }
+    }
+    &:hover{
+      svg{
+        path{
+          fill:$bg-line; 
+        }
+      }
+    }
+  }
+  &__custom-btn.btn{
+    display: none;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    border: 1px solid transparent;
+    background-color: $bg-line;
+  }
+
+
+
+  &__social-item.btn-size-default.btn-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include dim('w', 50, 50);
+      @include dim('h', 50, 50);
+      @include dim('br', 7.3, 7.3);
+      @include merge;
+      transition: all 0.2s;
+      background-color: $bg-primary;
+
+      svg {
+        path {
+          fill: $icon-accent;
+          transition: $transition;
+        }
+      }
+    
+      &:hover{
+          background-color: $icon-accent;
+          svg {
+            path {
+              fill: $icon-primary;
+              transition: $transition;
+            }
+          }
+      }
+      >span{
+          @include dim('w', 17, 17);
+          @include merge;
+          height: 100%;
+      }
+  }
+
+  &__title {
+      color: $text-green-light;
+      @include dim('mb', 30, 30);
+      @include merge;
+  }
+
+  &__menu {
+      display: flex;
+      flex-direction: column;
+      @include dim('gap', 5, 18);
+      @include merge;
+      a{
+          width: max-content;
+          display: block;
+          color: $text-invert;
+          transition: all 0.2s;
+          text-decoration: none;
+          &:hover{
+              color: $text-accent;
+          }
+      }
+  }
+
+  &__copyright {
+      margin-top: auto;
+      &-bottom{
+          display: none;
+          align-self: center;
+          &.text--xs {
+            text-transform: uppercase;
+            color: $text-accent;
+            margin-top: 10px;
+            font-weight: 600;
+          }
+      }
+  }
+
+
+  &__contact {
+
+    @include dim('max-w', 410, 320);
+    @include dim('mb', 60, 60);
+    @include merge;
+    a{
+        display: block;
+        color: $text-invert;
+        transition: all 0.2s;
+        &:hover{
+            color: $text-accent;
+        }
+    }
+  }
+
+  &__adress {
+    @include dim('mb', 20, 20);
+    @include merge;
+  }
+
+  &__email {
+    @include dim('mb', 20, 20);
+    @include merge;
+  }
+
+  &__requisites {
+    @include dim('max-w', 410, 320);
+    @include dim('gap', 5, 5);
+    @include dim('mb', 60, 60);
+    @include merge;
+    display: flex;
+    flex-direction: column;
+    >span{
+        display: block;
+        
+    }
+  }
+
+  &__privacy-policy{
+
+      display: block;
+      color: $text-invert;
+      transition: all 0.2s;
+      &:hover{
+          color: $text-accent;
+      }
+
+  }
+}
+
+
+@media(max-width: 1440px){
+  
+}
+
+@media(max-width: 1199px){
+  .footer {
+    .container{
+      gap: 20px;
+    }
+
+    &__buttons {
+        flex-direction: column;
+    }
+}
+
+}
+@media(max-width: 920px){
+
+}
+
+@media(max-width: 768px){
+  .footer {
+    &__callback.btn{
+      display: none;
+    }
+    &__account.btn{
+      display: none;
+    }
+    &__custom-btn.btn{
+      display: flex;
+    }
+
+    .container{
+      flex-direction: column;
+      gap: 66px;
+    }
+
+    &__column {
+        display: flex;
+        width: 100%;
+        max-width: 100%;
+        &:first-child{
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    &__logo {
+        min-width: 0;
+        margin-bottom: 0;
+    }
+    &__buttons {
+        margin-bottom: 0;
+    }
+
+    &__callback.button {
+        display: none;
+    }
+
+    &__account.button {
+        display: none;
+    }
+
+    &__language {
+        display: block;
+        max-width: 44px;
+        
+    }
+
+    &__social {
+        display: none;
+        gap: 22px;
+    }
+
+    &__title {
+        color: $text-green-light;
+        margin-bottom: 30px;
+        
+    }
+    &__menu {
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: left;
+        column-gap: 75px;
+        row-gap: 18px;
+        max-height: 165px;
+        max-width: 100%;
+        a{
+            width: max-content;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 100%;
+            &:hover{
+                color: $text-accent;
+            }
+        }
+    }
+
+    &__copyright {
+        display: none;
+        margin-top: auto;
+        &-bottom{
+            display: flex;
+
+        }
+    }
+
+    &__contact {
+        max-width: 410px;
+        margin-bottom: 60px;
+    }
+
+    &__adress {
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+
+    &__email {
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+
+    &__phone {
+        font-weight: 700;
+    }
+
+    &__requisites {
+        max-width: 410px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .footer__title{
+            margin-bottom: 10px;
+        }
+        
+        >span{
+            display: block;
+            font-weight: 700;
+            line-height: 100%;
+        }
+    }
+
+    &__privacy-policy{
+    }
+
+
+  }
 }

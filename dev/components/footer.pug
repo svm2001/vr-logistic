@@ -9,6 +9,109 @@ mixin footer(props = defaultFooterProps, ...dataset)
         classes: props.classes ? props.classes : defaultFooterProps.classes,
     }
 
+    const footerNav = [
+      {
+        name: 'Главная',
+      },
+      {
+        name: 'О компании',
+      },
+      {
+        name: 'Услуги',
+      },
+      {
+        name: 'Экспертиза',
+      },
+      {
+        name: 'Новости',
+      },
+      {
+        name: 'Карьера',
+      },
+      {
+        name: 'Контакты',
+      }
+    ]
+
+    const footerSocial = [
+      {
+        iconName: 'social-vk',
+        href: '/',
+      },
+      {
+        iconName: 'social-telegram',
+        href: '/',
+      },
+      {
+        iconName: 'social-whatsapp',
+        href: '/',
+      }
+    ]
+
+  include ../ui/btn
   footer.footer
-    .container Footer
+    .container
+        .footer__column
+          a.footer__logo(href="/")
+              img(src="./icons/logo/logo-footer.svg" alt="vr-logistic-logo")
+          .footer__buttons
+            +btn({
+                name: 'Обратная связь',
+                variant: 'secondary',
+                classes: 'footer__callback',
+                size: 'small'
+            })
+            +btn({
+                name: 'Личный кабинет',
+                type: 'button', 
+                classes: 'footer__account',
+                size: 'small' 
+            })
+            +btn({
+            classes: 'footer__custom-btn',
+            name: 'EN',
+            size: 'small',
+          }, { title: 'Выбрать язык' }) 
+          .footer__social
+            each social in footerSocial 
+              +btn({
+                name: '',
+                type: 'link', 
+                classes: 'footer__social-item',
+                href: social.href,
+                icon: true, 
+                iconName: social.iconName, 
+              })
+
+        .footer__column
+          .footer__title.text--s Меню
+          .footer__menu.text--s
+            each nav in footerNav
+              a.nav(href='javascript:void(0);')= nav.name
+          .footer__copyright.text--xxs.text--white Copyright © 2024 VR LOGISTIC
+
+        .footer__column
+          .footer__contact
+            .footer__title.text--s Контакты
+            .footer__adress.text--s.text--white 119606, г. Москва, Мичуринский проспект 31/7
+            a.footer__email.text--s logistic@vr-logistic.ru
+            a.footer__phone.text--s +7 (495) 646-98-56
+
+          .footer__requisites.text--s
+            .footer__title Реквизиты
+            span.text--m.text--medium.text--white ООО
+            span.text--m.text--medium.text--white ИНН 00000000000
+            span.text--m.text--medium.text--white ОГРН 00000000000000
+
+          a.footer__privacy-policy.text--m Политика конфиденциальности
+
+        .footer__copyright-bottom.text--xs.text--white.text-bold Copyright © 2024 VR LOGISTIC
+
+          
+
+
+
+
+
+
 
