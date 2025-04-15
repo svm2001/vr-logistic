@@ -1,3 +1,6 @@
+
+
+
 .footer {
 
   background-color: $bg-minimal;
@@ -6,19 +9,15 @@
   align-items: center;
   color: $white;
 
-  a{
-    cursor: pointer;
+  .container{
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      @include dim('pt', 50, 41);
+      @include dim('pb', 50, 41);
+      @include merge;
   }
   
-  &>.container{
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    @include dim('pt', 50, 41);
-    @include dim('pb', 50, 41);
-    @include merge;
-  }
-
   &__column {
       display: flex;
       flex-direction: column;
@@ -44,9 +43,6 @@
       @include dim('gap', 15, 10);
       @include dim('mb', 40, 10);
       @include merge;
-      .btn{
-        // width: 100%;
-      }
   }
 
   &__social {
@@ -55,29 +51,24 @@
       @include merge;
   }
 
-  &__callback.btn{
+  &__account.btn{
+    svg path{
+      fill:$icon-accent; 
+    }
+
+    &:hover{
+      svg path{ 
+        fill:$bg-line; 
+      }
+    }
   }
 
-  &__account.btn{
-    svg{
-      path{
-        fill:$icon-accent; 
-      }
-    }
-    &:hover{
-      svg{
-        path{
-          fill:$bg-line; 
-        }
-      }
-    }
-  }
   &__custom-btn.btn{
-    display: none;
-    border-radius: 50%;
-    aspect-ratio: 1 / 1;
-    border: 1px solid transparent;
-    background-color: $bg-line;
+      display: none;
+      border-radius: 50%;
+      aspect-ratio: 1 / 1;
+      border: 1px solid transparent;
+      background-color: $bg-line;
   }
 
 
@@ -93,22 +84,19 @@
       transition: all 0.2s;
       background-color: $bg-primary;
 
-      svg {
-        path {
-          fill: $icon-accent;
-          transition: $transition;
-        }
+      svg path{
+        fill: $icon-accent;
+        transition: $transition;
       }
     
       &:hover{
           background-color: $icon-accent;
-          svg {
-            path {
-              fill: $icon-primary;
-              transition: $transition;
-            }
+          svg path{
+            fill: $icon-primary;
+            transition: $transition;
           }
       }
+
       >span{
           @include dim('w', 17, 17);
           @include merge;
@@ -155,7 +143,6 @@
 
 
   &__contact {
-
     @include dim('max-w', 410, 320);
     @include dim('mb', 60, 60);
     @include merge;
@@ -169,7 +156,7 @@
     }
   }
 
-  &__adress {
+  &__address {
     @include dim('mb', 20, 20);
     @include merge;
   }
@@ -188,25 +175,17 @@
     flex-direction: column;
     >span{
         display: block;
-        
     }
   }
 
   &__privacy-policy{
-
       display: block;
       color: $text-invert;
       transition: all 0.2s;
       &:hover{
           color: $text-accent;
       }
-
   }
-}
-
-
-@media(max-width: 1440px){
-  
 }
 
 @media(max-width: 1199px){
@@ -216,25 +195,25 @@
     }
 
     &__buttons {
-        flex-direction: column;
+      flex-direction: column;
     }
-}
-
-}
-@media(max-width: 920px){
-
+  }
 }
 
 @media(max-width: 768px){
   .footer {
+    &__account.btn,
     &__callback.btn{
       display: none;
     }
-    &__account.btn{
-      display: none;
-    }
+
     &__custom-btn.btn{
       display: flex;
+      max-width: 32px;
+      max-height: 32px;
+      .btn__text{
+        font-weight: 600;
+      }
     }
 
     .container{
@@ -251,28 +230,23 @@
             justify-content: space-between;
             align-items: center;
         }
+        .text--s{
+          font-size: 18px;
+        }
     }
 
     &__logo {
         min-width: 0;
         margin-bottom: 0;
     }
+
     &__buttons {
         margin-bottom: 0;
-    }
-
-    &__callback.button {
-        display: none;
-    }
-
-    &__account.button {
-        display: none;
     }
 
     &__language {
         display: block;
         max-width: 44px;
-        
     }
 
     &__social {
@@ -283,8 +257,8 @@
     &__title {
         color: $text-green-light;
         margin-bottom: 30px;
-        
     }
+
     &__menu {
         flex-wrap: wrap;
         flex-direction: column;
@@ -295,7 +269,7 @@
         max-width: 100%;
         a{
             width: max-content;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 20px;
             line-height: 100%;
             &:hover{
@@ -318,18 +292,18 @@
         margin-bottom: 60px;
     }
 
-    &__adress {
+    &__address {
         margin-bottom: 20px;
-        font-weight: 700;
+        font-weight: 600;
     }
 
     &__email {
         margin-bottom: 20px;
-        font-weight: 700;
+        font-weight:600;
     }
 
     &__phone {
-        font-weight: 700;
+        font-weight: 600;
     }
 
     &__requisites {
@@ -343,14 +317,9 @@
         
         >span{
             display: block;
-            font-weight: 700;
+            font-weight: 600;
             line-height: 100%;
         }
     }
-
-    &__privacy-policy{
-    }
-
-
   }
 }
