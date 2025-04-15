@@ -14,13 +14,13 @@
   }
 
   &--xxl {
-    @include dim('fz', 75, 30);
+    @include dim('fz', 75, 40);
     @include merge;
     line-height: 100%;
   }
 
   &--xl {
-    @include dim('fz', 35, 25);
+    @include dim('fz', 35, 22);
     @include merge;
     line-height: 140%;
   }
@@ -44,9 +44,9 @@
   }
 
   &--xs {
-    @include dim('fz', 18, 18);
+    @include dim('fz', 18, 16);
     @include merge;
-    line-height: 120%;
+    line-height: 135%;
   }
 
   &--xxs {

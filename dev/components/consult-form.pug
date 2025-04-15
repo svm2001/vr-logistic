@@ -1,0 +1,74 @@
+-
+  const defaultConsultFormProps = {
+      classes: '',
+      title: 'Нужна консультация?',
+      subtitle: 'Оставьте контакты и наш специалист свяжется с вами!',
+      buttonText: 'Оставить заявку',
+      modal: true
+  }
+
+mixin consult-form(props = defaultConsultFormProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultConsultFormProps.classes,
+        title: props.title ? props.title : defaultConsultFormProps.title,
+        subtitle: props.subtitle ? props.subtitle : defaultConsultFormProps.subtitle,
+        buttonText: props.buttonText ? props.buttonText : defaultConsultFormProps.buttonText,
+        modal: props.modal ? props.modal : defaultConsultFormProps.modal,
+    }
+
+  include ../ui/title
+  include ../ui/text
+  include ../ui/btn
+  include ../ui/checkbox
+  include ../ui/input
+  if checkProps.modal
+    .consultForm(class=`${checkProps.classes}`)&attributes(...dataset)
+      .consultForm__text 
+        +title({
+          text: checkProps.title,
+          variant: '3',
+        })
+        +text({
+          text: checkProps.subtitle,
+          variant: 's',
+          weight: 'medium'
+        })
+      form.consultForm__form(action="" data-validate no-validate) 
+        div 
+          +input({ 
+            validateName: 'fio',
+            placeholder: 'Иван Иванов',
+            name: 'name',
+            required: true,
+            classes: 'input--theme--t input--size--l',
+            label: 'ФИО'
+          })
+        div
+          +input({ 
+            placeholder: '+7 (000) 000-00-00',
+            name: 'phone', 
+            validateName: 'phone', 
+            required: true, 
+            classes: 'input--size--l',
+            label: 'Телефон'
+          }, { 'data-input-mask': 'phone'})
+        div
+          +btn({
+            type: 'submit',
+            name: 'Оставить заявку',
+            dot: true,
+          })
+        div
+          +checkbox({
+            name: 'agreement',
+            custom: true,
+            required: true,
+          })
+            span Я прочитал(а) и согласен(на)&nbsp;c<br>
+              a.consultForm__link(href='javascript:void(0)' target="_blank") Политикой конфиденциальности
+
+
+
+              
+

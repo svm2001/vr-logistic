@@ -10,7 +10,6 @@
   @include dim('h', 90, 96);
   @include merge;
   background: $white;
-  border-bottom: 1px solid rgb(228, 228, 228);
 
   &__wrapper {
     display: flex;
@@ -98,5 +97,11 @@
         fill: $white;
       }
     }
+  }
+}
+
+@media (max-width: 1200px) {
+  .header {
+    display: none;
   }
 }

@@ -1,3 +1,4 @@
+@import '../../mixins/vw';
 .modal {
   &.hystmodal {
     .hystmodal {
@@ -6,26 +7,42 @@
       }
 
       &__window {
-        width: 100%;
-        max-width: 600px;
-        padding: 40px;
-        background: #fff;
+        width: auto;
+        @include dim('max-w', 1660, 1000);
+        @include dim('p', 70, 20);
+        @include merge;
+        background: $bg-line;
+        border-radius: 20px
       }
 
       &__close {
-        top: 20px;
-        right: 20px;
-        width: 24px;
-        height: 24px;
+        @include dim('t', 20, 20);
+        @include dim('r', 20, 20);
+        @include dim('w', 40, 36);
+        @include dim('h', 40, 36);
+        @include merge;
+        border-radius: 3px;
+        border: 1px solid transparent;
+        aspect-ratio: 1 / 1;
+        background: #124F2ECC;
         padding: 0;
-        background-image: none;
-        transition: opacity 0.3s;
+        transition: $transition;
 
-        &:hover {
-          opacity: 0.6;
+        svg path {
+          stroke: $white;
+          transition: $transition;
         }
 
-        &:focus {
+        &:hover {
+          background: transparent;
+          border: 1px solid #124F2ECC;
+
+          svg path {
+            stroke: #124F2ECC;;
+          }
+        }
+
+        &:focus-within {
           outline: none;
         }
       }
@@ -49,4 +66,13 @@
       }
     }
   }
+}
+
+.hystmodal__shadow {
+  z-index: 101;
+  background: rgba(9, 54, 30, .85);
+}
+
+.hystmodal {
+  z-index: 102;
 }
