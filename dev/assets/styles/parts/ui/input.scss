@@ -22,15 +22,6 @@
     }
   }
 
-  &--show-message {
-    .input {
-      &__message {
-        display: grid;
-        grid-template-columns: 1fr;
-      }
-    }
-  }
-
   &--size--l {
     .input {
       &__field {
@@ -62,23 +53,15 @@
   }
 
   &__message {
-    display: none;
+    position: absolute;
+    display: grid;
     grid-template-columns: max-content 1fr;
     align-items: center;
-    grid-column-gap: 4px;
+    @include dim('grid-column-gap', 4, 4);
+    @include dim('mt', 4, 4);
+    @include dim('fz', 12, 12);
+    @include merge;
     justify-content: start;
-    margin-top: 4px;
-    font-size: 13px;
-
-    span {
-      font-size: 12px;
-      transition: color $transition;
-    }
-
-    svg {
-      width: 16px;
-      height: 16px;
-    }
   }
 
   &__label {
