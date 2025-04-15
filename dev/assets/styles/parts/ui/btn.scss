@@ -43,6 +43,8 @@ button {
 
   &__icon {
     aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
 
     svg {
       width: 100%;
@@ -71,7 +73,7 @@ button {
     }
 
     .btn__icon {
-      @include dim('w', 24, 24);
+      @include dim('w', 21, 24);
       @include merge;
     }
   }
@@ -106,7 +108,7 @@ button {
     }
 
     .btn__icon {
-      @include dim('w', 20, 20);
+      @include dim('w', 13, 13);
       @include merge;
     }
   }
@@ -117,6 +119,10 @@ button {
     @include dim('br', 10, 10);
     @include merge;
     padding: 0;
+    .btn__icon {
+      @include dim('w', 20, 20);
+      @include merge;
+    }
   }
 
   &-variant-primary {
