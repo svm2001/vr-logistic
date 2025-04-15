@@ -122,9 +122,24 @@ export default function validate() {
             }
           })
 
-          const formBody = form.querySelector('.form__body')
-          const successMsg = form.querySelector('.form__success')
-          const errorMsg = form.querySelector('.form__error')
+          const formBody = form.querySelector('.js-form__body')
+          const success = form.querySelector('.js-form-success')
+          const error = form.querySelector('.js-form-error')
+
+          const consultFormText = document.querySelector('.consultForm__text')
+          const hideConsultFormText = () => consultFormText ? consultFormText.style.display = 'none' : null
+
+          const showSuccess = () => {
+            formBody.style.display = 'none'
+            success.classList.add('visible')
+            hideConsultFormText()
+          }
+
+          const showError = () => {
+            formBody.style.display = 'none'
+            error.classList.add('visible')
+            hideConsultFormText()
+          }
 
           if (errors === 0) {
             const formData = new FormData()
@@ -139,19 +154,29 @@ export default function validate() {
 
             console.table(Object.fromEntries(formData))
 
-            $.ajax({
-              type: 'POST',
-              url: form.getAttribute('action') + '?ajax=Y',
-              data: formData,
-              processData: false,
-              contentType: false,
-              success: function (response) {
-                console.log('success')
-              },
-              error: function (error) {
-                console.error('Ошибка при отправке формы: ', error.responseText)
-              },
-            })
+            formBody.classList.add('loading')
+            
+            setTimeout(() => {
+              $.ajax({
+                type: 'POST',
+                url: form.getAttribute('action') + '?ajax=Y',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: (response) => {
+                  setTimeout(() => {
+                    formBody.classList.remove('loading')
+                    showSuccess()
+                  }, 500)
+                },
+                error: (error) => {
+                  setTimeout(() => {
+                    formBody.classList.remove('loading')
+                    showError()
+                  }, 500)
+                }
+              })
+            }, 1000)
 
           }
         }
