@@ -51,6 +51,13 @@
       @include merge;
   }
 
+  &__account.btn,
+  &__callback.btn{
+    &:hover{
+      border-color: $btn-bg-invert;
+    }
+  }
+
   &__account.btn{
     svg path{
       fill:$icon-accent; 
@@ -83,6 +90,7 @@
       @include merge;
       transition: all 0.2s;
       background-color: $bg-primary;
+      border: none;
 
       svg path{
         fill: $icon-accent;
@@ -209,9 +217,14 @@
 
     &__custom-btn.btn{
       display: flex;
-      max-width: 32px;
-      max-height: 32px;
+      max-width: 44px;
+      max-height: 44px;
+      height: 100%;
+      width: 100;
+      border: none;
       .btn__text{
+        color: $text-secondary;
+        font-size: 14px;
         font-weight: 600;
       }
     }
