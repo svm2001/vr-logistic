@@ -1,0 +1,223 @@
+@import '../../mixins/vw';
+
+.about {
+  position: relative;
+  @include dim('pt', 80, 70);
+  @include dim('pb', 132, 72);
+  @include merge;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    @include dim('gap', 50, 30);
+    @include dim('w', 680);
+    @include merge;
+  }
+
+  &__link {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    transition: $transition;
+    @include dim('gap', 30, 30);
+    @include dim('fz', 25, 20);
+    @include merge;
+
+    svg {
+      @include dim('w', 56, 56);
+      @include merge;
+      transition: $transition;
+
+      path {
+        transition: $transition;
+      }
+    }
+
+    &:hover {
+      svg {
+        transform: translateX(20%);
+
+        path {
+          fill: $logo-green;
+        }
+      }
+    }
+  }
+
+  &__numbers {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    @include dim('w', 670, 670);
+    @include merge;
+
+    &:before {
+      content: '';
+      z-index: 2;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: $white;
+      @include dim('w', 46, 0);
+      @include dim('h', 84, 0);
+      @include merge;
+    }
+  }
+
+  &__number {
+    @include dim('h', 185, 121);
+    @include dim('gap', 20, 20);
+    @include merge;
+    display: flex;
+    flex-direction: column;
+
+    &-value {
+      display: flex;
+      align-items: center;
+      user-select: none;
+      @include dim('gap', 20, 20);
+      @include merge;
+    }
+
+    &-value, &-value + span {
+      color: $text-accent;
+      white-space: nowrap;
+    }
+
+    &-description {
+      @include dim('max-w', 233, 233);
+      @include merge;
+    }
+
+    &:nth-child(even) {
+      align-items: end;
+    }
+
+    &:nth-child(3), &:last-child {
+      @include dim('pt', 40, 40);
+      @include merge;
+    }
+
+    &:first-child {
+      border-right: 1px solid $bg-green-light;
+      border-bottom: 1px solid $bg-green-light;
+    }
+
+    &:last-child {
+      transform: translate(-1px, -1px);
+      border-left: 1px solid $bg-green-light;
+      border-top: 1px solid $bg-green-light;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .about {
+
+    &__inner {
+      gap: 150px; 
+    }
+
+    &__info {
+      width: 45%;
+      min-width: 330px;
+      gap: 50px;
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    &__title {
+      font-weight: 600;
+    }
+
+    &__numbers {
+      max-width: 100%;
+      min-width: 220px;
+      display: flex;
+      flex-direction: column;
+
+      &:before {
+        display: none;
+      }
+    }
+
+    &__number {
+      border-bottom: 1px solid $bg-green-light;
+
+      &:nth-child(even) {
+        align-items: start;
+      }
+  
+      &:not(:first-child) {
+        padding-top: 20px;
+      }
+
+      &:first-child {
+        padding-top: 0;
+        padding-bottom: 20px;
+        border-right: none;
+        border-bottom: 1px solid $bg-green-light;
+      }
+  
+      &:last-child {
+        border: none;
+        transform: none;
+      }
+
+      &-value p, &-value + span {
+        font-weight: 600;
+      }
+
+      &-description {
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .about {
+    padding: 60px 0 63px 0;
+
+    &__inner {
+      flex-direction: column;
+      gap: 70px;
+    }
+
+    &__info {
+      gap: 40px;
+      width: 100%;
+      min-width: 100%;
+    }
+
+    &__link {
+      font-size: 18px;
+    }
+
+    &__numbers {
+      width: 100%;
+      min-width: 100%;
+      gap: 35px;
+    }
+
+    &__number {
+      &:not(:first-child) {
+        padding-top: 0;
+      }
+      padding-top: 0;
+      height: 158px;
+      &-value p, &-value + span {
+        font-size: 80px;
+      }
+    }
+  }
+}

@@ -25,6 +25,7 @@
     "vite-plugin-pug": "^0.3.2"
   },
   "dependencies": {
+    "countup.js": "^2.8.0",
     "gsap": "^3.12.7",
     "html-minifier-terser": "^7.2.0",
     "imask": "^7.1.3",
