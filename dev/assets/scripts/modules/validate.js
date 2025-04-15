@@ -52,57 +52,36 @@ export default function validate() {
             if (valueField !== '') {
               switch (name) {
                 case 'name':
-                  if (
-                    valueField.length >= 2 &&
-                    valueField.match(dataReqexp.personName)
-                  ) {
-                    error(input).remove()
-                  } else {
-                    error(input, 'Введите корректное имя').set()
-                  }
+                  valueField.length >= 2 && valueField.match(dataReqexp.personName)
+                    ? error(input).remove()
+                    : error(input, 'Введите корректное имя').set()
                   break
                 case 'fio':
-                  if (
-                        valueField.length > 5 &&
-                        valueField.match(dataReqexp.fio)
-                    ) {
-                        error(input).remove()
-                    } else {
-                        error(
-                            input,
-                            'Введите корректное ФИО',
-                        ).set()
-                    }
-                    break
+                  valueField.length > 5 && valueField.match(dataReqexp.fio)
+                    ? error(input).remove()
+                    : error(input, 'Введите корректное ФИО').set()
+                  break
                 case 'email':
-                  if (valueField.match(dataReqexp.email)) {
-                    error(input).remove()
-                  } else {
-                    error(input, 'Введите корректный E-mail').set()
-                  }
+                  valueField.match(dataReqexp.email)
+                    ? error(input).remove()
+                    : error(input, 'Введите корректный E-mail').set()
                   break
                 case 'phone':
-                  if (valueField.length === 18) {
-                    error(input).remove()
-                  } else {
-                    error(input, 'Введите полный номер телефона').set()
-                  }
+                  valueField.length === 18
+                    ? error(input).remove()
+                    : error(input, 'Введите полный номер телефона').set()
                   break
                 case 'agreement':
                   const checkboxInput = input.querySelector('input[type="checkbox"]')
                   const checkboxWrapper = checkboxInput.closest('.checkbox')
-                  if (checkboxInput.checked) {
-                    checkboxWrapper.classList.remove('input--error')
-                  } else {
-                    checkboxWrapper.classList.add('input--error')
-                  }
+                  checkboxInput.checked
+                    ? checkboxWrapper.classList.remove('input--error')
+                    : checkboxWrapper.classList.add('input--error')
                   break
                 default:
-                  if (valueField.length !== 0) {
-                    error(input).remove()
-                  } else {
-                    error(input).set()
-                  }
+                  valueField.length !== 0
+                    ? error(input).remove()
+                    : error(input).set()
               }
             } else {
               error(input).set()
