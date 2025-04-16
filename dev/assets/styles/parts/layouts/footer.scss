@@ -17,7 +17,7 @@
       @include dim('pb', 50, 41);
       @include merge;
   }
-  
+
   &__column {
       display: flex;
       flex-direction: column;
@@ -53,6 +53,7 @@
 
   &__account.btn,
   &__callback.btn{
+    border: 1px solid transparent;
     &:hover{
       border-color: $btn-bg-invert;
     }
@@ -60,12 +61,12 @@
 
   &__account.btn{
     svg path{
-      fill:$icon-accent; 
+      fill:$icon-accent;
     }
 
     &:hover{
-      svg path{ 
-        fill:$bg-line; 
+      svg path{
+        fill:$bg-line;
       }
     }
   }
@@ -96,7 +97,7 @@
         fill: $icon-accent;
         transition: $transition;
       }
-    
+
       &:hover{
           background-color: $icon-accent;
           svg path{
@@ -227,6 +228,10 @@
         font-size: 14px;
         font-weight: 600;
       }
+
+      &:hover {
+        border: 1px solid $white;
+      }
     }
 
     .container{
@@ -326,7 +331,7 @@
         .footer__title{
             margin-bottom: 10px;
         }
-        
+
         >span{
             display: block;
             font-weight: 600;

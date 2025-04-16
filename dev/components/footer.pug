@@ -63,24 +63,24 @@ mixin footer(props = defaultFooterProps, ...dataset)
             })
             +btn({
                 name: 'Личный кабинет',
-                type: 'button', 
+                type: 'button',
                 classes: 'footer__account',
-                size: 'small' 
+                size: 'small'
             })
             +btn({
             classes: 'footer__custom-btn',
             name: 'EN',
             size: 'small',
-          }, { title: 'Выбрать язык' }) 
+          }, { title: 'Выбрать язык' })
           .footer__social
-            each social in footerSocial 
+            each social in footerSocial
               +btn({
                 name: '',
-                type: 'link', 
+                type: 'link',
                 classes: 'footer__social-item',
                 href: social.href,
-                icon: true, 
-                iconName: social.iconName, 
+                icon: true,
+                iconName: social.iconName,
               })
 
         .footer__column
@@ -94,8 +94,8 @@ mixin footer(props = defaultFooterProps, ...dataset)
           .footer__contact
             .footer__title.text--s Контакты
             .footer__address.text--s.text--white 119606, г. Москва, Мичуринский проспект 31/7
-            a.footer__email.text--s logistic@vr-logistic.ru
-            a.footer__phone.text--s +7 (495) 646-98-56
+            a.footer__email.text--s(href="mailto:logistic@vr-logistic.ru") logistic@vr-logistic.ru
+            a.footer__phone.text--s(href="tel:+74956469856") +7 (495) 646-98-56
 
           .footer__requisites.text--s
             .footer__title Реквизиты
@@ -103,11 +103,11 @@ mixin footer(props = defaultFooterProps, ...dataset)
             span.text--m.text--medium.text--white ИНН 00000000000
             span.text--m.text--medium.text--white ОГРН 00000000000000
 
-          a.footer__privacy-policy.text--m Политика конфиденциальности
+          a.footer__privacy-policy.text--m(href="javascript:void(0);") Политика конфиденциальности
 
         .footer__copyright-bottom.text--xs.text--white.text-bold Copyright © 2024 VR LOGISTIC
 
-          
+
 
 
 
