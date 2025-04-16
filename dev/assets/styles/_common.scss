@@ -77,8 +77,8 @@ body.lock {
   position: relative;
   width: 100%;
   max-width: 100%;
-  @include dim('pl', 130, 20);
-  @include dim('pr', 130, 20);
+  @include dim('pl', 123, 20);
+  @include dim('pr', 123, 20);
   @include merge;
   margin: 0 auto;
 }

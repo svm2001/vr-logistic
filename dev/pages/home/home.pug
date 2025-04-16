@@ -4,13 +4,23 @@ block content
     include ../../components/hero
     include ../../components/about
     include ../../components/consult-form
+    include ../../components/consult
+    include ../../components/video
+    include ../../components/expertise/expertise
     include ../../components/services/services
     include ../../modal-windows/modal
 
     .wrapper
         +hero
         +about
+        +video
         +services
+        +consult({
+          classes: 'consult--page',
+          btnText: 'Жду звонка'
+        })
+        +expertise
+
     +modal({ id: 'consult-form', classes: 'consult__form' })
         +consult-form
 

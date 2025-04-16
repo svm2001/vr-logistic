@@ -1,0 +1,187 @@
+@import '../../mixins/vw';
+
+.expertise {
+  @include dim('pt', 100, 50);
+  @include dim('pb', 87, 50);
+  @include merge;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    @include dim('gap', 50, 30);
+    @include merge;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    @include dim('gap', 20, 25);
+    @include merge;
+  }
+
+  &__item {
+    @include dim('br', 20, 20);
+    @include dim('pt', 26, 20);
+    @include dim('pr', 30, 20);
+    @include dim('pb', 42, 20);
+    @include dim('pl', 30, 20);
+    @include dim('h', 290, 240);
+    @include dim('gap', 20, 20);
+    @include merge;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: $bg-secondary;
+    transition: $transition;
+
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: 0;
+      @include dim('t', -5, -5);
+      @include dim('r', -5, -5);
+      @include dim('w', 85, 85);
+      @include dim('h', 85, 85);
+      @include dim('br', 28, 28);
+      @include merge;
+      background: $bg-line;
+      transition: $transition;
+      opacity: 0;
+    }
+
+    &-icon {
+      @include dim('w', 91, 54);
+      @include dim('h', 91, 54);
+      @include dim('p', 12, 6);
+      @include merge;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 1 / 1;
+    }
+
+    &-title {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      line-clamp: 1;
+      overflow: hidden;
+      transition: .2s;
+    }
+
+    &-text {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      overflow: hidden;
+    }
+
+    &-btn {
+      position: absolute;
+      @include dim('min-w', 69, 69);
+      @include dim('min-h', 69, 69);
+      @include dim('br', 20, 20);
+      @include merge;
+      top: 0;
+      right: 0;
+      transform: translate(-20%, 20%);
+      opacity: 0;
+      visibility: hidden;
+
+      &:hover {
+        background: $icon-accent;
+        border-color: $icon-accent;
+      }
+    }
+
+    &:hover {
+      &:before {
+        opacity: 1;
+      }
+
+      .expertise__item-title {
+        color: $icon-accent;
+      }
+
+      .expertise__item-btn {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(0, 0);
+      }
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .expertise {
+    &__list {
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      margin-left: -20px;
+      margin-right: -20px;
+      padding: 0 20px;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    &__item {
+      scroll-snap-align: start;
+      width: 100%;
+      height: 100%;
+      min-width: 345px;
+
+      &-text {
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+      }
+    }
+  }
+}
+
+@media (max-width: 540px) {
+  .expertise {
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    &-icon {
+
+    }
+
+    &__item {
+      padding: 26px 30px 30px 30px;
+      height: 274px;
+      min-width: 100%;
+      &-btn, &:before {
+        display: none;
+      }
+
+      &-text {
+        -webkit-line-clamp: 4;
+        line-clamp: 4;
+      }
+
+      &-icon {
+        width: 70px;
+        height: 70px;
+        padding-left: 0;
+
+        svg {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}

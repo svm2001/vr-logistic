@@ -192,6 +192,10 @@
       padding-left: 25px;
     }
 
+    &__globe {
+      pointer-events: none;
+    }
+
     &__list {
       gap: 25px;
     }
@@ -215,26 +219,13 @@
         max-width: calc(100% - 110px);
       }
 
-      &__btn {
-        &:hover {
-          background: transparent;
-          border: 1px solid transparent;
-        }
-      }
-
       &:hover {
         .services__item-simple__name {
           color: $text-primary;
         }
 
         .services__item-simple__btn {
-          transform: translate(0, -50%);
-          background: transparent;
-
-          svg path {
-            stroke: transparent;
-            fill: $icon-accent;
-          }
+          transform: translate(8px, -50%);
         }
       }
     }

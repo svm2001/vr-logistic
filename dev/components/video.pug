@@ -1,0 +1,53 @@
+-
+  const defaultVideoProps = {
+      classes: '',
+      poster: '/images/video/poster.jfif',
+      title: 'Cоздавая преимущества',
+      btnText: 'Фильм-визитка о компании',
+      video: './video/mock-video.mp4',
+      videoType: 'video/mp4',
+  }
+
+mixin video(props = defaultVideoProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultVideoProps.classes,
+        poster: props.poster ? props.poster : defaultVideoProps.poster,
+        title: props.title ? props.title : defaultVideoProps.title,
+        btnText: props.btnText ? props.btnText : defaultVideoProps.btnText,
+        video: props.video ? props.video : defaultVideoProps.video,
+        videoType: props.videoType ? props.videoType : defaultVideoProps.videoType,
+    }
+
+  include ../ui/title
+  include ../ui/btn
+  include ../ui/text
+  section.video(class=`${checkProps.classes}`)&attributes(...dataset)
+      img.lazy.video__poster(src="./images/no-image.jpg" data-src=checkProps.poster alt=checkProps.btnText)
+      .video__bg-plug
+      video(playsinline controls)
+          source(src=checkProps.video, type=checkProps.videoType)
+      +btn({
+        icon: true,
+        iconName: 'close',
+        classes: 'video__close',
+        title: 'Закрыть видео'
+      })
+      .container
+          .video__inner
+              +title({
+                variant: '3',
+                text: checkProps.title,
+                classes: 'video__title'
+              })
+              .video__btn
+                  +btn({
+                    icon: true,
+                    iconName: 'play',
+                    classes: 'btn--play'
+                  }, { title: 'Смотреть видео' })
+                  +text({
+                    text: checkProps.btnText,
+                    variant: 'm',
+                    weight: 'regular'
+                  })

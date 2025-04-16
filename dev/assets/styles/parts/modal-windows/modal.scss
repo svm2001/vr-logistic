@@ -26,11 +26,25 @@
         aspect-ratio: 1 / 1;
         background: #124F2ECC;
         padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         transition: $transition;
 
         svg path {
           stroke: $white;
           transition: $transition;
+        }
+
+        span {
+          display: block;
+          width: 70%;
+          height: 70%;
+
+          svg {
+            width: 100%;
+            height: 100%;
+          }
         }
 
         &:hover {

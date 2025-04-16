@@ -215,4 +215,40 @@ button {
       background-color: $btn-text-disabled;
     }
   }
+
+  &.btn--play {
+    @include dim('min-w', 50, 50);
+    @include dim('min-h', 50, 50);
+    @include merge;
+    aspect-ratio: 1 / 1;
+    background: rgba(255,255,255, .33);
+    border-radius: 50%;
+    border: 1px solid $white;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background: $white;
+
+      svg path {
+        fill: $icon-accent;
+      }
+    }
+
+    svg {
+      transform: translateX(10%);
+
+      path {
+        transition: $transition;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .btn.btn--play {
+
+  }
 }

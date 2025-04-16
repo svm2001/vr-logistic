@@ -1,0 +1,131 @@
+@import '../../mixins/vw';
+
+.video {
+  position: relative;
+  width: 100%;
+  @include dim('h', 730, 730);
+  @include merge;
+  transition: $transition;
+
+  &__poster {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 2;
+    transition: $transition;
+
+    &.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  &__close {
+    @include dim('r', 30, 15);
+    @include dim('t', 30, 15);
+    @include merge;
+    position: absolute;
+    z-index: 3;
+    border: 1px solid transparent;
+    opacity: 0;
+    visibility: hidden;
+
+    svg path {
+      transition: $transition;
+      stroke: $logo-dark-green;
+    }
+
+    &:hover {
+      background: $logo-dark-green;
+      border: 1px solid $white;
+
+      svg path {
+        stroke: $white;
+      }
+    }
+
+    &.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__bg-plug {
+    background: rgba(9, 54, 30, 0.85);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    transition: $transition;
+
+    &.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  &__inner {
+    @include dim('h', 730, 730);
+    @include dim('pb', 60, 40);
+    @include dim('gap', 30, 30);
+    @include merge;
+    position: relative;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: $white;
+    transition: $transition;
+
+    &.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  video {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .99;
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    @include dim('gap', 30, 30)
+  }
+}
+
+@media (max-width: 767px) {
+  .video {
+    height: 100dvh;
+
+    &__inner {
+      height: 100dvh;
+    }
+
+    &__title {
+      font-size: 28px;
+    }
+
+    .text {
+      font-size: 18px;
+    }
+
+    video {
+      object-fit: contain;
+      height: auto;
+    }
+  }
+}
