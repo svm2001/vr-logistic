@@ -4,11 +4,13 @@ block content
     include ../../components/hero
     include ../../components/about
     include ../../components/consult-form
+    include ../../components/services/services
     include ../../modal-windows/modal
 
     .wrapper
         +hero
         +about
-    +modal({ id: 'consult-form', classes: 'consult__form' })  
+        +services
+    +modal({ id: 'consult-form', classes: 'consult__form' })
         +consult-form
 

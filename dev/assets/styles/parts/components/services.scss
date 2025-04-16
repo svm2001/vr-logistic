@@ -1,0 +1,296 @@
+@import '../../mixins/vw';
+
+.services {
+  @include dim('pt', 80, 40);
+  @include dim('pb', 120, 50);
+  @include merge;
+  background: $bg-secondary;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    @include dim('gap', 100, 16);
+    @include merge;
+  }
+
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    @include dim('pb', 40, 40);
+    @include merge;
+    border-bottom: 1px solid $bg-line;
+  }
+
+  &__title {
+    @include dim('max-w', 680, 680);
+    @include merge;
+    font-weight: 400;
+  }
+
+  &__list {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  &__col {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    @include dim('gap', 60, 20);
+    @include merge;
+
+    &:nth-child(odd) {
+      .services__item-simple:first-child,
+      .services__item-simple:last-child {
+        @include dim('l', 120, 120);
+        @include merge;
+      }
+
+      .services__item-simple:nth-child(2),
+      .services__item-simple:nth-child(4) {
+        @include dim('l', 20, 20);
+        @include merge;
+      }
+    }
+
+    &:nth-child(even) {
+      .services__item-simple:first-child,
+      .services__item-simple:last-child {
+        @include dim('r', 120, 120);
+        @include merge;
+      }
+
+      .services__item-simple:nth-child(2),
+      .services__item-simple:nth-child(4) {
+        @include dim('r', 20, 20);
+        @include merge;
+      }
+    }
+  }
+
+  &__item-simple {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: $white;
+    @include dim('gap', 15, 15);
+    @include dim('w', 450, 450);
+    @include dim('max-w', 450, 450);
+    @include dim('br', 10, 10);
+    @include dim('p', 15, 15);
+    @include dim('h', 90, 84);
+    @include merge;
+
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      right: 0;
+      transform: translate(50%, -50%);
+      @include dim('w', 82, 82);
+      @include dim('h', 82, 82);
+      @include dim('br', 28, 28);
+      @include merge;
+      background: $bg-secondary;
+      transition: $transition;
+      opacity: 0;
+    }
+
+    &__icon {
+      @include dim('w', 55, 42);
+      @include dim('h', 55, 42);
+      @include dim('p', 7, 5);
+      @include merge;
+      aspect-ratio: 1 / 1;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__name {
+      @include dim('max-w', 252, 252);
+      @include merge;
+      transition: $transition;
+    }
+
+    &__btn {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      z-index: 2;
+      transform: translateY(-50%);
+      border: 1px solid transparent;
+      background: $white;
+      @include dim('br', 20, 20);
+      @include dim('min-w', 66, 66);
+      @include dim('min-h', 66, 66);
+      @include merge;
+
+      .btn__icon {
+        border-radius: 0;
+      }
+
+      &:hover {
+        background: transparent;
+        border: 1px solid transparent;
+      }
+    }
+
+    &:hover {
+      &:before {
+        opacity: 1;
+      }
+
+      .services__item-simple__name {
+        color: $icon-accent;
+      }
+
+      .services__item-simple__btn {
+        transform: translate(50%, -50%);
+        background: $icon-accent;
+        @include dim('br', 20, 20);
+        @include merge;
+
+        svg path {
+          stroke: $white;
+          fill: $white;
+        }
+      }
+    }
+  }
+
+  &__globe {
+    position: absolute;
+    cursor: grab;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    //возможно потом понадобится:
+    //filter: drop-shadow(0px 0px 5px $icon-accent);
+
+    &:active {
+      cursor: grabbing;
+    }
+
+    #globe-2d-overlay {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .services {
+    &__title {
+      max-width: 50%;
+      padding-left: 25px;
+    }
+
+    &__list {
+      gap: 25px;
+    }
+
+    &__col {
+      width: 50%;
+    }
+
+    &__item-simple {
+      left: 0!important;
+      right: 0!important;
+      max-width: 100%;
+      width: 100%;
+
+      &:before {
+        display: none;
+      }
+
+      &__name {
+        font-size: 16px;
+        max-width: calc(100% - 110px);
+      }
+
+      &__btn {
+        &:hover {
+          background: transparent;
+          border: 1px solid transparent;
+        }
+      }
+
+      &:hover {
+        .services__item-simple__name {
+          color: $text-primary;
+        }
+
+        .services__item-simple__btn {
+          transform: translate(0, -50%);
+          background: transparent;
+
+          svg path {
+            stroke: transparent;
+            fill: $icon-accent;
+          }
+        }
+      }
+    }
+
+    &__globe {
+      transform: translate(-50%, -50%) scale(.95);
+    }
+  }
+}
+
+
+@media (max-width: 767px) {
+  .services {
+    padding-top: 60px;
+    padding-bottom: 16px;
+
+    &__top {
+      flex-direction: column;
+      gap: 40px;
+      padding-bottom: 30px;
+    }
+
+    &__title {
+      max-width: 100%;
+      padding: 0;
+      font-size: 18px;
+    }
+
+    &__inner {
+      gap: 40px;
+    }
+
+    &__list {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    &__col {
+      width: 100%;
+      gap: 20px;
+    }
+
+    &__item-simple {
+      height: 90px;
+      &__btn {
+        display: none;
+      }
+
+      &__name {
+        font-weight: 600;
+      }
+
+      &__icon {
+        width: 55px;
+        height: 55px;
+      }
+    }
+  }
+}

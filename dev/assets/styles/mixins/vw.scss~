@@ -13,7 +13,7 @@ $last-selector: null;
     'fz': 'font-size',
     'lh': 'line-height',
     'ls': 'letter-spacing',
-
+    
     'pl': 'padding-left',
     'pr': 'padding-right',
     'pt': 'padding-top',
@@ -24,33 +24,36 @@ $last-selector: null;
     'mr': 'margin-right',
     'mt': 'margin-top',
     'mb': 'margin-bottom',
-
+    
     't': 'top',
     'l': 'left',
     'r': 'right',
     'b': 'bottom',
-
+    'translateX': 'transform: translateX',
+    'translateY': 'transform: translateY',
+    'scale': 'transform: scale',
+    
     'w': 'width',
     'h': 'height',
     'min-w': 'min-width',
     'min-h': 'min-height',
     'max-w': 'max-width',
     'max-h': 'max-height',
-
+    
     'gap': 'gap',
     'row-gap': 'row-gap',
     'column-gap': 'column-gap',
-
+    
     'border': 'border',
     'br': 'border-radius',
-
+    
     'basis': 'flex-basis',
 
     'grid-gap': 'grid-gap',
     'grid-row-gap': 'grid-row-gap',
     'grid-column-gap': 'grid-column-gap'
   );
-
+  
   @return map-get($properties, $short-name);
 }
 
@@ -58,9 +61,9 @@ $last-selector: null;
   $full-property: get-full-property($property);
   $prop: if($full-property, $full-property, $property);
   $selector: &;
-
+  
   #{$prop}: #{$fixed-size}px;
-
+  
   @if $last-selector != null and $last-selector != $selector {
     @at-root #{$last-selector} {
       @media (min-width: #{$breakpoint-desktop}px) {
@@ -71,16 +74,16 @@ $last-selector: null;
     }
     $adaptive-properties: map-merge($adaptive-properties, ($last-selector: ())) !global;
   }
-
+  
   $current-props: ();
   @if map-has-key($adaptive-properties, $selector) {
     $current-props: map-get($adaptive-properties, $selector);
   }
   $current-props: map-merge($current-props, ($prop: vw($adaptive-size)));
   $adaptive-properties: map-merge($adaptive-properties, ($selector: $current-props)) !global;
-
+  
   $last-selector: $selector !global;
-
+  
   @at-root {
     @if & {
       @if not & == null {

@@ -1,0 +1,16 @@
+-
+    const defaultGlobeProps = {
+        classes: '',
+    }
+
+mixin globe(props = defaultGlobeProps, ...dataset)
+  -
+      const checkProps = {
+          classes: props.classes ? props.classes : defaultGlobeProps.classes,
+      }
+
+  .globe(class=`${checkProps.classes}`)&attributes(...dataset)
+      .globe-wrapper
+          canvas(id="globe-3d")
+          canvas(id="globe-2d-overlay")
+      include ./globe-shaders.pug
