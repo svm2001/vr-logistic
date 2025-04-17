@@ -5,6 +5,7 @@ import { globe } from '@/assets/scripts/modules/globe'
 import { video } from '@/assets/scripts/modules/video'
 import { tabs } from '@/assets/scripts/modules/tabs'
 import select from '@/assets/scripts/modules/select'
+import { standartsSlider } from "@/assets/scripts/modules/standartsSlider.js"
 
 window.onload = () => {
   main()
@@ -12,6 +13,7 @@ window.onload = () => {
   globe()
   video()
   select()
+  standartsSlider()
 
   if(window.innerWidth > 767) {
     tabs({

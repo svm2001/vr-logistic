@@ -7,6 +7,7 @@ block content
     include ../../components/consult
     include ../../components/video
     include ../../components/routes
+    include ../../components/standarts
     include ../../components/expertise/expertise
     include ../../components/services/services
     include ../../modal-windows/modal
@@ -19,8 +20,7 @@ block content
         +consult({ classes: 'consult--page', btnText: 'Жду звонка' })
         +expertise
         +routes
-
-
+        +standarts
     +modal({ id: 'consult-form', classes: 'consult__form' })
         +consult-form
 
