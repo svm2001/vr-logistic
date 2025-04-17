@@ -177,6 +177,8 @@
         img {
           max-width: 900px;
           height: 100%;
+          display: block;
+          margin: auto;
         }
 
         position: static;
@@ -187,8 +189,7 @@
         display: none;
 
         &.active {
-          display: flex;
-          justify-content: center;
+          display: block;
         }
       }
     }
