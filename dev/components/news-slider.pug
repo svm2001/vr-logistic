@@ -1,106 +1,93 @@
+include ../ui/news-item
+include ../ui/btn
+include ../ui/icon
+include ../ui/input
+
+
 -
   const defaultNewsProps = {
       classes: '',
   }
 
-mixin newsSlider(props = defaultNewsProps, ...dataset)
+mixin news(props = defaultNewsProps, ...dataset)
   -
-    section.news
-        .container 
-            .news__block-background
-            .news__column.min
-                a.news__link
-                    h2 Новости
-            .news__subscribe
-                h4 Следите за нашими новостями, чтобы всегда быть на шаг впереди!
-                form.news__subscribe-form
+    const newsProps = {
+      text: {
+          title: 'Новости',
+          subscribe: 'Следите за нашими новостями, чтобы всегда быть на шаг впереди!',
+      },
+      newsItems: [
+        { 
+          variant: 'slider', title: 'Новая услуга мультимодальных перевозок',
+          description: 'Компания расширяет возможности логистики, предлагая мультимодальные перевозки с интеграцией железнодорожного и автомобильного транспорта для быстрого и удобного перемещения грузов.', 
+          date: '15 октября 2024', 
+          img: './images/news/image-news1.png',
+          link: 'javascript:void(0);',
+          classes: ''
+        },
+        { 
+          variant: 'slider', title: 'Новая услуга мультимодальных перевозок', 
+          description: 'Компания расширяет возможности логистики, предлагая мультимодальные перевозки с интеграцией железнодорожного и автомобильного транспорта для быстрого и удобного перемещения грузов.', 
+          date: '15 октября 2024', 
+          img: './images/news/image-news2.png',
+          link: 'javascript:void(0);',
+          classes: ''
+        },
+        { 
+          variant: 'slider', title: 'Новая услуга мультимодальных перевозок', 
+          description: 'Компания расширяет возможности логистики, предлагая мультимодальные перевозки с интеграцией железнодорожного и автомобильного транспорта для быстрого и удобного перемещения грузов.', 
+          date: '15 октября 2024', 
+          img: './images/news/image-news3.png',
+          link: 'javascript:void(0);',
+          classes: ''
+        },
+        { 
+          variant: 'slider', title: 'Новая услуга мультимодальных перевозок', 
+          description: 'Компания расширяет возможности логистики, предлагая мультимодальные перевозки с интеграцией железнодорожного и автомобильного транспорта для быстрого и удобного перемещения грузов.', 
+          date: '15 октября 2024', 
+          img: './images/news/image-news1.png',
+          link: 'javascript:void(0);',
+          classes: ''
+        },
+        { 
+          variant: 'slider', title: 'Новая услуга мультимодальных перевозок', 
+          description: 'Компания расширяет возможности логистики, предлагая мультимодальные перевозки с интеграцией железнодорожного и автомобильного транспорта для быстрого и удобного перемещения грузов.', 
+          date: '15 октября 2024', 
+          img: './images/news/image-news2.png',
+          link: 'javascript:void(0);',
+          classes: ''
+        }
+      ]
+    }
 
-
-
-//- <section class="news">
-//-     <div class="wrapper padding" >
-//-         <div class="news__block-background">
-//-         </div>
-//-         <div class="news__column min">
-//-             <div class="news__link">
-//-                 <a class="section-title__name">
-//-                     <h2>Новости</h2>
-//-                 </a>
-//-             </div >
-//-             <div class="news__subscribe">
-//-                 <h4>Следите за нашими новостями, чтобы всегда быть на шаг впереди!</h4>
-//-                 <form action="" class="news__subscribe-form">
-//-                     <load src="../components/inputWithButton.html" />
-//-                 </form>
-//-             </div>
-//-         </div>
-//-         <div class="news__column">
-//-             <div class="news__container">
-//-                 <div class="swiper news-swiper">
-//-                     <div class="swiper-wrapper">
-//-                         <div class="swiper-slide news__item">
-//-                             <div class="news__item-container">
-//-                                 <div class="news__item-date text--medium text--xs">15 октября 2024</div>
-//-                                 <div class="news__item-title text--bold text--m">Новая услуга мультимодальных перевозок</div>
-//-                                 <div class="news__item-description text--xxs">Компания расширяет возможности логистики, предлагая мультимодальн...</div>
-//-                             </div>
-//-                             <a class="news__more-detailed">
-//-                                 <span>Подробнее</span>
-//-                                 <span class="icon-arrow"></span>
-//-                             </a>
-//-                         </div>
-//-                         <div class="swiper-slide news__item">
-//-                             <div class="news__item-container">
-//-                                 <div class="news__item-date text--medium text--xs">15 октября 2024</div>
-//-                                 <div class="news__item-title text--bold text--m">Новая услуга мультимодальных перевозок</div>
-//-                                 <div class="news__item-description text--xxs">Компания расширяет возможности логистики, предлагая мультимодальн...</div>
-//-                             </div>
-//-                             <a class="news__more-detailed">
-//-                                 <span>Подробнее</span>
-//-                                 <span class="icon-arrow"></span>
-//-                             </a>
-//-                         </div>
-//-                         <div class="swiper-slide news__item">
-//-                             <div class="news__item-container">
-//-                                 <div class="news__item-date text--medium text--xs">15 октября 2024</div>
-//-                                 <div class="news__item-title text--bold text--m">Новая услуга мультимодальных перевозок</div>
-//-                                 <div class="news__item-description text--xxs">Компания расширяет возможности логистики, предлагая мультимодальн...</div>
-//-                             </div>
-//-                             <a class="news__more-detailed">
-//-                                 <span>Подробнее</span>
-//-                                 <span class="icon-arrow"></span>
-//-                             </a>
-//-                         </div>
-//-                         <div class="swiper-slide news__item">
-//-                             <div class="news__item-container">
-//-                                 <div class="news__item-date text--medium text--xs">15 октября 2024</div>
-//-                                 <div class="news__item-title text--bold text--m">Новая услуга мультимодальных перевозок</div>
-//-                                 <div class="news__item-description text--xxs">Компания расширяет возможности логистики, предлагая мультимодальн...</div>
-//-                             </div>
-//-                             <a class="news__more-detailed">
-//-                                 <span>Подробнее</span>
-//-                                 <span class="icon-arrow"></span>
-//-                             </a>
-//-                         </div>
-//-                         <div class="swiper-slide news__item">
-//-                             <div class="news__item-container">
-//-                                 <div class="news__item-date text--medium text--xs">15 октября 2024</div>
-//-                                 <div class="news__item-title text--bold text--m">Новая услуга мультимодальных перевозок</div>
-//-                                 <div class="news__item-description text--xxs">Компания расширяет возможности логистики, предлагая мультимодальн...</div>
-//-                             </div>
-//-                             <a class="news__more-detailed">
-//-                                 <span>Подробнее</span>
-//-                                 <span class="icon-arrow"></span>
-//-                             </a>
-//-                         </div>
-//-                     </div>
-//-                 </div>
-                
-//-                 <div class="swiper-pagination news-swiper-pagination"></div>
-               
-//-             </div> 
+  section.news
+    .container 
+      .news__block-background
+      .news__column.min
+        a.news__link(href='javascript:void(0);')= newsProps.text.title
+          +icon('arrow-right-opacity')
             
-//-         </div>
-//-     </div>
-    
-//- </section>
+        .news__subscribe
+          h4.news__title= newsProps.text.subscribe      
+          form.news__subscribe-form(action="" data-validate no-validate) 
+              +input({ 
+                validateName: 'email',
+                placeholder: 'E-mail',
+                name: 'email',
+                required: true,
+                classes: 'input--theme--t input--size--l',
+              })
+              +btn({ 
+                name: 'Подписаться', 
+                type: 'submit',
+                variant: 'secondary' 
+                },
+              )
+      .news__column
+        .news__swiper-container
+          .swiper.news-swiper
+            .swiper-wrapper
+              each itemNews in newsProps.newsItems
+                .swiper-slide
+                  +newsItem(itemNews)
+          .swiper-pagination.news-swiper-pagination

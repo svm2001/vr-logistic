@@ -1,0 +1,52 @@
+include ./icon
+
+-
+  const defaultNewsItemProps = {
+      variant: 'slider', // slider (title, description, date, link, img) || grid (title, description, sticker, link, img)
+      title: 'Lorem ipsum dolor sit amet',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id congue nulla, eget euismod libero. Phasellus sapien urna, feugiat ac massa ac, elementum consequat tellus. ',
+      date: '01 января 2025',
+      sticker: 'News',
+      img: '',
+      link: 'javascript:void(0);',
+      target: '_self',
+      classes: '',
+      size: 'default',
+  }
+
+
+mixin newsItem(props = defaultNewsItemProps, ...dataset)
+  -
+    const checkProps = {
+      variant: props.variant ? props.variant : defaultNewsItemProps.variant,
+      title: props.title ? props.title : defaultNewsItemProps.title,
+      description: props.description ? props.description : defaultNewsItemProps.description,
+      date: props.date ? props.date : defaultNewsItemProps.date,
+      sticker: props.sticker ? props.sticker : defaultNewsItemProps.sticker,
+      img: props.img ? props.img : defaultNewsItemProps.img,
+      link: props.link ? props.link : defaultNewsItemProps.link,
+      target: props.target ? props.target : defaultNewsItemProps.target,
+      classes: props.classes ? props.classes : defaultNewsItemProps.classes,
+      size: props.size ? props.size : defaultNewsItemProps.size,
+    }
+  
+  a.news-item(
+    href= checkProps.link,
+    target= checkProps.target === "_self" ? "" : checkProps.target,
+    class= `news-item-${checkProps.variant} ${checkProps.classes}` ,
+    )
+    .news-item__img
+      img.lazy(src = "./images/no-image.jpg" data-src=checkProps.img alt= "Изображение не найдено")
+    .news-item__container
+      .news-item__block
+      
+        if(checkProps.variant === 'slider')
+          .news-item__date.text--medium.text--xxs= checkProps.date
+        else if(checkProps.variant === 'grid')
+          .news-item__sticker.text--medium.text--xs= checkProps.date
+        .news-item__title.text--bold.text--m= checkProps.title
+        .news-item__description= checkProps.description
+
+      .news-item__more-detailed
+        span= Подробнее
+        span.icon-arrow
