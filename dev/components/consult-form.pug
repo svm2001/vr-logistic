@@ -22,6 +22,8 @@ mixin consult-form(props = defaultConsultFormProps, ...dataset)
   include ../ui/btn
   include ../ui/checkbox
   include ../ui/input
+  include ../components/formResponse/formSuccess
+  include ../components/formResponse/formError
   if checkProps.modal
     .consultForm(class=`${checkProps.classes}`)&attributes(...dataset)
       .consultForm__text 
@@ -35,39 +37,41 @@ mixin consult-form(props = defaultConsultFormProps, ...dataset)
           weight: 'medium'
         })
       form.consultForm__form(action="" data-validate no-validate) 
-        div 
-          +input({ 
-            validateName: 'fio',
-            placeholder: 'Иван Иванов',
-            name: 'name',
-            required: true,
-            classes: 'input--theme--t input--size--l',
-            label: 'ФИО'
-          })
-        div
-          +input({ 
-            placeholder: '+7 (000) 000-00-00',
-            name: 'phone', 
-            validateName: 'phone', 
-            required: true, 
-            classes: 'input--size--l',
-            label: 'Телефон'
-          }, { 'data-input-mask': 'phone'})
-        div
-          +btn({
-            type: 'submit',
-            name: 'Оставить заявку',
-            dot: true,
-          })
-        div
-          +checkbox({
-            name: 'agreement',
-            custom: true,
-            required: true,
-          })
-            span Я прочитал(а) и согласен(на)&nbsp;c<br>
-              a.consultForm__link(href='javascript:void(0)' target="_blank") Политикой конфиденциальности
-
+        .form__body.js-form__body
+          div 
+            +input({ 
+              validateName: 'fio',
+              placeholder: 'Иван Иванов',
+              name: 'name',
+              required: true,
+              classes: 'input--theme--t input--size--l',
+              label: 'ФИО'
+            })
+          div
+            +input({ 
+              placeholder: '+7 (000) 000-00-00',
+              name: 'phone', 
+              validateName: 'phone', 
+              required: true, 
+              classes: 'input--size--l',
+              label: 'Телефон'
+            }, { 'data-input-mask': 'phone'})
+          div
+            +btn({
+              type: 'submit',
+              name: 'Оставить заявку',
+              dot: true,
+            })
+          div
+            +checkbox({
+              name: 'agreement',
+              custom: true,
+              required: true,
+            })
+              span Я прочитал(а) и согласен(на)&nbsp;c<br>
+                a.consultForm__link(href='javascript:void(0)' target="_blank") Политикой конфиденциальности
+        +formSuccess()
+        +formError()
 
 
               

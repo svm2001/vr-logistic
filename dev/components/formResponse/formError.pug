@@ -1,0 +1,37 @@
+-
+  const defaultErrorFormProps = {
+      classes: '',
+      title: 'Ошибка при отправке формы',
+      subtitle: 'Попробуйте повторить позже',
+      icon: 'close'
+  }
+
+mixin formError(props = defaultErrorFormProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultErrorFormProps.classes,
+        title: props.title ? props.title : defaultErrorFormProps.title,
+        subtitle: props.subtitle ? props.subtitle : defaultErrorFormProps.subtitle,
+        icon: props.icon ? props.icon : defaultErrorFormProps.icon,
+    }
+
+  include ../../ui/title
+  include ../../ui/btn
+  include ../../ui/icon
+  include ../../ui/text
+  .formResponse.formError.js-form-error(class=`${checkProps.classes}`)&attributes(...dataset)
+    .formResponse__wrapper 
+      if checkProps.icon 
+        .formResponse__icon 
+          +icon(checkProps.icon)
+      if checkProps.title
+        +text({
+          variant: 'xl',
+          weight: 'bold',
+          text: checkProps.title,
+        })  
+      if checkProps.subtitle  
+        +text({
+          text: checkProps.subtitle,
+          variant: 'm'
+        })

@@ -15,7 +15,7 @@ export default defineConfig({
   build: {
     target: 'es2015',
     outDir: '../build',
-    emptyOutDir: './',
+    emptyOutDir: true,
     rollupOptions: {
       input: {
         index: resolve(__dirname, './dev/index.html'),
