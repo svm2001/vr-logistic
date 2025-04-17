@@ -22,7 +22,5 @@ window.onload = () => {
       tabItemActiveClass: 'active',
       event: 'click'
     })
-  } else {
-
   }
 }
