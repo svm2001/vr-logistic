@@ -9,9 +9,6 @@ import { standartsSlider } from "@/assets/scripts/modules/standartsSlider.js"
 
 window.onload = () => {
   main()
-  countups()
-  globe()
-  video()
   select()
   standartsSlider()
 

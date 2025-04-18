@@ -1,7 +1,8 @@
 -
     const defaultFirstScreenProps = {
         classes: '',
-        patternBg: '',
+        patternBgDesktop: '',
+        patternBgMobile: '',
         title: '',
         buttonText: '',
         subtitle: '',
@@ -13,7 +14,8 @@ mixin first-screen(props = defaultFirstScreenProps, ...dataset)
   -
       const checkProps = {
           classes: props.classes ? props.classes : defaultFirstScreenProps.classes,
-          patternBg: props.patternBg ? props.patternBg : defaultFirstScreenProps.patternBg,
+          patternBgDesktop: props.patternBgDesktop ? props.patternBgDesktop : defaultFirstScreenProps.patternBgDesktop,
+          patternBgMobile: props.patternBgMobile ? props.patternBgMobile : defaultFirstScreenProps.patternBgMobile,
           title: props.title ? props.title : defaultFirstScreenProps.title,
           buttonText: props.buttonText ? props.buttonText : defaultFirstScreenProps.buttonText,
           subtitle: props.subtitle ? props.subtitle : defaultFirstScreenProps.subtitle,
@@ -24,8 +26,10 @@ mixin first-screen(props = defaultFirstScreenProps, ...dataset)
   include ../ui/title
   include ../ui/btn
   section.first-screen(class=`${checkProps.classes}`)&attributes(...dataset)
-      if checkProps.patternBg
-        img.lazy.first-screen__pattern(src="./images/no-image.jpg" data-src=checkProps.patternBg alt=checkProps.title)
+      if checkProps.patternBgDesktop
+        img.lazy.first-screen__pattern.first-screen__pattern--desktop(src="./images/no-image.jpg" data-src=checkProps.patternBgDesktop alt=checkProps.title)
+      if checkProps.patternBgMobile 
+        img.lazy.first-screen__pattern.first-screen__pattern--mobile(src="./images/no-image.jpg" data-src=checkProps.patternBgMobile alt=checkProps.title)
       .container
           .first-screen__content
               if checkProps.date
