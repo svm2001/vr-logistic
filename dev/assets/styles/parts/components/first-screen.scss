@@ -23,8 +23,7 @@
 
   .container {
     z-index: 2;
-    height: -webkit-fill-available;
-    height: fill-available;
+    height: 100%;
   }
 
   &__content {
