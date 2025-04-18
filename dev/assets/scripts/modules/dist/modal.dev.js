@@ -14,13 +14,13 @@ function modal() {
     waitTransitions: true,
     backscroll: true,
     beforeOpen: function beforeOpen() {
-      if (window.innerWidth > 1200) {
+      if (window.innerWidth > 1199) {
         body.style.paddingRight = padding;
         header.style.paddingRight = padding;
       }
     },
     afterClose: function afterClose() {
-      if (window.innerWidth > 1200) {
+      if (window.innerWidth > 1199) {
         body.style.paddingRight = '0';
         header.style.paddingRight = '0';
       }
