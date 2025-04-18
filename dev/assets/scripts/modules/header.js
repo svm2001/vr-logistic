@@ -59,7 +59,7 @@ export default function header() {
       const closeBurger = () => {
         burgerBody.classList.remove('open')
         plug.classList.remove('visible')
-        enablePageScroll(document.body)
+        // enablePageScroll(document.body)
       }
 
       const callFormBtn = document.querySelector('.burger-call-form')
@@ -67,7 +67,7 @@ export default function header() {
       burgerBtn.addEventListener('click', () => {
         burgerBody.classList.add('open')
         plug.classList.add('visible')
-        disablePageScroll(document.body)
+        // disablePageScroll(document.body)
       })
 
       burgerClose.addEventListener('click', () => closeBurger())

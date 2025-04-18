@@ -72,18 +72,16 @@ function header() {
       var closeBurger = function closeBurger() {
         burgerBody.classList.remove('open');
 
-        _plug.classList.remove('visible');
+        _plug.classList.remove('visible'); // enablePageScroll(document.body)
 
-        (0, _scrollLock.enablePageScroll)(document.body);
       };
 
       var callFormBtn = document.querySelector('.burger-call-form');
       burgerBtn.addEventListener('click', function () {
         burgerBody.classList.add('open');
 
-        _plug.classList.add('visible');
+        _plug.classList.add('visible'); // disablePageScroll(document.body)
 
-        (0, _scrollLock.disablePageScroll)(document.body);
       });
       burgerClose.addEventListener('click', function () {
         return closeBurger();
