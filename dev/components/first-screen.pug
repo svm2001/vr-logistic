@@ -28,7 +28,7 @@ mixin first-screen(props = defaultFirstScreenProps, ...dataset)
   section.first-screen(class=`${checkProps.classes}`)&attributes(...dataset)
       if checkProps.patternBgDesktop
         img.lazy.first-screen__pattern.first-screen__pattern--desktop(src="./images/no-image.jpg" data-src=checkProps.patternBgDesktop alt=checkProps.title)
-      if checkProps.patternBgMobile 
+      if checkProps.patternBgMobile
         img.lazy.first-screen__pattern.first-screen__pattern--mobile(src="./images/no-image.jpg" data-src=checkProps.patternBgMobile alt=checkProps.title)
       .container
           .first-screen__content
@@ -55,5 +55,6 @@ mixin first-screen(props = defaultFirstScreenProps, ...dataset)
                 +btn({
                   name: checkProps.buttonText,
                   variant: 'primary',
-                  classes: 'first-screen__btn'
+                  classes: 'first-screen__btn',
+                  dot: true
                 }, { 'data-hystmodal': '#consult-form' })

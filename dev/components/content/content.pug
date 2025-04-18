@@ -1,0 +1,33 @@
+-
+  const defaultContentProps = {
+      classes: '',
+      title: 'content-title',
+      rounded: false,
+      isFirst: false
+  }
+
+mixin content(props = defaultContentProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultContentProps.classes,
+        title: props.title ? props.title : defaultContentProps.title,
+        rounded: props.rounded ? props.rounded : defaultContentProps.rounded,
+        isFirst: props.isFirst ? props.isFirst : defaultContentProps.isFirst,
+    }
+
+  include ../../ui/text
+  section.content(
+      class=`${checkProps.classes}
+      ${checkProps.rounded ? 'content--rounded' : ''}
+      ${checkProps.isFirst ? 'content--first' : ''}
+      `)&attributes(...dataset)
+      .content-container
+          .content__inner
+              +text({
+                  text: checkProps.title,
+                  classes: 'content__title',
+                  variant: 'l',
+                  weight: 'bold'
+              })
+              .content__wrapper
+                  block

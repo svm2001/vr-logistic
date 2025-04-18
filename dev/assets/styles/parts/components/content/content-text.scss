@@ -1,0 +1,129 @@
+@import '../../../mixins/vw';
+
+.content-text {
+  width: 100%;
+
+  &__top-texts {
+    display: flex;
+    flex-direction: column;
+    @include dim('gap', 20, 10);
+    @include merge;
+  }
+
+  &__btn {
+    @include dim('mt', 40, 30);
+    @include dim('w', 400, 250);
+    @include merge;
+  }
+
+  &__tags {
+    @include dim('mt', 40, 20);
+    @include dim('gap', 20, 20);
+    @include merge;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    p {
+      @include dim('pr', 59, 30);
+      @include dim('pl', 59, 30);
+      @include dim('pt', 15, 15);
+      @include dim('pb', 15, 15);
+      @include dim('br', 10, 10);
+      @include merge;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: $bg-secondary;
+    }
+  }
+
+  &__unordered-list {
+    @include dim('mt', 40, 40);
+    @include dim('gap', 25, 10);
+    @include merge;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    &-item {
+      width: 100%;
+      @include dim('pr', 35, 30);
+      @include dim('pl', 35, 30);
+      @include dim('pt', 30, 30);
+      @include dim('pb', 30, 30);
+      @include dim('br', 10, 10);
+      @include dim('gap', 20, 20);
+      @include merge;
+      background: $bg-secondary;
+      display: flex;
+      flex-direction: column;
+
+      &-dot {
+        display: block;
+        @include dim('w', 21, 21);
+        @include dim('h', 21, 21);
+        @include dim('border-width',3, 3);
+        @include merge;
+        border-radius: 100%;
+        border-style: solid;
+        border-color: $icon-accent;
+      }
+
+      &-text {
+        @include dim('min-h', 65, 65);
+        line-height: 130%;
+        @include merge;
+      }
+    }
+  }
+
+}
+
+@media (max-width: 1199px) {
+  .content-text {
+    &__top-texts p {
+      font-size: 18px;
+      line-height: 130%;
+    }
+
+    &__unordered-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .content-text {
+
+    &__top-texts {
+      gap: 0;
+    }
+
+    &__btn {
+      width: 100%;
+    }
+
+    &__tags {
+      flex-direction: column;
+
+      p {
+        width: 100%;
+        padding: 15px;
+      }
+    }
+
+    &__unordered-list {
+      grid-template-columns: repeat(1, 1fr);
+
+      &-item {
+        &-text {
+          min-height: auto;
+          font-size: 18px;
+          font-weight: 400;
+        }
+      }
+    }
+
+  }
+}

@@ -17,6 +17,10 @@
 
     }
   }
+
+  &--white {
+    background: $white;
+  }
 }
 
 @media (max-width: 767px) {

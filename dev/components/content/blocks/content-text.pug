@@ -1,0 +1,67 @@
+-
+  const defaultContentTextProps = {
+      classes: '',
+      topTexts: [
+        'Перевозки грузов автомобильным транспортом на сегодняшний день являются одним из наиболее популярных способов грузодоставки товаров по России и всему миру.',
+        'Вы сможете выбрать любое международное или внутрироссийское направление, а наша компания обеспечит оперативную, безопасную и качественную перевозку.'
+      ],
+      btn: false,
+      btnText: '',
+      btnModal: false,
+      tags: [],
+      unorderedList: [],
+  }
+
+mixin content-text(props = defaultContentTextProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultContentTextProps.classes,
+        topTexts: props.topTexts ? props.topTexts : defaultContentTextProps.topTexts,
+        btn: props.btn ? props.btn : defaultContentTextProps.btn,
+        btnText: props.btnText ? props.btnText : defaultContentTextProps.btnText,
+        btnModal: props.btnModal ? props.btnModal : defaultContentTextProps.btnModal,
+        tags: props.tags ? props.tags : defaultContentTextProps.tags,
+        unorderedList: props.unorderedList ? props.unorderedList : defaultContentTextProps.unorderedList,
+    }
+  include ../../../ui/btn
+  include ../../../ui/text
+  .content-text(class=`${checkProps.classes}`)&attributes(...dataset)
+      if checkProps.topTexts.length > 0
+        .content-text__top-texts
+            each text in checkProps.topTexts
+              +text({
+                text: text,
+                classes: 'content-text__text',
+                variant: 's',
+                weight: 'medium'
+              })
+
+      if checkProps.btn
+        +btn({
+          name: checkProps.btnText,
+          classes: 'content-text__btn',
+          dot: true,
+        }, (checkProps.btnModal ? { 'data-hystmodal': '#consult-form' } : ''))
+
+      if checkProps.tags.length > 0
+        .content-text__tags
+            each tag in checkProps.tags
+              +text({
+                text: tag,
+                classes: 'content-text__tag',
+                variant: 'xxs',
+                weight: 'medium'
+              })
+      if checkProps.unorderedList.length > 0
+        ul.content-text__unordered-list
+            each item in checkProps.unorderedList
+              li.content-text__unordered-list-item
+                span.content-text__unordered-list-item-dot
+                +text({
+                  text: item,
+                  classes: 'content-text__unordered-list-item-text',
+                  variant: 'xxs',
+                  weight: 'medium'
+                })
+
+
