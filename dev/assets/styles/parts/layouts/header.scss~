@@ -286,7 +286,6 @@
     &__burger {
       display: flex;
       height: 84px;
-      width: 44px;
       align-items: center;
     }
   }
@@ -297,6 +296,10 @@
     height: 66px;
     &__tablets-btns, &__custom-btn {
       display: none!important;
+    }
+
+    &__burger {
+      width: 44px;
     }
 
     &__logo {

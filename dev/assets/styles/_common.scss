@@ -104,11 +104,17 @@ body.lock {
   position: relative;
   width: 100%;
   max-width: 100%;
-  @include dim('pt', 90, 96);
+  @include dim('pt', 90, 84);
   @include merge;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+}
+
+@media (max-width: 630px) {
+  .wrapper {
+    padding-top: 66px;
+  }
 }

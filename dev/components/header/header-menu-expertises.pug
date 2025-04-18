@@ -1,0 +1,106 @@
+-
+  const defaultHeaderMenuExpertisesProps = {
+      classes: '',
+      links: [
+          {
+            mainLink: {
+              name: 'Раздел',
+              link: 'javascript:void(0);',
+            },
+            sublinks: [
+                  {
+                      name: 'Подраздел',
+                      link: 'javascript:void(0);'
+                  },
+                  {
+                      name: 'Подраздел',
+                      link: 'javascript:void(0);'
+                  },
+                  {
+                      name: 'Подраздел',
+                      link: 'javascript:void(0);'
+                  },
+                  {
+                      name: 'Подраздел',
+                      link: 'javascript:void(0);'
+                  },
+                  {
+                      name: 'Подраздел',
+                      link: 'javascript:void(0);'
+                  },
+            ]
+          },
+          {
+              mainLink: {
+                  name: 'Раздел 2',
+                  link: 'javascript:void(0);',
+              },
+              sublinks: [
+                  {
+                      name: 'Подраздел 2',
+                      link: 'javascript:void(0);'
+                  },
+                  {
+                      name: 'Подраздел 2',
+                      link: 'javascript:void(0);'
+                  },
+              ]
+          },
+          {
+              mainLink: {
+                  name: 'Раздел 3',
+                  link: 'javascript:void(0);',
+              },
+              sublinks: [
+                  {
+                      name: 'Подраздел 3',
+                      link: 'javascript:void(0);'
+                  },
+                  {
+                      name: 'Подраздел 3',
+                      link: 'javascript:void(0);'
+                  },
+              ]
+          },
+          {
+              mainLink: {
+                  name: 'Раздел 4',
+                  link: 'javascript:void(0);',
+              },
+              sublinks: [
+                  {
+                      name: 'Подраздел 4',
+                      link: 'javascript:void(0);'
+                  },
+                  {
+                      name: 'Подраздел 4',
+                      link: 'javascript:void(0);'
+                  },
+                  {
+                      name: 'Подраздел 4',
+                      link: 'javascript:void(0);'
+                  },
+              ]
+          }
+      ]
+  }
+
+mixin header-menu-expertises(props = defaultHeaderMenuExpertisesProps, ...dataset)
+  -
+    const checkProps = {
+        links: props.links ? props.links : defaultHeaderMenuExpertisesProps.links,
+        classes: props.classes ? props.classes : defaultHeaderMenuExpertisesProps.classes,
+    }
+
+
+
+  .header-menu.header-menu-expertises(class=`${checkProps.classes}` data-menu='expertises')&attributes(...dataset)
+    .container
+      .header-menu-expertises__list
+          each col in checkProps.links
+            .header-menu-expertises__list-col
+                a.header-menu-expertises__list-col-main-link(href=col.mainLink.link)= col.mainLink.name
+                .header-menu-expertises__list-col-list
+                    each sublink in col.sublinks
+                      a.header-menu-expertises__list-col-list-item(href=sublink.link)= sublink.name
+
