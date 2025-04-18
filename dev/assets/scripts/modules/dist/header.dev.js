@@ -72,16 +72,21 @@ function header() {
       var closeBurger = function closeBurger() {
         burgerBody.classList.remove('open');
 
-        _plug.classList.remove('visible'); // enablePageScroll(document.body)
+        _plug.classList.remove('visible');
 
+        (0, _scrollLock.enablePageScroll)(document.body);
+        document.body.style.position = '';
+        document.body.style.top = '';
       };
 
       var callFormBtn = document.querySelector('.burger-call-form');
       burgerBtn.addEventListener('click', function () {
         burgerBody.classList.add('open');
 
-        _plug.classList.add('visible'); // disablePageScroll(document.body)
+        _plug.classList.add('visible');
 
+        document.body.style.position = 'fixed';
+        document.body.style.top = "-".concat(window.scrollY, "px");
       });
       burgerClose.addEventListener('click', function () {
         return closeBurger();
