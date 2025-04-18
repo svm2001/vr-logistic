@@ -56,26 +56,23 @@ export default function header() {
     const plug = document.querySelector('.burger-plug')
 
     if(burgerBtn && burgerBody && burgerClose) {
-
-      enablePageScroll(burgerBody)
-
       const closeBurger = () => {
         burgerBody.classList.remove('open')
         plug.classList.remove('visible')
-        enablePageScroll(header)
+        enablePageScroll(document.body)
       }
+
       const callFormBtn = document.querySelector('.burger-call-form')
 
       burgerBtn.addEventListener('click', () => {
         burgerBody.classList.add('open')
         plug.classList.add('visible')
-        disablePageScroll(header)
+        disablePageScroll(document.body)
       })
 
       burgerClose.addEventListener('click', () => closeBurger())
       plug.addEventListener('click', () => closeBurger())
       if(callFormBtn) callFormBtn.addEventListener('click', () => closeBurger())
     }
-
   }
 }
