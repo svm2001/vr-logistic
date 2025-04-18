@@ -1,0 +1,118 @@
+@import '../../mixins/vw';
+
+.first-screen {
+  position: relative;
+  @include dim('h', 466, 466);
+  @include dim('pb', 90, 90);
+  @include dim('pt', 104, 104);
+  @include merge;
+
+  &__pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .container {
+    z-index: 2;
+    height: -webkit-fill-available;
+    height: fill-available;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    @include dim('gap', 30, 20);
+    @include merge;
+  }
+
+  &__date {
+    @include merge;
+
+    &-text {
+      color: $text-secondary;
+    }
+  }
+
+  &__title {
+    color: $text-secondary;
+    @include dim('max-w', 1095, 1095);
+    @include merge;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+  }
+
+  &__tag {
+    @include dim('pt', 14, 14);
+    @include dim('pb', 14, 14);
+    @include dim('pr', 18, 18);
+    @include dim('pl', 18, 18);
+    @include dim('br', 20, 20);
+    @include merge;
+    border-top-left-radius: 0!important;
+    border-bottom-right-radius: 0!important;
+    width: fit-content;
+    background: $bg-line;
+    text-transform: uppercase;
+    color: $text-secondary;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__subtitle {
+    @include dim('fz', 20, 20);
+    @include dim('max-w', 648, 400);
+    @include merge;
+    color: $text-primary;
+  }
+}
+
+@media (max-width: 1199px) {
+  .first-screen {
+    &__title, &__subtitle {
+      max-width: 70%;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .first-screen {
+    height: 532px;
+    padding: 50px 0;
+
+    &__content {
+      gap: 40px;
+    }
+    &__title, &__subtitle {
+      max-width: 100%;
+    }
+
+    &__title {
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      font-size: 32px;
+    }
+
+    &__subtitle {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 6;
+      line-clamp: 6;
+      overflow: hidden;
+    }
+
+    &__btn {
+      width: 100%;
+    }
+  }
+}

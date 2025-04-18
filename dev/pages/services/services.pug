@@ -1,0 +1,21 @@
+extends ../../layouts/layout
+block vars
+block content
+    include ../../components/consult-form
+    include ../../components/routes
+    include ../../components/standarts
+    include ../../components/first-screen
+    include ../../components/consult
+    include ../../modal-windows/modal
+
+    .wrapper
+        +first-screen({
+          patternBg: './images/pattern-bg/services.svg',
+          title: 'Широкий спектр услуг',
+        })
+        +routes
+        +standarts
+        +consult({classes: 'consult--page', btnText: 'Жду звонка'})
+    +modal({ id: 'consult-form', classes: 'consult__form' })
+        +consult-form
+
