@@ -15,7 +15,6 @@ function modal() {
     backscroll: true,
     beforeOpen: function beforeOpen() {
       if (window.innerWidth > 1200) {
-        console.log(0);
         body.style.paddingRight = padding;
         header.style.paddingRight = padding;
       }
@@ -23,7 +22,6 @@ function modal() {
     afterClose: function afterClose() {
       if (window.innerWidth > 1200) {
         body.style.paddingRight = '0';
-        console.log(11);
         header.style.paddingRight = '0';
       }
     }
