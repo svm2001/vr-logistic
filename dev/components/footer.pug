@@ -12,24 +12,31 @@ mixin footer(props = defaultFooterProps, ...dataset)
     const footerNav = [
       {
         name: 'Главная',
+        href: 'javascript:void(0);'
       },
       {
         name: 'О компании',
+        href: 'javascript:void(0);'
       },
       {
         name: 'Услуги',
+        href: '/services.html'
       },
       {
         name: 'Экспертиза',
+        href: 'javascript:void(0);'
       },
       {
         name: 'Новости',
+        href: 'javascript:void(0);'
       },
       {
         name: 'Карьера',
+        href: 'javascript:void(0);'
       },
       {
         name: 'Контакты',
+        href: 'javascript:void(0);'
       }
     ]
 
@@ -52,7 +59,7 @@ mixin footer(props = defaultFooterProps, ...dataset)
   footer.footer
     .container
         .footer__column
-          a.footer__logo(href="/")
+          a.footer__logo(href="/home.html")
               img(src="./icons/logo/logo-footer.svg" alt="vr-logistic-logo")
           .footer__buttons
             +btn({
@@ -87,7 +94,7 @@ mixin footer(props = defaultFooterProps, ...dataset)
           .footer__title.text--s Меню
           .footer__menu.text--s
             each nav in footerNav
-              a.nav(href='javascript:void(0);')= nav.name
+              a.nav(href=nav.href)= nav.name
           .footer__copyright.text--xxs.text--white Copyright © 2024 VR LOGISTIC
 
         .footer__column

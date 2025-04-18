@@ -9,7 +9,6 @@ mixin header(props = defaultHeaderProps, ...dataset)
         links: props.links ? props.links : defaultHeaderProps.links,
         classes: props.classes ? props.classes : defaultHeaderProps.classes,
     }
-    //- TODO: в будущем добавить "href" свойство для навигации и передать в шаблон
     const headerNav = [
       {
         name: 'О компании',
@@ -18,7 +17,7 @@ mixin header(props = defaultHeaderProps, ...dataset)
       },
       {
         name: 'Услуги',
-        href: 'javascript:void(0);',
+        href: '/services.html',
         menu: 'services'
       },
       {
@@ -49,11 +48,11 @@ mixin header(props = defaultHeaderProps, ...dataset)
   header.header(class=`${checkProps.classes}`)&attributes(...dataset)
     .container
       .header__wrapper
-        a.header__logo(href="/")
+        a.header__logo(href="/home.html")
           img(src="./icons/logo/logo-header.svg" alt="vr-logistic-logo")
         nav.header__nav
           each nav in headerNav
-            a.header__nav-item(href='javascript:void(0);', data-hover-menu=nav.menu)= nav.name
+            a.header__nav-item(href=nav.href, data-hover-menu=nav.menu)= nav.name
         .header__info
           +btn({
             classes: 'header__custom-btn',
