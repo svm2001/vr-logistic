@@ -76,8 +76,82 @@
         @include merge;
       }
     }
+
+    &--numbers {
+      counter-reset: list-counter;
+      margin-top: 0;
+
+      .content-text__unordered-list-item {
+        background: $white;
+        counter-increment: list-counter;
+      }
+
+      .content-text__unordered-list-item-dot {
+        position: relative;
+        border: none;
+        @include dim('fz', 30, 20);
+
+        &:before {
+          content: counter(list-counter);
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: $bg-green-light;
+          font-weight: 600;
+        }
+      }
+    }
   }
 
+  &__sub-title {
+    @include dim('mb', 20, 20);
+    @include dim('mt', 40, 40);
+    @include merge;
+  }
+
+  &__dashed-links {
+    column-count: 2;
+    column-gap: 115px;
+    @include merge;
+  }
+
+  &__dashed-link {
+    color: $bg-green;
+    position: relative;
+    text-decoration: underline;
+    width: fit-content;
+    transition: $transition;
+    display: block;
+    @include dim('mb', 9, 9);
+    @include dim('pl', 40, 40);
+    @include merge;
+
+    &:before {
+      position: absolute;
+      content: '';
+      left: 0;
+      @include dim('w', 20, 20);
+      @include dim('t', 10, 10);
+      height: 1px;
+      background-color: $bg-accent;
+      transform: translateY(-50%);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    &:hover {
+      color: $bg-minimal;
+      text-decoration: none;
+      border-color: transparent;
+    }
+  }
+}
+
+.ordered-list__btn {
+  @include dim('w', 430, 300);
+  @include dim('mt', 40, 30);
+  @include merge;
 }
 
 @media (max-width: 1199px) {
@@ -93,9 +167,21 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 992px) {
   .content-text {
+    &__dashed-links {
+      column-count: 1;
+      column-gap: normal;
+    }
+  }
+}
 
+@media (max-width: 767px) {
+  .ordered-list__btn {
+    width: 100%;
+  }
+
+  .content-text {
     &__top-texts {
       gap: 0;
     }
@@ -124,6 +210,5 @@
         }
       }
     }
-
   }
 }

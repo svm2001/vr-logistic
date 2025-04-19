@@ -1,15 +1,15 @@
 -
   const defaultContentTextProps = {
       classes: '',
-      topTexts: [
-        'Перевозки грузов автомобильным транспортом на сегодняшний день являются одним из наиболее популярных способов грузодоставки товаров по России и всему миру.',
-        'Вы сможете выбрать любое международное или внутрироссийское направление, а наша компания обеспечит оперативную, безопасную и качественную перевозку.'
-      ],
+      topTexts: [],
       btn: false,
       btnText: '',
       btnModal: false,
       tags: [],
       unorderedList: [],
+      orderedList: [],
+      dashedLinks: [],
+      subTitle: '',
   }
 
 mixin content-text(props = defaultContentTextProps, ...dataset)
@@ -22,6 +22,9 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
         btnModal: props.btnModal ? props.btnModal : defaultContentTextProps.btnModal,
         tags: props.tags ? props.tags : defaultContentTextProps.tags,
         unorderedList: props.unorderedList ? props.unorderedList : defaultContentTextProps.unorderedList,
+        orderedList: props.orderedList ? props.orderedList : defaultContentTextProps.orderedList,
+        dashedLinks: props.dashedLinks ? props.dashedLinks : defaultContentTextProps.dashedLinks,
+        subTitle: props.subTitle ? props.subTitle : defaultContentTextProps.subTitle,
     }
   include ../../../ui/btn
   include ../../../ui/text
@@ -63,5 +66,35 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
                   variant: 'xxs',
                   weight: 'medium'
                 })
+
+      if checkProps.orderedList.length > 0
+          ol.content-text__unordered-list.content-text__unordered-list--numbers
+            each item in checkProps.orderedList
+                li.content-text__unordered-list-item
+                    span.content-text__unordered-list-item-dot
+                    +text({
+                      text: item,
+                      classes: 'content-text__unordered-list-item-text',
+                      variant: 'xxs',
+                      weight: 'medium'
+                    })
+
+      if checkProps.dashedLinks.length > 0
+        if checkProps.subTitle
+          +text({
+            variant: 'l',
+            weight: 'bold',
+            text: checkProps.subTitle,
+            classes: 'content-text__sub-title'
+          })
+        .content-text__dashed-links
+          each link in checkProps.dashedLinks
+            a.content-text__dashed-link(href="javascript:void(0);")
+              +text({
+                text: link,
+                variant: 'xxs',
+                weight: 'medium'
+              })
+
 
 

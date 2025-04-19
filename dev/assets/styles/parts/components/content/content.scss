@@ -3,11 +3,6 @@
 .content {
   position: relative;
 
-  &--first {
-    @include dim('pt', 70, 40);
-    @include merge;
-  }
-
   &--rounded {
     .content-container {
       @include dim('border-top-left-radius', 20, 20);
@@ -47,6 +42,8 @@
     display: flex;
     flex-direction: column;
     @include dim('gap', 30, 30);
+    @include dim('pt', 70, 40);
+    @include dim('pb', 60, 40);
     @include merge;
   }
 
@@ -71,7 +68,7 @@
   .content {
     .content-container {
       border-radius: 0;
-      padding: 40px 20px 0px 20px;
+      padding: 40px 20px 20px 20px;
       max-width: 100%;
     }
 
