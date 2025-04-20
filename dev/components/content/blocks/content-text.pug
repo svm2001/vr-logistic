@@ -9,7 +9,9 @@
       unorderedList: [],
       orderedList: [],
       dashedLinks: [],
+      dashedTexts: [],
       subTitle: '',
+      smallTitle: ''
   }
 
 mixin content-text(props = defaultContentTextProps, ...dataset)
@@ -24,7 +26,9 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
         unorderedList: props.unorderedList ? props.unorderedList : defaultContentTextProps.unorderedList,
         orderedList: props.orderedList ? props.orderedList : defaultContentTextProps.orderedList,
         dashedLinks: props.dashedLinks ? props.dashedLinks : defaultContentTextProps.dashedLinks,
+        dashedTexts: props.dashedTexts ? props.dashedTexts : defaultContentTextProps.dashedTexts,
         subTitle: props.subTitle ? props.subTitle : defaultContentTextProps.subTitle,
+        smallTitle: props.smallTitle ? props.smallTitle : defaultContentTextProps.smallTitle,
     }
   include ../../../ui/btn
   include ../../../ui/text
@@ -89,12 +93,20 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
           })
         .content-text__dashed-links
           each link in checkProps.dashedLinks
-            a.content-text__dashed-link(href="javascript:void(0);")
-              +text({
-                text: link,
-                variant: 'xxs',
-                weight: 'medium'
-              })
+            a(href="javascript:void(0);")= link
+
+      if checkProps.smallTitle
+        +text({
+          variant: 's',
+          weight: 'bold',
+          text: checkProps.smallTitle,
+          classes: 'content-text__small-title'
+        })
+
+      if checkProps.dashedTexts.length > 0
+        .content-text__dashed-texts
+          each text in checkProps.dashedTexts
+            p= text
 
 
 

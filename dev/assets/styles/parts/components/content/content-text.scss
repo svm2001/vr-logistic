@@ -110,41 +110,78 @@
     @include merge;
   }
 
+
+
   &__dashed-links {
     column-count: 2;
     column-gap: 115px;
     @include merge;
+
+    a {
+      color: $bg-green;
+      position: relative;
+      text-decoration: underline;
+      width: fit-content;
+      font-weight: 500;
+      transition: $transition;
+      display: block;
+      @include dim('mb', 9, 9);
+      @include dim('pl', 40, 40);
+      @include merge;
+
+      &:before {
+        position: absolute;
+        content: '';
+        left: 0;
+        @include dim('w', 20, 20);
+        @include dim('t', 10, 10);
+        height: 1px;
+        background-color: $bg-accent;
+        transform: translateY(-50%);
+        user-select: none;
+        pointer-events: none;
+      }
+
+      &:hover {
+        color: $bg-minimal;
+        text-decoration: none;
+        border-color: transparent;
+      }
+    }
   }
 
-  &__dashed-link {
-    color: $bg-green;
-    position: relative;
-    text-decoration: underline;
-    width: fit-content;
-    transition: $transition;
-    display: block;
-    @include dim('mb', 9, 9);
-    @include dim('pl', 40, 40);
+  &__dashed-texts {
+    display: flex;
+    flex-direction: column;
+    @include dim('gap', 9, 9);
     @include merge;
 
-    &:before {
-      position: absolute;
-      content: '';
-      left: 0;
-      @include dim('w', 20, 20);
-      @include dim('t', 10, 10);
-      height: 1px;
-      background-color: $bg-accent;
-      transform: translateY(-50%);
-      user-select: none;
-      pointer-events: none;
-    }
+    p {
+      position: relative;
+      font-weight: 500;
+      @include dim('pl', 40, 40);
+      @include dim('fz', 18, 18);
+      @include merge;
+      line-height: 140%;
 
-    &:hover {
-      color: $bg-minimal;
-      text-decoration: none;
-      border-color: transparent;
+      &:before {
+        position: absolute;
+        content: '';
+        left: 0;
+        @include dim('w', 20, 20);
+        @include dim('t', 12, 12);
+        height: 1px;
+        background-color: $icon-accent;
+        transform: translateY(-50%);
+        user-select: none;
+        pointer-events: none;
+      }
     }
+  }
+
+  &__small-title {
+    @include dim('mb', 40, 30);
+    @include merge;
   }
 }
 
@@ -208,6 +245,19 @@
           font-size: 18px;
           font-weight: 400;
         }
+      }
+    }
+
+    &__small-title {
+      font-weight: 400;
+      font-size: 18px;
+    }
+
+    &__dashed-texts {
+      p {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 130%;
       }
     }
   }

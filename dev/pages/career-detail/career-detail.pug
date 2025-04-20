@@ -1,0 +1,75 @@
+extends ../../layouts/layout
+block vars
+block content
+    include ../../components/consult-form
+    include ../../components/first-screen
+    include ../../components/consult
+    include ../../components/tags
+    include ../../components/content/content
+    include ../../components/content/blocks/content-text
+    include ../../components/vacancy-form
+    include ../../modal-windows/modal
+    .wrapper
+        +first-screen({
+          patternBgDesktop: './images/pattern-bg/career-desktop.svg',
+          patternBgMobile: './images/pattern-bg/career-mobile.svg',
+          title: 'Логист-менеджер по международным перевозкам',
+          classes: 'first-screen--career',
+        })
+        +tags({
+          tags: ['Москва', 'Офис', 'Полная занятость']
+        })
+        .content-blocks.content-blocks--with-borders
+            +content({
+              title: 'Описание',
+            })
+                +content-text({
+                  smallTitle: 'Мы ищем ответственного и инициативного логиста, который будет заниматься организацией и контролем международных перевозок. Работа в ВР Логистик — это возможность развиваться в динамичной компании с устойчивой репутацией в сфере международной логистики.',
+                  dashedTexts: [
+                    'Организация перевозок грузов по международным направлениям (Азия, Европа, Ближний Восток, США).',
+                    'Контроль документооборота, включая сертификацию грузов и таможенное оформление.',
+                    'Ведение переговоров с транспортными компаниями, клиентами и подрядчиками.',
+                    'Контроль сроков и качества доставки.',
+                    'Оперативное решение возникающих вопросов.',
+                  ]
+                })
+
+            +content({
+              title: 'Требования',
+            })
+                +content-text({
+                  dashedTexts: [
+                    'Опыт работы в логистике от 2 лет.',
+                    'Знание нормативных документов по международной перевозке грузов.',
+                    'Умение работать в режиме многозадачности.',
+                    'Английский язык на уровне не ниже Intermediate.',
+                    'Ответственность, внимательность и коммуникабельность.',
+                  ]
+                })
+            +content({
+              title: 'Условия',
+            })
+                +content-text({
+                  dashedTexts: [
+                    'Официальное трудоустройство, соблюдение ТК РФ.',
+                    'Конкурентоспособная зарплата (обсуждается по итогам собеседования).',
+                    'Гибкий график работы: 5/2.',
+                    'Возможность профессионального и карьерного роста.',
+                    'Комфортный офис в центре города.',
+                  ]
+                })
+            +content({
+              title: 'Зарплата',
+              classes: 'items-center'
+            })
+                +content-text({
+                  smallTitle: 'По результатам собеседования',
+                })
+            +content({
+              title: 'Откликнуться на вакансию',
+              isHh: true,
+            })
+                +vacancy-form
+        +consult({classes: 'consult--page', btnText: 'Жду звонка'})
+    +modal({ id: 'consult-form', classes: 'consult__form' })
+        +consult-form
