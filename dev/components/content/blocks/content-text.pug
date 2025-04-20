@@ -9,10 +9,13 @@
       topTexts: [],
       tags: [],
       unorderedList: [],
+      unorderedListTitle: '',
+      conditionsList: [],
       orderedList: [],
       dashedLinks: [],
       dashedTexts: [],
       vacanciesList: [],
+      iconList: [],
   }
 
 mixin content-text(props = defaultContentTextProps, ...dataset)
@@ -25,15 +28,19 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
         btnModal: props.btnModal ? props.btnModal : defaultContentTextProps.btnModal,
         tags: props.tags ? props.tags : defaultContentTextProps.tags,
         unorderedList: props.unorderedList ? props.unorderedList : defaultContentTextProps.unorderedList,
+        unorderedListTitle: props.unorderedListTitle ? props.unorderedListTitle : defaultContentTextProps.unorderedListTitle,
         orderedList: props.orderedList ? props.orderedList : defaultContentTextProps.orderedList,
         dashedLinks: props.dashedLinks ? props.dashedLinks : defaultContentTextProps.dashedLinks,
         dashedTexts: props.dashedTexts ? props.dashedTexts : defaultContentTextProps.dashedTexts,
         subTitle: props.subTitle ? props.subTitle : defaultContentTextProps.subTitle,
         smallTitle: props.smallTitle ? props.smallTitle : defaultContentTextProps.smallTitle,
         vacanciesList: props.vacanciesList ? props.vacanciesList : defaultContentTextProps.vacanciesList,
+        conditionsList: props.conditionsList ? props.conditionsList : defaultContentTextProps.conditionsList,
+        iconList: props.iconList ? props.iconList : defaultContentTextProps.iconList,
     }
   include ../../../ui/btn
   include ../../../ui/text
+  include ../../../ui/icon
   .content-text(class=`${checkProps.classes}`)&attributes(...dataset)
       if checkProps.topTexts.length > 0
         .content-text__top-texts
@@ -62,15 +69,29 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
                 weight: 'medium'
               })
       if checkProps.unorderedList.length > 0
+        if checkProps.unorderedListTitle
+          +text({
+            variant: 'xs',
+            weight: 'bold',
+            text: checkProps.unorderedListTitle,
+            classes: 'content-text__unordered-list-title'
+          })
         ul.content-text__unordered-list
             each item in checkProps.unorderedList
               li.content-text__unordered-list-item
                 span.content-text__unordered-list-item-dot
+                if item.title
+                    +text({
+                        text: item.title,
+                        classes: 'content-text__unordered-list-item-title',
+                        variant: 'xxs',
+                        weight: 'bold'
+                    })
                 +text({
-                  text: item,
-                  classes: 'content-text__unordered-list-item-text',
-                  variant: 'xxs',
-                  weight: 'medium'
+                    text: item.text,
+                    classes: 'content-text__unordered-list-item-text',
+                    variant: 'xxs',
+                    weight: 'medium'
                 })
 
       if checkProps.orderedList.length > 0
@@ -127,3 +148,37 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
                     text: tag,
                     classes: 'content-text__vacancies-list-item-tag'
                   })
+      if checkProps.conditionsList.length > 0
+        .content-text__conditions-list
+          each item in checkProps.conditionsList
+            .content-text__conditions-list-item
+                +text({
+                  variant: 'xxs',
+                  weight: 'medium',
+                  text: item.title,
+                  classes: 'content-text__conditions-list-item-title'
+                })
+                +text({
+                  variant: 'xxs',
+                  weight: 'medium',
+                  text: item.text,
+                  classes: 'content-text__conditions-list-item-text'
+                })
+
+      if checkProps.iconList.length > 0
+        .content-text__icon-list
+          each item in checkProps.iconList
+            .content-text__icon-list-item
+              +icon(item.icon)
+              +text({
+                variant: 'xxs',
+                weight: 'bold',
+                text: item.title,
+                classes: 'content-text__icon-list-item-title'
+              })
+              +text({
+                variant: 'xxs',
+                weight: 'medium',
+                text: item.text,
+                classes: 'content-text__icon-list-item-text'
+              })

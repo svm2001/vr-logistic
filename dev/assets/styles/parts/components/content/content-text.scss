@@ -2,6 +2,11 @@
 
 .content-text {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  @include dim('gap', 40, 30);
+  @include merge;
 
   &__top-texts {
     display: flex;
@@ -11,13 +16,11 @@
   }
 
   &__btn {
-    @include dim('mt', 40, 30);
     @include dim('w', 400, 250);
     @include merge;
   }
 
   &__tags {
-    @include dim('mt', 40, 20);
     @include dim('gap', 20, 20);
     @include merge;
     display: flex;
@@ -40,11 +43,19 @@
   }
 
   &__unordered-list {
-    @include dim('mt', 40, 40);
     @include dim('gap', 25, 10);
     @include merge;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+
+    &-title {
+      @include dim('fz', 18, 20);
+      @include merge;
+
+      @media (max-width: 767px) {
+        font-weight: 600;
+      }
+    }
 
     &-item {
       width: 100%;
@@ -106,7 +117,6 @@
 
   &__sub-title {
     @include dim('mb', 20, 20);
-    @include dim('mt', 40, 40);
     @include merge;
   }
 
@@ -275,11 +285,67 @@
       }
     }
   }
+
+  &__conditions-list {
+    display: flex;
+    flex-direction: column;
+    @include dim('gap', 10, 30);
+    @include merge;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      @include dim('gap', 20, 10);
+      @include merge;
+
+      &-title {
+        @include dim('w', 400, 300);
+        @include dim('min-w', 400, 300);
+        @include dim('h', 51, 51);
+        @include dim('br', 10, 10);
+        @include merge;
+
+        background: $bg-line;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &-text {
+        @include dim('h', 51, 51);
+        @include merge;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  &__icon-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    @include dim('gap', 15, 15);
+    @include merge;
+
+    &-item {
+      background: $bg-secondary;
+      @include dim('br', 10, 10);
+      @include dim('p', 30, 30);
+      @include dim('gap', 20, 20);
+      display: flex;
+      flex-direction: column;
+
+      svg {
+        @include dim('w', 45, 45);
+        @include dim('h', 45, 45);
+        @include merge;
+      }
+    }
+  }
 }
 
 .ordered-list__btn {
   @include dim('w', 430, 300);
-  @include dim('mt', 40, 30);
   @include merge;
 }
 
@@ -301,6 +367,22 @@
     &__dashed-links {
       column-count: 1;
       column-gap: normal;
+    }
+
+    &__conditions-list {
+      &-item {
+        flex-direction: column;
+        min-width: 100%;
+
+        &-title {
+          min-width: 100%;
+        }
+
+        &-text {
+          text-align: center;
+          justify-content: center;
+        }
+      }
     }
   }
 }
@@ -352,5 +434,27 @@
         line-height: 130%;
       }
     }
+
+    &__icon-list {
+      grid-template-columns: repeat(1, 1fr);
+
+      &-item {
+        font-size: 16px;
+
+        &-title {
+          font-weight: 600;
+        }
+
+        &-text {
+          font-weight: 400;
+        }
+      }
+
+
+    }
   }
+}
+
+.content-no-border .content__inner {
+  border-top: none;
 }
