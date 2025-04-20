@@ -117,6 +117,7 @@
 
     svg {
       @include dim('w', 47, 47);
+      @include dim('h', 47, 47);
       @include merge;
     }
 
