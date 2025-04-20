@@ -11,6 +11,15 @@
     }
   }
 
+  &--bg-gray {
+    background: $bg-secondary;
+  }
+
+  &--margin {
+    @include dim('mb', 40, 40);
+    @include merge;
+  }
+
   &-container {
     background: $white;
     position: relative;
@@ -38,6 +47,11 @@
 
       @media(max-width: 767px) {
         align-items: flex-start;
+
+        .content-text__small-title {
+          font-size: 20px;
+          font-weight: 500;
+        }
       }
 
       .content-text__small-title {

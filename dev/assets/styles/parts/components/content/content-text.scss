@@ -183,6 +183,98 @@
     @include dim('mb', 40, 30);
     @include merge;
   }
+
+  &__vacancies-list {
+    display: flex;
+    flex-direction: column;
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      @include dim('gap', 30, 32);
+      @include dim('pl', 64, 42);
+      @include dim('pt', 30, 20);
+      @include dim('pb', 30, 20);
+      @include merge();
+      border-bottom: 1px solid #DDDDDD;
+      position: relative;
+
+      &-title {
+        text-transform: uppercase;
+        position: relative;
+        transition: $transition;
+
+        @media (max-width: 767px) {
+          font-size: 16px;
+          font-weight: 600;
+          text-transform: none;
+        }
+
+        &:before {
+          content: '';
+          position: absolute;
+          @include dim('w', 29, 12);
+          @include dim('h', 29, 12);
+          @include dim('l', -64, -42);
+          @include merge;
+          background: $icon-accent;
+          transition: $transition;
+          top: 0;
+          border-radius: 100%;
+          opacity: 0;
+
+          @media (max-width: 1199px) {
+            top: 50%;
+            transform: translateY(-50%);
+          }
+        }
+      }
+
+      &-tags {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        @include dim('gap', 10, 5);
+        @include merge;
+        @media (max-width: 1199px) {
+          margin-left: -42px;
+        }
+      }
+
+      &-tag {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $bg-secondary;
+        @include dim('h', 55, 51);
+        @include dim('pl', 30, 16);
+        @include dim('pr', 30, 16);
+        @include dim('br', 10, 10);
+        @include merge;
+        transition: $transition;
+
+        @media (max-width: 767px) {
+          font-size: 14px;
+          font-weight: 400;
+        }
+      }
+
+      &:hover {
+        .content-text__vacancies-list-item-title {
+          color: $text-accent;
+
+          &:before {
+            opacity: 1;
+          }
+        }
+
+        .content-text__vacancies-list-item-tag {
+          background: $bg-line;
+          color: $text-secondary;
+        }
+      }
+    }
+  }
 }
 
 .ordered-list__btn {

@@ -9,7 +9,7 @@ block content
     include ../../components/content/blocks/content-text
     include ../../components/vacancy-form
     include ../../modal-windows/modal
-    .wrapper
+    .wrapper.wrapper--bg-gray
         +first-screen({
           patternBgDesktop: './images/pattern-bg/career-desktop.svg',
           patternBgMobile: './images/pattern-bg/career-mobile.svg',
@@ -70,6 +70,30 @@ block content
               isHh: true,
             })
                 +vacancy-form
+        +content({
+          title: 'Другие вакансии',
+          rounded: true,
+          classes: 'content--bg-gray content--margin'
+        })
+            +content-text({
+              vacanciesList: [
+                {
+                  title: 'Логист-менеджер по международным перевозкам',
+                  tags: [ 'Москва', 'Офис', 'Полная занятость' ],
+                },
+                {
+                  title: 'Специалист по сертификации грузов',
+                  tags: ['Санкт-Петербург', 'Удаленная работа', 'Полная занятость'],
+                },
+                {
+                  title: 'Менеджер по работе с клиентами в сфере логистики',
+                  tags: ['Казань', 'Офис', 'Частичная занятость'],
+                }, {
+                  title: 'Координатор перевозок и таможенного оформления',
+                  tags: ['Екатеринбург', 'Офис', 'Проектная занятость'],
+                }
+              ]
+            })
         +consult({classes: 'consult--page', btnText: 'Жду звонка'})
     +modal({ id: 'consult-form', classes: 'consult__form' })
         +consult-form

@@ -106,6 +106,10 @@ body.lock {
   max-width: 100%;
   @include dim('pt', 90, 84);
   @include merge;
+
+  &--bg-gray {
+    background: $bg-secondary;
+  }
 }
 
 a {

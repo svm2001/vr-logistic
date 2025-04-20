@@ -1,17 +1,18 @@
 -
   const defaultContentTextProps = {
       classes: '',
-      topTexts: [],
-      btn: false,
+      subTitle: '',
+      smallTitle: '',
       btnText: '',
+      btn: false,
       btnModal: false,
+      topTexts: [],
       tags: [],
       unorderedList: [],
       orderedList: [],
       dashedLinks: [],
       dashedTexts: [],
-      subTitle: '',
-      smallTitle: ''
+      vacanciesList: [],
   }
 
 mixin content-text(props = defaultContentTextProps, ...dataset)
@@ -29,6 +30,7 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
         dashedTexts: props.dashedTexts ? props.dashedTexts : defaultContentTextProps.dashedTexts,
         subTitle: props.subTitle ? props.subTitle : defaultContentTextProps.subTitle,
         smallTitle: props.smallTitle ? props.smallTitle : defaultContentTextProps.smallTitle,
+        vacanciesList: props.vacanciesList ? props.vacanciesList : defaultContentTextProps.vacanciesList,
     }
   include ../../../ui/btn
   include ../../../ui/text
@@ -108,5 +110,20 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
           each text in checkProps.dashedTexts
             p= text
 
-
-
+      if checkProps.vacanciesList.length > 0
+        .content-text__vacancies-list
+          each item in checkProps.vacanciesList
+            a.content-text__vacancies-list-item(href='/career-detail.html')
+              +title({
+                variant: '2',
+                text: item.title,
+                classes: 'content-text__vacancies-list-item-title'
+              })
+              .content-text__vacancies-list-item-tags
+                each tag in item.tags
+                  +text({
+                    variant: 'xs',
+                    weight: 'medium',
+                    text: tag,
+                    classes: 'content-text__vacancies-list-item-tag'
+                  })
