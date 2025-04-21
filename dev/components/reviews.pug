@@ -1,0 +1,38 @@
+-
+  const defaultHeroProps = {
+      classes: '',
+      title: 'Международная логистика и таможенное оформление',
+      video: './video/vr.mp4',
+      videoType: 'video/mp4',
+      buttonText: 'Оставить заявку',
+  }
+
+mixin hero(props = defaultHeroProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultHeroProps.classes,
+        title: props.title ? props.title : defaultHeroProps.title,
+        video: props.video ? props.video : defaultHeroProps.video,
+        videoType: props.videoType ? props.videoType : defaultHeroProps.videoType,
+        buttonText: props.buttonText ? props.buttonText : defaultHeroProps.buttonText,
+    }
+
+  include ../ui/title
+  include ../ui/btn
+  section.hero(class=`${checkProps.classes}`)&attributes(...dataset)
+      video(playsinline autoplay muted)
+          source(src=checkProps.video, type=checkProps.videoType)
+      .container
+          .hero__inner
+              +title({
+                  classes: 'hero__title',
+                  text: checkProps.title,
+                  variant: '1'
+              })
+              +btn({
+                  classes: 'hero__btn',
+                  name: checkProps.buttonText,
+                  dot: true,
+              }, { 'data-hystmodal': '#consult-form' })
+
+
