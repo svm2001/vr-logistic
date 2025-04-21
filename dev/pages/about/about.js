@@ -6,5 +6,4 @@ import { standartsSlider } from "@/assets/scripts/modules/standartsSlider.js"
 
 window.onload = () => {
   main()
-  select()
 }
