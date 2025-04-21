@@ -1,0 +1,37 @@
+-
+  const defaultContentProps = {
+      classes: '',
+      title: 'content-title',
+      rounded: false,
+      isHh: false
+  }
+
+mixin content(props = defaultContentProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultContentProps.classes,
+        title: props.title ? props.title : defaultContentProps.title,
+        rounded: props.rounded ? props.rounded : defaultContentProps.rounded,
+        isHh: props.isHh ? props.isHh : defaultContentProps.isHh,
+    }
+
+  include ../../ui/text
+  include ../../ui/icon
+  section.content(
+      class=`${checkProps.classes} ${checkProps.rounded ? 'content--rounded' : ''}`)&attributes(...dataset)
+      .content-container
+          .content__inner
+            .content__inner-block
+              +text({
+                  text: checkProps.title,
+                  classes: 'content__title',
+                  variant: 'l',
+                  weight: 'bold'
+              })
+              if checkProps.isHh
+                a.headhunter-link(href="https://hh.ru" target="_blank")
+                  +icon('hh')
+                  span Вакансия <br>
+                    | на HeadHunter
+            .content__wrapper
+              block

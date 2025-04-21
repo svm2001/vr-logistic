@@ -1,0 +1,90 @@
+-
+  const defaultServicesListProps = {
+      classes: '',
+      list: [
+          {
+              name: 'Автомобильные перевозки',
+              description: 'Эффективные логистические решения для связи и цифровых технологий',
+              link: 'javascript:void(0);',
+              icon: 'car',
+              gridMod: '1',
+          },
+          {
+              name: 'Авиационные перевозки',
+              description: 'Эффективные логистические решения для связи и цифровых технологий',
+              link: 'javascript:void(0);',
+              icon: 'plane',
+              gridMod: '2',
+          },
+          {
+              name: 'Железнодорожные перевозки',
+              description: 'Эффективные логистические решения для связи и цифровых технологий',
+              link: 'javascript:void(0);',
+              icon: 'train',
+              gridMod: '3',
+          },
+          {
+              name: 'Морские перевозки (мультимодальные)',
+              description: 'Эффективные логистические решения для связи и цифровых технологий',
+              link: 'javascript:void(0);',
+              icon: 'ship',
+              gridMod: '4',
+          },
+          {
+              name: 'Проектная логистика',
+              description: 'Эффективные логистические решения для связи и цифровых технологий',
+              link: 'javascript:void(0);',
+              icon: 'logistic',
+              gridMod: '5',
+          },
+          {
+              name: 'Таможенное оформление',
+              description: 'Эффективные логистические решения для связи и цифровых технологий',
+              link: 'javascript:void(0);',
+              icon: 'settings',
+              gridMod: '6',
+          },
+          {
+              name: 'Сертификация',
+              description: 'Эффективные логистические решения для связи и цифровых технологий',
+              link: 'javascript:void(0);',
+              icon: 'certificate',
+              gridMod: '7',
+          },
+          {
+              name: 'Складская логистика',
+              description: 'Эффективные логистические решения для связи и цифровых технологий',
+              link: 'javascript:void(0);',
+              icon: 'warehouse',
+              gridMod: '8',
+          },
+          {
+              name: 'Доставка грузов дронами',
+              description: 'Эффективные логистические решения для связи и цифровых технологий',
+              link: 'javascript:void(0);',
+              icon: 'drone',
+              gridMod: '9',
+          },
+          {
+              name: 'Страхование',
+              description: 'Эффективные логистические решения для связи и цифровых технологий',
+              link: 'javascript:void(0);',
+              icon: 'shield',
+              gridMod: '10',
+          },
+      ]
+  }
+
+mixin services-list(props = defaultServicesListProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultServicesListProps.classes,
+        list: props.list ? props.list : defaultServicesListProps.list,
+    }
+
+  include services-item-custom
+  section.services-list(class=`${checkProps.classes}`)&attributes(...dataset)
+      .container
+          .services-list__inner
+              each item in checkProps.list
+                  +services-item-custom(item)

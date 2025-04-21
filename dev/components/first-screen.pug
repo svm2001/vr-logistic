@@ -1,0 +1,60 @@
+-
+    const defaultFirstScreenProps = {
+        classes: '',
+        patternBgDesktop: '',
+        patternBgMobile: '',
+        title: '',
+        buttonText: '',
+        subtitle: '',
+        date: '',
+        tag: '',
+    }
+
+mixin first-screen(props = defaultFirstScreenProps, ...dataset)
+  -
+      const checkProps = {
+          classes: props.classes ? props.classes : defaultFirstScreenProps.classes,
+          patternBgDesktop: props.patternBgDesktop ? props.patternBgDesktop : defaultFirstScreenProps.patternBgDesktop,
+          patternBgMobile: props.patternBgMobile ? props.patternBgMobile : defaultFirstScreenProps.patternBgMobile,
+          title: props.title ? props.title : defaultFirstScreenProps.title,
+          buttonText: props.buttonText ? props.buttonText : defaultFirstScreenProps.buttonText,
+          subtitle: props.subtitle ? props.subtitle : defaultFirstScreenProps.subtitle,
+          date: props.date ? props.date : defaultFirstScreenProps.date,
+          tag: props.tag ? props.tag : defaultFirstScreenProps.tag,
+      }
+
+  include ../ui/title
+  include ../ui/btn
+  section.first-screen(class=`${checkProps.classes}`)&attributes(...dataset)
+      if checkProps.patternBgDesktop
+        img.lazy.first-screen__pattern.first-screen__pattern--desktop(src="./images/no-image.jpg" data-src=checkProps.patternBgDesktop alt=checkProps.title)
+      if checkProps.patternBgMobile
+        img.lazy.first-screen__pattern.first-screen__pattern--mobile(src="./images/no-image.jpg" data-src=checkProps.patternBgMobile alt=checkProps.title)
+      .container
+          .first-screen__content
+              if checkProps.date
+                .first-screen__date
+                    +text({
+                        text: checkProps.date,
+                        variant: 'm',
+                        weight: 'bold',
+                        classes: 'first-screen__date-text'
+                    })
+              if checkProps.title
+                +title({
+                  classes: 'first-screen__title',
+                  text: checkProps.title,
+                  variant: '1',
+                  weight: 'bold',
+                })
+              if checkProps.tag
+                .first-screen__tag= checkProps.tag
+              if checkProps.subtitle
+                  p.first-screen__subtitle= checkProps.subtitle
+              if checkProps.buttonText
+                +btn({
+                  name: checkProps.buttonText,
+                  variant: 'primary',
+                  classes: 'first-screen__btn',
+                  dot: true
+                }, { 'data-hystmodal': '#consult-form' })

@@ -1,0 +1,18 @@
+@import '../../mixins/vw';
+
+.textarea {
+
+  textarea {
+    resize: none;
+    @include dim('h', 182, 182);
+    @include dim('br', 20, 20);
+    @include dim('p', 20, 20);
+    @include dim('fz', 18, 16);
+    @include merge;
+    border: 1px solid #DDDDDD;
+
+    @media (max-width: 767px) {
+      height: 213px;
+    }
+  }
+}

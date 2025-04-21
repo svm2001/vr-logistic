@@ -1,0 +1,15 @@
+-
+  const defaultContentMapProps = {
+      classes: '',
+      map: './images/routes/routes-1-transparent.png',
+  }
+
+mixin content-map(props = defaultContentMapProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultContentMapProps.classes,
+        map: props.map ? props.map : defaultContentMapProps.map,
+    }
+
+  .content-map(class=`${checkProps.classes}`)&attributes(...dataset)
+      img.lazy(data-src=checkProps.map, src='./images/no-iamge.jpg')

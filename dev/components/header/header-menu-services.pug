@@ -1,0 +1,81 @@
+-
+  const defaultHeaderMenuServicesProps = {
+      classes: '',
+      links: [
+          {
+            icon: 'car',
+            name: 'Автомобильные перевозки',
+              link: 'javascript:void(0);'
+          },
+          {
+              icon: 'plane',
+              name: 'Авиационные перевозки',
+              link: 'javascript:void(0);'
+          },
+          {
+              icon: 'train',
+              name: 'Железнодорожные перевозки',
+              link: 'javascript:void(0);'
+          },
+          {
+              icon: 'ship',
+              name: 'Морские перевозки (мультимодальные)',
+              link: 'javascript:void(0);'
+          },
+          {
+              icon: 'logistic',
+              name: 'Проектная логистика',
+              link: 'javascript:void(0);'
+          },
+          {
+              icon: 'settings',
+              name: 'Таможенное оформление',
+              link: 'javascript:void(0);'
+          },
+          {
+              icon: 'certificate',
+              name: 'Сертификация',
+              link: 'javascript:void(0);'
+          },
+          {
+              icon: 'warehouse',
+              name: 'Складская логистика',
+              link: 'javascript:void(0);'
+          },
+          {
+              icon: 'drone',
+              name: 'Доставка грузов дронами',
+              link: 'javascript:void(0);'
+          },
+          {
+              icon: 'shield',
+              name: 'Страхование',
+              link: 'javascript:void(0);'
+          },
+      ]
+  }
+
+mixin header-menu-services(props = defaultHeaderMenuServicesProps, ...dataset)
+  -
+    const checkProps = {
+        links: props.links ? props.links : defaultHeaderMenuServicesProps.links,
+        classes: props.classes ? props.classes : defaultHeaderMenuServicesProps.classes,
+    }
+
+
+  include ../../ui/icon
+  include ../../ui/text
+  .header-menu.header-menu-services(class=`${checkProps.classes}` data-menu='services')&attributes(...dataset)
+    .container
+      .header-menu-services__list
+        each link in checkProps.links
+          a.header-menu-services__item(href=link.link)&attributes(...dataset)
+            +icon(link.icon)
+            +text({
+              text: link.name,
+              classes: 'header-menu-services__item-name',
+              variant: 's',
+              weight: 'medium',
+            })
+
+

@@ -20,6 +20,10 @@ export default defineConfig({
       input: {
         index: resolve(__dirname, './dev/index.html'),
         home: resolve(__dirname, './dev/home.html'),
+        services: resolve(__dirname, './dev/services.html'),
+        'services-detail': resolve(__dirname, './dev/services-detail.html'),
+        career: resolve(__dirname, './dev/career.html'),
+        'career-detail': resolve(__dirname, './dev/career-detail.html'),
         'ui-kit': resolve(__dirname, './dev/ui-kit.html'),
         components: resolve(__dirname, './dev/components.html'),
       },

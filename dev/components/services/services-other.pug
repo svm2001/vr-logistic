@@ -1,0 +1,85 @@
+-
+  const defaultServicesOtherProps = {
+      classes: '',
+      headline: {
+          text: 'Другие услуги',
+          link: '/services.html'
+      },
+      list: [
+          {
+              name: 'Авиационные перевозки',
+              link: 'javascript:void(0);',
+              icon: 'plane'
+          },
+          {
+              name: 'Железнодорожные перевозки',
+              link: 'javascript:void(0);',
+              icon: 'train'
+          },
+          {
+              name: 'Морские перевозки (мультимодальные)',
+              link: 'javascript:void(0);',
+              icon: 'ship'
+          },
+          {
+              name: 'Проектная логистика',
+              link: 'javascript:void(0);',
+              icon: 'logistic'
+          },
+          {
+              name: 'Таможенное оформление',
+              link: 'javascript:void(0);',
+              icon: 'settings'
+          },
+          {
+              name: 'Сертификация',
+              link: 'javascript:void(0);',
+              icon: 'certificate'
+          },
+          {
+              name: 'Складская логистика',
+              link: 'javascript:void(0);',
+              icon: 'warehouse'
+          },
+          {
+              name: 'Доставка грузов дронами',
+              link: 'javascript:void(0);',
+              icon: 'drone'
+          },
+          {
+              name: 'Страхование',
+              link: 'javascript:void(0);',
+              icon: 'shield'
+          },
+      ]
+  }
+
+mixin services-other(props = defaultServicesOtherProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultServicesOtherProps.classes,
+        headline: props.classes ? props.headline : defaultServicesOtherProps.headline,
+        title: props.title ? props.title : defaultServicesOtherProps.title,
+        list: props.list ? props.list : defaultServicesOtherProps.list,
+    }
+
+  include ../../ui/btn
+  include ../../ui/icon
+  include ../../ui/text
+  include ../../ui/headline
+  include services-item-simple
+  include ../globe
+  section.services.services--other(class=`${checkProps.classes}`)&attributes(...dataset)
+      .container
+          .services__inner
+              .services__top
+                  +headline(checkProps.headline)
+                  +text({
+                      variant: 'xs',
+                      weight: 'medium',
+                      text: checkProps.title,
+                      classes: 'services__title'
+                  })
+              .services__list
+                 each item in checkProps.list
+                   +services-item-simple(item)

@@ -6,6 +6,7 @@
   &__wrapper {
     display: flex;
     flex-direction: column;
+    text-align: center;
     @include dim('gap', 10, 10);
     @include merge;
   }
@@ -18,15 +19,15 @@
     justify-content: center;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
-    @include dim('w', 50, 44);
+    @include dim('w', 50, 50);
     @include merge;
-    
+
     svg {
-      @include dim('w', 25, 32);
-      @include dim('h', 25, 32);
+      @include dim('w', 25, 28);
+      @include dim('h', 25, 28);
       @include merge;
       aspect-ratio: 1 / 1;
-  
+
       path {
         stroke: $white;
       }

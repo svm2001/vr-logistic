@@ -8,12 +8,16 @@ export default function modal() {
     waitTransitions: true,
     backscroll: true,
     beforeOpen: () => {
-      body.style.paddingRight = padding
-      header.style.paddingRight = padding
+      if(window.innerWidth > 1199) {
+        body.style.paddingRight = padding
+        header.style.paddingRight = padding
+      }
     },
     afterClose: () => {
-      body.style.paddingRight = '0'
-      header.style.paddingRight = '0'
+      if(window.innerWidth > 1199) {
+        body.style.paddingRight = '0'
+        header.style.paddingRight = '0' 
+      }
     }
   })
 }

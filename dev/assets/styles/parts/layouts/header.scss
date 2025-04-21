@@ -7,9 +7,13 @@
   left: 0;
   width: 100%;
   z-index: 100;
-  @include dim('h', 90, 96);
+  @include dim('h', 90, 84);
   @include merge;
-  background: $white;
+  background: $bg-secondary;
+
+  &__tablets-btns, &__burger {
+    display: none;
+  }
 
   &__wrapper {
     display: flex;
@@ -18,7 +22,7 @@
   }
 
   &__logo {
-    @include dim('w', 219, 181);
+    @include dim('w', 219, 219);
     @include merge;
     display: block;
 
@@ -37,14 +41,37 @@
 
     &-item {
       @include dim('fz', 18, 16);
+      @include dim('h', 90, 16);
       @include merge;
+      position: relative;
+      display: flex;
+      align-items: center;
       color: $text-primary;
       font-weight: 700;
       text-decoration: none;
       transition: color 0.2s ease;
 
+      &[data-hover-menu]:before, &.active:before {
+        content: '';
+        position: absolute;
+        height: 2px;
+        width: 0;
+        bottom: 0;
+        z-index: 101;
+        transition: $transition;
+        background-image: linear-gradient(90deg, #09361E 0%, #1B9C56 100%);
+      }
+
+      &.active:before {
+        width: 100%;
+      }
+
       &:hover {
         color: $text-accent;
+
+        &:before {
+          width: 100%;
+        }
       }
 
       &:active {
@@ -56,7 +83,7 @@
   &__info {
     display: flex;
     align-items: center;
-    @include dim('gap', 36, 36);
+    @include dim('gap', 36, 20);
     @include merge;
 
     &-btns {
@@ -73,12 +100,20 @@
     }
   }
 
-  button.header__custom-btn {
+  button.header__custom-btn, a.header__custom-btn {
     border-radius: 50%;
     aspect-ratio: 1 / 1;
     border: 1px solid transparent;
     background-color: $bg-line;
     transition: $transition;
+    @include dim('w', 44, 44);
+    @include dim('h', 44, 44);
+    @include merge;
+
+    .btn__text {
+      color: $text-secondary;
+      font-weight: 500;
+    }
 
     svg {
       @include dim('w', 16, 16);
@@ -96,12 +131,177 @@
       svg path {
         fill: $white;
       }
+
+      .btn__text {
+        color: $white;
+      }
     }
+
+    &--phone {
+      &:hover {
+        svg path {
+          stroke: $white;
+          fill: transparent;
+        }
+      }
+    }
+  }
+
+  &-menu {
+    position: fixed;
+    z-index: 3;
+    @include dim('t', 90, 91);
+    @include dim('pt', 60, 60);
+    @include dim('pb', 60, 60);
+    @include merge;
+    left: 0;
+    width: 100%;
+    background: $white;
+    transition: $transition;
+    opacity: 0;
+    visibility: hidden;
+
+    &.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &-services {
+
+      &__list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        @include dim('gap', 20, 20);
+        @include merge;
+      }
+
+      &__item {
+        aspect-ratio: 400 / 180;
+        @include dim('br', 15, 15);
+        @include dim('p', 30, 30);
+        @include dim('gap', 20, 20);
+        @include merge;
+        background: $bg-secondary;
+        display: flex;
+        flex-direction: column;
+        transition: $transition;
+
+        &-name {
+          transition: .1s;
+        }
+
+        svg {
+          @include dim('w', 40, 40);
+          @include dim('h', 40, 40);
+        }
+
+        &:hover {
+          background: $bg-line;
+
+          .header-menu-services__item-name {
+            color: $text-accent;
+          }
+        }
+      }
+    }
+
+    &-expertises {
+
+      &__list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-content: space-between;
+
+        &-col {
+          display: flex;
+          flex-direction: column;
+          @include dim('gap', 20, 20);
+          @include dim('w', 320, 320);
+          @include merge;
+
+          &-main-link {
+            @include dim('fz', 22, 22);
+            @include merge;
+            font-weight: 700;
+            transition: $transition;
+
+            &:hover {
+              color: $icon-accent;
+            }
+          }
+
+          &-list {
+            display: flex;
+            flex-direction: column;
+            @include dim('gap', 14, 14);
+            @include merge;
+
+            &-item {
+              @include dim('fz', 18, 18);
+              @include merge;
+              font-weight: 500;
+              transition: $transition;
+
+              &:hover {
+                color: $icon-accent;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.plug, .burger-plug {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #494949;
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s;
+
+  &.visible {
+    opacity: .5;
+    visibility: visible;
   }
 }
 
 @media (max-width: 1199px) {
   .header {
-    display: none;
+
+    &-menu, &__nav, &__info-btns {
+      display: none;
+    }
+
+    &__tablets-btns {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    &__burger {
+      display: flex;
+      height: 84px;
+      width: 44px;
+      align-items: center;
+    }
+  }
+}
+
+@media (max-width: 630px) {
+  .header {
+    height: 66px;
+    &__tablets-btns, &__custom-btn {
+      display: none!important;
+    }
+
+    &__logo {
+      width: 155px;
+    }
   }
 }
