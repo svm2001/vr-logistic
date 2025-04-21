@@ -7,6 +7,7 @@ block content
     include ../../components/first-screen
     include ../../components/services/services-list
     include ../../components/consult
+    include ../../components/feedback
     include ../../modal-windows/modal
     .wrapper
         +first-screen({
@@ -18,6 +19,7 @@ block content
         +services-list
         +routes
         +standarts
+        +feedback
         +consult({classes: 'consult--page', btnText: 'Жду звонка'})
     +modal({ id: 'consult-form', classes: 'consult__form' })
         +consult-form

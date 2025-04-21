@@ -1,0 +1,32 @@
+extends ../../layouts/layout
+block vars
+block content
+    include ../../components/consult-form
+    include ../../components/consult
+    include ../../components/first-screen
+
+    include ../../components/tags-line
+    include ../../modal-windows/modal
+    .wrapper
+        +first-screen({
+          patternBgDesktop: './images/pattern-bg/news-desktop.svg',
+          patternBgMobile: './images/pattern-bg/news-mobile.svg',
+          title: 'Новости',
+        })
+        +tags-line({
+          tags:[
+            { name: 'Все', data: 'all' },
+            { name: 'Новости компании', data: 'new-company' },
+            { name: 'Новости отрасли', data: 'new-industries' },
+            { name: 'Таможенные новости', data: 'customs-news' },
+            { name: 'Новости логистики', data: 'logistic-news' },
+            { name: 'Мероприятия', data: 'event' },
+            { name: 'Благотворительность', data: 'charity' },
+            { name: 'Экспертное мнение', data: 'expert-opinion' },
+            { name: 'Маршруты', data: 'routes' },
+            
+          ]
+        })
+        +consult({classes: 'consult--page', btnText: 'Жду звонка'})
+    +modal({ id: 'consult-form', classes: 'consult__form' })
+        +consult-form

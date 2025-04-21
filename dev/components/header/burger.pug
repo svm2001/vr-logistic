@@ -105,53 +105,30 @@ mixin burger(props = defaultBurgerProps, ...dataset)
   include ../../ui/accordion
   .burger(class=`${checkProps.classes}`)&attributes(...dataset)
     .container
-        .burger__top
-            button.burger__close.js-burger-close
-                +icon('close-burger')
-        .burger__body
-            .burger__accordions
-                each accordion in props.accordions
-                    +accordion({
-                        name: accordion.name,
-                        isOpen: accordion.isOpen
-                    })
-                        .accordion__content-inner.burger__accordions-list
-                            each link in accordion.links
-                                a(href=link.href)= link.name
-            .burger__btns
-                +btn({
-                  name: 'Обратная связь',
-                  variant: 'secondary',
-                  size: 'small',
-                  classes: 'burger-call-form'
-                }, {'data-hystmodal': '#consult-form'})
-                +btn({
-                    name: 'Личный кабинет',
-                    size: 'small',
-                    type: 'link',
-                    target: '_blank'
-                })
-            .burger__requsites
-                p.burger__requsites-title Реквизиты
-                .burger__requsites-list
-                    p.burger__requsites-item ООО "Компания"
-                    p.burger__requsites-item ИНН 1234567890
-                    p.burger__requsites-item ОГРН 1234567890
-            .burger__links
-                a.burger__links-item(href='javascript:void(0);') Контакты
-                a.burger__links-item(href='javascript:void(0);') Политика конфиденциальности
-            .burger__icons
-                +btn({
-                  classes: 'header__custom-btn',
-                  name: 'EN',
-                  size: 'small',
-                }, {title: 'Выбрать язык'})
-                +btn({
-                  classes: 'header__custom-btn',
-                  name: '',
-                  icon: true,
-                  iconName: 'search',
-                  size: 'small',
-                }, {title: 'Поиск'})
+      .burger__top
+        button.burger__close.js-burger-close
+          +icon('close-burger')
+      .burger__body
+        .burger__accordions
+          each accordion in props.accordions
+            +accordion({ name: accordion.name, isOpen: accordion.isOpen })
+              .accordion__content-inner.burger__accordions-list
+                each link in accordion.links
+                  a(href=link.href)= link.name
+        .burger__btns
+          +btn({ name: 'Обратная связь', variant: 'secondary', size: 'small', classes: 'burger-call-form' }, {'data-hystmodal': '#consult-form'})
+          +btn({ name: 'Личный кабинет', size: 'small', type: 'link', target: '_blank' })
+        .burger__requsites
+          p.burger__requsites-title Реквизиты
+          .burger__requsites-list
+            p.burger__requsites-item ООО "Компания"
+            p.burger__requsites-item ИНН 1234567890
+            p.burger__requsites-item ОГРН 1234567890
+        .burger__links
+          a.burger__links-item(href="javascript:void(0);") Контакты
+          a.burger__links-item(href="javascript:void(0);") Политика конфиденциальности
+        .burger__icons
+          +btn({ classes: 'header__custom-btn', name: 'EN', size: 'small', }, {title: 'Выбрать язык'})
+          +btn({ classes: 'header__custom-btn', name: '', icon: true, iconName: 'search', size: 'small', }, {title: 'Поиск'})
 
   .burger-plug

@@ -19,25 +19,9 @@ mixin expertise-item(props = defaultExpertiseItemProps, ...dataset)
   include ../../ui/icon
   include ../../ui/btn
   include ../../ui/text
-  a.expertise__item(class=`${checkProps.classes}` href=`${checkProps.link}`)&attributes(...dataset)
+  a.expertise__item(class=`${checkProps.classes}`, href=`${checkProps.link}`)&attributes(...dataset)
     .expertise__item-icon
       +icon(checkProps.icon)
-    +text({
-      text: checkProps.title,
-      classes: 'expertise__item-title',
-      weight: 'bold',
-      variant: 'l'
-    })
-    +text({
-      text: checkProps.text,
-      classes: 'expertise__item-text',
-      variant: 'xs'
-    })
-    +btn({
-      icon: true,
-      iconName: 'arrow-rotate-white',
-      variant: 'secondary',
-      classes: 'expertise__item-btn'
-    })
-
-
+    +text({ text: checkProps.title, classes: 'expertise__item-title', weight: 'bold', variant: 'l' })
+    +text({ text: checkProps.text, classes: 'expertise__item-text', variant: 'xs' })
+    +btn({ icon: true, iconName: 'arrow-rotate-white', variant: 'secondary', classes: 'expertise__item-btn' })

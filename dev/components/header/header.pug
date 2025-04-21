@@ -54,51 +54,14 @@ mixin header(props = defaultHeaderProps, ...dataset)
           each nav in headerNav
             a.header__nav-item(href=nav.href, data-hover-menu=nav.menu)= nav.name
         .header__info
-          +btn({
-            classes: 'header__custom-btn',
-            name: '',
-            icon: true,
-            iconName: 'search',
-            size: 'small',
-          }, { title: 'Поиск' })
+          +btn({ classes: 'header__custom-btn', name: '', icon: true, iconName: 'search', size: 'small', }, { title: 'Поиск' })
           .header__tablets-btns
-              +btn({
-                name: '',
-                variant: 'secondary',
-                size: 'small',
-                type: 'link',
-                link: 'tel:+74951234567',
-                classes: 'header__custom-btn header__custom-btn--phone',
-                icon: true,
-                iconName: 'phone',
-              })
-              +btn({
-                name: '',
-                variant: 'secondary',
-                size: 'small',
-                type: 'link',
-                link: 'javascript:void(0);',
-                classes: 'header__custom-btn header__custom-btn--phone',
-                icon: true,
-                iconName: 'account-transparent',
-              })
+            +btn({ name: '', variant: 'secondary', size: 'small', type: 'link', link: 'tel:+74951234567', classes: 'header__custom-btn header__custom-btn--phone', icon: true, iconName: 'phone', })
+            +btn({ name: '', variant: 'secondary', size: 'small', type: 'link', link: 'javascript:void(0);', classes: 'header__custom-btn header__custom-btn--phone', icon: true, iconName: 'account-transparent', })
           .header__info-btns
-            +btn({
-              name: 'Обратная связь',
-              variant: 'secondary',
-              size: 'small'
-            }, { 'data-hystmodal': '#consult-form' })
-            +btn({
-              name: 'Личный кабинет',
-              size: 'small',
-              type: 'link',
-              target: '_blank'
-            })
-          +btn({
-            classes: 'header__custom-btn',
-            name: 'EN',
-            size: 'small',
-          }, { title: 'Выбрать язык' })
+            +btn({ name: 'Обратная связь', variant: 'secondary', size: 'small' }, { 'data-hystmodal': '#consult-form' })
+            +btn({ name: 'Личный кабинет', size: 'small', type: 'link', target: '_blank' })
+          +btn({ classes: 'header__custom-btn', name: 'EN', size: 'small', }, { title: 'Выбрать язык' })
           button.header__burger.js-burger-trigger
             +icon('burger')
     +header-menu-services

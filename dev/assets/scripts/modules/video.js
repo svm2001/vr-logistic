@@ -11,7 +11,6 @@ export function video() {
     const text = el.querySelector('.video__inner')
     const close = el.querySelector('.video__close')
 
-
     if (play) {
       play.addEventListener('click', () => {
         if (poster) poster.classList.add('hide')
@@ -25,12 +24,15 @@ export function video() {
           el.style.height = `${video.scrollHeight}px`
           setTimeout(() => {
             const rect = el.getBoundingClientRect()
-            const scrollPosition = (window.pageYOffset + rect.top - ((window.innerHeight - el.scrollHeight) / 2)) - (window.innerHeight - (video.scrollHeight * 2.5))
+            const scrollPosition =
+              window.pageYOffset +
+              rect.top -
+              (window.innerHeight - el.scrollHeight) / 2 -
+              (window.innerHeight - video.scrollHeight * 2.5)
             window.scrollTo({
               top: scrollPosition,
-              behavior: 'smooth'
+              behavior: 'smooth',
             })
-
           }, 100)
         }
       })

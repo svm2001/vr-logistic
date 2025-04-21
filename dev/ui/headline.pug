@@ -1,17 +1,17 @@
 -
-    const defaultHeadlineProps = {
-        text: '',
-        link: '',
-        classes: ''
-    }
+  const defaultHeadlineProps = {
+      text: '',
+      link: '',
+      classes: ''
+  }
 
 mixin headline(props = defaultHeadlineProps, ...dataset)
   -
-      const checkProps = {
-          text: props.text ? props.text : defaultHeadlineProps.text,
-          link: props.link ? props.link : defaultHeadlineProps.link,
-          classes: props.classes ? props.classes : defaultHeadlineProps.classes
-      }
+    const checkProps = {
+        text: props.text ? props.text : defaultHeadlineProps.text,
+        link: props.link ? props.link : defaultHeadlineProps.link,
+        classes: props.classes ? props.classes : defaultHeadlineProps.classes
+    }
   include ../ui/icon
   a.headline(href=checkProps.link)= checkProps.text
     +icon('arrow-right-opacity')

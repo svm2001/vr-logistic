@@ -18,7 +18,7 @@ button {
   width: fit-content;
   cursor: pointer;
   overflow: hidden;
-  transition: .2s;
+  transition: 0.2s;
   text-decoration: none;
 
   &__text {
@@ -39,7 +39,7 @@ button {
     border-width: 2px;
     border-style: solid;
     aspect-ratio: 1/1;
-    transition: .2s ease-in-out;
+    transition: 0.2s ease-in-out;
   }
 
   &__icon {
@@ -220,7 +220,7 @@ button {
     @include dim('min-h', 50, 50);
     @include merge;
     aspect-ratio: 1 / 1;
-    background: rgba(255,255,255, .33);
+    background: rgba(255, 255, 255, 0.33);
     border-radius: 50%;
     border: 1px solid $white;
     padding: 0;
@@ -248,6 +248,5 @@ button {
 
 @media (max-width: 767px) {
   .btn.btn--play {
-
   }
 }

@@ -1,16 +1,16 @@
-import { disablePageScroll, enablePageScroll } from 'scroll-lock'
+import { enablePageScroll } from 'scroll-lock'
 
 export default function header() {
   const header = document.querySelector('header')
 
   if (!header) return
 
-  if(window.innerWidth > 1199) {
+  if (window.innerWidth > 1199) {
     const headerLinkMenu = header.querySelectorAll('[data-hover-menu]')
     const plug = document.querySelector('.plug')
     const headerMenuBlocks = header.querySelectorAll('[data-menu]')
 
-    if(headerLinkMenu.length > 0) {
+    if (headerLinkMenu.length > 0) {
       headerLinkMenu.forEach(link => {
         link.addEventListener('mouseenter', () => {
           headerMenuBlocks.forEach(block => block.classList.remove('visible'))
@@ -30,19 +30,23 @@ export default function header() {
         plug.classList.remove('visible')
       })
 
-      header.addEventListener('mousemove', (e) => {
+      header.addEventListener('mousemove', e => {
         const target = e.target
-        if (!target.closest('[data-hover-menu]') && !target.closest('[data-menu]')) {
+        if (
+          !target.closest('[data-hover-menu]') &&
+          !target.closest('[data-menu]')
+        ) {
           headerMenuBlocks.forEach(block => block.classList.remove('visible'))
           plug.classList.remove('visible')
         }
       })
 
-      header.addEventListener('mouseleave', (e) => {
+      header.addEventListener('mouseleave', e => {
         const target = e.relatedTarget
         if (!target) return
 
-        const isAllowedTarget = target.closest('.plug') || target.closest('.header__nav-item')
+        const isAllowedTarget =
+          target.closest('.plug') || target.closest('.header__nav-item')
         if (!isAllowedTarget) {
           headerMenuBlocks.forEach(block => block.classList.remove('visible'))
           plug.classList.remove('visible')
@@ -75,7 +79,8 @@ export default function header() {
 
       burgerClose.addEventListener('click', () => closeBurger())
       plug.addEventListener('click', () => closeBurger())
-      if(callFormBtn) callFormBtn.addEventListener('click', () => closeBurger())
+      if (callFormBtn)
+        callFormBtn.addEventListener('click', () => closeBurger())
     }
   }
 }

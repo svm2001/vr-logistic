@@ -12,9 +12,8 @@
     }
 
     .form__body {
-      @include dim ('w', 820, 820);
+      @include dim('w', 820, 820);
       @include merge;
-
     }
   }
 

@@ -67,7 +67,7 @@
       -webkit-line-clamp: 1;
       line-clamp: 1;
       overflow: hidden;
-      transition: .2s;
+      transition: 0.2s;
     }
 
     &-text {
@@ -159,7 +159,8 @@
       padding: 26px 30px 30px 30px;
       height: 274px;
       min-width: 100%;
-      &-btn, &:before {
+      &-btn,
+      &:before {
         display: none;
       }
 

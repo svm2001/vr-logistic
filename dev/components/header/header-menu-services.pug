@@ -65,17 +65,10 @@ mixin header-menu-services(props = defaultHeaderMenuServicesProps, ...dataset)
 
   include ../../ui/icon
   include ../../ui/text
-  .header-menu.header-menu-services(class=`${checkProps.classes}` data-menu='services')&attributes(...dataset)
+  .header-menu.header-menu-services(class=`${checkProps.classes}`, data-menu="services")&attributes(...dataset)
     .container
       .header-menu-services__list
         each link in checkProps.links
           a.header-menu-services__item(href=link.link)&attributes(...dataset)
             +icon(link.icon)
-            +text({
-              text: link.name,
-              classes: 'header-menu-services__item-name',
-              variant: 's',
-              weight: 'medium',
-            })
-
-
+            +text({ text: link.name, classes: 'header-menu-services__item-name', variant: 's', weight: 'medium', })

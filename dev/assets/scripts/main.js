@@ -16,5 +16,6 @@ export default function main() {
   phoneMask()
   smoothScrolling()
   accordions()
+
   // setTimeout(() => preloader.hide(), 0)
 }

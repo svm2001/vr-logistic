@@ -10,7 +10,9 @@ export default function lazyLoad() {
       el.classList.add('lazy-error')
       el.setAttribute('data-error', 'true')
       el.src = './images/no-image.svg'
-      console.warn(`Ошибка загрузки изображения: ${el.src || 'неизвестный источник'}`)
-    }
+      console.warn(
+        `Ошибка загрузки изображения: ${el.src || 'неизвестный источник'}`,
+      )
+    },
   })
 }
