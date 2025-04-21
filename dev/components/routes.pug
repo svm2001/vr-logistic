@@ -1,0 +1,66 @@
+-
+  const defaultRoutesProps = {
+      classes: '',
+      title: 'Основные маршруты и направления',
+      tabs: {
+        buttons: [
+            {
+              name: 'Сборные грузы',
+              icon: 'logistic'
+            },
+            {
+              name: 'Прямое ЖД',
+              icon: 'train'
+            },
+            {
+              name: 'Прямое Авто',
+              icon: 'car-reverse',
+            },
+            {
+              name: 'Морские перевозки (мультимодальные)',
+              icon: 'ship'
+            },
+            {
+              name: 'Авиа',
+              icon: 'plane',
+            }
+        ],
+        content: [
+          '/images/routes/routes-1.png',
+          '/images/routes/routes-1.png',
+          '/images/routes/routes-1.png',
+          '/images/routes/routes-1.png',
+          '/images/routes/routes-1.png',
+        ]
+      }
+  }
+
+mixin routes(props = defaultRoutesProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultRoutesProps.classes,
+        title: props.title ? props.title : defaultRoutesProps.title,
+        tabs: props.tabs ? props.tabs : defaultRoutesProps.tabs,
+    }
+
+  include ../ui/icon
+  include ../ui/text
+  include ../ui/headline
+  include ../ui/select
+  section.routes(class=`${checkProps.classes}`)&attributes(...dataset)
+    .routes__tablet-plug
+    .container
+      .routes__inner
+        .routes__top
+          +headline({ text: checkProps.title, classes: 'routes__title' })
+        .routes__select
+          +select
+        .routes__tabs
+          each item, index in checkProps.tabs.buttons
+            button.routes__tabs-item(class=index === 0 ? "active" : "")
+              +icon(item.icon)
+              +text({ text: item.name, classes: 'routes__tabs-item-text', variant: 'xs', weight: 'medium' })
+    .routes__content
+      each item, index in checkProps.tabs.content
+        .routes__content-item(class=index === 0 ? "active" : "")
+          img.lazy(src="./images/no-image.jpg", data-src=item, alt)

@@ -1,0 +1,153 @@
+@import '../../mixins/vw';
+
+.select {
+  width: 100%;
+
+  &.active {
+    .select__icon {
+      transform: rotate(-180deg);
+    }
+
+    .select__body {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(4%);
+    }
+  }
+
+  &.disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  &__field {
+    position: relative;
+    @include dim('min-h', 70, 70);
+    @include dim('h', 70, 70);
+    @include merge;
+  }
+
+  &__head {
+    background: $icon-accent;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    @include dim('pl', 20, 20);
+    @include dim('pr', 20, 20);
+    @include dim('pt', 23, 23);
+    @include dim('pb', 22, 22);
+    @include dim('br', 20, 20);
+    @include merge;
+  }
+
+  &__value {
+    @include dim('gap', 15, 15);
+    @include dim('fz', 18, 18);
+    font-weight: 500;
+    @include merge;
+    display: flex;
+    align-items: center;
+    color: $white;
+
+    svg {
+      @include dim('min-w', 25, 25);
+      @include dim('min-h', 25, 25);
+      @include dim('max-w', 25, 25);
+      @include dim('max-h', 25, 25);
+      @include merge;
+
+      path {
+        fill: $bg-accent;
+      }
+    }
+  }
+
+  &__icon {
+    @include dim('w', 17, 17);
+    @include dim('h', 17, 17);
+    @include merge;
+    transition: transform $transition;
+    margin-left: auto;
+  }
+
+  &__body {
+    @include dim('p', 16, 16);
+    @include dim('br', 20, 20);
+    @include dim('max-h', 310, 310);
+    @include merge;
+    width: 100%;
+    background: $bg-line;
+    border: 1px solid $icon-accent;
+    z-index: 10;
+    top: 110%;
+    left: 0;
+
+    width: 100%;
+    overflow: auto;
+    transform: translateY(0);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      transform $transition,
+      opacity $transition;
+
+    &[data-simplebar] {
+      position: absolute;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    li {
+      color: $text-primary;
+      font-weight: 500;
+      cursor: pointer;
+      transition: opacity $transition;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      @include dim('gap', 15, 15);
+      @include dim('pb', 16, 16);
+      @include dim('pt', 16, 16);
+      border-bottom: 1px solid $bg-green-light;
+      @include merge;
+
+      &:first-child {
+        padding-top: 0;
+      }
+
+      &:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+
+      svg {
+        @include dim('min-w', 25, 25);
+        @include dim('min-h', 25, 25);
+        @include dim('max-w', 25, 25);
+        @include dim('max-h', 25, 25);
+        @include merge;
+      }
+
+      span {
+        @include dim('fz', 18, 16);
+        @include merge;
+      }
+
+      &:hover {
+        opacity: 0.6;
+      }
+
+      &.active {
+        pointer-events: none;
+
+        span {
+          color: $icon-accent;
+        }
+      }
+    }
+  }
+}

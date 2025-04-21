@@ -26,53 +26,20 @@ mixin consult-form(props = defaultConsultFormProps, ...dataset)
   include ../components/formResponse/formError
   if checkProps.modal
     .consultForm(class=`${checkProps.classes}`)&attributes(...dataset)
-      .consultForm__text 
-        +title({
-          text: checkProps.title,
-          variant: '3',
-        })
-        +text({
-          text: checkProps.subtitle,
-          variant: 's',
-          weight: 'medium'
-        })
-      form.consultForm__form(action="" data-validate no-validate) 
+      .consultForm__text
+        +title({ text: checkProps.title, variant: '3', })
+        +text({ text: checkProps.subtitle, variant: 's', weight: 'medium' })
+      form.consultForm__form(action, data-validate, no-validate)
         .form__body.js-form__body
-          div 
-            +input({ 
-              validateName: 'fio',
-              placeholder: 'Иван Иванов',
-              name: 'name',
-              required: true,
-              classes: 'input--theme--t input--size--l',
-              label: 'ФИО'
-            })
           div
-            +input({ 
-              placeholder: '+7 (000) 000-00-00',
-              name: 'phone', 
-              validateName: 'phone', 
-              required: true, 
-              classes: 'input--size--l',
-              label: 'Телефон'
-            }, { 'data-input-mask': 'phone'})
+            +input({ validateName: 'fio', placeholder: 'Иван Иванов', name: 'name', required: true, classes: 'input--theme--t input--size--l', label: 'ФИО' })
           div
-            +btn({
-              type: 'submit',
-              name: 'Оставить заявку',
-              dot: true,
-            })
+            +input({ placeholder: '+7 (000) 000-00-00', name: 'phone', validateName: 'phone', required: true, classes: 'input--size--l', label: 'Телефон' }, { 'data-input-mask': 'phone'})
           div
-            +checkbox({
-              name: 'agreement',
-              custom: true,
-              required: true,
-            })
-              span Я прочитал(а) и согласен(на)&nbsp;c<br>
-                a.consultForm__link(href='javascript:void(0)' target="_blank") Политикой конфиденциальности
-        +formSuccess()
-        +formError()
-
-
-              
-
+            +btn({ type: 'submit', name: checkProps.buttonText, dot: true, })
+          div
+            +checkbox({ name: 'agreement', custom: true, required: true, })
+              span Я прочитал(а) и согласен(на) c&nbsp;
+                a.consultForm__link(href="javascript:void(0)", target="_blank") Политикой конфиденциальности
+        +formSuccess
+        +formError

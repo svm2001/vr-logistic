@@ -6,43 +6,30 @@ block content
   include ../../ui/btn
   include ../../ui/checkbox
   include ../../ui/radio
+  include ../../ui/news-item
   .dev-container
-    .ui-container 
+    .ui-container
       .ui-block
-        span.ui-title Заголовки 
+        span.ui-title Заголовки
         .ui-headings.ui-inner
-          - const uiTitles = ['H1 Title', 'H2 Title', 'H3 Title', 'H4 Title']
+          - const uiTitles = ["H1 Title", "H2 Title", "H3 Title", "H4 Title"]
           each title, index in uiTitles
-            +title({
-              text: title,
-              variant: (index + 1).toString()
-            })
+            +title({ text: title, variant: (index + 1).toString() })
       .ui-block
-      - const textVariants = ['xxl', 'xl', 'l', 'm', 's', 'xs', 'xxs', 'xxxs']
-      - const uiTexts = ['Text XXL', 'Text XL', 'Text L', 'Text M', 'Text S', 'Text XS', 'Text XXS', 'Text XXXS']
+      - const textVariants = ["xxl", "xl", "l", "m", "s", "xs", "xxs", "xxxs"]
+      - const uiTexts = ["Text XXL", "Text XL", "Text L", "Text M", "Text S", "Text XS", "Text XXS", "Text XXXS"]
         span.ui-title Текста
         .ui-texts.ui-inner
           each text, index in uiTexts
-            +text({
-              text: text,
-              variant: textVariants[index]
-            })
+            +text({ text: text, variant: textVariants[index] })
         .ui-texts.ui-inner
           each text, index in uiTexts
-            +text({
-              text: text,
-              variant: textVariants[index],
-              weight: 'medium'
-            })   
+            +text({ text: text, variant: textVariants[index], weight: 'medium' }) 
         .ui-texts.ui-inner
           each text, index in uiTexts
-            +text({
-              text: text,
-              variant: textVariants[index],
-              weight: 'bold'
-            })        
-      .ui-block   
-        span.ui-title Кнопки 
+            +text({ text: text, variant: textVariants[index], weight: 'bold' }) 
+      .ui-block
+        span.ui-title Кнопки
         .ui-buttons.ui-inner
           -
             const buttons = [
@@ -85,12 +72,12 @@ block content
               { name: 'Button with icon', type: 'button', icon: true, iconName: 'vite', iconPosition: 'left', disabled: true, iconPosition: 'right', variant: 'secondary' },
               { name: 'Button with icon', type: 'button', icon: true, iconName: 'vite', iconPosition: 'left', size: 'small', iconPosition: 'right', variant: 'secondary' },
               { name: 'Button with icon', type: 'button', icon: true, iconName: 'vite', iconPosition: 'left', size: 'small', disabled: true, iconPosition: 'right', variant: 'secondary' },
-              
+  
               { name: '', icon: true, iconName: 'vite' },
               { name: '', icon: true, iconName: 'vite', disabled: true },
               { name: '', icon: true, iconName: 'vite', size: 'small' },
               { name: '', icon: true, iconName: 'vite', disabled: true, size: 'small' },
-              
+  
               { name: '', icon: true, iconName: 'vite', variant: 'secondary' },
               { name: '', icon: true, iconName: 'vite', disabled: true, variant: 'secondary' },
               { name: '', icon: true, iconName: 'vite', size: 'small', variant: 'secondary' },
@@ -98,8 +85,8 @@ block content
             ]
           each button in buttons
             +btn(button)
-      .ui-block   
-        span.ui-title Чекбоксы 
+      .ui-block
+        span.ui-title Чекбоксы
         .ui-checkboxes.ui-inner
           -
             const checkboxes = [
@@ -110,12 +97,12 @@ block content
             ]
           each checkbox in checkboxes
             if checkbox.custom
-              +checkbox()
+              +checkbox
                 span Custom Checkbox
                 img(src="/images/arrow-r.svg")
             else
               +checkbox(checkbox)
-      .ui-block   
+      .ui-block
         span.ui-title Радиокнопки
         .ui-checkboxes.ui-inner
           -
@@ -126,4 +113,27 @@ block content
               { text: 'Radio Disabled', disabled: true }
             ]
           each radio in radios
-            +radio(radio)          
+            +radio(radio) 
+
+      .ui-block
+        span.ui-title Карточки Новостей
+        .ui-news-item.ui-inner
+          -
+            const newsItems = [
+              { 
+                variant: 'slider', title: 'Новая услуга мультимодальных перевозок',
+                description: 'Компания расширяет возможности логистики, предлагая мультимодальные перевозки с интеграцией железнодорожного и автомобильного транспорта для быстрого и удобного перемещения грузов.', 
+                date: '15 октября 2024', 
+                img: '../images/news/image-news1.png',
+                icon: 'arrow-green-rotate',
+              },
+              { 
+                variant: 'grid', title: 'Новая услуга мультимодальных перевозок', 
+                description: 'Компания расширяет возможности логистики, предлагая мультимодальные перевозки с интеграцией железнодорожного и автомобильного транспорта для быстрого и удобного перемещения грузов.', 
+                sticker: 'Наша компания', 
+                img: '../images/news/image-news1.png',
+                icon: 'arrow-big-right',
+              },
+            ]
+          each news in newsItems
+            +newsItem(news)

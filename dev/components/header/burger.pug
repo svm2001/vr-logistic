@@ -1,0 +1,134 @@
+-
+  const defaultBurgerProps = {
+      classes: '',
+      accordions: [
+          {
+              name: 'О компании',
+              isOpen: true,
+                  links: [
+                      {
+                          name: 'О компании 1',
+                          href: 'javascript:void(0);'
+                      },
+                      {
+                          name: 'О компании 2',
+                          href: 'javascript:void(0);'
+                      }
+                ]
+          },
+          {
+              name: 'Услуги',
+              isOpen: false,
+              links: [
+                  {
+                      name: 'Услугa 1',
+                      href: 'javascript:void(0);'
+                  },
+                  {
+                      name: 'Услугa 2',
+                      href: 'javascript:void(0);'
+                  },
+                  {
+                      name: 'Услугa 3',
+                      href: 'javascript:void(0);'
+                  },
+                  {
+                      name: 'Услугa 4',
+                      href: 'javascript:void(0);'
+                  }
+              ]
+          },
+          {
+              name: 'Экспертиза',
+              isOpen: false,
+              links: [
+                  {
+                      name: 'Экспертиза 1',
+                      href: 'javascript:void(0);'
+                  },
+                  {
+                      name: 'Экспертиза 2',
+                      href: 'javascript:void(0);'
+                  },
+                  {
+                      name: 'Экспертиза 3',
+                      href: 'javascript:void(0);'
+                  },
+                  {
+                      name: 'Экспертиза 4',
+                      href: 'javascript:void(0);'
+                  }
+              ]
+          },
+          {
+              name: 'Новости',
+              isOpen: false,
+              links: [
+                  {
+                      name: 'Новость 1',
+                      href: 'javascript:void(0);'
+                  },
+                  {
+                      name: 'Новость 2',
+                      href: 'javascript:void(0);'
+                  },
+                  {
+                      name: 'Новость 3',
+                      href: 'javascript:void(0);'
+                  },
+              ]
+          },
+          {
+              name: 'Карьера',
+              isOpen: false,
+              links: [
+                  {
+                      name: 'Карьера 1',
+                      href: 'javascript:void(0);'
+                  },
+                  {
+                      name: 'Карьера 2',
+                      href: 'javascript:void(0);'
+                  },
+              ]
+          }
+      ]
+  }
+
+mixin burger(props = defaultBurgerProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultBurgerProps.classes,
+    }
+
+  include ../../ui/icon
+  include ../../ui/accordion
+  .burger(class=`${checkProps.classes}`)&attributes(...dataset)
+    .container
+      .burger__top
+        button.burger__close.js-burger-close
+          +icon('close-burger')
+      .burger__body
+        .burger__accordions
+          each accordion in props.accordions
+            +accordion({ name: accordion.name, isOpen: accordion.isOpen })
+              .accordion__content-inner.burger__accordions-list
+                each link in accordion.links
+                  a(href=link.href)= link.name
+        .burger__btns
+          +btn({ name: 'Обратная связь', variant: 'secondary', size: 'small', classes: 'burger-call-form' }, {'data-hystmodal': '#consult-form'})
+          +btn({ name: 'Личный кабинет', size: 'small', type: 'link', target: '_blank' })
+        .burger__requsites
+          p.burger__requsites-title Реквизиты
+          .burger__requsites-list
+            p.burger__requsites-item ООО "Компания"
+            p.burger__requsites-item ИНН 1234567890
+            p.burger__requsites-item ОГРН 1234567890
+        .burger__links
+          a.burger__links-item(href="javascript:void(0);") Контакты
+          a.burger__links-item(href="javascript:void(0);") Политика конфиденциальности
+        .burger__icons
+          +btn({ classes: 'header__custom-btn', name: 'EN', size: 'small', }, {title: 'Выбрать язык'})
+          +btn({ classes: 'header__custom-btn', name: '', icon: true, iconName: 'search', size: 'small', }, {title: 'Поиск'})
+
+  .burger-plug

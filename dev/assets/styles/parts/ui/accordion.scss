@@ -1,0 +1,59 @@
+@import '../../mixins/vw';
+
+.accordion {
+  width: 100%;
+  border-bottom: 1px solid $bg-green-light;
+
+  &-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    transition: $transition;
+
+    > * {
+      overflow: hidden;
+    }
+  }
+
+  &.is-open &-content {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    visibility: visible;
+    @include dim('pb', 15, 15);
+    @include merge;
+  }
+
+  &__button {
+    @include dim('pb', 15, 15);
+    @include dim('pt', 15, 15);
+    @include merge;
+    position: relative;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    background-color: $white;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    svg {
+      transition: $transition;
+    }
+
+    span {
+      @include dim('fz', 20, 20);
+      @include merge;
+    }
+  }
+
+  &.is-open &__button::after {
+    transform: translateY(-50%) rotate(-135deg);
+  }
+
+  &.is-open .accordion__button svg {
+    transform: rotate(180deg);
+  }
+}

@@ -1,8 +1,3 @@
-include ../ui/news-item
-include ../ui/btn
-include ../ui/icon
-include ../ui/input
-
 
 -
   const defaultNewsProps = {
@@ -59,30 +54,24 @@ mixin news(props = defaultNewsProps, ...dataset)
         }
       ]
     }
+    
+  include ../ui/news-item
+  include ../ui/btn
+  include ../ui/icon
+  include ../ui/input
+  include ../ui/headline
 
   section.news
-    .container 
+    .container
       .news__block-background
       .news__column.min
-        a.news__link(href='javascript:void(0);')= newsProps.text.title
-          +icon('arrow-right-opacity')
-            
+        .news__top
+          +headline({ text: newsProps.text.title, href: 'javascript:void(0);', classes: 'news__link' })
         .news__subscribe
-          h4.news__title= newsProps.text.subscribe      
-          form.news__subscribe-form(action="" data-validate no-validate) 
-              +input({ 
-                validateName: 'email',
-                placeholder: 'E-mail',
-                name: 'email',
-                required: true,
-                classes: 'input--theme--t input--size--l',
-              })
-              +btn({ 
-                name: 'Подписаться', 
-                type: 'submit',
-                variant: 'secondary' 
-                },
-              )
+          h4.news__title= newsProps.text.subscribe
+          form.news__subscribe-form(action, data-validate, no-validate) 
+            +input({ validateName: 'email', placeholder: 'E-mail', name: 'email', required: true, classes: 'input--theme--t input--size--l' })
+            +btn({ name: 'Подписаться', type: 'submit', variant: 'secondary' })
       .news__column
         .news__swiper-container
           .swiper.news-swiper

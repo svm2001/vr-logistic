@@ -2,8 +2,8 @@
   const defaultHeroProps = {
       classes: '',
       title: 'Международная логистика и таможенное оформление',
-      video: './video/video.webm',
-      videoType: 'video/webm',
+      video: './video/vr.mp4',
+      videoType: 'video/mp4',
       buttonText: 'Оставить заявку',
   }
 
@@ -20,19 +20,9 @@ mixin hero(props = defaultHeroProps, ...dataset)
   include ../ui/title
   include ../ui/btn
   section.hero(class=`${checkProps.classes}`)&attributes(...dataset)
-      video(playsinline autoplay muted loop)
-          source(src=checkProps.video, type=checkProps.videoType)
-      .container
-          .hero__inner
-              +title({
-                  classes: 'hero__title',
-                  text: checkProps.title,
-                  variant: '1'
-              })
-              +btn({
-                  classes: 'hero__btn',
-                  name: checkProps.buttonText,
-                  dot: true,
-              }, { 'data-hystmodal': '#consult-form' })
-              
-
+    video(playsinline, autoplay, muted)
+      source(src=checkProps.video, type=checkProps.videoType)
+    .container
+      .hero__inner
+        +title({ classes: 'hero__title', text: checkProps.title, variant: '1' })
+        +btn({ classes: 'hero__btn', name: checkProps.buttonText, dot: true, }, { 'data-hystmodal': '#consult-form' })

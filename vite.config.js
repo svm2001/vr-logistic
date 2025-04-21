@@ -71,7 +71,7 @@ export default defineConfig({
     }),
     {
       name: 'html-minifier',
-      transformIndexHtml: async (html) => {
+      transformIndexHtml: async html => {
         return await minify(html, {
           removeClosingSlash: true,
         })

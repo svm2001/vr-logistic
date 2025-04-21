@@ -1,0 +1,17 @@
+-
+  const defaultConsultProps = {
+      classes: '',
+      btnText: ''
+  }
+
+mixin consult(props = defaultConsultProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultConsultProps.classes,
+        btnText: props.btnText ? props.btnText : defaultConsultProps.btnText,
+    }
+
+  include consult-form
+  section.consult(class=`${checkProps.classes}`)&attributes(...dataset)
+    .container
+      +consult-form({ buttonText: checkProps.btnText })

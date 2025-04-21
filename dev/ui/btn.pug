@@ -54,7 +54,7 @@ mixin btn(props = defaultBtnProps, ...dataset)
         if checkProps.iconPosition === 'right'
           span.btn__icon
             +icon(checkProps.iconName)
-      else 
+      else
         if checkProps.name !== ''
           span.btn__text= checkProps.name
             if checkProps.dot
@@ -63,20 +63,22 @@ mixin btn(props = defaultBtnProps, ...dataset)
     a.btn(
       href=checkProps.link,
       target=checkProps.target === "_self" ? "" : checkProps.target,
-      class=checkProps.disabled ? `
-        ${checkProps.classes}
-        disabled
-        btn-size-${checkProps.size}
-        btn-variant-${checkProps.variant}
-        ${checkProps.dot ? 'btn-dot' : ''}
-        ${checkProps.name === '' ? 'btn-icon' : ''}
-      ` : `
-        ${checkProps.classes}
-        btn-size-${checkProps.size}
-        btn-variant-${checkProps.variant}
-        ${checkProps.dot ? 'btn-dot' : ''}
-        ${checkProps.name === '' ? 'btn-icon' : ''}
-      `
+      class=checkProps.disabled
+        ? `
+              ${checkProps.classes}
+              disabled
+              btn-size-${checkProps.size}
+              btn-variant-${checkProps.variant}
+              ${checkProps.dot ? "btn-dot" : ""}
+              ${checkProps.name === "" ? "btn-icon" : ""}
+            `
+        : `
+              ${checkProps.classes}
+              btn-size-${checkProps.size}
+              btn-variant-${checkProps.variant}
+              ${checkProps.dot ? "btn-dot" : ""}
+              ${checkProps.name === "" ? "btn-icon" : ""}
+            `
     )&attributes(...dataset)
       if checkProps.icon
         if checkProps.iconPosition === 'left'
@@ -87,7 +89,7 @@ mixin btn(props = defaultBtnProps, ...dataset)
         if checkProps.iconPosition === 'right'
           span.btn__icon
             +icon(checkProps.iconName)
-      else 
+      else
         if checkProps.name !== ''
           span.btn__text= checkProps.name
             if checkProps.dot

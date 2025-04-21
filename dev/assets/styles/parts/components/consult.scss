@@ -1,0 +1,25 @@
+@import '../../mixins/vw';
+
+.consult {
+  background: $bg-line;
+  @include dim('pt', 50, 40);
+  @include dim('pb', 57, 50);
+  @include merge;
+
+  &--page {
+    .consultForm {
+      justify-content: space-between;
+    }
+
+    .form__body {
+      @include dim('w', 820, 820);
+      @include merge;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .consult {
+    padding: 50px 0;
+  }
+}

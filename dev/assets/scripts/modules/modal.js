@@ -14,6 +14,6 @@ export default function modal() {
     afterClose: () => {
       body.style.paddingRight = '0'
       header.style.paddingRight = '0'
-    }
+    },
   })
 }

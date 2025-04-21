@@ -1,0 +1,74 @@
+-
+  const defaultHeaderProps = {
+      classes: '',
+  }
+
+mixin header(props = defaultHeaderProps, ...dataset)
+  -
+    const checkProps = {
+        links: props.links ? props.links : defaultHeaderProps.links,
+        classes: props.classes ? props.classes : defaultHeaderProps.classes,
+    }
+    //- TODO: в будущем добавить "href" свойство для навигации и передать в шаблон
+    const headerNav = [
+      {
+        name: 'О компании',
+        href: 'javascript:void(0);',
+        menu: null
+      },
+      {
+        name: 'Услуги',
+        href: 'javascript:void(0);',
+        menu: 'services'
+      },
+      {
+        name: 'Экспертиза',
+        href: 'javascript:void(0);',
+        menu: 'expertises'
+      },
+      {
+        name: 'Новости',
+        href: 'javascript:void(0);',
+        menu: null
+      },
+      {
+        name: 'Карьера',
+        href: 'javascript:void(0);',
+        menu: null
+      },
+      {
+        name: 'Контакты',
+        href: 'javascript:void(0);',
+        menu: null
+      }
+    ]
+  include ../../ui/btn
+  include header-menu-services
+  include header-menu-expertises
+  include burger
+  header.header(class=`${checkProps.classes}`)&attributes(...dataset)
+    .container
+      .header__wrapper
+        a.header__logo(href="/")
+          img(src="./icons/logo/logo-header.svg", alt="vr-logistic-logo")
+        nav.header__nav
+          each nav in headerNav
+            a.header__nav-item(
+              href="javascript:void(0);",
+              data-hover-menu=nav.menu
+            )= nav.name
+        .header__info
+          +btn({ classes: 'header__custom-btn', name: '', icon: true, iconName: 'search', size: 'small', }, { title: 'Поиск' })
+          .header__tablets-btns
+            +btn({ name: '', variant: 'secondary', size: 'small', type: 'link', link: 'tel:+74951234567', classes: 'header__custom-btn header__custom-btn--phone', icon: true, iconName: 'phone', })
+            +btn({ name: '', variant: 'secondary', size: 'small', type: 'link', link: 'javascript:void(0);', classes: 'header__custom-btn header__custom-btn--phone', icon: true, iconName: 'account-transparent', })
+          .header__info-btns
+            +btn({ name: 'Обратная связь', variant: 'secondary', size: 'small' }, { 'data-hystmodal': '#consult-form' })
+            +btn({ name: 'Личный кабинет', size: 'small', type: 'link', target: '_blank' })
+          +btn({ classes: 'header__custom-btn', name: 'EN', size: 'small', }, { title: 'Выбрать язык' })
+          button.header__burger.js-burger-trigger
+            +icon('burger')
+    +header-menu-services
+    +header-menu-expertises
+    .header__plug
+    +burger

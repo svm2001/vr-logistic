@@ -1,0 +1,36 @@
+.headline {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  transition: $transition;
+  @include dim('gap', 30, 30);
+  @include dim('fz', 25, 20);
+  @include merge;
+
+  svg {
+    @include dim('h', 23, 23);
+    @include dim('w', 56, 56);
+    @include merge;
+    transition: $transition;
+
+    path {
+      transition: $transition;
+    }
+  }
+
+  &:hover {
+    svg {
+      transform: translateX(20%);
+
+      path {
+        fill: $logo-green;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .headline {
+    font-size: 18px;
+  }
+}

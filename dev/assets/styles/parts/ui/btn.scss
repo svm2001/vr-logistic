@@ -18,7 +18,7 @@ button {
   width: fit-content;
   cursor: pointer;
   overflow: hidden;
-  transition: .2s;
+  transition: 0.2s;
   text-decoration: none;
 
   &__text {
@@ -38,13 +38,14 @@ button {
     border-width: 2px;
     border-style: solid;
     aspect-ratio: 1/1;
-    transition: .2s ease-in-out;
+    transition: 0.2s ease-in-out;
   }
 
   &__icon {
     aspect-ratio: 1 / 1;
     display: flex;
     align-items: center;
+    justify-content: center;
 
     svg {
       width: 100%;
@@ -213,5 +214,40 @@ button {
       border-color: $btn-text-disabled;
       background-color: $btn-text-disabled;
     }
+  }
+
+  &.btn--play {
+    @include dim('min-w', 50, 50);
+    @include dim('min-h', 50, 50);
+    @include merge;
+    aspect-ratio: 1 / 1;
+    background: rgba(255, 255, 255, 0.33);
+    border-radius: 50%;
+    border: 1px solid $white;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background: $white;
+
+      svg path {
+        fill: $icon-accent;
+      }
+    }
+
+    svg {
+      transform: translateX(10%);
+
+      path {
+        transition: $transition;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .btn.btn--play {
   }
 }

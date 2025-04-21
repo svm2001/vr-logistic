@@ -86,7 +86,8 @@
       @include merge;
     }
 
-    &-value, &-value + span {
+    &-value,
+    &-value + span {
       color: $text-accent;
       white-space: nowrap;
     }
@@ -100,7 +101,8 @@
       align-items: end;
     }
 
-    &:nth-child(3), &:last-child {
+    &:nth-child(3),
+    &:last-child {
       @include dim('pt', 40, 40);
       @include merge;
     }
@@ -118,11 +120,10 @@
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1199px) {
   .about {
-
     &__inner {
-      gap: 150px; 
+      gap: 150px;
     }
 
     &__info {
@@ -156,7 +157,7 @@
       &:nth-child(even) {
         align-items: start;
       }
-  
+
       &:not(:first-child) {
         padding-top: 20px;
       }
@@ -167,13 +168,14 @@
         border-right: none;
         border-bottom: 1px solid $bg-green-light;
       }
-  
+
       &:last-child {
         border: none;
         transform: none;
       }
 
-      &-value p, &-value + span {
+      &-value p,
+      &-value + span {
         font-weight: 600;
       }
 
@@ -215,7 +217,8 @@
       }
       padding-top: 0;
       height: 158px;
-      &-value p, &-value + span {
+      &-value p,
+      &-value + span {
         font-size: 80px;
       }
     }

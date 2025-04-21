@@ -1,0 +1,80 @@
+-
+  const defaultExpertiseProps = {
+      classes: '',
+      title: 'Отраслевая экспертиза',
+      link: 'javascript:void(0);',
+      expertises: [
+          {
+              title: 'Телекоммуникации',
+              text: 'Эффективные логистические решения для связи и цифровых технологий',
+              icon: 'telecom',
+              link: 'javascript:void(0);'
+          },
+          {
+              title: 'Автопром',
+              text: 'Надежная доставка и управление автопарком для бизнеса',
+              icon: 'autoprom',
+              link: 'javascript:void(0);'
+          },
+          {
+              title: 'Спецтехника',
+              text: 'Оптимизация транспортировки и хранения строительного оборудования',
+              icon: 'spectechic',
+              link: 'javascript:void(0);'
+          },
+          {
+              title: 'Техника и электроника',
+              text: 'Точные логистические процессы для хрупкой электроники и устройств',
+              icon: 'techs-and-electronics',
+              link: 'javascript:void(0);'
+          },
+          {
+              title: 'FMCG',
+              text: 'Быстрая и гибкая поставка товаров повседневного спроса',
+              icon: 'fmcg',
+              link: 'javascript:void(0);'
+          },
+          {
+              title: 'Ритейл',
+              text: 'Своевременная доставка для розничных сетей и e-commerce',
+              icon: 'retail',
+              link: 'javascript:void(0);'
+          },
+          {
+              title: 'Нефтегазовая',
+              text: 'Безопасная логистика для транспортировки нефти, газа и сырья',
+              icon: 'nefte-gaz',
+              link: 'javascript:void(0);'
+          },
+          {
+              title: 'Химическая',
+              text: 'Специализированные решения для химических веществ и материалов',
+              icon: 'chemistry',
+              link: 'javascript:void(0);'
+          },
+          {
+              title: 'Машиностроение',
+              text: 'Технически точная логистика для тяжелого оборудования и деталей',
+              icon: 'machine-building',
+              link: 'javascript:void(0);'
+          }
+      ]
+  }
+
+mixin expertise(props = defaultExpertiseProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultExpertiseProps.classes,
+        title: props.title ? props.title : defaultExpertiseProps.title,
+        link: props.link ? props.link : defaultExpertiseProps.link,
+        expertises: props.expertises ? props.expertises : defaultExpertiseProps.expertises,
+    }
+  include ../../ui/headline
+  include expertise-item
+  section.expertise(class=`${checkProps.classes}`)&attributes(...dataset)
+    .container
+      .expertise__inner
+        +headline({ text: checkProps.title, link: checkProps.link })
+        .expertise__list
+          each item in checkProps.expertises
+            +expertise-item(item)

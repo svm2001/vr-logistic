@@ -21,7 +21,7 @@
     align-items: center;
     cursor: pointer;
 
-    @include dim('pl', 40, 40);
+    @include dim('pl', 40, 30);
     @include dim('fz', 18, 14);
     @include dim('gap', 20, 20);
     @include merge;
@@ -47,6 +47,8 @@
     align-items: center;
     gap: 8px;
     font-weight: 500;
+    @include dim('fz', 16, 14);
+    @include merge;
   }
 
   &__decore {
@@ -55,7 +57,7 @@
     left: 1px;
     transform: translateY(-50%);
     aspect-ratio: 1 / 1;
-    @include dim('w', 26, 26);
+    @include dim('w', 26, 20);
     @include merge;
 
     &::before,
@@ -80,7 +82,7 @@
     }
 
     &::after {
-      @include dim('w', 14, 14);
+      @include dim('w', 14, 11);
       @include dim('br', 3, 3);
       @include merge;
       aspect-ratio: 1 / 1;
