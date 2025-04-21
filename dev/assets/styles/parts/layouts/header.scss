@@ -9,7 +9,7 @@
   z-index: 100;
   @include dim('h', 90, 84);
   @include merge;
-  background: $white;
+  background: $bg-secondary;
 
   &__tablets-btns,
   &__burger {
@@ -116,6 +116,7 @@
 
     .btn__text {
       color: $text-secondary;
+      font-weight: 500;
     }
 
     svg {
@@ -305,7 +306,7 @@
     }
 
     &__logo {
-      width: 180px;
+      width: 155px;
     }
   }
 }

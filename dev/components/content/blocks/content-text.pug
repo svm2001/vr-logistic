@@ -1,0 +1,184 @@
+-
+  const defaultContentTextProps = {
+      classes: '',
+      subTitle: '',
+      smallTitle: '',
+      btnText: '',
+      btn: false,
+      btnModal: false,
+      topTexts: [],
+      tags: [],
+      unorderedList: [],
+      unorderedListTitle: '',
+      conditionsList: [],
+      orderedList: [],
+      dashedLinks: [],
+      dashedTexts: [],
+      vacanciesList: [],
+      iconList: [],
+  }
+
+mixin content-text(props = defaultContentTextProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultContentTextProps.classes,
+        topTexts: props.topTexts ? props.topTexts : defaultContentTextProps.topTexts,
+        btn: props.btn ? props.btn : defaultContentTextProps.btn,
+        btnText: props.btnText ? props.btnText : defaultContentTextProps.btnText,
+        btnModal: props.btnModal ? props.btnModal : defaultContentTextProps.btnModal,
+        tags: props.tags ? props.tags : defaultContentTextProps.tags,
+        unorderedList: props.unorderedList ? props.unorderedList : defaultContentTextProps.unorderedList,
+        unorderedListTitle: props.unorderedListTitle ? props.unorderedListTitle : defaultContentTextProps.unorderedListTitle,
+        orderedList: props.orderedList ? props.orderedList : defaultContentTextProps.orderedList,
+        dashedLinks: props.dashedLinks ? props.dashedLinks : defaultContentTextProps.dashedLinks,
+        dashedTexts: props.dashedTexts ? props.dashedTexts : defaultContentTextProps.dashedTexts,
+        subTitle: props.subTitle ? props.subTitle : defaultContentTextProps.subTitle,
+        smallTitle: props.smallTitle ? props.smallTitle : defaultContentTextProps.smallTitle,
+        vacanciesList: props.vacanciesList ? props.vacanciesList : defaultContentTextProps.vacanciesList,
+        conditionsList: props.conditionsList ? props.conditionsList : defaultContentTextProps.conditionsList,
+        iconList: props.iconList ? props.iconList : defaultContentTextProps.iconList,
+    }
+  include ../../../ui/btn
+  include ../../../ui/text
+  include ../../../ui/icon
+  .content-text(class=`${checkProps.classes}`)&attributes(...dataset)
+      if checkProps.topTexts.length > 0
+        .content-text__top-texts
+            each text in checkProps.topTexts
+              +text({
+                text: text,
+                classes: 'content-text__text',
+                variant: 's',
+                weight: 'medium'
+              })
+
+      if checkProps.btn
+        +btn({
+          name: checkProps.btnText,
+          classes: 'content-text__btn',
+          dot: true,
+        }, (checkProps.btnModal ? { 'data-hystmodal': '#consult-form' } : ''))
+
+      if checkProps.tags.length > 0
+        .content-text__tags
+            each tag in checkProps.tags
+              +text({
+                text: tag,
+                classes: 'content-text__tag',
+                variant: 'xxs',
+                weight: 'medium'
+              })
+      if checkProps.unorderedList.length > 0
+        if checkProps.unorderedListTitle
+          +text({
+            variant: 'xs',
+            weight: 'bold',
+            text: checkProps.unorderedListTitle,
+            classes: 'content-text__unordered-list-title'
+          })
+        ul.content-text__unordered-list
+            each item in checkProps.unorderedList
+              li.content-text__unordered-list-item
+                span.content-text__unordered-list-item-dot
+                if item.title
+                    +text({
+                        text: item.title,
+                        classes: 'content-text__unordered-list-item-title',
+                        variant: 'xxs',
+                        weight: 'bold'
+                    })
+                +text({
+                    text: item.text,
+                    classes: 'content-text__unordered-list-item-text',
+                    variant: 'xxs',
+                    weight: 'medium'
+                })
+
+      if checkProps.orderedList.length > 0
+          ol.content-text__unordered-list.content-text__unordered-list--numbers
+            each item in checkProps.orderedList
+                li.content-text__unordered-list-item
+                    span.content-text__unordered-list-item-dot
+                    +text({
+                      text: item,
+                      classes: 'content-text__unordered-list-item-text',
+                      variant: 'xxs',
+                      weight: 'medium'
+                    })
+
+      if checkProps.dashedLinks.length > 0
+        if checkProps.subTitle
+          +text({
+            variant: 'l',
+            weight: 'bold',
+            text: checkProps.subTitle,
+            classes: 'content-text__sub-title'
+          })
+        .content-text__dashed-links
+          each link in checkProps.dashedLinks
+            a(href="javascript:void(0);")= link
+
+      if checkProps.smallTitle
+        +text({
+          variant: 's',
+          weight: 'bold',
+          text: checkProps.smallTitle,
+          classes: 'content-text__small-title'
+        })
+
+      if checkProps.dashedTexts.length > 0
+        .content-text__dashed-texts
+          each text in checkProps.dashedTexts
+            p= text
+
+      if checkProps.vacanciesList.length > 0
+        .content-text__vacancies-list
+          each item in checkProps.vacanciesList
+            a.content-text__vacancies-list-item(href='/career-detail.html')
+              +title({
+                variant: '2',
+                text: item.title,
+                classes: 'content-text__vacancies-list-item-title'
+              })
+              .content-text__vacancies-list-item-tags
+                each tag in item.tags
+                  +text({
+                    variant: 'xs',
+                    weight: 'medium',
+                    text: tag,
+                    classes: 'content-text__vacancies-list-item-tag'
+                  })
+      if checkProps.conditionsList.length > 0
+        .content-text__conditions-list
+          each item in checkProps.conditionsList
+            .content-text__conditions-list-item
+                +text({
+                  variant: 'xxs',
+                  weight: 'medium',
+                  text: item.title,
+                  classes: 'content-text__conditions-list-item-title'
+                })
+                +text({
+                  variant: 'xxs',
+                  weight: 'medium',
+                  text: item.text,
+                  classes: 'content-text__conditions-list-item-text'
+                })
+
+      if checkProps.iconList.length > 0
+        .content-text__icon-list
+          each item in checkProps.iconList
+            .content-text__icon-list-item
+              +icon(item.icon)
+              +text({
+                variant: 'xxs',
+                weight: 'bold',
+                text: item.title,
+                classes: 'content-text__icon-list-item-title'
+              })
+              +text({
+                variant: 'xxs',
+                weight: 'medium',
+                text: item.text,
+                classes: 'content-text__icon-list-item-text'
+              })

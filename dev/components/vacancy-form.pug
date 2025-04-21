@@ -1,0 +1,85 @@
+-
+  const defaultVacancyFormProps = {
+      classes: '',
+  }
+
+mixin vacancy-form(props = defaultVacancyFormProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultVacancyFormProps.classes,
+    }
+
+  include ../ui/title
+  include ../ui/btn
+  include ../ui/input
+  include ../ui/textarea
+  include ../ui/checkbox
+  include ../components/formResponse/formSuccess
+  include ../components/formResponse/formError
+  form.vacancy-form(class=`${checkProps.classes}` action="" data-validate no-validate )&attributes(...dataset)
+    .form__body.js-form__body
+        +textarea({
+          placeholder: 'Ваше резюме',
+          validateName: 'about',
+          name: 'about'
+        })
+        .vacancy-form__file.js-input-file(
+            data-allowed-file-formats=['doc', 'docx', 'png', 'jpg', 'jpeg', 'pdf']
+            data-allowed-file-max-megabyte-size=20
+        )
+            input(type="file" id="vacancy-resume-file" required name='resume-file')
+            label(for="vacancy-resume-file") Прикрепить резюме
+            span.input-file__size
+            span.input-file__file
+        .vacancy-form__fields
+            h3 Контактные данные
+            .vacancy-form__fields-inner
+                +input({
+                    validateName: 'fio',
+                    placeholder: 'Иван Иванов',
+                    name: 'name',
+                    required: true,
+                    classes: 'input--theme--t input--size--l',
+                    label: 'ФИО'
+                })
+                +input({
+                    placeholder: 'Телефон для связи',
+                    name: 'phone',
+                    validateName: 'phone',
+                    required: true,
+                    classes: 'input--size--l',
+                    label: 'Телефон'
+                }, { 'data-input-mask': 'phone'})
+                +input({
+                    placeholder: 'Ваша почта',
+                    name: 'email',
+                    validateName: 'email',
+                    required: false,
+                    classes: 'input--size--l',
+                    label: 'E-mail'
+                })
+        .vacancy-form__submit
+            +btn({
+                dot: true,
+                name: 'Оставить заявку',
+                type: 'submit',
+            })
+            +checkbox({
+              name: 'agreement',
+              custom: true,
+              required: true,
+            })
+              span Я прочитал(а) и согласен(на) c&nbsp;
+                a.agreement-link(href='javascript:void(0)' target="_blank") Политикой конфиденциальности
+
+    +formSuccess({
+        title: 'Ваше резюме успешно отправлено',
+        subtitle: 'Если оно нам понравится, мы свяжемся с вами'
+    })
+    +formError({
+        title: 'Ошибка при отправке резюме',
+    })
+
+
+
+

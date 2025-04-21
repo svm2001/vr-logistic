@@ -1,0 +1,23 @@
+-
+    const defaultTagsProps = {
+        classes: '',
+        tags: [],
+    }
+
+mixin tags(props = defaultTagsProps, ...dataset)
+  -
+      const checkProps = {
+          classes: props.classes ? props.classes : defaultTagsProps.classes,
+          tags: props.tags ? props.tags : defaultTagsProps.tags,
+      }
+  include ../ui/text
+  section.tags(class=`${checkProps.classes}`)&attributes(...dataset)
+      .container
+          .tags__list.no-scrollbar
+              each tag in checkProps.tags
+                  +text({
+                    variant: 'xs',
+                    weight: 'bold',
+                    classes: 'tags__item',
+                    text: tag
+                  })

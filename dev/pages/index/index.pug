@@ -1,14 +1,34 @@
 extends ../../layouts/dev-layout
 block vars
 block content
-  -
-    const layoutNavlinks = [
-        {
-            title: 'Home',
-            url: '/home.html'
-        },
-    ]
-  .container
-    .layout-nav
-      each link in layoutNavlinks
-        a(href=link.url)= link.title
+    -
+        const layoutNavlinks = [
+            {
+                title: 'Главная',
+                url: '/home.html'
+            },
+            {
+                title: '',
+                url: '/'
+            },
+            {
+                title: 'Услуги (разводящая)',
+                url: '/services.html'
+            },
+            {
+                title: 'Услуги (детальная)',
+                url: '/services-detail.html'
+            },
+            {
+                title: 'Карьера (разводящая)',
+                url: '/career.html'
+            },
+            {
+                title: 'Карьера (детальная)',
+                url: '/career-detail.html'
+            },
+        ]
+    .container
+      .layout-nav
+            each link in layoutNavlinks
+                a(href=link.url)= link.title

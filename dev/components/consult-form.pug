@@ -40,6 +40,10 @@ mixin consult-form(props = defaultConsultFormProps, ...dataset)
           div
             +checkbox({ name: 'agreement', custom: true, required: true, })
               span Я прочитал(а) и согласен(на) c&nbsp;
-                a.consultForm__link(href="javascript:void(0)", target="_blank") Политикой конфиденциальности
-        +formSuccess
-        +formError
+                a.agreement-link(href='javascript:void(0)' target="_blank") Политикой конфиденциальности
+        +formSuccess()
+        +formError()
+
+
+
+

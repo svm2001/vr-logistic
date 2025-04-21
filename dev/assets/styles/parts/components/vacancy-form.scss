@@ -1,0 +1,125 @@
+@import '../../mixins/vw';
+
+.vacancy-form {
+  position: relative;
+  @include dim('max-w', 820, 820);
+
+  &--full {
+    max-width: 100% !important;
+  }
+
+  .form__body {
+    display: flex;
+    flex-direction: column;
+    @include dim('gap', 20, 20);
+    @include merge;
+
+    &:before {
+      @include dim('br', 20, 20);
+      @include merge;
+      height: calc(100% + 10px);
+    }
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    @include dim('gap', 20, 30);
+    @include merge;
+
+    &-inner {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      @include dim('gap', 20, 20);
+      @include merge;
+
+      @media(max-width: 767px) {
+        grid-template-columns: 1fr;
+      }
+
+      .input__message {
+        position: static;
+      }
+    }
+  }
+
+  &__submit {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    @include dim('gap', 20, 20);
+    @include merge;
+
+    @media(max-width: 767px) {
+      grid-template-columns: 1fr;
+
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+
+  &__file {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include dim('gap', 8, 8);
+    @include merge;
+
+    input[type="file"] {
+      position: absolute;
+      opacity: 0;
+    }
+
+    .input-file__file {
+      display: none;
+      text-align: center;
+    }
+
+    .file-error {
+      color: red;
+    }
+
+    label {
+      width: 100%;
+      border: 1px solid $icon-accent;
+      @include dim('br', 20, 20);
+      @include dim('h', 70, 60);
+      @include dim('fz', 18, 18);
+      @include merge;
+      color: $text-primary;
+      background: $white;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: $transition;
+
+      &:hover {
+        color: $white;
+        background-color: $btn-bg-hover;
+        border: 1px solid $bg-accent;
+      }
+
+      &:active {
+        background: $btn-bg-active;
+        border: 1px solid $btn-bg-active;
+      }
+    }
+
+    span {
+      color: var(--color-gray);
+      @include dim('fz', 14, 14);
+      @include merge;
+    }
+  }
+
+  [type="file"] {
+
+  }
+
+
+
+
+}

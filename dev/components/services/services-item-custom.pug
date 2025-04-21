@@ -1,0 +1,38 @@
+-
+  const defaultServicesItemCustomProps = {
+      classes: '',
+      name: '',
+      link: 'javascript:void(0);',
+      icon: '',
+      description: '',
+      gridMod: '',
+  }
+
+mixin services-item-custom(props = defaultServicesItemCustomProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultServicesItemCustomProps.classes,
+        name: props.name ? props.name : defaultServicesItemCustomProps.name,
+        link: props.link ? props.link : defaultServicesItemCustomProps.link,
+        icon: props.icon ? props.icon : defaultServicesItemCustomProps.icon,
+        description: props.description ? props.description : defaultServicesItemCustomProps.description,
+        gridMod: props.gridMod ? props.gridMod : defaultServicesItemCustomProps.gridMod,
+    }
+
+  include ../../ui/btn
+  include ../../ui/icon
+  include ../../ui/text
+  include ../../ui/title
+  a.services__item-custom(class=`${checkProps.classes} services__item-custom--${checkProps.gridMod}` href=checkProps.link)&attributes(...dataset)
+      +title({
+          text: checkProps.name,
+          variant: '4',
+          classes: 'services__item-custom-name'
+      })
+      +text({
+          variant: 'xs',
+          text: checkProps.description,
+          classes: 'services__item-custom-description'
+      })
+      .services__item-custom-icon
+          +icon(checkProps.icon)

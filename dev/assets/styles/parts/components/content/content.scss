@@ -1,0 +1,177 @@
+@import '../../../mixins/vw';
+
+.content {
+  position: relative;
+
+  &--rounded {
+    .content-container {
+      @include dim('border-top-left-radius', 20, 20);
+      @include dim('border-bottom-left-radius', 20, 20);
+      @include merge;
+    }
+  }
+
+  &--bg-gray {
+    background: $bg-secondary;
+  }
+
+  &--margin {
+    @include dim('mb', 40, 40);
+    @include merge;
+  }
+
+  &-container {
+    background: $white;
+    position: relative;
+    width: 100%;
+    max-width: calc(100% - 54px);
+    margin-left: auto;
+    margin-right: 0;
+    @include dim('pr', 130, 20);
+    @include dim('pl', 40, 20);
+    @include dim('pt', 30, 20);
+    @include dim('pb', 30, 20);
+    @include merge;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: flex-start;
+    @include dim('gap', 20, 10);
+    @include merge;
+  }
+
+  &.items-center {
+    .content__inner {
+      align-items: center;
+
+      @media(max-width: 767px) {
+        align-items: flex-start;
+
+        .content-text__small-title {
+          font-size: 20px;
+          font-weight: 500;
+        }
+      }
+
+      .content-text__small-title {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__title {
+    @include dim('min-w', 400, 200);
+    @include dim('max-w', 400, 200);
+    @include merge();
+  }
+
+  &-blocks {
+    display: flex;
+    flex-direction: column;
+    @include dim('gap', 30, 30);
+    @include dim('pt', 70, 40);
+    @include dim('pb', 60, 40);
+    @include merge;
+
+    &--with-borders {
+      background: $bg-secondary;
+      gap: 0;
+
+      .content__inner {
+        border-top: 1px solid #DDDDDD;
+        @include dim('pt', 30, 20);
+        @include merge;
+      }
+
+      .content-container {
+        padding-top: 0;
+      }
+
+      .content:first-child .content-container {
+        @include dim('border-top-left-radius', 20, 20);
+        .content__inner {
+          border-top: none;
+        }
+      }
+
+      .content:last-child .content-container {
+        @include dim('border-bottom-left-radius', 20, 20);
+      }
+
+
+    }
+  }
+
+  &__wrapper {
+    width: 100%;
+  }
+
+  .headhunter-link {
+    display: flex;
+    align-items: center;
+    @include dim('gap', 20, 20);
+    @include dim('mt', 40, 30);
+    @include merge;
+    color: $text-primary;
+
+    svg {
+      @include dim('w', 47, 47);
+      @include dim('h', 47, 47);
+      @include merge;
+    }
+
+    span {
+      font-weight: 600;
+      @include dim('fz', 18, 16);
+      @include merge;
+      transition: .1s;
+    }
+
+    &:hover span {
+      color: $bg-minimal;
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .content {
+    &-container {
+      max-width: calc(100% - 20px);
+    }
+
+    &__title {
+      font-size: 18px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .content {
+    .content-container {
+      border-radius: 0;
+      padding: 40px 20px 20px 20px;
+      max-width: 100%;
+    }
+
+    &__inner {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    &__title {
+      max-width: 100%;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 120%;
+    }
+
+    &--bg-secondary {
+      .content-container {
+        background: $bg-secondary;
+      }
+      background: $bg-secondary;
+    }
+  }
+}

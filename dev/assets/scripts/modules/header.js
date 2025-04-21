@@ -1,4 +1,4 @@
-import { disablePageScroll, enablePageScroll } from 'scroll-lock'
+import { enablePageScroll } from 'scroll-lock'
 
 export default function header() {
   const header = document.querySelector('header')
@@ -59,20 +59,22 @@ export default function header() {
     const burgerClose = header.querySelector('.js-burger-close')
     const plug = document.querySelector('.burger-plug')
 
-    if (burgerBtn && burgerBody && burgerClose) {
-      enablePageScroll(burgerBody)
-
+    if(burgerBtn && burgerBody && burgerClose) {
       const closeBurger = () => {
         burgerBody.classList.remove('open')
         plug.classList.remove('visible')
-        enablePageScroll(header)
+        enablePageScroll(document.body)
+        document.body.style.position = ''
+        document.body.style.top = ''
       }
+
       const callFormBtn = document.querySelector('.burger-call-form')
 
       burgerBtn.addEventListener('click', () => {
         burgerBody.classList.add('open')
         plug.classList.add('visible')
-        disablePageScroll(header)
+        document.body.style.position = 'fixed'
+        document.body.style.top = `-${window.scrollY}px`
       })
 
       burgerClose.addEventListener('click', () => closeBurger())

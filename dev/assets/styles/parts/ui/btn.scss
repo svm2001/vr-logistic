@@ -24,6 +24,7 @@ button {
   &__text {
     font-family: $primary-font;
     text-decoration: none;
+    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -136,7 +137,6 @@ button {
     }
 
     .btn__text {
-      font-weight: 700;
       color: $btn-text-minimal;
     }
 
@@ -169,7 +169,6 @@ button {
     border: 1px solid $btn-bg-default;
 
     .btn__text {
-      font-weight: 700;
       color: $white;
     }
 

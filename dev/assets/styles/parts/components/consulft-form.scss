@@ -37,19 +37,19 @@
     }
   }
 
-  &__link {
-    text-decoration: underline;
+  input {
+    width: 100%;
+  }
+}
+
+.agreement-link {
+  text-decoration: underline;
     color: $text-accent;
     transition: 0.1s;
 
     &:hover {
       text-decoration: none;
     }
-  }
-
-  input {
-    width: 100%;
-  }
 }
 
 @media (max-width: 1199px) {

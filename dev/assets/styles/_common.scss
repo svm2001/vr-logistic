@@ -106,11 +106,24 @@ body.lock {
   max-width: 100%;
   @include dim('pt', 90, 84);
   @include merge;
+
+  &--bg-gray {
+    background: $bg-secondary;
+  }
 }
 
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @media (max-width: 630px) {

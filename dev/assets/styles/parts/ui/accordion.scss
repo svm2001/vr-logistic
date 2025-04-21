@@ -46,6 +46,7 @@
     span {
       @include dim('fz', 20, 20);
       @include merge;
+      color: $text-primary;
     }
   }
 

@@ -8,7 +8,7 @@ export default function validate() {
   forms.forEach(form => {
     form.addEventListener('submit', event => {
       event.preventDefault()
-      const inputs = form.querySelectorAll('.input, .checkbox'),
+      const inputs = form.querySelectorAll('.input, .checkbox, .textarea'),
         dataReqexp = {
           fio: /^[А-ЯЁа-яё]+(-[А-ЯЁа-яё]+)? [А-ЯЁа-яё]+( [А-ЯЁа-яё]+)?$/,
           personName: /^[а-яёА-ЯЁ ]+$/u,
@@ -44,12 +44,16 @@ export default function validate() {
           }
         },
         validateInput = input => {
-          const field = input.querySelector('input'),
+          const field = input.querySelector('input, textarea'),
             name = field.getAttribute('data-input-name'),
             valueField = field.value
 
           if (field.hasAttribute('required')) {
-            if (valueField !== '') {
+            if (field.type === 'file') {
+              field.files.length > 0
+                ? error(input).remove()
+                : error(input, 'Выберите файл').set()
+            } else if (valueField !== '') {
               switch (name) {
                 case 'name':
                   valueField.length >= 2 &&
@@ -87,7 +91,7 @@ export default function validate() {
                     : error(input).set()
               }
             } else {
-              error(input).set()
+              // error(input).set()
             }
           }
         },
@@ -100,7 +104,7 @@ export default function validate() {
           inputs.forEach(input => {
             input.addEventListener('click', () => {
               if (form.getAttribute('data-validate')) {
-                const field = input.querySelector('input')
+                const field = input.querySelector('input, textarea')
 
                 field.addEventListener('input', () => validateInput(input))
                 checkFields()
@@ -112,9 +116,16 @@ export default function validate() {
           let errors = 0
 
           inputs.forEach(input => {
-            const field = input.querySelector('input')
+            const field = input.querySelector('input, textarea')
             if (field.type === 'checkbox') {
               if (!field.checked) {
+                input.classList.add('input--error')
+                errors += 1
+              } else {
+                input.classList.remove('input--error')
+              }
+            } else if (field.type === 'file' && field.hasAttribute('required')) {
+              if (!field.files.length) {
                 input.classList.add('input--error')
                 errors += 1
               } else {
@@ -129,28 +140,27 @@ export default function validate() {
           const success = form.querySelector('.js-form-success')
           const error = form.querySelector('.js-form-error')
 
-          const consultFormText = document.querySelector('.consultForm__text')
-          const hideConsultFormText = () =>
-            consultFormText ? (consultFormText.style.display = 'none') : null
-
           const showSuccess = () => {
             formBody.style.display = 'none'
             success.classList.add('visible')
-            hideConsultFormText()
           }
 
           const showError = () => {
             formBody.style.display = 'none'
             error.classList.add('visible')
-            hideConsultFormText()
           }
 
           if (errors === 0) {
             const formData = new FormData()
-            const formInputs = form.querySelectorAll('input')
+            const formInputs = form.querySelectorAll('input, textarea')
             formInputs.forEach(input => {
               if (input.type === 'checkbox') {
                 formData.append(input.name, input.checked)
+              } else if (input.type === 'file') {
+                const file = input.files[0]
+                if (file) {
+                  formData.append(input.name, file)
+                }
               } else {
                 formData.append(input.name, input.value)
               }
