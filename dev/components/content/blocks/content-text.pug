@@ -16,6 +16,8 @@
       dashedTexts: [],
       vacanciesList: [],
       iconList: [],
+      scheduleList: [],
+      speakersList: []
   }
 
 mixin content-text(props = defaultContentTextProps, ...dataset)
@@ -37,6 +39,8 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
         vacanciesList: props.vacanciesList ? props.vacanciesList : defaultContentTextProps.vacanciesList,
         conditionsList: props.conditionsList ? props.conditionsList : defaultContentTextProps.conditionsList,
         iconList: props.iconList ? props.iconList : defaultContentTextProps.iconList,
+        scheduleList: props.scheduleList ? props.scheduleList : defaultContentTextProps.scheduleList,
+        speakersList: props.speakersList ? props.speakersList : defaultContentTextProps.speakersList,
     }
   include ../../../ui/btn
   include ../../../ui/text
@@ -182,3 +186,35 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
                 text: item.text,
                 classes: 'content-text__icon-list-item-text'
               })
+
+      if checkProps.scheduleList.length > 0
+        .content-text__schedule-list.no-scrollbar
+          each item in checkProps.scheduleList
+              .content-text__schedule-item
+                  .content-text__schedule-item-day
+                      +text({
+                        text: item.day,
+                        variant: 'm',
+                        weight: 'bold'
+                      })
+                  .content-text__schedule-item-inner
+                      .content-text__schedule-item-date
+                          +text({
+                            text: item.date,
+                            variant: 'm',
+                            weight: 'medium'
+                          })
+                      .content-text__schedule-item-description= item.description
+
+      if checkProps.speakersList.length > 0
+          .content-text__speakers-list
+              .swiper
+                  .swiper-wrapper
+                      each speaker in checkProps.speakersList
+                         .swiper-slide
+                             .content-text__speakers-item
+                                 img.lazy(src="./images/no-image.jpg" data-src=speaker.poster alt=speaker.name)
+                                 p.content-text__speakers-item-name= speaker.name
+                                 p.content-text__speakers-item-job= speaker.job
+                  .swiper-pagination
+

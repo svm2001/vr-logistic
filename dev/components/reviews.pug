@@ -1,38 +1,105 @@
 -
-  const defaultHeroProps = {
+  const defaultReviewsProps = {
       classes: '',
-      title: 'Международная логистика и таможенное оформление',
-      video: './video/vr.mp4',
-      videoType: 'video/mp4',
-      buttonText: 'Оставить заявку',
+      title: 'Отзывы сотрудников',
+      subtitle: 'Работали с компанией по доставке партии автозапчастей из Германии в Россию. Весь процесс был выполнен быстро и без задержек.',
+      slider: [
+          {
+              // name: 'Константин Михеев',
+              review: 'Работали с компанией по доставке партии автозапчастей из Германии в Россию. Весь процесс был выполнен быстро и без задержек, а вся документация была подготовлена заранее, что позволило нам сэкономить время на таможенном оформлении. Огромное спасибо за профессионализм!',
+              avatarName: 'Олег Смирнов',
+              avatarIcon: './images/avatar.png',
+              avatarJob: 'менеджер по закупкам "АвтоТех"'
+          },
+          {
+              // name: 'Константин Михеев',
+              review: 'Работали с компанией по доставке партии автозапчастей из Германии в Россию. Весь процесс был выполнен быстро и без задержек, а вся документация была подготовлена заранее, что позволило нам сэкономить время на таможенном оформлении. Огромное спасибо за профессионализм!',
+              avatarName: 'Олег Смирнов',
+              avatarIcon: './images/avatar.png',
+              avatarJob: 'менеджер по закупкам "АвтоТех"'
+          },
+          {
+              // name: 'Константин Михеев',
+              review: 'Работали с компанией по доставке партии автозапчастей из Германии в Россию. Весь процесс был выполнен быстро и без задержек, а вся документация была подготовлена заранее, что позволило нам сэкономить время на таможенном оформлении. Огромное спасибо за профессионализм! Работали с компанией по доставке партии автозапчастей из Германии в Россию. Весь процесс был выполнен быстро и без задержек, а вся документация была подготовлена заранее, что позволило нам сэкономить время на таможенном оформлении. Огромное спасибо за профессионализм!',
+              avatarName: 'Олег Смирнов',
+              avatarIcon: './images/avatar.png',
+              avatarJob: 'менеджер по закупкам "АвтоТех"'
+          },
+          {
+              // name: 'Константин Михеев',
+              review: 'Работали с компанией по доставке партии автозапчастей из Германии в Россию. Весь процесс был выполнен быстро и без задержек, а вся документация была подготовлена заранее, что позволило нам сэкономить время на таможенном оформлении. Огромное спасибо за профессионализм!',
+              avatarName: 'Олег Смирнов',
+              avatarIcon: './images/avatar.png',
+              avatarJob: 'менеджер по закупкам "АвтоТех"'
+          },
+          {
+              // name: 'Константин Михеев',
+              review: 'Работали с компанией по доставке партии автозапчастей из Германии в Россию. Весь процесс был выполнен быстро и без задержек, а вся документация была подготовлена заранее, что позволило нам сэкономить время на таможенном оформлении. Огромное спасибо за профессионализм!',
+              avatarName: 'Олег Смирнов',
+              avatarIcon: './images/avatar.png',
+              avatarJob: 'менеджер по закупкам "АвтоТех"'
+          },
+
+      ]
   }
 
-mixin hero(props = defaultHeroProps, ...dataset)
+mixin reviews(props = defaultReviewsProps, ...dataset)
   -
     const checkProps = {
-        classes: props.classes ? props.classes : defaultHeroProps.classes,
-        title: props.title ? props.title : defaultHeroProps.title,
-        video: props.video ? props.video : defaultHeroProps.video,
-        videoType: props.videoType ? props.videoType : defaultHeroProps.videoType,
-        buttonText: props.buttonText ? props.buttonText : defaultHeroProps.buttonText,
+        classes: props.classes ? props.classes : defaultReviewsProps.classes,
+        title: props.title ? props.title : defaultReviewsProps.title,
+        subtitle: props.subtitle ? props.subtitle : defaultReviewsProps.subtitle,
+        slider: props.slider ? props.slider : defaultReviewsProps.slider,
     }
 
-  include ../ui/title
-  include ../ui/btn
-  section.hero(class=`${checkProps.classes}`)&attributes(...dataset)
-      video(playsinline autoplay muted)
-          source(src=checkProps.video, type=checkProps.videoType)
+  include ../ui/text
+  include ../ui/headline
+  section.reviews(class=`${checkProps.classes}`)&attributes(...dataset)
       .container
-          .hero__inner
-              +title({
-                  classes: 'hero__title',
-                  text: checkProps.title,
-                  variant: '1'
-              })
-              +btn({
-                  classes: 'hero__btn',
-                  name: checkProps.buttonText,
-                  dot: true,
-              }, { 'data-hystmodal': '#consult-form' })
-
-
+          .reviews__inner
+              .reviews__top
+                  +headline({
+                      text: checkProps.title,
+                      classes: 'reviews__title'
+                  })
+                  +text({
+                      variant: 'xs',
+                      weight: 'medium',
+                      text: checkProps.subtitle,
+                      classes: 'reviews__subtitle'
+                  })
+              .reviews__slider
+                .swiper
+                  .swiper-wrapper
+                      each item in checkProps.slider
+                        .swiper-slide
+                            .reviews__item
+                                .reviews__item-content
+                                    //+text({
+                                    //    variant: 'm',
+                                    //    weight: 'bold',
+                                    //    text: item.name,
+                                    //    classes: 'reviews__item-title'
+                                    //})
+                                    +text({
+                                      variant: 'xs',
+                                      weight: 'medium',
+                                      text: item.review,
+                                      classes: 'reviews__item-text'
+                                    })
+                                .reviews__item-person
+                                    img.lazy(src="./images/no-image.jpg" data-src=item.avatarIcon alt=item.avatarName)
+                                    .reviews__item-person-info
+                                        +text({
+                                            variant: 's',
+                                            weight: 'bold',
+                                            text: item.avatarName,
+                                            classes: 'reviews__item-name'
+                                        })
+                                        +text({
+                                            variant: 'xxs',
+                                            weight: 'medium',
+                                            text: item.avatarJob,
+                                            classes: 'reviews__item-job'
+                                        })
+                  .swiper-pagination

@@ -141,3 +141,40 @@
     }
   }
 }
+
+.career__nav {
+  background: $white;
+  @include dim('pt', 30, 30);
+  @include dim('pb', 30, 30);
+  @include merge;
+
+  &-list {
+    display: flex;
+    align-items: center;
+    @include dim('gap', 50, 35);
+    @include merge;
+    overflow: auto;
+
+    @media (max-width: 1199px) {
+      width: calc(100% + 40px);
+      padding: 0 20px;
+      margin: 0 -20px;
+    }
+  }
+
+  button {
+    transition: .1s ease-in-out;
+    font-weight: 700;
+    @include dim('fz', 22, 20);
+    color: $text-primary;
+    white-space: nowrap;
+
+    &:hover {
+      color: $icon-accent;
+    }
+
+    @media (max-width: 767px) {
+      font-weight: 500;
+    }
+  }
+}

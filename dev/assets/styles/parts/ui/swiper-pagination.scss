@@ -1,19 +1,16 @@
-@media (max-width: 767px) {
-  .swiper-pagination {
+.swiper-pagination {
+  &-bullet {
+    margin: 0 5px !important;
+    width: 15px !important;
+    height: 15px !important;
+    aspect-ratio: 1 / 1 !important;
+    background: $text-green-light !important;
+    opacity: 1 !important;
+    transition: $transition !important;
 
-    &-bullet {
-      margin: 0 5px!important;
-      width: 15px!important;
-      height: 15px!important;
-      aspect-ratio: 1 / 1!important;
-      background: $text-green-light!important;
-      opacity: 1!important;
-      transition: $transition!important;
-
-      &-active {
-        transform: scale(1.2665);
-        background: $text-secondary!important;
-      }
+    &-active {
+      transform: scale(1.2665);
+      background: $text-secondary !important;
     }
   }
 }

@@ -4,10 +4,9 @@ block content
     include ../../components/consult-form
     include ../../components/first-screen
     include ../../components/consult
-    include ../../components/tags
+    include ../../components/reviews
     include ../../components/content/content
     include ../../components/content/blocks/content-text
-    include ../../components/vacancy-form
     include ../../modal-windows/modal
     .wrapper
         +first-screen({
@@ -17,10 +16,13 @@ block content
           subtitle: 'Добро пожаловать в ВР Логистик – компанию, которая занимается профессиональными логистическими решениями и транспортными перевозками.',
           classes: 'first-screen--career',
         })
-        +tags({
-          tags: ['Москва', 'Офис', 'Полная занятость']
-        })
-        .content-blocks.content-blocks--with-borders
+        .career__nav
+            .container
+                .career__nav-list.no-scrollbar
+                    button(data-smooth-scrolling="#career-vacanices") Вакансии
+                    button(data-smooth-scrolling="#career-internship") Стажировка
+                    button(data-smooth-scrolling="#career-reviews") Отзывы сотрудников
+        .content-blocks.content-blocks--with-borders.content-block--no-pt
             .content-blocks
                 +content({
                   rounded: true,
@@ -120,7 +122,7 @@ block content
                   title: 'Вакансии',
                   rounded: true,
                   classes: 'content-no-border'
-                })
+                }, {'data-smooth-scrolling': 'career-vacanices'})
                     +content-text({
                       vacanciesList: [
                         {
@@ -140,6 +142,107 @@ block content
                         }
                       ]
                     })
+
+                +content({
+                  bigTitle: 'Стажировка',
+                  rounded: true,
+                  isInternShip: true,
+                  classes: 'content-no-border content--internship'
+                }, {'data-smooth-scrolling': 'career-internship'})
+                    .content__internship-texts
+                        p Забудьте о скучных теориях!
+                        p Мы запускаем БЕСПЛАТНЫЙ курс практических лекций от ведущих экспертов!
+                        p Получите востребованные навыки, пройдите стажировку и устройтесь на работу в нашу компанию!
+
+            .content-blocks.content-blocks--with-borders.content-block--no-paddings
+                +content({
+                  title: 'Наши спикеры',
+                  timer: true,
+                  classes: 'content--internship'
+                })
+                    +content-text({
+                      speakersList: [
+                        {
+                          poster: './images/speakers/1.png',
+                          name: 'Иванов Иван Иванович',
+                          job: 'Должность, специализация'
+                        },
+                        {
+                          poster: './images/speakers/2.png',
+                          name: 'Иванов Иван Иванович',
+                          job: 'Должность, специализация'
+                        },
+                        {
+                          poster: './images/speakers/3.png',
+                          name: 'Иванов Иван Иванович',
+                          job: 'Должность, специализация'
+                        },
+                        {
+                          poster: './images/speakers/4.png',
+                          name: 'Иванов Иван Иванович',
+                          job: 'Должность, специализация'
+                        },
+                        {
+                          poster: './images/speakers/5.png',
+                          name: 'Иванов Иван Иванович',
+                          job: 'Должность, специализация'
+                        },
+                        {
+                          poster: './images/speakers/1.png',
+                          name: 'Иванов Иван Иванович',
+                          job: 'Должность, специализация'
+                        },
+                        {
+                          poster: './images/speakers/2.png',
+                          name: 'Иванов Иван Иванович',
+                          job: 'Должность, специализация'
+                        },
+                        {
+                          poster: './images/speakers/4.png',
+                          name: 'Иванов Иван Иванович',
+                          job: 'Должность, специализация'
+                        },
+                        {
+                          poster: './images/speakers/2.png',
+                          name: 'Иванов Иван Иванович lorem lorem text dsiufh 9f84h 9f-7384n f98347f3480fb348fuh ',
+                          job: 'Должность, специализация lorem text dsiufh 9f84h 9f-7384n f98347f3480fb348fuh '
+                        },
+                      ]
+                    })
+
+                +content({
+                  title: 'Расписание курса',
+                  classes: 'remove-border'
+                })
+                    +content-text({
+                      scheduleList: [
+                        {
+                          day: '1 день',
+                          date: '5 ноября 2025',
+                          description: 'Знакомство с командой, изучение корпоративной культуры, обзор основных процессов логистики.'
+                        },
+                        {
+                          day: '2 день',
+                          date: '6-7 ноября 2025',
+                          description: 'Обучение планированию маршрутов, работа с системами управления грузоперевозками.'
+                        },
+                        {
+                          day: '3 день',
+                          date: '8 ноября 2025',
+                          description: 'Практика: анализ реальных логистических задач, проработка решений в группах.'
+                        },
+                        {
+                          day: '4 день',
+                          date: '12-14 ноября 2025',
+                          description: 'Работа с современными технологиями в логистике: цифровые платформы, автоматизация процессов.'
+                        }, {
+                          day: '5 день',
+                          date: '15 ноября 2025',
+                          description: 'Разбор реальных кейсов, моделирование нестандартных ситуаций в логистике.'
+                        }
+                      ]
+                    })
+        +reviews({}, {'data-smooth-scrolling': 'career-reviews'})
         +consult({classes: 'consult--page', btnText: 'Жду звонка'})
     +modal({ id: 'consult-form', classes: 'consult__form' })
         +consult-form
