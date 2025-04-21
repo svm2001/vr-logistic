@@ -1,0 +1,63 @@
+-
+  const defaultNewsProps = {
+      classes: '',
+  }
+
+mixin newsGrid(props = defaultNewsProps, ...dataset)
+  -
+    const newsProps = {
+      text: {
+          title: 'Новости',
+          subscribe: 'Следите за нашими новостями, чтобы всегда быть на шаг впереди!',
+      },
+      newsItems: [
+        { 
+          variant: 'grid', title: 'Новая услуга мультимодальных перевозок',
+          description: 'Компания расширяет возможности логистики, предлагая мультимодальные перевозки с интеграцией железнодорожного и автомобильного транспорта для быстрого и удобного перемещения грузов.', 
+          sticker: 'Новости логистики',
+          img: './images/news/image-news1.png',
+          link: 'javascript:void(0);',
+          classes: ''
+        },
+        { 
+          variant: 'grid', title: 'Новая услуга мультимодальных перевозок', 
+          description: 'Компания расширяет возможности логистики, предлагая мультимодальные перевозки с интеграцией железнодорожного и автомобильного транспорта для быстрого и удобного перемещения грузов.', 
+          sticker: 'Мероприятия',
+          img: './images/news/image-news2.png',
+          link: 'javascript:void(0);',
+          classes: ''
+        },
+        { 
+          variant: 'grid', title: 'Новая услуга мультимодальных перевозок', 
+          description: 'Компания расширяет возможности логистики, предлагая мультимодальные перевозки с интеграцией железнодорожного и автомобильного транспорта для быстрого и удобного перемещения грузов.', 
+          sticker: 'Новости компании', 
+          img: './images/news/image-news3.png',
+          link: 'javascript:void(0);',
+          classes: ''
+        },
+        { 
+          variant: 'grid', title: 'Новая услуга мультимодальных перевозок', 
+          description: 'Компания расширяет возможности логистики, предлагая мультимодальные перевозки с интеграцией железнодорожного и автомобильного транспорта для быстрого и удобного перемещения грузов.', 
+          sticker: 'Новости компании', 
+          img: './images/news/image-news1.png',
+          link: 'javascript:void(0);',
+          classes: ''
+        },
+        { 
+          variant: 'grid', title: 'Новая услуга мультимодальных перевозок', 
+          description: 'Компания расширяет возможности логистики, предлагая мультимодальные перевозки с интеграцией железнодорожного и автомобильного транспорта для быстрого и удобного перемещения грузов.', 
+          sticker: 'Благотворительность',
+          img: './images/news/image-news2.png',
+          link: 'javascript:void(0);',
+          classes: ''
+        }
+      ]
+    }
+    
+  include ../ui/news-item
+  include ../ui/btn
+  include ../ui/icon
+  include ../ui/input
+  include ../ui/headline
+  include ../components/formResponse/formSuccess
+  include ../components/formResponse/formError

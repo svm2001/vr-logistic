@@ -1,0 +1,53 @@
+@import '../../mixins/vw';
+
+.tags-line{
+    .container{
+        @include dim('pt', 30, 30);
+        @include dim('pb', 30, 30);
+        @include merge;
+    }
+
+    &__list{
+        display: flex;
+        flex-wrap: wrap;
+        @include dim('gap', 10, 10);
+        @include merge;
+    }
+
+    &__item{
+        cursor: pointer;
+        position: relative;
+    }
+
+    &__checkbox{
+        position: absolute;
+        opacity: 0;
+        z-index: -10;
+        transition: all 0.3s;
+        &:checked~span{
+            transition: all 0.3s;
+            background-color: $bg-green;
+            color: $text-invert;
+        }
+    }
+
+    &__wrapper{
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $bg-primary;
+        border: 1px solid $bg-line-dark;
+        width: max-content;
+        @include dim('br', 10, 10);
+        @include dim('pt', 15, 15);
+        @include dim('pb', 15, 15);
+        @include dim('pl', 30, 30);
+        @include dim('pr', 30, 30);
+        @include merge;
+        .text--xs{
+
+            // font-size: 20px;
+        }
+    }
+}
