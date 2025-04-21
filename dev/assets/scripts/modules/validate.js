@@ -56,7 +56,8 @@ export default function validate() {
             } else if (valueField !== '') {
               switch (name) {
                 case 'name':
-                  valueField.length >= 2 && valueField.match(dataReqexp.personName)
+                  valueField.length >= 2 &&
+                  valueField.match(dataReqexp.personName)
                     ? error(input).remove()
                     : error(input, 'Введите корректное имя').set()
                   break
@@ -76,7 +77,9 @@ export default function validate() {
                     : error(input, 'Введите полный номер телефона').set()
                   break
                 case 'agreement':
-                  const checkboxInput = input.querySelector('input[type="checkbox"]')
+                  const checkboxInput = input.querySelector(
+                    'input[type="checkbox"]',
+                  )
                   const checkboxWrapper = checkboxInput.closest('.checkbox')
                   checkboxInput.checked
                     ? checkboxWrapper.classList.remove('input--error')
@@ -166,7 +169,7 @@ export default function validate() {
             console.table(Object.fromEntries(formData))
 
             formBody.classList.add('loading')
-            
+
             setTimeout(() => {
               $.ajax({
                 type: 'POST',
@@ -174,21 +177,20 @@ export default function validate() {
                 data: formData,
                 processData: false,
                 contentType: false,
-                success: (response) => {
+                success: response => {
                   setTimeout(() => {
                     formBody.classList.remove('loading')
                     showSuccess()
                   }, 500)
                 },
-                error: (error) => {
+                error: error => {
                   setTimeout(() => {
                     formBody.classList.remove('loading')
                     showError()
                   }, 500)
-                }
+                },
               })
             }, 1000)
-
           }
         }
 

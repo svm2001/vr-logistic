@@ -1,26 +1,34 @@
 -
-    const defaultAccordionProps = {
-        name: 'Accordion',
-        icon: 'accordion-arrow',
-        classes: '',
-        isOpen: false
-    }
-    let accordionCounter = 0
+  const defaultAccordionProps = {
+      name: 'Accordion',
+      icon: 'accordion-arrow',
+      classes: '',
+      isOpen: false
+  }
+  let accordionCounter = 0
 
 mixin accordion(props = defaultAccordionProps, ...dataset)
   -
-      const checkProps = {
-          name: props.name ? props.name : defaultAccordionProps.name,
-          icon: props.icon ? props.icon : defaultAccordionProps.icon,
-          classes: props.classes ? props.classes : defaultAccordionProps.classes,
-          isOpen: props.isOpen !== undefined ? props.isOpen : defaultAccordionProps.isOpen
-      }
-      const accordionId = `accordion-${accordionCounter++}`
+    const checkProps = {
+        name: props.name ? props.name : defaultAccordionProps.name,
+        icon: props.icon ? props.icon : defaultAccordionProps.icon,
+        classes: props.classes ? props.classes : defaultAccordionProps.classes,
+        isOpen: props.isOpen !== undefined ? props.isOpen : defaultAccordionProps.isOpen
+    }
+    const accordionId = `accordion-${accordionCounter++}`
   include icon
-  .accordion(data-accordion-item class=checkProps.isOpen ? 'is-open' : '')
-      button.accordion__button(id=accordionId aria-expanded=checkProps.isOpen aria-controls=`${accordionId}-content`)
-        span= checkProps.name
-        if checkProps.icon
-            +icon(checkProps.icon)
-      .accordion-content(id=`${accordionId}-content` aria-labelledby=accordionId role="region")
-          block
+  .accordion(data-accordion-item, class=checkProps.isOpen ? "is-open" : "")
+    button.accordion__button(
+      id=accordionId,
+      aria-expanded=checkProps.isOpen,
+      aria-controls=`${accordionId}-content`
+    )
+      span= checkProps.name
+      if checkProps.icon
+        +icon(checkProps.icon)
+    .accordion-content(
+      id=`${accordionId}-content`,
+      aria-labelledby=accordionId,
+      role="region"
+    )
+      block

@@ -23,31 +23,18 @@ mixin video(props = defaultVideoProps, ...dataset)
   include ../ui/btn
   include ../ui/text
   section.video(class=`${checkProps.classes}`)&attributes(...dataset)
-      img.lazy.video__poster(src="./images/no-image.jpg" data-src=checkProps.poster alt=checkProps.btnText)
-      .video__bg-plug
-      video(playsinline controls)
-          source(src=checkProps.video, type=checkProps.videoType)
-      +btn({
-        icon: true,
-        iconName: 'close',
-        classes: 'video__close',
-        title: 'Закрыть видео'
-      })
-      .container
-          .video__inner
-              +title({
-                variant: '3',
-                text: checkProps.title,
-                classes: 'video__title'
-              })
-              .video__btn
-                  +btn({
-                    icon: true,
-                    iconName: 'play',
-                    classes: 'btn--play'
-                  }, { title: 'Смотреть видео' })
-                  +text({
-                    text: checkProps.btnText,
-                    variant: 'm',
-                    weight: 'regular'
-                  })
+    img.lazy.video__poster(
+      src="./images/no-image.jpg",
+      data-src=checkProps.poster,
+      alt=checkProps.btnText
+    )
+    .video__bg-plug
+    video(playsinline, controls)
+      source(src=checkProps.video, type=checkProps.videoType)
+    +btn({ icon: true, iconName: 'close', classes: 'video__close', title: 'Закрыть видео' })
+    .container
+      .video__inner
+        +title({ variant: '3', text: checkProps.title, classes: 'video__title' })
+        .video__btn
+          +btn({ icon: true, iconName: 'play', classes: 'btn--play' }, { title: 'Смотреть видео' })
+          +text({ text: checkProps.btnText, variant: 'm', weight: 'regular' })

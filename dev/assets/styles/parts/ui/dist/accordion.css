@@ -1,0 +1,38 @@
+.accordion-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  padding-block-start: 1.5em;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.accordion-content > * {
+  overflow: hidden;
+}
+
+.accordion.is-open .accordion-content {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.accordion__button {
+  position: relative;
+  cursor: pointer;
+  border: none;
+  padding: 0.5em 2em 0.5em 0;
+  width: 100%;
+  background-color: transparent;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.accordion.is-open .accordion__button::after {
+  transform: translateY(-50%) rotate(-135deg);
+}
+
+.accordion__button:focus {
+  outline-offset: 6px;
+  outline-color: rgba(7, 89, 213, 0.2);
+}

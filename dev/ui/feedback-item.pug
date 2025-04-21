@@ -1,0 +1,82 @@
+include ./icon
+
+-
+  const defaultFeedbackProps = {
+      title: 'Благодарность ВР Логистик',
+      nameService: 'Service',
+      from: 'VR-Logistic',
+      date: '01.01.2025',
+      img: '',
+      bigImg: '',
+      classes: '',
+      link: 'javascript:void(0);',
+      target: '_self',
+      size: 'default',
+  }
+
+mixin feedbackItem(props = defaultFeedbackProps, ...dataset)
+  -
+    const checkProps = {
+        title: props.title ? props.title : defaultFeedbackProps.title,
+        nameService: props.nameService ? props.nameService : defaultFeedbackProps.nameService,
+        from: props.from ? props.from : defaultFeedbackProps.from,
+        date: props.date ? props.date : defaultFeedbackProps.date,
+        target: props.target ? props.target : defaultFeedbackProps.target,
+        size: props.size ? props.size : defaultFeedbackProps.size,
+        name: props.name ? props.name : defaultFeedbackProps.name,
+        link: props.link ? props.link : defaultFeedbackProps.link,
+        target: props.target ? props.target : defaultFeedbackProps.target,
+        classes: props.classes ? props.classes : defaultFeedbackProps.classes,
+        img: props.img ? props.img : defaultFeedbackProps.img,
+        bigImg: props.bigImg ? props.bigImg : defaultFeedbackProps.bigImg,
+    }
+  .feedback-item(href= checkProps.link)
+    .feedback-item__container
+      .feedback-item__title
+        +text({
+          text: checkProps.title,
+          variant: 'l',
+          weight: 'bold',
+        })
+      .feedback-item__wrapper
+        .feedback-item__line
+          span.title-line
+            +text({
+              text: 'Услуга:',
+              variant: 'xxs',
+              weight: 'medium',
+            })
+          span
+            +text({
+              text: checkProps.nameService,
+              variant: 'xs',
+              weight: 'medium',
+            })
+        .feedback-item__line
+          span.title-line
+            +text({
+              text: 'От:',
+              variant: 'xxs',
+              weight: 'medium',
+            })
+          span
+            +text({
+              text: checkProps.from,
+              variant: 'xs',
+              weight: 'medium',
+            })
+        .feedback-item__line
+          span.title-line
+            +text({
+              text: 'Дата:',
+              variant: 'xxs',
+              weight: 'medium',
+            })
+          span
+            +text({
+              text: checkProps.date,
+              variant: 'xs',
+              weight: 'medium',
+            })
+    a.feedback-item__img.gallery-item(src=checkProps.bigImg data-lg-size="400-700" data-sub-html=checkProps.title data-src=checkProps.bigImg)
+      img.lazy(src= "./images/no-image.jpg" data-src=checkProps.img alt="Изображение не найдено")

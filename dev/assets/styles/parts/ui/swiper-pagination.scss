@@ -1,14 +1,18 @@
-.swiper-pagination {
-  &-bullet {
-    margin: 0 5px !important;
-    width: 15px !important;
-    height: 15px !important;
+@import '../../mixins/vw';
+
+.swiper-pagination.swiper-pagination-bullets.swiper-pagination-horizontal {
+  .swiper-pagination-bullet {
     aspect-ratio: 1 / 1 !important;
     background: $text-green-light !important;
     opacity: 1 !important;
     transition: $transition !important;
+    @include dim('ml', 5, 5);
+    @include dim('mr', 5, 05);
+    @include dim('h', 15, 15);
+    @include dim('w', 15, 15);
+    @include merge;
 
-    &-active {
+    &.swiper-pagination-bullet-active {
       transform: scale(1.2665);
       background: $text-secondary !important;
     }

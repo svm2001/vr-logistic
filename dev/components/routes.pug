@@ -48,27 +48,19 @@ mixin routes(props = defaultRoutesProps, ...dataset)
   include ../ui/headline
   include ../ui/select
   section.routes(class=`${checkProps.classes}`)&attributes(...dataset)
-      .routes__tablet-plug
-      .container
-          .routes__inner
-              .routes__top
-                  +headline({
-                      text: checkProps.title,
-                      classes: 'routes__title'
-                  })
-              .routes__select    
-                +select
-              .routes__tabs
-                  each item, index in checkProps.tabs.buttons
-                      button.routes__tabs-item(class=index === 0 ? 'active' : '')
-                          +icon(item.icon)
-                          +text({
-                              text: item.name,
-                              classes: 'routes__tabs-item-text',
-                              variant: 'xs',
-                              weight: 'medium'
-                          })
-      .routes__content
-          each item, index in checkProps.tabs.content
-              .routes__content-item(class=index === 0 ? 'active' : '')
-                  img.lazy(src="./images/no-image.jpg" data-src=item alt='')
+    .routes__tablet-plug
+    .container
+      .routes__inner
+        .routes__top
+          +headline({ text: checkProps.title, classes: 'routes__title' })
+        .routes__select
+          +select
+        .routes__tabs
+          each item, index in checkProps.tabs.buttons
+            button.routes__tabs-item(class=index === 0 ? "active" : "")
+              +icon(item.icon)
+              +text({ text: item.name, classes: 'routes__tabs-item-text', variant: 'xs', weight: 'medium' })
+    .routes__content
+      each item, index in checkProps.tabs.content
+        .routes__content-item(class=index === 0 ? "active" : "")
+          img.lazy(src="./images/no-image.jpg", data-src=item, alt)

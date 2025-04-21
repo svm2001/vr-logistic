@@ -1,60 +1,60 @@
 -
-    const defaultSelectProps = {
-        activeIndex: 0,
-        disabled: false,
-        classes: '',
-        options: [
-            {
-                name: 'Сборные грузы',
-                icon: 'logistic'
-            },
-            {
-                name: 'Прямое ЖД',
-                icon: 'train'
-            },
-            {
-                name: 'Прямое Авто',
-                icon: 'car-reverse'
-            },
-            {
-                name: 'Морские перевозки (мультимодальные)',
-                icon: 'ship'
-            },
-            {
-                name: 'Авиа',
-                icon: 'plane'
-            }
-        ]
-    }
+  const defaultSelectProps = {
+      activeIndex: 0,
+      disabled: false,
+      classes: '',
+      options: [
+          {
+              name: 'Сборные грузы',
+              icon: 'logistic'
+          },
+          {
+              name: 'Прямое ЖД',
+              icon: 'train'
+          },
+          {
+              name: 'Прямое Авто',
+              icon: 'car-reverse'
+          },
+          {
+              name: 'Морские перевозки (мультимодальные)',
+              icon: 'ship'
+          },
+          {
+              name: 'Авиа',
+              icon: 'plane'
+          }
+      ]
+  }
 
 mixin select(props = defaultSelectProps)
-    -
-        const checkProps = {
-            activeIndex: props.activeIndex ? props.activeIndex : defaultSelectProps.activeIndex,
-            disabled: props.disabled ? props.disabled : defaultSelectProps.disabled,
-            classes: props.classes ? props.classes : defaultSelectProps.classes,
-            options: props.options ? props.options : defaultSelectProps.options,
-        }
+  -
+    const checkProps = {
+        activeIndex: props.activeIndex ? props.activeIndex : defaultSelectProps.activeIndex,
+        disabled: props.disabled ? props.disabled : defaultSelectProps.disabled,
+        classes: props.classes ? props.classes : defaultSelectProps.classes,
+        options: props.options ? props.options : defaultSelectProps.options,
+    }
 
-    .select(
-        class=`${checkProps.classes} ${checkProps.disabled ? 'disabled' : ''}`,
-        data-select="main",
-        data-select-value=checkProps.options[checkProps.activeIndex].name
-    )
-        .select__field
-            .select__head(data-select="head")
-                span.select__value(data-select="value")
-                    +icon(checkProps.options[checkProps.activeIndex].icon)
-                    span= checkProps.options[checkProps.activeIndex].name
-                +icon('select-arrow')
-            .select__body(data-select="body", data-custom-scrollbar)
-                ul.select__list.list-reset
-                    each val, index in checkProps.options
-                        if index === checkProps.activeIndex
-                            li.active
-                                +icon(val.icon)
-                                span= val.name
-                        else
-                            li
-                                +icon(val.icon)
-                                span= val.name
+  .select(
+    class=`${checkProps.classes} ${checkProps.disabled ? 'disabled' : ''}`,
+    data-select="main",
+    data-select-value=checkProps.options[checkProps.activeIndex].name
+  )
+    .select__field
+      .select__head(data-select="head")
+        span.select__value(data-select="value")
+          +icon(checkProps.options[checkProps.activeIndex].icon)
+          span= checkProps.options[checkProps.activeIndex].name
+        +icon('select-arrow')
+      .select__body(data-select="body", data-custom-scrollbar)
+        ul.select__list.list-reset
+          each val, index in checkProps.options
+            if index === checkProps.activeIndex
+              li.active
+                +icon(val.icon)
+                span= val.name
+            else
+              li
+                +icon(val.icon)
+                span= val.name

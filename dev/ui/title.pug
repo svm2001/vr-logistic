@@ -15,4 +15,6 @@ mixin title(props = defaultTitleProps, ...dataset)
       classes: props.classes ? props.classes : defaultTitleProps.classes,
     }
 
-  #{'h' + checkProps.variant}.title(class=`h${checkProps.variant} ${checkProps.classes}`)&attributes(...dataset)= checkProps.text
+  #{'h' + checkProps.variant}.title(
+    class=`h${checkProps.variant} ${checkProps.classes}`
+  )&attributes(...dataset)= checkProps.text

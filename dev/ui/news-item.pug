@@ -1,0 +1,73 @@
+include ./icon
+
+-
+  const defaultNewsItemProps = {
+      variant: 'slider', // slider (title, description, date, link, img) || grid (title, description, sticker, link, img, icon)
+      title: 'Lorem ipsum dolor sit amet',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id congue nulla, eget euismod libero. Phasellus sapien urna, feugiat ac massa ac, elementum consequat tellus. ',
+      date: '01 января 2025',
+      sticker: 'News',
+      img: '',
+      link: 'javascript:void(0);',
+      target: '_self',
+      classes: '',
+      size: 'default',
+      icon: 'arrow-green-rotate'
+  }
+
+
+mixin newsItem(props = defaultNewsItemProps, ...dataset)
+  -
+    const checkProps = {
+      variant: props.variant ? props.variant : defaultNewsItemProps.variant,
+      title: props.title ? props.title : defaultNewsItemProps.title,
+      description: props.description ? props.description : defaultNewsItemProps.description,
+      date: props.date ? props.date : defaultNewsItemProps.date,
+      sticker: props.sticker ? props.sticker : defaultNewsItemProps.sticker,
+      img: props.img ? props.img : defaultNewsItemProps.img,
+      link: props.link ? props.link : defaultNewsItemProps.link,
+      target: props.target ? props.target : defaultNewsItemProps.target,
+      classes: props.classes ? props.classes : defaultNewsItemProps.classes,
+      size: props.size ? props.size : defaultNewsItemProps.size,
+      icon: props.icon ? props.icon : defaultNewsItemProps.icon,
+    }
+
+  a.news-item(
+    href=checkProps.link,
+    target=checkProps.target === "_self" ? "" : checkProps.target,
+    class=`news-item-${checkProps.variant} ${checkProps.classes}`
+  )
+    div(class=`news-item-${checkProps.variant}__img`)
+      img.lazy(
+        src="./images/no-image.jpg",
+        data-src=checkProps.img,
+        alt="Изображение не найдено"
+      )
+    div(class=`news-item-${checkProps.variant}__container`)
+      div(class=`news-item-${checkProps.variant}__block`)
+        if (checkProps.variant === 'slider')
+          .text--medium.text--xxs(class=`news-item-${checkProps.variant}__date`)= checkProps.date
+        else if (checkProps.variant === 'grid')
+          .text--medium.text--xs.text--bold(
+            class=`news-item-${checkProps.variant}__sticker`
+          )= checkProps.sticker
+
+        if (checkProps.variant === 'slider')
+          .text--bold.text--m(class=`news-item-${checkProps.variant}__title`)= checkProps.title
+        else if (checkProps.variant === 'grid')
+          .text--bold.text--l(class=`news-item-${checkProps.variant}__title`)= checkProps.title
+
+        if (checkProps.variant === 'slider')
+          div(class=`news-item-${checkProps.variant}__description`)= checkProps.description
+        else if (checkProps.variant === 'grid')
+          .text--xs(class=`news-item-${checkProps.variant}__description`)= checkProps.description
+
+      if (checkProps.variant === 'slider')
+        div(class=`news-item-${checkProps.variant}__more-detailed`)
+          span Подробнее
+          span.icon-arrow
+            +icon(checkProps.icon)
+      else if (checkProps.variant === 'grid')
+        div(class=`news-item-${checkProps.variant}__more-detailed`)
+          span.icon-arrow
+            +icon(checkProps.icon)

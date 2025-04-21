@@ -1,0 +1,360 @@
+@import '../../mixins/vw';
+
+.news-item-slider {
+  display: block;
+  position: relative;
+  justify-content: flex-end;
+  transition: all 0.3s;
+  height: 100%;
+  width: 100%;
+  @include dim('h', 560, 386);
+  @include dim('max-w', 392, 300);
+  @include dim('br', 15, 15);
+  @include merge;
+
+  &:hover {
+    .news-item-slider__container {
+      background: #226c2aee;
+      transition: all 0.3s;
+      &:after {
+        background: #ffffff00;
+        transition: all 0.3s;
+      }
+    }
+
+    .news-item-slider__more-detailed {
+      transition: all 0.3s;
+      display: flex;
+      height: auto;
+      opacity: 1;
+      transform: translateY(vw(0));
+      @include dim('mt', 40, 0);
+      @include merge;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    @include dim('br', 15, 15);
+    @include merge;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__container {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: all 0.3s;
+    background: #ffffff80;
+    width: 100%;
+    height: 100%;
+    @include dim('pt', 30, 30);
+    @include dim('pb', 28.5, 20);
+    @include dim('pr', 30, 20);
+    @include dim('pl', 30, 20);
+    @include dim('br', 15, 15);
+    @include merge;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(0, 44, 38, 1) 100%
+      );
+      transition: all 0.2s;
+      @include dim('br', 15, 15);
+    }
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+  }
+
+  &__date {
+    color: $text-invert;
+    @include dim('mb', 20, 20);
+    @include merge;
+  }
+
+  &__title {
+    color: $text-invert;
+    @include dim('mb', 10, 10);
+    @include merge;
+  }
+
+  &__description {
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: $text-invert;
+    @include dim('max-h', 46, 46);
+    @include merge;
+  }
+
+  &__more-detailed {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(vw(20));
+    margin-top: 0;
+    
+    span:first-child {
+      transition: all 0.3s;
+      @include dim('fz', 14, 14);
+      @include merge;
+      font-weight: 700;
+      color: $text-invert;
+    }
+
+    span.icon-arrow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $bg-line;
+      @include dim('br', 50, 50);
+      @include dim('w', 33, 33);
+      @include dim('h', 33, 33);
+      @include dim('p', 9, 9);
+      @include merge;
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.news-item-grid {
+  display: block;
+  position: relative;
+  justify-content: flex-end;
+  transition: all 0.3s;
+  width: 100%;
+  overflow: hidden;
+  @include dim('h', 398, 371);
+  @include dim('max-w', 821, 320);
+  @include dim('br', 15, 15);
+  @include merge;
+
+  &:hover {
+    .news-item-grid__container {
+      background: rgb(255, 255, 255);
+      background: $bg-line;
+      transition: all 0.3s;
+      &:after {
+        content: none;
+      }
+    }
+    .news-item-grid__sticker {
+      background-color: $bg-primary;
+    }
+
+    .news-item-grid__more-detailed {
+      opacity: 1;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    @include dim('max-h', 209, 171);
+    @include dim('max-w', 334, 235);
+    @include dim('t', 0, 20);
+    @include dim('br', 15, 15);
+    @include merge;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__container {
+    display: flex;
+    position: static;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: all 0.3s;
+    background-color: $bg-secondary;
+    width: 100%;
+    height: 100%;
+    @include dim('pt', 30, 20);
+    @include dim('pb', 30, 20);
+    @include dim('pr', 30, 20);
+    @include dim('pl', 30, 20);
+    @include merge;
+    &:after {
+      content: none;
+    }
+  }
+
+  &__sticker {
+    position: absolute;
+    color: $text-secondary;
+    background-color: $bg-line;
+    text-transform: uppercase;
+    width: max-content;
+    transition: all 0.3s;
+    z-index: 5;
+    @include dim('t', 30, 0);
+    @include dim('l', 30, 0);
+    @include dim('pt', 14, 10);
+    @include dim('pb', 14, 10);
+    @include dim('pr', 19.5, 10);
+    @include dim('pl', 19.5, 10);
+    @include dim('btrr', 15, 15);
+    @include dim('bblr', 15, 15);
+    @include merge;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    @include dim('max-w', 570, 570);
+    @include merge;
+  }
+
+  &__date {
+    color: $text-primary;
+    @include dim('mb', 20, 20);
+    @include merge;
+  }
+
+  &__title {
+    color: $text-primary;
+    @include dim('max-w', 520, 520);
+    @include dim('mb', 10, 10);
+    @include merge;
+  }
+
+  &__description {
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: $text-primary;
+    @include dim('max-h', 46, 46);
+    @include merge;
+  }
+
+  &__more-detailed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    opacity: 0;
+    transition: all 0.3s;
+    background-color: $bg-primary;
+    @include dim('br', 20, 20);
+    @include dim('b', -14, -14);
+    @include dim('r', -14, -14);
+    @include dim('w', 97, 97);
+    @include dim('h', 97, 97);
+    @include merge;
+
+    span.icon-arrow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $bg-green;
+      @include dim('br', 20, 20);
+      @include dim('w', 73, 73);
+      @include dim('h', 73, 73);
+      @include dim('p', 24, 24);
+      @include merge;
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .news-item-slider {
+    &__title.text--bold {
+      font-size: 18px;
+      line-height: 130%;
+      font-weight: 600;
+    }
+
+    &__date {
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    &__more-detailed {
+      display: none !important;
+    }
+  }
+
+  .news-item-grid {
+    &__title.text--bold {
+      font-size: 18px;
+      line-height: 130%;
+      font-weight: 600;
+    }
+
+    &__date {
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    &__sticker {
+      text-transform: none;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 130%;
+    }
+
+    &__more-detailed {
+      display: none !important;
+    }
+  }
+}
+
+@media (max-width: 765px) {
+  .news-item-slider {
+    &__title.text--bold {
+      font-size: 18px;
+    }
+  }
+  .news-item-grid {
+    &__title.text--bold {
+      font-size: 18px;
+    }
+  }
+}

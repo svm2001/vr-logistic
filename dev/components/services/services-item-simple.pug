@@ -18,17 +18,8 @@ mixin services-item-simple(props = defaultServicesItemSimpleProps, ...dataset)
   include ../../ui/btn
   include ../../ui/icon
   include ../../ui/text
-  a.services__item-simple(class=`${checkProps.classes}` href=checkProps.link)&attributes(...dataset)
-      .services__item-simple__icon
-          +icon(checkProps.icon)
-      +text({
-          variant: 's',
-          weight: 'bold',
-          text: checkProps.name,
-          classes: 'services__item-simple__name'
-      })
-      +btn({
-          icon: true,
-          iconName: 'arrow-right-green',
-          classes: 'services__item-simple__btn'
-      })
+  a.services__item-simple(class=`${checkProps.classes}`, href=checkProps.link)&attributes(...dataset)
+    .services__item-simple__icon
+      +icon(checkProps.icon)
+    +text({ variant: 's', weight: 'bold', text: checkProps.name, classes: 'services__item-simple__name' })
+    +btn({ icon: true, iconName: 'arrow-right-green', classes: 'services__item-simple__btn' })

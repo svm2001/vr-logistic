@@ -1,0 +1,34 @@
+-
+  const defaultTagsProps = {
+      classes: '',
+      tags: [
+        {
+          name: '',
+          data: '',
+        },
+      ],
+  }
+
+mixin tags-line(props = defaultTagsProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultTagsProps.classes,
+        tags: props.tags ? props.tags : defaultTagsProps.tags,
+    }
+  include ../ui/text
+  section.tags-line(class=`${checkProps.classes}`)&attributes(...dataset)
+    .container
+      .tags-line__list
+        each tag, index in checkProps.tags
+          label.tags-line__item
+            if(index === 0)
+              input.tags-line__checkbox(type='radio' name='tag-line' data-select = tag.data checked)
+            else 
+              input.tags-line__checkbox(type='radio' name='tag-line' data-select = tag.data)
+            span.tags-line__wrapper
+              +text({
+                  variant: 'xs',
+                  weight: 'medium',
+                  classes: 'tags-line__item',
+                  text: tag.name,
+              })

@@ -11,7 +11,8 @@
   @include merge;
   background: $bg-secondary;
 
-  &__tablets-btns, &__burger {
+  &__tablets-btns,
+  &__burger {
     display: none;
   }
 
@@ -51,7 +52,8 @@
       text-decoration: none;
       transition: color 0.2s ease;
 
-      &[data-hover-menu]:before, &.active:before {
+      &[data-hover-menu]:before,
+      &.active:before {
         content: '';
         position: absolute;
         height: 2px;
@@ -59,7 +61,7 @@
         bottom: 0;
         z-index: 101;
         transition: $transition;
-        background-image: linear-gradient(90deg, #09361E 0%, #1B9C56 100%);
+        background-image: linear-gradient(90deg, #09361e 0%, #1b9c56 100%);
       }
 
       &.active:before {
@@ -92,7 +94,8 @@
       @include dim('gap', 15, 15);
       @include merge;
 
-      button, a {
+      button,
+      a {
         @include dim('w', 160, 160);
         padding: 0;
         @include merge;
@@ -100,7 +103,8 @@
     }
   }
 
-  button.header__custom-btn, a.header__custom-btn {
+  button.header__custom-btn,
+  a.header__custom-btn {
     border-radius: 50%;
     aspect-ratio: 1 / 1;
     border: 1px solid transparent;
@@ -167,7 +171,6 @@
     }
 
     &-services {
-
       &__list {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -187,7 +190,7 @@
         transition: $transition;
 
         &-name {
-          transition: .1s;
+          transition: 0.1s;
         }
 
         svg {
@@ -206,7 +209,6 @@
     }
 
     &-expertises {
-
       &__list {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -253,7 +255,8 @@
   }
 }
 
-.plug, .burger-plug {
+.plug,
+.burger-plug {
   position: fixed;
   z-index: 99;
   top: 0;
@@ -263,18 +266,19 @@
   background: #494949;
   opacity: 0;
   visibility: hidden;
-  transition: .3s;
+  transition: 0.3s;
 
   &.visible {
-    opacity: .5;
+    opacity: 0.5;
     visibility: visible;
   }
 }
 
 @media (max-width: 1199px) {
   .header {
-
-    &-menu, &__nav, &__info-btns {
+    &-menu,
+    &__nav,
+    &__info-btns {
       display: none;
     }
 
@@ -296,8 +300,9 @@
 @media (max-width: 630px) {
   .header {
     height: 66px;
-    &__tablets-btns, &__custom-btn {
-      display: none!important;
+    &__tablets-btns,
+    &__custom-btn {
+      display: none !important;
     }
 
     &__logo {

@@ -1,38 +1,59 @@
-script(type="x-shader/x-fragment" id="fragment-shader-map")
-    | uniform sampler2D u_map_tex;
-    | varying float vOpacity;
-    | varying vec2 vUv;
-    | void main() {
-    |     vec3 color = texture2D(u_map_tex, vUv).rgb;
-    |     color -= .5 * length(gl_PointCoord.xy - vec2(.9));
-    |     float dot = 1. - smoothstep(.38, .4, length(gl_PointCoord.xy - vec2(.5)));
-    |     if (dot < 0.5) discard;
-    |     gl_FragColor = vec4(color, dot * vOpacity);
-    | }
+script#fragment-shader-map(type="x-shader/x-fragment")
+  | uniform sampler2D u_map_tex;
+  | varying float vOpacity;
+  | varying vec2 vUv;
+  | void main() {
+  |
+  | vec3 color = texture2D(u_map_tex, vUv).rgb;
+  |
+  | color -= .5 * length(gl_PointCoord.xy - vec2(.9));
+  |
+  | float dot = 1. - smoothstep(.38, .4, length(gl_PointCoord.xy - vec2(.5)));
+  |
+  | if (dot < 0.5) discard;
+  |
+  | gl_FragColor = vec4(color, dot * vOpacity);
+  | }
 
-script(type="x-shader/x-vertex" id="vertex-shader-map")
-    | uniform sampler2D u_map_tex;
-    | uniform float u_dot_size;
-    | uniform float u_time_since_click;
-    | uniform vec3 u_pointer;
-    | #define PI 3.14159265359
-    | varying float vOpacity;
-    | varying vec2 vUv;
-    | void main() {
-    |     vUv = uv;
-    |     float visibility = step(.2, texture2D(u_map_tex, uv).r);
-    |     gl_PointSize = visibility * u_dot_size;
-    |     vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-    |     vOpacity = (1. / length(mvPosition.xyz) - .7);
-    |     vOpacity = clamp(vOpacity, .03, 1.);
-    |     float t = u_time_since_click - .1;
-    |     t = max(0., t);
-    |     float max_amp = .15;
-    |     float dist = 1. - .5 * length(position - u_pointer);
-    |     float damping = 1. / (1. + 20. * t);
-    |     float delta = max_amp * damping * sin(5. * t * (1. + 2. * dist) - PI);
-    |     delta *= 1. - smoothstep(.8, 1., dist);
-    |     vec3 pos = position;
-    |     pos *= (1. + delta);
-    |     gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.);
-    | }
+script#vertex-shader-map(type="x-shader/x-vertex")
+  | uniform sampler2D u_map_tex;
+  | uniform float u_dot_size;
+  | uniform float u_time_since_click;
+  | uniform vec3 u_pointer;
+  | #define PI 3.14159265359
+  | varying float vOpacity;
+  | varying vec2 vUv;
+  | void main() {
+  |
+  | vUv = uv;
+  |
+  | float visibility = step(.2, texture2D(u_map_tex, uv).r);
+  |
+  | gl_PointSize = visibility * u_dot_size;
+  |
+  | vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+  |
+  | vOpacity = (1. / length(mvPosition.xyz) - .7);
+  |
+  | vOpacity = clamp(vOpacity, .03, 1.);
+  |
+  | float t = u_time_since_click - .1;
+  |
+  | t = max(0., t);
+  |
+  | float max_amp = .15;
+  |
+  | float dist = 1. - .5 * length(position - u_pointer);
+  |
+  | float damping = 1. / (1. + 20. * t);
+  |
+  | float delta = max_amp * damping * sin(5. * t * (1. + 2. * dist) - PI);
+  |
+  | delta *= 1. - smoothstep(.8, 1., dist);
+  |
+  | vec3 pos = position;
+  |
+  | pos *= (1. + delta);
+  |
+  | gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.);
+  | }

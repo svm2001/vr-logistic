@@ -7,9 +7,9 @@ export default function select() {
     elems.forEach(main => main.classList.remove('active'))
   }
 
-  const updateContent = (index) => {
+  const updateContent = index => {
     const contentItems = document.querySelectorAll('.routes__content-item')
-    if(contentItems.length > 0) {
+    if (contentItems.length > 0) {
       contentItems.forEach((item, i) => {
         if (i === index) {
           item.classList.add('active')
