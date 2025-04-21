@@ -10,6 +10,18 @@
   } 
 }
 
+.lg-img-wrap{
+  object-fit:contain;
+}
+
+.lg-outer .lg-object{
+  height: 100% !important;
+}
+
+.lg-backdrop.in{
+  opacity: 0.5;
+}
+
 .feedback {
   .container {
     @include dim('pt', 80, 44.5);

@@ -1,0 +1,16 @@
+extends ../../layouts/layout
+block vars
+block content
+    include ../../components/consult-form
+    include ../../components/first-screen
+    include ../../modal-windows/modal
+    include ../../components/consult
+    .wrapper
+        +first-screen({
+          patternBgDesktop: './images/pattern-bg/news-desktop.svg',
+          patternBgMobile: './images/pattern-bg/news-mobile.svg',
+          title: 'Новости',
+        })
+        +consult({classes: 'consult--page', btnText: 'Жду звонка'})
+    +modal({ id: 'consult-form', classes: 'consult__form' })
+        +consult-form

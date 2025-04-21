@@ -60,6 +60,8 @@ mixin news(props = defaultNewsProps, ...dataset)
   include ../ui/icon
   include ../ui/input
   include ../ui/headline
+  include ../components/formResponse/formSuccess
+  include ../components/formResponse/formError
 
   section.news
     .container
@@ -70,8 +72,17 @@ mixin news(props = defaultNewsProps, ...dataset)
         .news__subscribe
           h4.news__title= newsProps.text.subscribe
           form.news__subscribe-form(action, data-validate, no-validate) 
-            +input({ validateName: 'email', placeholder: 'E-mail', name: 'email', required: true, classes: 'input--theme--t input--size--l' })
-            +btn({ name: 'Подписаться', type: 'submit', variant: 'secondary' })
+            .form__body.js-form__body
+              +input({ validateName: 'email', placeholder: 'E-mail', name: 'email', required: true, classes: 'input--theme--t input--size--l' })
+              +btn({ name: 'Подписаться', type: 'submit', variant: 'secondary' })
+            +formSuccess({
+              title: "Вы подписались на наши новости!",
+              subtitle: 'Проверьте вашу почту',
+            })
+            +formError({
+              title: "Ошибка подписки!",
+              subtitle: 'Повторите попытку позже.',
+            })
       .news__column
         .news__swiper-container
           .swiper.news-swiper

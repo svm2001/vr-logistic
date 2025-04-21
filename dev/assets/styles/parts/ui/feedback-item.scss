@@ -38,7 +38,7 @@
   &__wrapper {
     display: flex;
     flex-direction: column;
-    justify-self: end;
+    justify-self: flex-end;
     gap: 10px;
     @include dim('gap', 10, 10);
     @include merge;
@@ -46,7 +46,7 @@
 
   &__line {
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     span.title-line {
       @include dim('min-w', 69, 69);
       @include dim('mr', 15, 15);
@@ -56,6 +56,7 @@
   }
 
   &__img {
+    cursor: pointer;
     display: flex;
     @include dim('w', 174, 81);
     @include dim('h', 250, 124);
