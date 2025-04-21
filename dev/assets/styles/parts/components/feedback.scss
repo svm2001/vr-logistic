@@ -7,7 +7,7 @@
 
   .lg-download:after{
     content: '\1F4BE' !important;
-  } 
+  }
 }
 
 .lg-img-wrap{
@@ -23,6 +23,10 @@
 }
 
 .feedback {
+  &--white {
+    background: $white;
+  }
+
   .container {
     @include dim('pt', 80, 44.5);
     @include dim('pb', 77, 60);
@@ -121,7 +125,7 @@
       justify-content: start;
       gap: 40px;
     }
-  
+
     .feedback-swiper-pagination {
       margin-top: 24.5px !important;
     }
