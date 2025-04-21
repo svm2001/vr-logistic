@@ -21,6 +21,6 @@ export function standartsSlider() {
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
-    }
+    },
   })
 }

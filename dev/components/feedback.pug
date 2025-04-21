@@ -1,0 +1,83 @@
+include ../ui/feedback-item
+include ../ui/headline
+
+mixin feedback(props = defaultFeedbackProps, ...dataset)
+  -
+    const defaultFeedbackProps = {
+      headline: {
+        text: 'Благодарственные письма',
+        line: 'javascript:void(0);'
+      },
+      title: 'Работали с компанией по доставке партии автозапчастей из Германии в Россию. Весь процесс был выполнен быстро и без задержек.',
+      items: [
+        { 
+          title: 'Спасибо за сотрудничество!', 
+          nameService: 'Доставка груза', 
+          from: 'Транском Групп',
+          date: '10.02.2025', 
+          img: './images/feedback/certificate.png'
+        },
+        { 
+          title: 'Благодарность ВР Логистик', 
+          nameService: 'Доставка груза', 
+          from: 'Транском Групп', 
+          date: '10.02.2025', 
+          img: './images/feedback/certificate.png'
+        },
+        { 
+          title: 'Партнерская благодарность', 
+          nameService: 'Доставка груза', 
+          from: 'Транском Групп', 
+          date: '10.02.2025', 
+          img: './images/feedback/certificate.png'
+        },
+        { 
+          title: 'Надежный партнер в логистике', 
+          nameService: 'Доставка груза', 
+          from: 'Транском Групп', 
+          date: '10.02.2025', 
+          img: './images/feedback/certificate.png'
+        },
+         { 
+          title: 'Спасибо за сотрудничество!', 
+          nameService: 'Доставка груза', 
+          from: 'Транском Групп',
+          date: '10.02.2025', 
+          img: './images/feedback/certificate.png'
+        },
+        { 
+          title: 'Благодарность ВР Логистик', 
+          nameService: 'Доставка груза', 
+          from: 'Транском Групп', 
+          date: '10.02.2025', 
+          img: './images/feedback/certificate.png'
+        },
+        { 
+          title: 'Партнерская благодарность', 
+          nameService: 'Доставка груза', 
+          from: 'Транском Групп', 
+          date: '10.02.2025', 
+          img: './images/feedback/certificate.png'
+        },
+        { 
+          title: 'Надежный партнер в логистике', 
+          nameService: 'Доставка груза', 
+          from: 'Транском Групп', 
+          date: '10.02.2025', 
+          img: './images/feedback/certificate.png'
+        }
+      ]
+    }
+
+  section.feedback
+    .container
+      .feedback__top 
+        +headline({ text: defaultFeedbackProps.headline.text , link: defaultFeedbackProps.headline.link, class: 'feedback__link' })
+        +text({ variant: 'xs', weight: 'medium', text: defaultFeedbackProps.title, classes: 'feedback__title' })
+      .feedback__swiper#gallery-container
+        .swiper.feedback-swiper
+          .swiper-wrapper
+            each item in defaultFeedbackProps.items
+              .swiper-slide
+                +feedbackItem({ title: item.title, nameService: item.nameService, from: item.from, date: item.date, img: item.img, })
+      .swiper-pagination.feedback-swiper-pagination

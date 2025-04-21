@@ -20,18 +20,11 @@ mixin formSuccess(props = defaultSuccessFormProps, ...dataset)
   include ../../ui/icon
   include ../../ui/text
   .formResponse.formSuccess.js-form-success(class=`${checkProps.classes}`)&attributes(...dataset)
-    .formResponse__wrapper 
-      if checkProps.icon 
-        .formResponse__icon 
+    .formResponse__wrapper
+      if checkProps.icon
+        .formResponse__icon
           +icon(checkProps.icon)
       if checkProps.title
-        +text({
-          variant: 'xl',
-          weight: 'bold',
-          text: checkProps.title,
-        })  
-      if checkProps.subtitle  
-        +text({
-          text: checkProps.subtitle,
-          variant: 'm'
-        })
+        +text({ variant: 'xl', weight: 'bold', text: checkProps.title, }) 
+      if checkProps.subtitle
+        +text({ text: checkProps.subtitle, variant: 'm' })

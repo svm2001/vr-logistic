@@ -8,6 +8,7 @@
   @include merge;
 
   svg {
+    @include dim('h', 23, 23);
     @include dim('w', 56, 56);
     @include merge;
     transition: $transition;
@@ -27,7 +28,6 @@
     }
   }
 }
-
 
 @media (max-width: 767px) {
   .headline {

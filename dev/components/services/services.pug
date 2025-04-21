@@ -76,23 +76,18 @@ mixin services(props = defaultServicesProps, ...dataset)
   include services-item-simple
   include ../globe
   section.services(class=`${checkProps.classes}`)&attributes(...dataset)
-      .container
-          .services__inner
-              .services__top
-                  +headline(checkProps.headline)
-                  +text({
-                      variant: 'xs',
-                      weight: 'medium',
-                      text: checkProps.title,
-                      classes: 'services__title'
-                  })
-              .services__wrapper
-                  .services__list
-                      .services__col
-                          each item in checkProps.list.slice(0, 5)
-                              +services-item-simple(item)
-                      .services__col
-                          each item in checkProps.list.slice(5, 10)
-                              +services-item-simple(item)
-                      .services__globe
-                          +globe
+    .container
+      .services__inner
+        .services__top
+          +headline(checkProps.headline)
+          +text({ variant: 'xs', weight: 'medium', text: checkProps.title, classes: 'services__title' })
+        .services__wrapper
+          .services__list
+            .services__col
+              each item in checkProps.list.slice(0, 5)
+                +services-item-simple(item)
+            .services__col
+              each item in checkProps.list.slice(5, 10)
+                +services-item-simple(item)
+            .services__globe
+              +globe

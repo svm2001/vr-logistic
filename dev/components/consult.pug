@@ -14,10 +14,4 @@ mixin consult(props = defaultConsultProps, ...dataset)
   include consult-form
   section.consult(class=`${checkProps.classes}`)&attributes(...dataset)
     .container
-        +consult-form({
-          buttonText: checkProps.btnText
-        })
-
-
-
-
+      +consult-form({ buttonText: checkProps.btnText })

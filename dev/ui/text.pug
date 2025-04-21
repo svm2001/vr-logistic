@@ -18,4 +18,6 @@ mixin text(props = defaultTextProps, ...dataset)
       weight: validWeights.includes(props.weight) ? props.weight : defaultTextProps.weight,
     }
 
-  p.text(class=`text--${checkProps.variant} text--${checkProps.weight} ${checkProps.classes}`)&attributes(...dataset)= checkProps.text
+  p.text(
+    class=`text--${checkProps.variant} text--${checkProps.weight} ${checkProps.classes}`
+  )&attributes(...dataset)= checkProps.text

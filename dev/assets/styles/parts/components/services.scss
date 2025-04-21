@@ -338,8 +338,8 @@
     }
 
     &__item-simple {
-      left: 0!important;
-      right: 0!important;
+      left: 0 !important;
+      right: 0 !important;
       max-width: 100%;
       width: 100%;
 
@@ -364,7 +364,7 @@
     }
 
     &__globe {
-      transform: translate(-50%, -50%) scale(.95);
+      transform: translate(-50%, -50%) scale(0.95);
     }
 
     &-list__inner {
@@ -393,7 +393,6 @@
     }
   }
 }
-
 
 @media (max-width: 767px) {
   .services {

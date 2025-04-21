@@ -1,167 +1,169 @@
-
-
-
 .footer {
-
   background-color: $bg-minimal;
   margin-top: auto;
   display: flex;
   align-items: center;
   color: $white;
 
-  .container{
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      @include dim('pt', 50, 41);
-      @include dim('pb', 50, 41);
-      @include merge;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    @include dim('pt', 50, 41);
+    @include dim('pb', 50, 41);
+    @include merge;
   }
 
   &__column {
-      display: flex;
-      flex-direction: column;
-      width: max-content;
-      @include dim('max-w', 424, 320);
-      @include merge;
-      color: $white;
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    @include dim('max-w', 424, 320);
+    @include merge;
+    color: $white;
   }
 
   &__logo {
+    width: 100%;
+    @include dim('h', 63, 32);
+    @include dim('max-w', 400, 209);
+    @include dim('mb', 88, 60);
+    @include merge;
+    img {
       width: 100%;
-      @include dim('h', 63, 32);
-      @include dim('max-w', 400, 209);
-      @include dim('mb', 88, 60);
-      @include merge;
-      img{
-        width: 100%;
-      }
+    }
   }
 
   &__buttons {
-      display: flex;
-      @include dim('gap', 15, 10);
-      @include dim('mb', 40, 10);
-      @include merge;
+    display: flex;
+    @include dim('gap', 15, 10);
+    @include dim('mb', 40, 10);
+    @include merge;
   }
 
   &__social {
-      display: flex;
-      @include dim('gap', 22, 10);
-      @include merge;
+    display: flex;
+    @include dim('gap', 22, 10);
+    @include merge;
   }
 
   &__account.btn,
-  &__callback.btn{
+  &__callback.btn {
     border: 1px solid transparent;
-    &:hover{
+    &:hover {
       border-color: $btn-bg-invert;
     }
   }
 
-  &__account.btn{
-    svg path{
-      fill:$icon-accent;
+  &__callback.btn {
+    width: 100%;
+    @include dim('max-w', 150, 150);
+    @include merge;
+  }
+
+  &__account.btn {
+    width: 100%;
+    @include dim('max-w', 159, 159);
+    @include merge;
+    svg path {
+      fill: $icon-accent;
     }
 
-    &:hover{
-      svg path{
-        fill:$bg-line;
+    &:hover {
+      svg path {
+        fill: $bg-line;
       }
     }
   }
 
-  &__custom-btn.btn{
-      display: none;
-      border-radius: 50%;
-      aspect-ratio: 1 / 1;
-      border: 1px solid transparent;
-      background-color: $bg-line;
+  &__custom-btn.btn {
+    display: none;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    border: 1px solid transparent;
+    background-color: $bg-line;
   }
-
-
 
   &__social-item.btn-size-default.btn-icon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      @include dim('w', 50, 50);
-      @include dim('h', 50, 50);
-      @include dim('br', 7.3, 7.3);
-      @include merge;
-      transition: all 0.2s;
-      background-color: $bg-primary;
-      border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include dim('w', 50, 50);
+    @include dim('h', 50, 50);
+    @include dim('br', 7.3, 7.3);
+    @include merge;
+    transition: all 0.2s;
+    background-color: $bg-primary;
+    border: none;
 
-      svg path{
-        fill: $icon-accent;
+    svg path {
+      fill: $icon-accent;
+      transition: $transition;
+    }
+
+    &:hover {
+      background-color: $icon-accent;
+      svg path {
+        fill: $icon-primary;
         transition: $transition;
       }
+    }
 
-      &:hover{
-          background-color: $icon-accent;
-          svg path{
-            fill: $icon-primary;
-            transition: $transition;
-          }
-      }
-
-      >span{
-          @include dim('w', 17, 17);
-          @include merge;
-          height: 100%;
-      }
+    > span {
+      @include dim('w', 17, 17);
+      @include merge;
+      height: 100%;
+    }
   }
 
   &__title {
-      color: $text-green-light;
-      @include dim('mb', 30, 30);
-      @include merge;
+    color: $text-green-light;
+    @include dim('mb', 30, 30);
+    @include merge;
   }
 
   &__menu {
-      display: flex;
-      flex-direction: column;
-      @include dim('gap', 5, 18);
-      @include merge;
-      a{
-          width: max-content;
-          display: block;
-          color: $text-invert;
-          transition: all 0.2s;
-          text-decoration: none;
-          &:hover{
-              color: $text-accent;
-          }
+    display: flex;
+    flex-direction: column;
+    @include dim('gap', 5, 18);
+    @include merge;
+    a {
+      width: max-content;
+      display: block;
+      color: $text-invert;
+      transition: all 0.2s;
+      text-decoration: none;
+      &:hover {
+        color: $text-accent;
       }
+    }
   }
 
   &__copyright {
-      margin-top: auto;
-      &-bottom{
-          display: none;
-          align-self: center;
-          &.text--xs {
-            text-transform: uppercase;
-            color: $text-accent;
-            margin-top: 10px;
-            font-weight: 600;
-          }
+    margin-top: auto;
+    &-bottom {
+      display: none;
+      align-self: center;
+      &.text--xs {
+        text-transform: uppercase;
+        color: $text-accent;
+        margin-top: 10px;
+        font-weight: 600;
       }
+    }
   }
-
 
   &__contact {
     @include dim('max-w', 410, 320);
     @include dim('mb', 60, 60);
     @include merge;
-    a{
-        display: block;
-        color: $text-invert;
-        transition: all 0.2s;
-        &:hover{
-            color: $text-accent;
-        }
+    a {
+      display: block;
+      color: $text-invert;
+      transition: all 0.2s;
+      &:hover {
+        color: $text-accent;
+      }
     }
   }
 
@@ -182,48 +184,38 @@
     @include merge;
     display: flex;
     flex-direction: column;
-    >span{
-        display: block;
-    }
-  }
-
-  &__privacy-policy{
+    > span {
       display: block;
-      color: $text-invert;
-      transition: all 0.2s;
-      &:hover{
-          color: $text-accent;
-      }
-  }
-}
-
-@media(max-width: 1199px){
-  .footer {
-    .container{
-      gap: 20px;
     }
+  }
 
-    &__buttons {
-      flex-direction: column;
+  &__privacy-policy.text--m {
+    font-size: 16px;
+    &:hover {
+      color: $text-accent;
     }
   }
 }
 
-@media(max-width: 768px){
+@media (max-width: 1200px) {
   .footer {
+    flex-direction: column;
+    align-items: center;
+
+    &__social,
     &__account.btn,
-    &__callback.btn{
+    &__callback.btn {
       display: none;
     }
 
-    &__custom-btn.btn{
+    &__custom-btn.btn {
       display: flex;
       max-width: 44px;
       max-height: 44px;
       height: 100%;
       width: 100;
       border: none;
-      .btn__text{
+      .btn__text {
         color: $text-secondary;
         font-size: 14px;
         font-weight: 600;
@@ -233,110 +225,193 @@
         border: 1px solid $white;
       }
     }
-
-    .container{
-      flex-direction: column;
-      gap: 66px;
+    .container {
+      flex-wrap: wrap;
+      justify-content: left;
+      gap: 50px;
     }
 
     &__column {
-        display: flex;
-        width: 100%;
+      display: flex;
+      width: 100%;
+      column-gap: 50px;
+      &:first-child {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
         max-width: 100%;
-        &:first-child{
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .text--s{
-          font-size: 18px;
-        }
-    }
+      }
 
-    &__logo {
-        min-width: 0;
-        margin-bottom: 0;
-    }
+      &:nth-child(2) {
+        max-height: 155px;
+      }
 
-    &__buttons {
-        margin-bottom: 0;
-    }
-
-    &__language {
-        display: block;
-        max-width: 44px;
-    }
-
-    &__social {
-        display: none;
-        gap: 22px;
-    }
-
-    &__title {
-        color: $text-green-light;
-        margin-bottom: 30px;
-    }
-
-    &__menu {
+      &:nth-child(3) {
+        display: contents;
         flex-wrap: wrap;
-        flex-direction: column;
-        justify-content: left;
-        column-gap: 75px;
-        row-gap: 18px;
-        max-height: 165px;
-        max-width: 100%;
-        a{
-            width: max-content;
-            font-weight: 600;
-            font-size: 20px;
-            line-height: 100%;
-            &:hover{
-                color: $text-accent;
-            }
-        }
+      }
+
+      .text--s {
+        font-size: 18px;
+      }
     }
 
     &__copyright {
-        display: none;
-        margin-top: auto;
-        &-bottom{
-            display: flex;
-        }
+      display: none;
+      margin-top: auto;
+      &-bottom {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
     }
 
-    &__contact {
-        max-width: 410px;
-        margin-bottom: 60px;
+    &__menu {
+      flex-wrap: wrap;
+      max-height: 150px;
+      column-gap: 75px;
     }
 
-    &__address {
-        margin-bottom: 20px;
-        font-weight: 600;
-    }
-
-    &__email {
-        margin-bottom: 20px;
-        font-weight:600;
-    }
-
-    &__phone {
-        font-weight: 600;
+    &__privacy-policy {
+      font-size: 16px;
     }
 
     &__requisites {
-        max-width: 410px;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        .footer__title{
-            margin-bottom: 10px;
-        }
+      span {
+        font-weight: 400;
+      }
+      width: 100%;
+    }
+  }
+}
 
-        >span{
-            display: block;
-            font-weight: 600;
-            line-height: 100%;
+@media (max-width: 765px) {
+  .footer {
+    &__custom-btn.btn {
+      display: flex;
+      max-width: 60px;
+      max-height: 60px;
+      height: 100%;
+      width: 100;
+      border: none;
+      .btn__text {
+        color: $text-secondary;
+        font-size: 14px;
+        font-weight: 600;
+      }
+    }
+
+    .container {
+      flex-direction: column;
+      gap: 0px;
+    }
+
+    &__column {
+      width: 100%;
+      max-width: 100%;
+      &:first-child {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 72px;
+      }
+
+      &:nth-child(2) {
+        max-height: 182px;
+        margin-bottom: 60px;
+      }
+
+      &:nth-child(3) {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .text--s {
+        font-size: 18px;
+      }
+    }
+
+    &__logo {
+      min-width: 0;
+      margin-bottom: 0;
+    }
+
+    &__buttons {
+      margin-bottom: 0;
+    }
+
+    &__language {
+      display: block;
+      max-width: 44px;
+    }
+
+    &__title {
+      color: $text-green-light;
+      margin-bottom: 30px;
+    }
+
+    &__menu {
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: left;
+      column-gap: 75px;
+      row-gap: 18px;
+      max-height: 165px;
+      max-width: 100%;
+      a {
+        width: max-content;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 100%;
+        &:hover {
+          color: $text-accent;
         }
+      }
+    }
+
+    &__contact {
+      max-width: 410px;
+      margin-bottom: 60px;
+    }
+
+    &__address {
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    &__email {
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    &__phone {
+      font-weight: 600;
+    }
+
+    &__requisites {
+      max-width: 410px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .footer__title {
+        margin-bottom: 10px;
+      }
+
+      > span {
+        display: block;
+        font-weight: 600;
+        line-height: 100%;
+      }
+    }
+
+    &__copyright-bottom.text--xs {
+      font-size: 18px;
+      margin-top: 76px;
+    }
+
+    &__privacy-policy.text--m {
+      font-size: 20px;
     }
   }
 }

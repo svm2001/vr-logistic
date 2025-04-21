@@ -12,7 +12,7 @@
         @include dim('p', 70, 20);
         @include merge;
         background: $bg-line;
-        border-radius: 20px
+        border-radius: 20px;
       }
 
       &__close {
@@ -24,7 +24,7 @@
         border-radius: 3px;
         border: 1px solid transparent;
         aspect-ratio: 1 / 1;
-        background: #124F2ECC;
+        background: #124f2ecc;
         padding: 0;
         display: flex;
         align-items: center;
@@ -49,10 +49,10 @@
 
         &:hover {
           background: transparent;
-          border: 1px solid #124F2ECC;
+          border: 1px solid #124f2ecc;
 
           svg path {
-            stroke: #124F2ECC;;
+            stroke: #124f2ecc;
           }
         }
 
@@ -95,7 +95,7 @@
 
 .hystmodal__shadow {
   z-index: 101;
-  background: rgba(9, 54, 30, .85);
+  background: rgba(9, 54, 30, 0.85);
 }
 
 .hystmodal {

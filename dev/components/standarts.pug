@@ -54,69 +54,48 @@ mixin standarts(props = defaultStandartsProps, ...dataset)
   include ../ui/btn
   include ../ui/headline
   section.standarts(class=`${checkProps.classes}`)&attributes(...dataset)
-      .container
-          .standarts__inner
-              .standarts__top
-                  +headline({
-                      text: checkProps.title,
-                  })
-              .standarts__wrapper
-                  .standarts__info
-                      .standarts__info-poster
-                          img.lazy(src="./images/no-image.jpg" data-src=checkProps.lk.poster alt=checkProps.lk.title)
-                      +title({
-                        text: checkProps.lk.title,
-                        variant: '4',
-                        weight: 'bold',
-                        classes: 'standarts__info-title'
-                      })
-                      +text({
-                        text: checkProps.lk.subtitle,
-                        classes: 'standarts__info-text',
-                        variant: 'xs',
-                        weight: 'medium'
-                      })
-                      +btn({
-                        name: checkProps.lk.btnText,
-                        link: 'javascript:void(0);',
-                        classes: 'standarts__info-btn',
-                        icon: true,
-                        iconName: 'account',
-                        iconPosition: 'left'
-                      })
-                      span.standarts__info-post-title= checkProps.lk.postTitle
-                          | &nbsp;
-                          a(href="javascript:void(0);")= checkProps.lk.postTitleLink
-                  .standarts__list
-                      +text({
-                        text: checkProps.subtitle,
-                        classes: 'standarts__list-text',
-                        variant: 'xs',
-                        weight: 'medium'
-                      })
-                      .standarts__list-inner
-                          each item in checkProps.list
-                              .standarts__list-item
-                                  img.lazy(src="./images/no-image.jpg" data-src=item.image alt=item.title)
-                                  .standarts__list-item-inner
-                                      +text({
-                                          text: item.title,
-                                          classes: 'standarts__list-item-title',
-                                          variant: 'm',
-                                          weight: 'bold'
-                                      })
-                                      +text({
-                                          text: item.text,
-                                          classes: 'standarts__list-item-text',
-                                          variant: 'xxs'
-                                      })
-                  .standarts__slider
-                      .swiper
-                          .swiper-wrapper
-                              each item in checkProps.list
-                                  .swiper-slide
-                                      .standarts__slider-item
-                                          img.lazy(src="./images/no-image.jpg" data-src=item.image alt=item.title)
-                                          h4.standarts__slider-item-title= item.title
-                                          p.standarts__slider-item-text= item.text
-                          .swiper-pagination
+    .container
+      .standarts__inner
+        .standarts__top
+          +headline({ text: checkProps.title, })
+        .standarts__wrapper
+          .standarts__info
+            .standarts__info-poster
+              img.lazy(
+                src="./images/no-image.jpg",
+                data-src=checkProps.lk.poster,
+                alt=checkProps.lk.title
+              )
+            +title({ text: checkProps.lk.title, variant: '4', weight: 'bold', classes: 'standarts__info-title' })
+            +text({ text: checkProps.lk.subtitle, classes: 'standarts__info-text', variant: 'xs', weight: 'medium' })
+            +btn({ name: checkProps.lk.btnText, link: 'javascript:void(0);', classes: 'standarts__info-btn', icon: true, iconName: 'account', iconPosition: 'left' })
+            span.standarts__info-post-title= checkProps.lk.postTitle
+              | &nbsp;
+              a(href="javascript:void(0);")= checkProps.lk.postTitleLink
+          .standarts__list
+            +text({ text: checkProps.subtitle, classes: 'standarts__list-text', variant: 'xs', weight: 'medium' })
+            .standarts__list-inner
+              each item in checkProps.list
+                .standarts__list-item
+                  img.lazy(
+                    src="./images/no-image.jpg",
+                    data-src=item.image,
+                    alt=item.title
+                  )
+                  .standarts__list-item-inner
+                    +text({ text: item.title, classes: 'standarts__list-item-title', variant: 'm', weight: 'bold' })
+                    +text({ text: item.text, classes: 'standarts__list-item-text', variant: 'xxs' })
+          .standarts__slider
+            .swiper
+              .swiper-wrapper
+                each item in checkProps.list
+                  .swiper-slide
+                    .standarts__slider-item
+                      img.lazy(
+                        src="./images/no-image.jpg",
+                        data-src=item.image,
+                        alt=item.title
+                      )
+                      h4.standarts__slider-item-title= item.title
+                      p.standarts__slider-item-text= item.text
+              .swiper-pagination

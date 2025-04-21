@@ -72,12 +72,9 @@ mixin expertise(props = defaultExpertiseProps, ...dataset)
   include ../../ui/headline
   include expertise-item
   section.expertise(class=`${checkProps.classes}`)&attributes(...dataset)
-      .container
-          .expertise__inner
-              +headline({
-                text: checkProps.title,
-                link: checkProps.link
-              })
-              .expertise__list
-                  each item in checkProps.expertises
-                      +expertise-item(item)
+    .container
+      .expertise__inner
+        +headline({ text: checkProps.title, link: checkProps.link })
+        .expertise__list
+          each item in checkProps.expertises
+            +expertise-item(item)

@@ -43,12 +43,16 @@ $last-selector: null;
 
     'border': 'border',
     'br': 'border-radius',
+    'btlr': 'border-top-left-radius',
+    'btrr': 'border-top-right-radius',
+    'bblr': 'border-bottom-left-radius',
+    'bbrr': 'border-bottom-right-radius',
 
     'basis': 'flex-basis',
 
     'grid-gap': 'grid-gap',
     'grid-row-gap': 'grid-row-gap',
-    'grid-column-gap': 'grid-column-gap'
+    'grid-column-gap': 'grid-column-gap',
   );
 
   @return map-get($properties, $short-name);
@@ -69,15 +73,30 @@ $last-selector: null;
         }
       }
     }
-    $adaptive-properties: map-merge($adaptive-properties, ($last-selector: ())) !global;
+    $adaptive-properties: map-merge(
+      $adaptive-properties,
+      (
+        $last-selector: (),
+      )
+    ) !global;
   }
 
   $current-props: ();
   @if map-has-key($adaptive-properties, $selector) {
     $current-props: map-get($adaptive-properties, $selector);
   }
-  $current-props: map-merge($current-props, ($prop: vw($adaptive-size)));
-  $adaptive-properties: map-merge($adaptive-properties, ($selector: $current-props)) !global;
+  $current-props: map-merge(
+    $current-props,
+    (
+      $prop: vw($adaptive-size),
+    )
+  );
+  $adaptive-properties: map-merge(
+    $adaptive-properties,
+    (
+      $selector: $current-props,
+    )
+  ) !global;
 
   $last-selector: $selector !global;
 
@@ -90,7 +109,12 @@ $last-selector: null;
             #{$p}: $value;
           }
         }
-        $adaptive-properties: map-merge($adaptive-properties, ($selector: ())) !global;
+        $adaptive-properties: map-merge(
+          $adaptive-properties,
+          (
+            $selector: (),
+          )
+        ) !global;
       }
     }
   }
@@ -102,5 +126,10 @@ $last-selector: null;
       #{$prop}: $value;
     }
   }
-  $adaptive-properties: map-merge($adaptive-properties, (&: ())) !global;
+  $adaptive-properties: map-merge(
+    $adaptive-properties,
+    (
+      &: (),
+    )
+  ) !global;
 }

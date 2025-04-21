@@ -71,7 +71,7 @@
     @include dim('fz', 16, 14);
     @include merge;
     display: inline-block;
-    color: #70BD93;
+    color: #70bd93;
     font-weight: 500;
     line-height: 130%;
   }
@@ -86,7 +86,6 @@ input[type='number']::-webkit-outer-spin-button {
 input[type='number'] {
   -moz-appearance: textfield;
 }
-
 
 .input--error .input__field {
   border-bottom: 1px solid red !important;
@@ -111,7 +110,7 @@ input[type='number'] {
       @include dim('fz', 16, 16);
       @include merge;
       display: inline-block;
-      color: #70BD93;
+      color: #70bd93;
       font-weight: 500;
       line-height: 130%;
     }

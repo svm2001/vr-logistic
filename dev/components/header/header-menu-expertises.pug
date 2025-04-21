@@ -94,13 +94,17 @@ mixin header-menu-expertises(props = defaultHeaderMenuExpertisesProps, ...datase
 
 
 
-  .header-menu.header-menu-expertises(class=`${checkProps.classes}` data-menu='expertises')&attributes(...dataset)
+  .header-menu.header-menu-expertises(
+    class=`${checkProps.classes}`,
+    data-menu="expertises"
+  )&attributes(...dataset)
     .container
       .header-menu-expertises__list
-          each col in checkProps.links
-            .header-menu-expertises__list-col
-                a.header-menu-expertises__list-col-main-link(href=col.mainLink.link)= col.mainLink.name
-                .header-menu-expertises__list-col-list
-                    each sublink in col.sublinks
-                      a.header-menu-expertises__list-col-list-item(href=sublink.link)= sublink.name
-
+        each col in checkProps.links
+          .header-menu-expertises__list-col
+            a.header-menu-expertises__list-col-main-link(
+              href=col.mainLink.link
+            )= col.mainLink.name
+            .header-menu-expertises__list-col-list
+              each sublink in col.sublinks
+                a.header-menu-expertises__list-col-list-item(href=sublink.link)= sublink.name
