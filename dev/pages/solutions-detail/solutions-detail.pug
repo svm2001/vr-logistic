@@ -5,11 +5,10 @@ block content
     include ../../components/standarts
     include ../../components/first-screen
     include ../../components/consult
-
     include ../../components/content/content
-    include ../../components/content/blocks/content-map
     include ../../components/content/blocks/content-text
     include ../../components/services/services-other
+    include ../../components/feedback
     include ../../modal-windows/modal
     .wrapper.service-detail-wrapper
         +first-screen({
@@ -67,6 +66,7 @@ block content
                     'США-Китай'
                   ]
                 })
+        +feedback({ classes: 'feedback--white' })
         +services-other({
           headline: {
             text: 'Услуги отраслевых решений',
