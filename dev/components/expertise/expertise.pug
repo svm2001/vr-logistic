@@ -1,7 +1,7 @@
 -
   const defaultExpertiseProps = {
       classes: '',
-      title: 'Отраслевая экспертиза',
+      title: '',
       link: 'javascript:void(0);',
       expertises: [
           {
@@ -74,10 +74,11 @@ mixin expertise(props = defaultExpertiseProps, ...dataset)
   section.expertise(class=`${checkProps.classes}`)&attributes(...dataset)
       .container
           .expertise__inner
-              +headline({
-                text: checkProps.title,
-                link: checkProps.link
-              })
+              if checkProps.title
+                  +headline({
+                    text: checkProps.title,
+                    link: checkProps.link
+                  })
               .expertise__list
                   each item in checkProps.expertises
                       +expertise-item(item)
