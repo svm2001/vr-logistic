@@ -15,56 +15,64 @@ mixin feedback(props = defaultFeedbackProps, ...dataset)
           nameService: 'Доставка груза', 
           from: 'Транском Групп',
           date: '10.02.2025', 
-          img: './images/feedback/certificate.png'
+          img: './images/feedback/certificate.png',
+          bigImg: './images/feedback/certificate_big.png',
         },
         { 
           title: 'Благодарность ВР Логистик', 
           nameService: 'Доставка груза', 
           from: 'Транском Групп', 
           date: '10.02.2025', 
-          img: './images/feedback/certificate.png'
+          img: './images/feedback/certificate.png',
+          bigImg: './images/feedback/certificate_big.png',
         },
         { 
           title: 'Партнерская благодарность', 
           nameService: 'Доставка груза', 
           from: 'Транском Групп', 
           date: '10.02.2025', 
-          img: './images/feedback/certificate.png'
+          img: './images/feedback/certificate.png',
+          bigImg: './images/feedback/certificate_big.png',
         },
         { 
           title: 'Надежный партнер в логистике', 
           nameService: 'Доставка груза', 
           from: 'Транском Групп', 
           date: '10.02.2025', 
-          img: './images/feedback/certificate.png'
+          img: './images/feedback/certificate.png',
+          bigImg: './images/feedback/certificate_big.png',
         },
          { 
           title: 'Спасибо за сотрудничество!', 
           nameService: 'Доставка груза', 
           from: 'Транском Групп',
           date: '10.02.2025', 
-          img: './images/feedback/certificate.png'
+          img: './images/feedback/certificate.png',
+          bigImg: './images/feedback/certificate_big.png',
         },
         { 
           title: 'Благодарность ВР Логистик', 
           nameService: 'Доставка груза', 
           from: 'Транском Групп', 
           date: '10.02.2025', 
-          img: './images/feedback/certificate.png'
+          img: './images/feedback/certificate.png',
+          bigImg: './images/feedback/certificate_big.png',
         },
         { 
           title: 'Партнерская благодарность', 
           nameService: 'Доставка груза', 
           from: 'Транском Групп', 
           date: '10.02.2025', 
-          img: './images/feedback/certificate.png'
+          img: './images/feedback/certificate.png',
+          bigImg: './images/feedback/certificate_big.png',
         },
         { 
           title: 'Надежный партнер в логистике', 
           nameService: 'Доставка груза', 
           from: 'Транском Групп', 
           date: '10.02.2025', 
-          img: './images/feedback/certificate.png'
+          img: './images/feedback/certificate.png',
+          bigImg: './images/feedback/certificate_big.png',
         }
       ]
     }
@@ -79,5 +87,5 @@ mixin feedback(props = defaultFeedbackProps, ...dataset)
           .swiper-wrapper
             each item in defaultFeedbackProps.items
               .swiper-slide
-                +feedbackItem({ title: item.title, nameService: item.nameService, from: item.from, date: item.date, img: item.img, })
+                +feedbackItem({ title: item.title, nameService: item.nameService, from: item.from, date: item.date, img: item.img, bigImg: item.bigImg })
       .swiper-pagination.feedback-swiper-pagination
