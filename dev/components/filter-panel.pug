@@ -1,0 +1,52 @@
+
+-
+  const defaultFilterProps = {
+      search: true, 
+      sort: true,
+      sortProps: [
+        { name: "Cначала старые", sort: 'asc' },
+        { name: "Cначала новые", sort: 'desc' }
+      ],
+      language: false, 
+      languageProps: [
+        { name: "Eng", sort: 'eng' },
+        { name: "Ru", sort: 'ru' },
+      ],
+      classes: ''
+  }
+
+mixin filter-panel(props = defaultFilterProps, ...dataset)
+  -
+    const newsProps = {
+        search: props.search ? props.search : defaultFilterProps.search,
+        sort: props.sort ? props.sort : defaultFilterProps.sort,
+        sortProps: props.sortProps ? props.sortProps : defaultFilterProps.sortProps,
+        language: props.language ? props.language : defaultFilterProps.language,
+        languageProps: props.languageProps ? props.languageProps : defaultFilterProps.languageProps,
+        classes: props.classes ? props.classes : defaultFilterProps.classes
+    }
+    
+  include ../ui/icon
+  include ../ui/input
+  include ../ui/sort-filter
+  
+  .filter-panel 
+    .container
+      if(newsProps.search)
+        .filter-panel__search
+          +input({
+            name: 'search',
+            placeholder: 'Поиск',
+            classes: 'filter-search',
+          })
+          span.filter-panel__search-icon
+            +icon('search')
+      if(newsProps.sort)
+        .filter-panel__sort
+          +sort-filter({
+            classes: '',
+            options: newsProps.sortProps,
+            pre: true,
+            preText: 'Сортировать:',
+          })
+

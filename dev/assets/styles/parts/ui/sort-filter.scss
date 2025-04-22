@@ -1,0 +1,58 @@
+@import '../../mixins/vw';
+
+.sort{
+    display: flex;
+    width: 100%;
+    @include dim('gap', 5, 5);
+    @include merge;
+    &.active {
+        .sort__icon {
+            transform: rotate(-180deg);
+          }
+    }
+
+
+    &__prefield{
+        line-height: 120%;
+        @include dim('fz', 18, 18);
+        @include merge;
+    }
+    &__field{
+        position: relative;
+        @include dim('min-h', 70, 70);
+        @include dim('h', 70, 70);
+        @include merge;
+
+    }
+    &__value{
+        text-transform: lowercase;
+        font-weight: 700;
+        @include dim('fz', 18, 18);
+        @include merge;
+    }
+
+    &__head{
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        @include dim('gap', 10, 10);
+        @include merge;
+    }
+
+    &__icon svg{
+        @include dim('max-w', 9, 9);
+        @include merge; 
+    }
+
+    &__body{
+        transition: transform $transition;
+
+    }
+    &__list{
+        li{
+            &.active{
+
+            }
+        }
+    }
+}

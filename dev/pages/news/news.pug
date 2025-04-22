@@ -6,6 +6,7 @@ block content
     include ../../components/first-screen
 
     include ../../components/tags-line
+    include ../../components/filter-panel
     include ../../modal-windows/modal
     .wrapper
         +first-screen({
@@ -24,9 +25,10 @@ block content
             { name: 'Благотворительность', data: 'charity' },
             { name: 'Экспертное мнение', data: 'expert-opinion' },
             { name: 'Маршруты', data: 'routes' },
-            
           ]
         })
+        +filter-panel({})
+
         +consult({classes: 'consult--page', btnText: 'Жду звонка'})
     +modal({ id: 'consult-form', classes: 'consult__form' })
         +consult-form
