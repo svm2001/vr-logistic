@@ -53,6 +53,14 @@
     flex-direction: column;
     gap: 30px;
     width: 100%;
+
+    &-link {
+      display: block;
+      font-size: 20px;
+      padding: 15px 0;
+      border-bottom: 1px solid $bg-green-light;
+
+    }
   }
 
   &__btns {
