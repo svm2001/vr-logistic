@@ -1,0 +1,159 @@
+@import '../../mixins/vw';
+
+.reviews {
+  background: $white;
+  @include dim('pt', 80, 60);
+  @include dim('pb', 60, 30);
+  @include merge;
+  overflow: hidden;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    @include dim('gap', 40, 40);
+    @include merge;
+    position: relative;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid $bg-green-light;
+    @include dim('pb', 40, 30);
+    @include merge;
+  }
+
+  &__subtitle {
+    @include dim('max-w', 683, 100);
+    @include merge;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    background: $white;
+    border: 2px solid #F2F8F2;
+    @include dim('gap', 50, 30);
+    @include dim('max-w', 540, 340);
+    @include dim('br', 15, 15);
+    @include dim('p', 40, 30);
+    @include merge;
+
+    &-text {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 13;
+      line-clamp: 13;
+      overflow: hidden;
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      @include dim('gap', 20, 20);
+      @include merge;
+    }
+
+    &-person {
+      display: flex;
+      align-items: center;
+      @include dim('gap', 20, 20);
+      @include merge;
+
+      img {
+        @include dim('w', 60, 56);
+        @include dim('h', 60, 56);
+        @include merge;
+        border-radius: 50%;
+      }
+
+      &-info {
+        display: flex;
+        flex-direction: column;
+        @include dim('gap', 10, 10);
+        @include merge;
+      }
+    }
+  }
+
+  &__slider .swiper {
+    @include dim('pb', 90, 50);
+    @include merge;
+
+    .swiper-slide-active {
+      position: relative!important;
+      @include dim('mt', 30, 0);
+      @include merge;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .reviews {
+    &__slider .swiper {
+      overflow-y: visible;
+      height: 100%;
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
+
+      .swiper-slide {
+        transition: .5s!important;
+        @include dim('max-w', 540, 340);
+        margin-right: vw(10);
+        margin-left: vw(10);
+        @include merge;
+      }
+
+      .swiper-slide-active {
+        position: relative!important;
+        @include dim('mt', 30, 0);
+        @include merge;
+      }
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .reviews {
+
+    &__item-name {
+      font-size: 16px;
+    }
+
+    &__item-text {
+      -webkit-line-clamp: 100;
+      line-clamp: 100;
+    }
+
+    &__slider {
+      .swiper {
+        .swiper-slide-next + .swiper-slide {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .swiper-slide, .reviews__item {
+        max-width: 100% !important;
+      }
+    }
+
+    &__top {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    &__subtitle {
+      max-width: 100%;
+    }
+
+    .swiper {
+      overflow: visible;
+    }
+  }
+}

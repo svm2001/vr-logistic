@@ -11,6 +11,47 @@
     }
   }
 
+  &--internship {
+    .content__inner {
+      flex-wrap: wrap;
+
+      .content__inner-block {
+        @include dim('flex-basis', 400, 200);
+        @include dim('max-w', 400, 200);
+        @include merge();
+
+        @media (max-width: 767px) {
+          flex-basis: 100%;
+          max-width: 100%;
+
+          .content__big-title {
+            font-size: 28px;
+          }
+        }
+      }
+
+      .content__wrapper {
+        @include dim('flex-basis', 1200, 200);
+        @include dim('max-w', 1261, 200);
+        @include merge();
+
+        @media (max-width: 1199px) {
+          flex-basis: calc(100% - 240px);
+          max-width: calc(100% - 240px);
+        }
+
+        @media (max-width: 767px) {
+          flex-basis: 100%;
+          max-width: 100%;
+        }
+      }
+
+      .content__internship {
+        flex-basis: 100%;
+      }
+    }
+  }
+
   &--bg-gray {
     background: $bg-secondary;
   }
@@ -133,6 +174,133 @@
       text-decoration: underline;
     }
   }
+
+  &__internship-texts {
+    @include dim('pl', 390, 0);
+    @include dim('gap', 9, 9);
+    @include merge;
+    display: flex;
+    flex-direction: column;
+
+    p {
+      @include dim('fz', 18, 18);
+      font-weight: 500;
+
+      @media (max-width: 767px) {
+        font-weight: 400;
+      }
+    }
+  }
+
+  &__big-title {
+    color: $text-secondary;
+    @include dim('fz', 50, 18);
+    @include merge;
+
+    @media (max-width: 1199px) {
+      font-weight: 700;
+    }
+  }
+
+  &__internship {
+    display: flex;
+    flex-direction: column;
+    @include dim('gap', 20, 10);
+    @include dim('mt', 30, 10);
+    @include merge;
+
+    &-top-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      @include dim('gap', 20, 10);
+      @include merge;
+
+      @media (max-width: 767px) {
+        grid-template-columns: repeat(1, 1fr);
+
+        .content__internship-top-list-item-title {
+          font-size: 40px;
+          font-weight: 600;
+        }
+      }
+
+      &-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        @include dim('min-h', 214, 234);
+        @include dim('gap', 40, 40);
+        @include dim('br', 10, 10);
+        @include dim('p', 30, 30);
+        @include merge;
+        background: $bg-secondary;
+
+        &-title {
+          color: $icon-accent;
+        }
+      }
+    }
+
+    &-bottom-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      @include dim('gap', 20, 10);
+      @include merge;
+
+      @media (max-width: 767px) {
+        grid-template-columns: repeat(1, 1fr);
+
+        .content__internship-bottom-list-item-title {
+          font-weight: 600;
+        }
+      }
+
+      &-item {
+        display: flex;
+        flex-direction: column;
+        @include dim('gap', 40, 40);
+        @include dim('br', 10, 10);
+        @include dim('p', 30, 30);
+        @include merge;
+        background: $bg-secondary;
+
+        &-title {
+          color: $icon-accent;
+        }
+
+        &-text {
+          display: flex;
+          flex-direction: column;
+          @include dim('gap', 9, 9);
+          @include merge;
+
+          li {
+            list-style: none;
+          }
+
+          p {
+            position: relative;
+            @include dim('pl', 40, 40);
+            @include merge;
+
+            &:before {
+              position: absolute;
+              content: '';
+              left: 0;
+              @include dim('w', 20, 20);
+              @include dim('t', 12, 12);
+              @include merge;
+              height: 1px;
+              background-color: $icon-accent;
+              transform: translateY(-50%);
+              user-select: none;
+              pointer-events: none;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 1199px) {
@@ -174,4 +342,16 @@
       background: $bg-secondary;
     }
   }
+}
+
+.content-block--no-paddings {
+  padding: 0;
+}
+
+.content-block--no-pt {
+  padding-top: 0;
+}
+
+.content-block--no-pb {
+  padding-bottom: 0;
 }

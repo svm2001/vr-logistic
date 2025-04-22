@@ -12,13 +12,11 @@ export default function smoothScrolling() {
         behavior: 'smooth',
         block: 'start',
       })
-    }
-  }
 
-  const checkInitialUrl = () => {
-    const path = window.location.pathname.slice(1)
-    if (path) {
-      scrollToSection(path)
+      setTimeout(() => window.innerWidth >= 1200
+        ? window.scrollBy({ top: -100, behavior: 'smooth' })
+        : window.scrollBy({ top: -65, behavior: 'smooth' }),
+      750)
     }
   }
 
@@ -30,12 +28,7 @@ export default function smoothScrolling() {
       const anchor = el.closest('[data-smooth-scrolling*="#"]')
       const blockID = anchor.getAttribute('data-smooth-scrolling').substr(1)
 
-      const newUrl = `/${blockID}`
-      window.history.pushState({ section: blockID }, '', newUrl)
-
       scrollToSection(blockID)
     }
   })
-
-  checkInitialUrl()
 }

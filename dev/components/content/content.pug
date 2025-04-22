@@ -1,9 +1,71 @@
 -
   const defaultContentProps = {
       classes: '',
-      title: 'content-title',
+      title: '',
+      bigTitle: '',
       rounded: false,
-      isHh: false
+      isHh: false,
+      isInternShip: false,
+  }
+
+  const internshipTopList = [
+      {
+          title: '95%',
+          text: 'выпускников получают предложение о работе',
+      },
+      {
+        title: '100+ ',
+        text: 'часов практических лекций от экспертов',
+      },
+      {
+        title: '40+ ',
+        text: 'направлений в сфере логистики и ВЭД',
+      }
+  ]
+
+  const internshipBottomList = [
+      {
+        title: 'Погружение в реальный бизнес',
+        list: [
+          'Опыт работы с реальными клиентами, поставщиками и партнёрами.',
+          'Знакомство с ключевыми бизнес-процессами логистики.',
+          'Практика в решении реальных логистических задач. '
+        ]
+      },
+      {
+        title: 'Освоение современных технологий',
+        list: [
+          'Использование IT-решений: автоматизация процессов, цифровая логистика.',
+          'Работа с аналитическими инструментами и искусственным интеллектом.',
+          'Внедрение блокчейна и Big Data в логистические процессы.'
+        ]
+      },
+      {
+        title: 'Гибкость и адаптация',
+        list: [
+          'Умение работать в быстро меняющейся среде.',
+          'Развитие навыков кризисного управления и поиска альтернативных решений.',
+          'Обучение эффективному управлению рисками.'
+        ]
+      },
+      {
+        title: 'Логистические тренды и инновации',
+        list: [
+          'Обучение актуальным тенденциям: «зелёная» логистика, мультимодальные перевозки, автоматизация складов.',
+          'Изучение кейсов ведущих мировых компаний.',
+          'Работа с современными инструментами прогнозирования.'
+        ]
+      }
+  ]
+
+  const timer = {
+    info: {
+      title: 'Очные занятия',
+      subtitle: '3 раза в неделю по вечерам, с 17 февраля!',
+      btnText: 'Записаться на курс'
+    },
+    title: 'До старта нового курса осталось:',
+    titleOver: 'Курс уже начался!'
   }
 
 mixin content(props = defaultContentProps, ...dataset)
@@ -11,8 +73,11 @@ mixin content(props = defaultContentProps, ...dataset)
     const checkProps = {
         classes: props.classes ? props.classes : defaultContentProps.classes,
         title: props.title ? props.title : defaultContentProps.title,
+        bigTitle: props.bigTitle ? props.bigTitle : defaultContentProps.bigTitle,
         rounded: props.rounded ? props.rounded : defaultContentProps.rounded,
         isHh: props.isHh ? props.isHh : defaultContentProps.isHh,
+        isInternShip: props.isInternShip ? props.isInternShip : defaultContentProps.isInternShip,
+        timer: props.timer ? props.timer : defaultContentProps.timer,
     }
 
   include ../../ui/text
@@ -22,12 +87,20 @@ mixin content(props = defaultContentProps, ...dataset)
       .content-container
           .content__inner
             .content__inner-block
-              +text({
-                  text: checkProps.title,
-                  classes: 'content__title',
-                  variant: 'l',
-                  weight: 'bold'
-              })
+              if checkProps.title
+                  +text({
+                      text: checkProps.title,
+                      classes: 'content__title',
+                      variant: 'l',
+                      weight: 'bold'
+                  })
+              if checkProps.bigTitle
+                  +title({
+                      text: checkProps.bigTitle,
+                      classes: 'content__big-title',
+                      variant: '3',
+                      weight: 'bold'
+                    })
               if checkProps.isHh
                 a.headhunter-link(href="https://hh.ru" target="_blank")
                   +icon('hh')
@@ -35,3 +108,86 @@ mixin content(props = defaultContentProps, ...dataset)
                     | на HeadHunter
             .content__wrapper
               block
+
+            if checkProps.isInternShip
+              .content__internship
+                  .content__internship-top-list
+                      each item in internshipTopList
+                          .content__internship-top-list-item
+                              if item.title
+                                  +text({
+                                      text: item.title,
+                                      classes: 'content__internship-top-list-item-title',
+                                      variant: 'xl',
+                                      weight: 'bold'
+                                  })
+                              if item.text
+                                  +text({
+                                      text: item.text,
+                                      classes: 'content__internship-top-list-item-text',
+                                      variant: 'xs',
+                                      weight: 'medium'
+                                  })
+                  .content__internship-bottom-list
+                      each item in internshipBottomList
+                          .content__internship-bottom-list-item
+                              if item.title
+                                  +text({
+                                      text: item.title,
+                                      classes: 'content__internship-bottom-list-item-title',
+                                      variant: 'm',
+                                      weight: 'bold'
+                                  })
+                              ul.content__internship-bottom-list-item-text
+                                  each list in item.list
+                                      li
+                                          +text({
+                                              text: list,
+                                              variant: 'xs',
+                                          })
+            if checkProps.timer
+              .timer.js-timer(data-event-start="2025-05-07T17:00:00")
+                  .timer__info
+                      .timer__info-text
+                          +text({
+                            text: timer.info.title,
+                            variant: 'xl',
+                            classes: 'timer__info-title',
+                            weight: 'bold'
+                          })
+                          +text({
+                            text: timer.info.subtitle,
+                            variant: 'm',
+                            classes: 'timer__info-subtitle',
+                            weight: 'medium'
+                          })
+                      +btn({
+                        dot: true,
+                        name: timer.info.btnText
+                      }, { 'data-hystmodal': '#consult-form' })
+                  .timer__content
+                      +text({
+                        variant: 'l',
+                        text: timer.titleOver,
+                        classes: 'timer__main-title-over',
+                        weight: 'bold'
+                      })
+                      +text({
+                        variant: 'l',
+                        text: timer.title,
+                        classes: 'timer__main-title',
+                        weight: 'bold'
+                      })
+                      .timer__counter
+                          .timer__section.timer__section--day.js-timer-day
+                              span.timer__value(data-day-count) 6
+                              span.timer__value-name(data-day-name) дней
+                          .timer__section.timer__section--hour.js-timer-hour
+                              span.timer__value(data-hour-count) 18
+                              span.timer__value-name(data-hour-name) часов
+                          .timer__section.timer__section--minute.js-timer-minute
+                              span.timer__value(data-minute-count) 34
+                              span.timer__value-name(data-minute-name) минуты
+                          .timer__section.timer__section--second.js-timer-second
+                              span.timer__value(data-second-count) 27
+                              span.timer__value-name(data-second-name) секунд

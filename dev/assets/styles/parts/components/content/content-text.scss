@@ -145,6 +145,7 @@
         left: 0;
         @include dim('w', 20, 20);
         @include dim('t', 10, 10);
+        @include merge;
         height: 1px;
         background-color: $bg-accent;
         transform: translateY(-50%);
@@ -180,6 +181,7 @@
         left: 0;
         @include dim('w', 20, 20);
         @include dim('t', 12, 12);
+        @include merge;
         height: 1px;
         background-color: $icon-accent;
         transform: translateY(-50%);
@@ -342,6 +344,138 @@
       }
     }
   }
+
+  &__schedule {
+    &-list {
+      display: flex;
+      flex-direction: column;
+      @include dim('gap', 20, 20);
+      @include merge;
+    }
+
+    &-item {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      @include dim('gap', 20, 20);
+      @include merge;
+
+      &-day p {
+        color: #BFBFBF;
+        @include dim('max-w', 143, 100);
+        @include dim('min-w', 143, 100);
+        @include merge;
+      }
+
+      &-inner {
+        display: flex;
+        align-items: center;
+        transition: $transition;
+        @include dim('gap', 80, 10);
+        @include dim('br', 20, 20);
+        @include dim('p', 40, 20);
+        @include merge;
+        background: $bg-secondary;
+
+        &:hover {
+          background: $bg-line;
+        }
+      }
+
+      &-date p {
+        color: #A3A3A3;
+        @include dim('max-w', 146, 146);
+        @include dim('min-w', 146, 146);
+        @include merge;
+      }
+
+      &-description {
+        @include dim('fz', 18, 18);
+        @include merge;
+      }
+    }
+  }
+
+  &__speakers {
+
+    &-list {
+      .swiper {
+        cursor: grab;
+        min-width: 0;
+        max-width: 64vw;
+        @include dim('br', 20, 20);
+        @include dim('pb', 80, 60);
+        @include merge;
+
+        @media (max-width: 1505px) {
+          max-width: 63vw;
+        }
+
+        @media (max-width: 1199px) {
+          max-width: calc(100vw - 270px);
+        }
+
+        @media (max-width: 767px) {
+          max-width: calc(100% + 40px);
+          margin: 0 -20px;
+          padding: 0 20px 60px 20px;
+          border-radius: 0;
+        }
+
+        &:active {
+          cursor: grabbing;
+        }
+
+        .swiper-slide {
+          width: fit-content!important;
+          @include dim('max-w', 229, 229);
+          @include dim('min-w', 229, 229);
+        }
+      }
+    }
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      @include dim('gap', 15, 15);
+      @include dim('max-w', 229, 229);
+      @include dim('min-w', 229, 229);
+      @include merge;
+
+      img {
+        @include dim('w', 229, 229);
+        @include dim('h', 229, 229);
+        @include dim('br', 20, 20);
+        @include dim('mb', 5, 5);
+        @include merge;
+        object-fit: cover;
+        overflow: hidden;
+        object-position: center 20%;
+      }
+
+      &-name {
+        @include dim('fz', 20, 20);
+        @include merge;
+        font-weight: 600;
+
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        overflow: hidden;
+      }
+
+      &-job {
+        @include dim('fz', 16, 16);
+        @include merge;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        overflow: hidden;
+      }
+    }
+  }
 }
 
 .ordered-list__btn {
@@ -449,9 +583,48 @@
           font-weight: 400;
         }
       }
-
-
     }
+  }
+}
+
+@media (max-width: 600px) {
+  .content-text {
+    &__schedule {
+      &-list {
+        flex-direction: row;
+        align-items: stretch;
+        max-width: calc(100% + 40px);
+        overflow: auto;
+        margin: 0 -20px;
+        padding: 0 20px;
+      }
+
+      &-item {
+        flex-direction: column;
+        align-items: flex-start;
+        min-width: 213px;
+
+        &-day p, &-date p {
+          font-weight: 600;
+        }
+
+        &-inner {
+          flex-direction: column;
+          align-items: flex-start;
+          height: 100%;
+        }
+
+        &-description {
+          @include dim('fz', 18, 18);
+          @include merge;
+        }
+      }
+    }
+  }
+
+  .remove-border .content__inner {
+    border-top: none;
+    padding-top: 0;
   }
 }
 

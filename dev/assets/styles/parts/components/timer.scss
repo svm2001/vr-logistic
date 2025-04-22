@@ -1,0 +1,229 @@
+@import '../../mixins/vw';
+
+.timer {
+  min-width: calc(100vw - vw(175));
+  background: $bg-line;
+  position: relative;
+  display: flex;
+  align-items: center;
+  @include dim('gap', 169, 30);
+  @include dim('l', 20, 20);
+  @include dim('pt', 50, 50);
+  @include dim('pb', 50, 50);
+  @include dim('pl', 140, 50);
+  @include dim('border-top-left-radius', 100, 50);
+  @include dim('border-bottom-left-radius', 100, 50);
+  @include merge;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    @include dim('gap', 50, 30);
+    @include dim('w', 401, 300);
+    @include merge;
+
+    &-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      @include dim('gap', 20, 20);
+      @include merge;
+    }
+
+    .btn {
+      width: 100%;
+    }
+
+    &-title {
+      color: $text-secondary;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include dim('gap', 60, 30);
+    @include dim('pt', 80, 30);
+    @include dim('pb', 80, 30);
+    @include dim('pl', 97, 30);
+    @include dim('border-top-left-radius', 100, 50);
+    @include dim('border-bottom-left-radius', 100, 50);
+    @include merge;
+    background: $white;
+    width: 100%;
+  }
+
+  &__main-title {
+    color: $text-secondary;
+    text-align: center;
+  }
+
+  &__main-title-over {
+    color: $text-secondary;
+    text-align: center;
+    display: none;
+
+    &.over {
+      display: block;
+    }
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+    @include dim('gap', 30, 30);
+    @include merge;
+  }
+
+  &__section {
+    position: relative;
+    border-radius: 50%;
+    @include dim('w', 208, 145);
+    @include dim('h', 208, 145);
+    @include dim('gap', 10, 10);
+    @include merge;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1 / 1;
+    z-index: 2;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: $white;
+      z-index: -1;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: calc(100% + 12px);
+      height: calc(100% + 12px);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: conic-gradient(
+              $icon-accent calc(var(--fill-percent) * 3.6deg),
+              #BDDDBD calc(var(--fill-percent) * 3.6deg)
+      );
+      z-index: -1;
+    }
+  }
+
+  &__value {
+    @include dim('fz', 30, 30);
+    @include merge;
+    color: $text-secondary;
+    font-weight: 700;
+
+    &-name {
+      @include dim('fz', 22, 22);
+      @include dim('min-w', 110, 90);
+      @include merge;
+      color: $text-secondary;
+      font-weight: 500;
+      display: block;
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .timer {
+    flex-direction: column;
+    min-width: 100%;
+    left: 0;
+    padding-left: 0;
+
+    &__content {
+      padding-left: 0;
+      border-radius: 0;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .timer__section--minute,
+  .timer__section--second {
+    display: none;
+  }
+
+  .timer {
+    min-width: calc(100% + 40px);
+    margin-left: -20px;
+    border-radius: 0;
+    padding-top: 40px;
+    padding-bottom: 30px;
+
+    &__info-title {
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    &__info-subtitle {
+      font-size: 18px;
+    }
+
+    &__info {
+      width: 100%;
+      padding: 0 20px;
+    }
+
+    &__content {
+      border-top-left-radius: 50px;
+      border-bottom-left-radius: 50px;
+    }
+
+    &__main-title {
+      font-size: 28px;
+      font-weight: 600;
+      padding: 0 20px;
+    }
+
+    .btn {
+      height: 78px;
+      background: transparent;
+
+      &:hover {
+        .btn__text {
+          color: $icon-accent;
+        }
+
+        .btn__dot {
+          background: $icon-accent;
+        }
+
+        border: 1px solid $icon-accent
+      }
+    }
+
+    &__section {
+      &::before {
+        content: "";
+        position: absolute;
+        width: calc(100% + 7px);
+        height: calc(100% + 7px);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        background: conic-gradient(
+                $icon-accent calc(var(--fill-percent) * 3.6deg),
+                #BDDDBD calc(var(--fill-percent) * 3.6deg)
+        );
+        z-index: -1;
+      }
+    }
+  }
+}
