@@ -1,0 +1,55 @@
+-
+  const defaultSortFilterProps = {
+      activeIndex: 0,
+      disabled: false,
+      classes: '',
+      pre: false,
+      preText: '',
+      options: [
+          {
+              name: 'Cначала новые',
+              sort: 'desc',
+          },
+          {
+              name: 'Cначала старые',
+              sort: 'asc',
+          }
+        ],
+
+		
+    }
+
+mixin sort-filter(props = defaultSortFilterProps)
+  -
+    const checkProps = {
+        activeIndex: props.activeIndex ? props.activeIndex :  defaultSortFilterProps.activeIndex,
+        disabled: props.disabled ? props.disabled :  defaultSortFilterProps.disabled,
+        classes: props.classes ? props.classes :  defaultSortFilterProps.classes,
+        options: props.options ? props.options :  defaultSortFilterProps.options,
+        pre: props.pre ? props.pre :  defaultSortFilterProps.pre,
+        preText: props.preText ? props.preText :  defaultSortFilterProps.preText,
+    }
+
+  .sort(
+    class=`${checkProps.classes} ${checkProps.disabled ? 'disabled' : ''}`,
+    data-sort="sort",
+    data-sort-value=checkProps.options[checkProps.activeIndex].name
+  )
+    if(checkProps.pre)
+      .sort__prefield
+        span=checkProps.preText
+    .sort__field
+      .sort__head(data-sort="head" data-sorting=checkProps.options[checkProps.activeIndex].sort)
+        span.sort__value(data-sort="value")
+          span= checkProps.options[checkProps.activeIndex].name
+        .sort__icon
+          +icon('sort-arrow')
+      .sort__body(data-sort="body", data-custom-scrollbar)
+        ul.sort__list.list-reset
+          each val, index in checkProps.options
+            if index === checkProps.activeIndex
+              li.active(data-sorting= val.sort)
+                span= val.name
+            else
+              li
+                span= val.name

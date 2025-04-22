@@ -36,13 +36,22 @@ export function newsSlider() {
         1200: {
           centeredSlides: true,
           centeredSlidesBounds: true,
-          slidesPerView: 2.7,
+          slidesPerView: 2.75,
           spaceBetween: 0,
           initialSlide: 0,
         },
       },
+      on: {
+        init: function(){
+          resetWrapper(elSlider)
+        }
+      }
     })
   }
 }
 
-
+function resetWrapper(elSlider){
+  const wrapper = elSlider.querySelector(".swiper-wrapper");
+  console.log( wrapper);
+  setTimeout(()=>{wrapper.setAttribute('style', 'transform: translate3d(0px, 0px, 0px)')}, 100);
+}

@@ -45,9 +45,26 @@
         @include dim('pl', 30, 30);
         @include dim('pr', 30, 30);
         @include merge;
-        .text--xs{
-
-            // font-size: 20px;
-        }
     }
 }
+
+@media (max-width: 765px) {
+    .tags-line{
+        .container{
+            padding-right: 30px;
+            padding-left: 30px;
+            overflow-x: auto;
+        }
+    
+        &__list{
+            flex-wrap: nowrap;
+        }
+    
+        &__wrapper{
+            .text--xs{
+                font-size: 20px;
+            }
+        }
+    }
+ }
+  
