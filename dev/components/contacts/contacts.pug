@@ -1,0 +1,172 @@
+-
+  const defaultContactsProps = {
+    classes: '',
+    items: [
+      {
+        id: 1,
+        phones: [
+          {
+            phone: '+7 (495) 646 98-56',
+            additional: 'многоканальный'
+          }
+        ],
+        fax: '',
+        email: 'logistic@vr-logistic.ru',
+        address: 'Россия, г. Москва, Мичуринский проспект 31/7, 119607',
+        long: '',
+        lat: '',
+      },
+      {
+        id: 2,
+        phones: [
+          {
+            phone: '+7 (495) 646 98-56',
+            additional: 'многоканальный'
+          }
+        ],
+        fax: '',
+        email: 'spb@vr-logistic.ru',
+        address: '198035, г. Санкт-Петербург, Кировский район, ул. Гапсальская, д. 5, лит. «А», БЦ «БАЛТИКА», оф. 307',
+        long: '',
+        lat: '',
+      },
+      {
+        id: 3,
+        phones: [
+          {
+            phone: '+7 (4812) 30-40-05',
+          }
+        ],
+        fax: '',
+        email: 'smk@vr-logistic.ru',
+        address: '214036, г. Смоленск, ул. Попова, д. 112, оф. 209, этаж 2',
+        long: '',
+        lat: '',
+      },
+      {
+        id: 4,
+        phones: [
+          {
+            phone: '+7 (4822) 49-38-98',
+            additional: 'доб. 32'
+          }
+        ],
+        fax: '+7 (495) 646 98-56',
+        email: 'tver@vr-logistic.ru',
+        address: '170040, г. Тверь, СВХ «Волжский терминал», Борихино поле, д. 17',
+        long: '',
+        lat: '',
+      },
+      {
+        id: 5,
+        phones: [
+          {
+            phone: '+7 989 760-60-69',
+          }
+        ],
+        fax: '+7 (495) 646 98-56',
+        email: 'nvr@vr-logistic.ru',
+        address: '353900, Краснодарский край, г. Новороссийск, ул. Луначарского, д. 18',
+        long: '',
+        lat: '',
+      },
+      {
+        id: 6,
+        phones: [
+          {
+            phone: '+7(423)202-37-77',
+          }
+        ],
+        fax: '+7 (495) 646 98-56',
+        email: 'vvo@vr-logistic.ru',
+        address: '690003, г. Владивосток, ул. 1-я Морская, д. 9, офис 313',
+        long: '',
+        lat: '',
+      },
+      {
+        id: 7,
+        phones: [
+          {
+            phone: '+375 (29) 864-74-25',
+          }
+        ],
+        fax: '',
+        email: 'minsk@vr-logistic.ru',
+        address: '220035, Г.Минск, ул.Репина 4, пом.448, каб.2',
+        long: '',
+        lat: '',
+      },
+      {
+        id: 8,
+        phones: [
+          {
+            phone: '+86 010 6475 8888',
+          },
+          {
+            phone: '+86 138 1114 6876',
+          }
+        ],
+        fax: '',
+        email: 'beijin@vr-logistic.ru',
+        address: 'Unit 29h1, China Merchants Tower, Jianguo Road #118, Chaoyang District, Beijing P.R.C. 100022',
+        long: '',
+        lat: '',
+      },
+      {
+        id: 9,
+        phones: [
+          { phone: '+86 20 87302719' },
+          { phone: '+86 20 83633872' },
+          { phone: '+86 20 83633873' },
+          { phone: '+7(495) 545 - 5396' },
+        ],
+        fax: '+86 20 87617182',
+        email: 'cn@vr-logistic.ru',
+        address: 'Room 1702, b. 33, Yian Plaza, 510060, Jiansheliu Ma Road, Yuexiu District, Guangzhou, China',
+        long: '',
+        lat: '',
+      },
+      {
+        id: 10,
+        phones: [
+          {
+            phone: '+852 2593 1296',
+          }
+        ],
+        fax: '+852 3051 9314',
+        email: 'hk@vr-logistic.ru',
+        address: 'Rm 3582, 35/F, Central Plaza, 18 Harbour RD, Wanchai, Hong Kong',
+        long: '',
+        lat: '',
+      },
+    ],
+  }
+
+mixin contacts(props = defaultContactsProps, ...dataset)
+  -
+    const checkProps = {
+      classes: props.classes ? props.classes : defaultContactsProps.classes,
+      items: props.items ? props.items : defaultContactsProps.items,
+    }
+  .contacts__items(class=`${checkProps.classes}`)&attributes(...dataset)
+    each item, index in checkProps.items
+      .contacts__item(class=index === 0 ? 'active' : '')
+        .contacts__item-phone
+          - const cleanPhone = item.phones[0].phone.replace(/[^0-9+]/g, '')
+          a.contacts__item-link(href=`tel:${cleanPhone}`)=item.phones[0].phone
+          if item.phones[0].additional
+            p.contacts__item-additional=item.phones[0].additional
+        each phone in item.phones.slice(1)
+          .contacts__item-phone
+            - const cleanPhone = phone.phone.replace(/[^0-9+]/g, '')
+            a.contacts__item-link(href=`tel:${cleanPhone}`)=phone.phone
+
+        a.contacts__item-email(href=`mailto:${item.email}`)=item.email
+        +text({
+          text: 'Адрес офиса:',
+          variant: 'xs',
+          weight: 'medium',
+          classes: 'contacts__item-office'
+        })
+        p.contacts__item-address=item.address
+
