@@ -127,6 +127,40 @@ button {
     }
   }
 
+  &-size-big {
+    @include dim('h', 93, 70);
+    @include dim('pl', 40, 20);
+    @include dim('pr', 40, 20);
+    @include dim('gap', 20, 20);
+    @include dim('br', 10, 10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include merge;
+
+    .btn__text {
+      @include dim('fz', 22, 18);
+    }
+
+    .btn__dot {
+      @include dim('w', 18, 14);
+      @include merge;
+    }
+
+    .btn__icon {
+      @include dim('w', 32, 24);
+      @include merge;
+    }
+  }
+
+  &-size-big.btn-icon {
+    @include dim('w', 93, 70);
+    @include dim('h', 93, 70);
+    @include dim('br', 10, 10);
+    @include merge;
+    padding: 0;
+  }
+
   &-variant-primary {
     background-color: $white;
     border: 1px solid $btn-bg-default;
@@ -188,6 +222,38 @@ button {
 
     &:active {
       background-color: $btn-bg-active;
+    }
+
+    &:focus-visible .btn__dot {
+      border-color: $white;
+      background-color: $white;
+    }
+  }
+
+  &-variant-social {
+    background-color: $white;
+    border: 2px solid $bg-line-dark;
+
+    .btn__text {
+      color: $white;
+    }
+
+    &:hover {
+      background-color: $bg-line-dark;
+      border-color: $bg-line-dark;
+
+      .btn__text {
+        color: $white;
+      }
+
+      .btn__dot {
+        border-color: $white;
+        background-color: $white;
+      }
+    }
+
+    &:active {
+      background-color: $bg-line-dark;
     }
 
     &:focus-visible .btn__dot {
