@@ -1,0 +1,45 @@
+@import '../../mixins/vw';
+
+.news-grid{
+    .container{
+        @include dim('pb', 70, 60);
+        @include merge;
+    }
+
+    &__wrapper{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        @include dim('gap', 20, 20);
+        @include merge;
+    }
+}
+
+
+@media (max-width: 1199px) {
+    .news-grid{    
+        &__wrapper{
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+}
+
+@media (max-width: 765px) {
+    .news-grid{
+        &__wrapper{
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}
+
+@media (max-width: 540px) {
+    .news-grid{
+        &__wrapper{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+

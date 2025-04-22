@@ -32,13 +32,12 @@ mixin sort-filter(props = defaultSortFilterProps)
 
   .sort(
     class=`${checkProps.classes} ${checkProps.disabled ? 'disabled' : ''}`,
-    data-sort="sort",
     data-sort-value=checkProps.options[checkProps.activeIndex].name
   )
     if(checkProps.pre)
       .sort__prefield
         span=checkProps.preText
-    .sort__field
+    .sort__field(data-sort="main")
       .sort__head(data-sort="head" data-sorting=checkProps.options[checkProps.activeIndex].sort)
         span.sort__value(data-sort="value")
           span= checkProps.options[checkProps.activeIndex].name

@@ -7,6 +7,7 @@ block content
 
     include ../../components/tags-line
     include ../../components/filter-panel
+    include ../../components/news-grid
     include ../../modal-windows/modal
     .wrapper
         +first-screen({
@@ -27,8 +28,8 @@ block content
             { name: 'Маршруты', data: 'routes' },
           ]
         })
-        +filter-panel({})
-
+        +filter-panel()
+        +news-grid
         +consult({classes: 'consult--page', btnText: 'Жду звонка'})
     +modal({ id: 'consult-form', classes: 'consult__form' })
         +consult-form

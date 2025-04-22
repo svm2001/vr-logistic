@@ -16,31 +16,41 @@
         width: 100%;
         height: 100%;
         border: 1px solid $bg-line-dark;
-
+        @include dim('pr', 15.5, 15.5);
         @include dim('gap', 15, 10);
         @include dim('max-w', 401, 401);
-        @include dim('h', 48, 48);
         @include dim('mr', 19, 19);
-        @include dim('pt', 15.5, 15.5);
-        @include dim('pb', 15.5, 15.5);
-        @include dim('pr', 15.5, 15.5);
-        @include dim('pl', 20, 20);
         @include dim('br', 20, 20);
         @include merge;
+        transition: all $transition;
+        &:has(input:focus){
+            border-color: $bg-green;
+            .filter-panel__search-icon{
+                transition: all $transition;
+                svg path{
+                    fill: $bg-green;
+                }
+            }
+        }
 
         .filter-search{
             width: 100%;
             .input__field{
+                @include dim('br', 20, 20);
+                @include dim('pt', 15.5, 15.5);
+                @include dim('pb', 15.5, 15.5);
+                @include dim('pl', 20, 20);
+                @include dim('fz', 18, 18);
+                @include dim('h', 48, 48);
+                @include merge;
                 height: 100%;
                 border-bottom: none;
                 line-height: 100%;
-                @include dim('fz', 18, 18);
-                @include merge;
                 font-weight: 500;
             }
         }
-        
     }
+
     &__search-icon{
         @include dim('h', 17, 17);
         @include dim('w', 17, 17);
@@ -49,10 +59,71 @@
             @include dim('h', 17, 17);
             @include dim('w', 17, 17);
             @include merge;
+            path{
+                transition: all $transition;
+            }
         }
     }
 
     &__sort{
         margin-left: auto;
+    }
+
+    &__icon-mobile{
+        display: none;
+    }
+}
+
+@media (max-width: 765px) {
+    .filter-panel{
+        .container{
+            align-items: center;
+        }
+    
+        &__search{
+            .filter-search{
+                .input__field{
+                }
+            }
+        }
+    
+        &__sort{
+            position: relative;
+            &.active{
+                .filter-panel__sort-container{
+                    opacity: 1;
+                    z-index: 10;
+                }
+            }
+        }
+
+        &__icon-mobile{
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 24px;
+            width: 24px;
+            svg{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    
+        &__sort-container{
+            position: absolute;
+            max-width: max-content;
+            z-index: -10;
+            opacity: 0;
+            right: 0;
+            border: 1px solid $prototype-secondary;
+            background-color: $bg-primary;
+            border-radius: 15px;
+            padding: 20px 20px 15px 20px;
+            gap: 20px;
+            &>div:not(:last-child){
+                border-bottom: 1px solid $prototype-secondary;
+            }
+        }
     }
 }

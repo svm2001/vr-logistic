@@ -3,27 +3,30 @@
       classes: '',
   }
 
-mixin newsGrid(props = defaultNewsProps, ...dataset)
+mixin news-grid(props = defaultNewsProps, ...dataset)
   -
-    const newsProps = {
-      text: {
-          title: 'Новости',
-          subscribe: 'Следите за нашими новостями, чтобы всегда быть на шаг впереди!',
-      },
-      newsItems: [
+    const newsProps = [
         { 
-          variant: 'grid', title: 'Новая услуга мультимодальных перевозок',
+          variant: 'grid', title: 'Новый онлайн-сервис отслеживания грузов',
           description: 'Компания расширяет возможности логистики, предлагая мультимодальные перевозки с интеграцией железнодорожного и автомобильного транспорта для быстрого и удобного перемещения грузов.', 
           sticker: 'Новости логистики',
-          img: './images/news/image-news1.png',
+          img: './images/news/grid/news-1.png',
           link: 'javascript:void(0);',
           classes: ''
         },
         { 
-          variant: 'grid', title: 'Новая услуга мультимодальных перевозок', 
+          variant: 'grid', title: 'Бартер между РФ и зарубежными компаниями', 
           description: 'Компания расширяет возможности логистики, предлагая мультимодальные перевозки с интеграцией железнодорожного и автомобильного транспорта для быстрого и удобного перемещения грузов.', 
           sticker: 'Мероприятия',
-          img: './images/news/image-news2.png',
+          img: './images/news/grid/news-2.png',
+          link: 'javascript:void(0);',
+          classes: ''
+        },
+        { 
+          variant: 'grid', title: 'Участие в международной выставке', 
+          description: 'Компания расширяет возможности логистики, предлагая мультимодальные перевозки с интеграцией железнодорожного и автомобильного транспорта для быстрого и удобного перемещения грузов.', 
+          sticker: 'Новости компании', 
+          img: './images/news/grid/news-3.png',
           link: 'javascript:void(0);',
           classes: ''
         },
@@ -31,29 +34,43 @@ mixin newsGrid(props = defaultNewsProps, ...dataset)
           variant: 'grid', title: 'Новая услуга мультимодальных перевозок', 
           description: 'Компания расширяет возможности логистики, предлагая мультимодальные перевозки с интеграцией железнодорожного и автомобильного транспорта для быстрого и удобного перемещения грузов.', 
           sticker: 'Новости компании', 
-          img: './images/news/image-news3.png',
+          img: './images/news/grid/news-4.png',
           link: 'javascript:void(0);',
           classes: ''
         },
         { 
-          variant: 'grid', title: 'Новая услуга мультимодальных перевозок', 
-          description: 'Компания расширяет возможности логистики, предлагая мультимодальные перевозки с интеграцией железнодорожного и автомобильного транспорта для быстрого и удобного перемещения грузов.', 
-          sticker: 'Новости компании', 
-          img: './images/news/image-news1.png',
-          link: 'javascript:void(0);',
-          classes: ''
-        },
-        { 
-          variant: 'grid', title: 'Новая услуга мультимодальных перевозок', 
+          variant: 'grid', title: 'Запуск экологической программы', 
           description: 'Компания расширяет возможности логистики, предлагая мультимодальные перевозки с интеграцией железнодорожного и автомобильного транспорта для быстрого и удобного перемещения грузов.', 
           sticker: 'Благотворительность',
-          img: './images/news/image-news2.png',
+          img: './images/news/grid/news-5.png',
           link: 'javascript:void(0);',
           classes: ''
-        }
-      ]
-    }
-    
+        },
+                { 
+          variant: 'grid', title: 'Инвестиции в технологические инновации', 
+          description: 'Компания расширяет возможности логистики, предлагая мультимодальные перевозки с интеграцией железнодорожного и автомобильного транспорта для быстрого и удобного перемещения грузов.', 
+          sticker: 'Новости отрасли',
+          img: './images/news/grid/news-6.png',
+          link: 'javascript:void(0);',
+          classes: ''
+        },
+                { 
+          variant: 'grid', title: 'Открытие нового филиала в другом регионе', 
+          description: 'Компания расширяет возможности логистики, предлагая мультимодальные перевозки с интеграцией железнодорожного и автомобильного транспорта для быстрого и удобного перемещения грузов.', 
+          sticker: 'Новости компании',
+          img: './images/news/grid/news-7.png',
+          link: 'javascript:void(0);',
+          classes: ''
+        },
+                { 
+          variant: 'grid', title: 'Расширение сети складов', 
+          description: 'Компания расширяет возможности логистики, предлагая мультимодальные перевозки с интеграцией железнодорожного и автомобильного транспорта для быстрого и удобного перемещения грузов.', 
+          sticker: 'Новости компании',
+          img: './images/news/grid/news-8.png',
+          link: 'javascript:void(0);',
+          classes: ''
+        },
+    ]
   include ../ui/news-item
   include ../ui/btn
   include ../ui/icon
@@ -62,6 +79,16 @@ mixin newsGrid(props = defaultNewsProps, ...dataset)
   include ../components/formResponse/formSuccess
   include ../components/formResponse/formError
 
-  .section.news-grid
+  section.news-grid
     .container
       .news-grid__wrapper
+        each item in newsProps
+          +newsItem({
+            variant: 'grid',
+            title: item.title,
+            description: item.description,
+            sticker: item.sticker,
+            img: item.img,
+            link: item.link,
+            icon: 'arrow-big-right'
+          })
