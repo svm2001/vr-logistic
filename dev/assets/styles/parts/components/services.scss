@@ -427,8 +427,22 @@
 
     &__item-simple {
       height: 90px;
+      padding-right: 20px;
       &__btn {
-        display: none;
+        min-width: 44px;
+        min-height: 44px;
+        border-radius: 10px!important;
+        .btn__icon {
+          opacity: 0;
+          width: 18px;
+          height: 18px;
+        }
+      }
+
+      &:hover {
+        .btn .btn__icon {
+          opacity: 1;
+        }
       }
 
       &__name {
