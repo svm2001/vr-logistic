@@ -11,13 +11,6 @@ export function newsSlider() {
       slidesPerView: 1.1,
       spaceBetween: 10,
       modules: [Pagination],
-
-      on: {
-        init: function(){
-          resetWrapper(elSlider)
-        }
-      },
-
       pagination: {
         el: elPagination,
         type: 'bullets',
@@ -48,6 +41,11 @@ export function newsSlider() {
           initialSlide: 0,
         },
       },
+      on: {
+        init: function(){
+          resetWrapper(elSlider)
+        }
+      }
     })
   }
 }
@@ -55,5 +53,5 @@ export function newsSlider() {
 function resetWrapper(elSlider){
   const wrapper = elSlider.querySelector(".swiper-wrapper");
   console.log( wrapper);
-  setTimeout(()=>{wrapper.setAttribute('style', 'transform: translate3d(0px, 0px, 0px)')}, 100)
+  setTimeout(()=>{wrapper.setAttribute('style', 'transform: translate3d(0px, 0px, 0px)')}, 100);
 }
