@@ -1,7 +1,7 @@
 @import '../../mixins/vw';
 
 .news {
-  & > .container {
+  .container {
     display: flex;
     justify-content: space-between;
     @include dim('pt', 87, 50);

@@ -5,25 +5,31 @@
     width: 100%;
     @include dim('gap', 5, 5);
     @include merge;
-    &.active {
-        .sort__icon {
-            transform: rotate(-180deg);
-          }
-    }
-
-
+   
     &__prefield{
         line-height: 120%;
         @include dim('fz', 18, 18);
         @include merge;
     }
+
     &__field{
         position: relative;
         @include dim('min-h', 70, 70);
         @include dim('h', 70, 70);
         @include merge;
-
+        &.active {
+            .sort__icon {
+                transition: all $transition;
+                transform: rotate(-180deg);
+              }
+            .sort__body {
+                opacity: 1;
+                pointer-events: auto;
+                transform: translateY(4%);
+            }
+        }
     }
+
     &__value{
         text-transform: lowercase;
         font-weight: 700;
@@ -37,21 +43,125 @@
         cursor: pointer;
         @include dim('gap', 10, 10);
         @include merge;
+        transition: all $transition;
+        &:hover{
+            color: $text-accent;
+        }
     }
 
-    &__icon svg{
-        @include dim('max-w', 9, 9);
-        @include merge; 
+    &__icon{
+        transition: all $transition;
+        svg{
+            @include dim('max-w', 9, 9);
+            @include merge; 
+        }
     }
 
     &__body{
-        transition: transform $transition;
+        position: relative;
+        width: min-content;
+        background: $bg-primary;
+        border: 1px solid $prototype-secondary;
+        z-index: 10;
+        top: 10%;
+        left: 0;
+        width: 100%;
+        overflow: auto;
+        transform: translateY(0);
+        opacity: 0;
+        pointer-events: none;
+        transition: all $transition;
+        @include dim('br', 15, 15);
+        @include merge; 
 
+        &[data-simplebar] {
+            position: absolute;
+        }
     }
-    &__list{
-        li{
-            &.active{
 
+    &__list{
+        display: flex;
+        flex-direction: column;
+        @include dim('pt', 20, 20);
+        @include dim('pb', 20, 20);
+        @include dim('pl', 20, 20);
+        @include dim('pr', 27, 27);
+        @include dim('gap', 15, 15);
+        @include merge; 
+
+        li{
+            cursor: pointer;
+            line-height: 100%;
+            font-weight: 500;
+            text-wrap: nowrap;
+            @include dim('fz', 18, 18);
+            @include merge; 
+            transition: all $transition;
+            &:hover{
+                transition: all $transition;
+                color: $text-minimal-dark;
+            }
+
+            &.active{
+                pointer-events: none;
+                color: $text-accent;
+            }
+            
+            &::marker{
+                content: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 765px) {
+    .sort{
+        flex-direction: column;
+       
+        &__prefield{
+            line-height: 120%;
+        }
+    
+        &__head{
+            display: none;
+        }
+    
+        &__body{
+            position: relative;
+            width: min-content;
+            background: $bg-primary;
+            border: none;
+            z-index: 10;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 1;
+        }
+
+        &__field{
+            height: auto;
+            min-height: 0;
+        }
+
+        &__list{
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0;
+            li{
+                pointer-events:all;
+                border: 1px solid $prototype-secondary;
+                border-radius: 15px;
+                padding: 5px 15px;
+    
+                &.active{
+                    pointer-events: none;
+                    color: $text-accent;
+                    border-color: $text-accent;
+                }
+                &::marker{
+                    content: none;
+                }
             }
         }
     }

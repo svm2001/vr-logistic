@@ -17,18 +17,20 @@ mixin tags-line(props = defaultTagsProps, ...dataset)
     }
   include ../ui/text
   section.tags-line(class=`${checkProps.classes}`)&attributes(...dataset)
-    .container
-      .tags-line__list
+    .container.no-scrollbar
+      .tags-line__list.js-tags-list
         each tag, index in checkProps.tags
-          label.tags-line__item
-            if(index === 0)
-              input.tags-line__checkbox(type='radio' name='tag-line' data-select = tag.data checked)
-            else 
-              input.tags-line__checkbox(type='radio' name='tag-line' data-select = tag.data)
-            span.tags-line__wrapper
+          if(index === 0)
+            button.tags-line__item.js-tags-item.active
               +text({
-                  variant: 'xs',
-                  weight: 'medium',
-                  classes: 'tags-line__item',
-                  text: tag.name,
-              })
+                        variant: 'xs',
+                        weight: 'medium',
+                        text: tag.name,
+                    }) 
+          else
+            button.tags-line__item.js-tags-item
+              +text({
+                      variant: 'xs',
+                      weight: 'medium',
+                      text: tag.name,
+                  })   
