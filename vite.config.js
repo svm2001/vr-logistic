@@ -27,6 +27,7 @@ export default defineConfig({
         solutions: resolve(__dirname, './dev/solutions.html'),
         'solutions-detail': resolve(__dirname, './dev/solutions-detail.html'),
         about: resolve(__dirname, './dev/about.html'),
+        news: resolve(__dirname, './dev/news.html'),
         contacts: resolve(__dirname, './dev/contacts.html'),
         'ui-kit': resolve(__dirname, './dev/ui-kit.html'),
         components: resolve(__dirname, './dev/components.html'),
