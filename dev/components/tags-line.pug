@@ -17,18 +17,18 @@ mixin tags-line(props = defaultTagsProps, ...dataset)
     }
   include ../ui/text
   section.tags-line(class=`${checkProps.classes}`)&attributes(...dataset)
-    .container
+    .container.no-scrollbar
       .tags-line__list.js-tags-list
         each tag, index in checkProps.tags
           if(index === 0)
-            label.tags-line__item.js-tags-item.active
+            button.tags-line__item.js-tags-item.active
               +text({
                         variant: 'xs',
                         weight: 'medium',
                         text: tag.name,
                     }) 
           else
-            label.tags-line__item.js-tags-item
+            button.tags-line__item.js-tags-item
               +text({
                       variant: 'xs',
                       weight: 'medium',

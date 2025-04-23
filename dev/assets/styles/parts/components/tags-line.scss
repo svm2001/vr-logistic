@@ -30,11 +30,13 @@
         @include dim('pb', 15, 15);
         @include dim('pl', 30, 30);
         @include dim('pr', 30, 30);
+        @include dim('max-h', 48,56);
         @include merge;
         .text--xs{
             @include dim('fz', 18, 18);
             @include merge;
         }
+
         &:hover{
             background-color: $bg-line-dark;
         }

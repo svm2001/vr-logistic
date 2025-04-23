@@ -124,6 +124,10 @@
       align-items: start;
       justify-content: start;
       gap: 40px;
+      a.headline {
+        width: 100%;
+        justify-content: space-between;
+      }
     }
 
     .feedback-swiper-pagination {

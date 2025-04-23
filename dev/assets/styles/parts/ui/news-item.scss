@@ -158,7 +158,7 @@
   width: 100%;
   overflow: hidden;
   @include dim('h', 398, 371);
-  @include dim('max-w', 821, 320);
+  @include dim('max-w', 821, 500);
   @include dim('br', 15, 15);
   @include merge;
 
