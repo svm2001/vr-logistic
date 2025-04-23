@@ -4,13 +4,68 @@ block content
     include ../../components/consult-form
     include ../../components/first-screen
     include ../../components/consult
+    include ../../components/tags-line
+    include ../../components/contacts/contacts
+    include ../../components/expertise/expertise
     include ../../modal-windows/modal
+    include ../../components/google-map
+    include ../../ui/btn
     .wrapper
         +first-screen({
           patternBgDesktop: './images/pattern-bg/contacts-desktop.svg',
           patternBgMobile: './images/pattern-bg/contacts-mobile.svg',
           title: 'Контакты',
         })
+        +tags-line({
+          tags: [
+            { name: 'Москва (Главный офис)', data: '1' },
+            { name: 'Санкт-Петербург', data: '2' },
+            { name: 'Смоленск', data: '3' },
+            { name: 'Тверь', data: '4' },
+            { name: 'Новороссийск', data: '5' },
+            { name: 'Владивосток', data: '6' },
+            { name: 'Минск', data: '7' },
+            { name: 'Пекин (КНР)', data: '8' },
+            { name: 'Гуанчжоу (КНР)', data: '9' },
+            { name: 'Гонконг (КНР)', data: '10' },
+          ]
+        })
+        section.contacts
+          .container
+            .contacts__inner
+              +contacts
+              .contacts__social
+                .contacts__social-icons
+                  -
+                    const social = [
+                      { name: '', icon: true, iconName: 'social-vrchat', link: '#', target: '_blank', type: 'link', variant: 'social', size: 'big'},
+                      { name: '', icon: true, iconName: 'social-telegram', link: '#', target: '_blank', type: 'link', variant: 'social', size: 'big'},
+                      { name: '', icon: true, iconName: 'social-whatsapp', link: '#', target: '_blank', type: 'link', variant: 'social', size: 'big'},
+                    ]
+                  each button in social
+                    +btn(button)
+                +text({
+                  text: 'Давайте решим ваши <br>логистические задачи вместе!',
+                  variant: 'm',
+                  weight: 'bold',
+                  classes: 'contacts__social-title'
+                })
+                +text({
+                  text: 'Свяжитесь с нами удобным способом, <br>и мы предложим оптимальное решение <br>для перевозки и таможенного оформления <br>ваших грузов.',
+                  variant: 'xxs',
+                  weight: 'medium',
+                  classes: 'contacts__social-text'
+                })
+            .contacts__map
+              +google-map({
+                lat: 55.751244,
+                lng: 37.618423,
+                zoom: 15,
+                markerIcon: 'https://maps.google.com/mapfiles/kml/pal3/icon21.png',
+                markerTitle: 'Our Office',
+                classes: 'custom-map',
+                styles: 'border: 1px solid #eee;'
+              })
         +consult({ classes: 'consult--page', btnText: 'Жду звонка' })
     +modal({ id: 'consult-form', classes: 'consult__form' })
         +consult-form

@@ -20,4 +20,4 @@ mixin text(props = defaultTextProps, ...dataset)
 
   p.text(
     class=`text--${checkProps.variant} text--${checkProps.weight} ${checkProps.classes}`
-  )&attributes(...dataset)= checkProps.text
+  )&attributes(...dataset)!= checkProps.text

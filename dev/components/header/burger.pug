@@ -3,20 +3,6 @@
       classes: '',
       accordions: [
           {
-              name: 'О компании',
-              isOpen: true,
-                  links: [
-                      {
-                          name: 'О компании 1',
-                          href: 'javascript:void(0);'
-                      },
-                      {
-                          name: 'О компании 2',
-                          href: 'javascript:void(0);'
-                      }
-                ]
-          },
-          {
               name: 'Услуги',
               isOpen: false,
               links: [
@@ -60,38 +46,6 @@
                   }
               ]
           },
-          {
-              name: 'Новости',
-              isOpen: false,
-              links: [
-                  {
-                      name: 'Новость 1',
-                      href: 'javascript:void(0);'
-                  },
-                  {
-                      name: 'Новость 2',
-                      href: 'javascript:void(0);'
-                  },
-                  {
-                      name: 'Новость 3',
-                      href: 'javascript:void(0);'
-                  },
-              ]
-          },
-          {
-              name: 'Карьера',
-              isOpen: false,
-              links: [
-                  {
-                      name: 'Карьера 1',
-                      href: 'javascript:void(0);'
-                  },
-                  {
-                      name: 'Карьера 2',
-                      href: 'javascript:void(0);'
-                  },
-              ]
-          }
       ]
   }
 
@@ -110,11 +64,14 @@ mixin burger(props = defaultBurgerProps, ...dataset)
           +icon('close-burger')
       .burger__body
         .burger__accordions
+          a.burger__body-link(href="/about.html") О компании
           each accordion in props.accordions
             +accordion({ name: accordion.name, isOpen: accordion.isOpen })
               .accordion__content-inner.burger__accordions-list
                 each link in accordion.links
                   a(href=link.href)= link.name
+          a.burger__body-link(href="/news.html") Новости
+          a.burger__body-link(href="/career.html") Карьера
         .burger__btns
           +btn({ name: 'Обратная связь', variant: 'secondary', size: 'small', classes: 'burger-call-form' }, {'data-hystmodal': '#consult-form'})
           +btn({ name: 'Личный кабинет', size: 'small', type: 'link', target: '_blank' })
