@@ -4,7 +4,7 @@
   align-items: center;
   transition: $transition;
   @include dim('gap', 30, 30);
-  @include dim('fz', 25, 20);
+  @include dim('fz', 25, 18);
   @include merge;
 
   svg {
@@ -31,6 +31,6 @@
 
 @media (max-width: 767px) {
   .headline {
-    font-size: 18px;
+    font-size: 14px;
   }
 }

@@ -104,7 +104,7 @@
     &__icon {
       @include dim('w', 55, 42);
       @include dim('h', 55, 42);
-      @include dim('p', 7, 5);
+      @include dim('p', 13, 5);
       @include merge;
       aspect-ratio: 1 / 1;
 
@@ -255,8 +255,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    //возможно потом понадобится:
-    //filter: drop-shadow(0px 0px 5px $icon-accent);
+    filter: grayscale(100%);
+    opacity: .15;
 
     &:active {
       cursor: grabbing;
@@ -294,16 +294,17 @@
 
       .btn {
         background: $bg-secondary;
+        transition: .3s ease-in-out!important;
       }
 
       &:hover {
         .btn {
           background: $icon-accent;
-          transform: translate(0, -50%);
+          transform: translate(20%, -50%);
         }
 
         &:before {
-          transform: translate(0, -50%);
+          transform: translate(30%, -50%);
         }
       }
     }
@@ -348,7 +349,7 @@
       }
 
       &__name {
-        font-size: 16px;
+        font-size: 14px;
         max-width: calc(100% - 110px);
       }
 
@@ -376,7 +377,7 @@
       grid-area: auto;
 
       &-name {
-        font-size: 22px;
+        font-size: 20px;
       }
 
       svg {
@@ -408,7 +409,7 @@
     &__title {
       max-width: 100%;
       padding: 0;
-      font-size: 18px;
+      font-size: 16px;
     }
 
     &__inner {
@@ -431,7 +432,9 @@
       &__btn {
         min-width: 44px;
         min-height: 44px;
+        max-height: 44px;
         border-radius: 10px!important;
+        background: $white!important;
         .btn__icon {
           opacity: 0;
           width: 18px;
@@ -442,6 +445,10 @@
       &:hover {
         .btn .btn__icon {
           opacity: 1;
+        }
+
+        .btn {
+          background: $icon-accent!important;
         }
       }
 
@@ -474,7 +481,7 @@
       }
 
       &-name {
-        font-size: 20px;
+        font-size: 18px;
       }
     }
 

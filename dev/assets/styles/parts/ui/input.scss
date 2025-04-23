@@ -61,7 +61,7 @@
     align-items: center;
     @include dim('grid-column-gap', 4, 4);
     @include dim('mt', 4, 4);
-    @include dim('fz', 12, 12);
+    @include dim('fz', 12, 10);
     @include merge;
     justify-content: start;
   }
@@ -100,14 +100,14 @@ input[type='number'] {
       align-items: center;
       @include dim('grid-column-gap', 4, 4);
       @include dim('mt', 4, 4);
-      @include dim('fz', 12, 12);
+      @include dim('fz', 12, 14);
       @include merge;
       justify-content: start;
     }
 
     &__label {
       @include dim('mb', 20, 20);
-      @include dim('fz', 16, 16);
+      @include dim('fz', 16, 14);
       @include merge;
       display: inline-block;
       color: #70bd93;

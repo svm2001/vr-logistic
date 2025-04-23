@@ -29,6 +29,16 @@
       text-align: center;
       @include dim('gap', 20, 20);
       @include merge;
+
+      br {
+        display: none;
+      }
+
+      @media (max-width: 600px) {
+        br {
+          display: block;
+        }
+      }
     }
 
     .btn {
@@ -122,13 +132,13 @@
   }
 
   &__value {
-    @include dim('fz', 30, 30);
+    @include dim('fz', 30, 28);
     @include merge;
     color: $text-secondary;
     font-weight: 700;
 
     &-name {
-      @include dim('fz', 22, 22);
+      @include dim('fz', 22, 20);
       @include dim('min-w', 110, 90);
       @include merge;
       color: $text-secondary;
@@ -167,12 +177,12 @@
     padding-bottom: 30px;
 
     &__info-title {
-      font-size: 28px;
+      font-size: 24px;
       font-weight: 600;
     }
 
     &__info-subtitle {
-      font-size: 18px;
+      font-size: 16px;
     }
 
     &__info {
@@ -186,7 +196,7 @@
     }
 
     &__main-title {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 600;
       padding: 0 20px;
     }

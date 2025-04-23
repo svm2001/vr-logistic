@@ -66,7 +66,7 @@ button {
     @include merge;
 
     .btn__text {
-      @include dim('fz', 18, 18);
+      @include dim('fz', 18, 14);
     }
 
     .btn__dot {
@@ -105,7 +105,7 @@ button {
     }
 
     .btn__text {
-      @include dim('fz', 14, 14);
+      @include dim('fz', 14, 12);
       @include merge;
     }
 
@@ -139,7 +139,7 @@ button {
     @include merge;
 
     .btn__text {
-      @include dim('fz', 22, 18);
+      @include dim('fz', 22, 16);
     }
 
     .btn__dot {
@@ -313,6 +313,11 @@ button {
 }
 
 @media (max-width: 767px) {
-  .btn.btn--play {
+  .btn {
+    height: 52px!important;
+
+    &--play {
+      height: 50px!important;
+    }
   }
 }

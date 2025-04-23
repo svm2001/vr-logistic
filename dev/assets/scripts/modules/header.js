@@ -2,8 +2,23 @@ import { enablePageScroll } from 'scroll-lock'
 
 export default function header() {
   const header = document.querySelector('header')
+  const footer = document.querySelector('footer')
 
   if (!header) return
+
+  const checkHeaderVisibility = () => {
+    const headerRect = header.getBoundingClientRect()
+    const footerRect = footer.getBoundingClientRect()
+
+    if (headerRect.bottom > footerRect.top) {
+      header.classList.add('invisible')
+    } else {
+      header.classList.remove('invisible')
+    }
+  }
+
+  window.addEventListener('scroll', checkHeaderVisibility)
+  window.addEventListener('resize', checkHeaderVisibility)
 
   if (window.innerWidth > 1199) {
     const headerLinkMenu = header.querySelectorAll('[data-hover-menu]')

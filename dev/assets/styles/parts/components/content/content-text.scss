@@ -49,7 +49,7 @@
     grid-template-columns: repeat(3, 1fr);
 
     &-title {
-      @include dim('fz', 18, 20);
+      @include dim('fz', 18, 18);
       @include merge;
 
       @media (max-width: 767px) {
@@ -100,7 +100,7 @@
       .content-text__unordered-list-item-dot {
         position: relative;
         border: none;
-        @include dim('fz', 30, 20);
+        @include dim('fz', 30, 18);
 
         &:before {
           content: counter(list-counter);
@@ -171,7 +171,7 @@
       position: relative;
       font-weight: 500;
       @include dim('pl', 40, 40);
-      @include dim('fz', 18, 18);
+      @include dim('fz', 18, 16);
       @include merge;
       line-height: 140%;
 
@@ -217,7 +217,7 @@
         transition: $transition;
 
         @media (max-width: 767px) {
-          font-size: 16px;
+          font-size: 14px;
           font-weight: 600;
           text-transform: none;
         }
@@ -234,6 +234,11 @@
           top: 0;
           border-radius: 100%;
           opacity: 0;
+
+          @media (max-width: 1199px) {
+            opacity: 1;
+            background: #DDDDDD;
+          }
 
           @media (max-width: 1199px) {
             top: 50%;
@@ -266,7 +271,7 @@
         transition: $transition;
 
         @media (max-width: 767px) {
-          font-size: 14px;
+          font-size: 12px;
           font-weight: 400;
         }
       }
@@ -277,6 +282,10 @@
 
           &:before {
             opacity: 1;
+
+            @media (max-width: 1199px) {
+              background: $icon-accent;
+            }
           }
         }
 
@@ -390,7 +399,7 @@
       }
 
       &-description {
-        @include dim('fz', 18, 18);
+        @include dim('fz', 18, 16);
         @include merge;
       }
     }
@@ -454,7 +463,7 @@
       }
 
       &-name {
-        @include dim('fz', 20, 20);
+        @include dim('fz', 20, 18);
         @include merge;
         font-weight: 600;
 
@@ -466,7 +475,7 @@
       }
 
       &-job {
-        @include dim('fz', 16, 16);
+        @include dim('fz', 16, 14);
         @include merge;
         display: -webkit-box;
         -webkit-box-orient: vertical;
@@ -486,7 +495,7 @@
 @media (max-width: 1199px) {
   .content-text {
     &__top-texts p {
-      font-size: 18px;
+      font-size: 16px;
       line-height: 130%;
     }
 
@@ -510,6 +519,7 @@
 
         &-title {
           min-width: 100%;
+          font-weight: 600;
         }
 
         &-text {
@@ -550,7 +560,7 @@
       &-item {
         &-text {
           min-height: auto;
-          font-size: 18px;
+          font-size: 16px;
           font-weight: 400;
         }
       }
@@ -558,12 +568,12 @@
 
     &__small-title {
       font-weight: 400;
-      font-size: 18px;
+      font-size: 16px;
     }
 
     &__dashed-texts {
       p {
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 400;
         line-height: 130%;
       }
@@ -573,7 +583,7 @@
       grid-template-columns: repeat(1, 1fr);
 
       &-item {
-        font-size: 16px;
+        font-size: 14px;
 
         &-title {
           font-weight: 600;
@@ -615,7 +625,7 @@
         }
 
         &-description {
-          @include dim('fz', 18, 18);
+          @include dim('fz', 18, 16);
           @include merge;
         }
       }

@@ -50,12 +50,12 @@
     @include dim('gap', 20, 20);
     @include merge;
 
+    .btn {
+      width: 100%;
+    }
+
     @media(max-width: 767px) {
       grid-template-columns: 1fr;
-
-      .btn {
-        width: 100%;
-      }
     }
   }
 
@@ -85,7 +85,7 @@
       border: 1px solid $icon-accent;
       @include dim('br', 20, 20);
       @include dim('h', 70, 60);
-      @include dim('fz', 18, 18);
+      @include dim('fz', 18, 16);
       @include merge;
       color: $text-primary;
       background: $white;
@@ -110,7 +110,7 @@
 
     span {
       color: var(--color-gray);
-      @include dim('fz', 14, 14);
+      @include dim('fz', 14, 12);
       @include merge;
     }
   }

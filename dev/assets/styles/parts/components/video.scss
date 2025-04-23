@@ -116,16 +116,20 @@
     }
 
     &__title {
-      font-size: 28px;
+      font-size: 26px;
     }
 
     .text {
-      font-size: 18px;
+      font-size: 16px;
     }
 
     video {
       object-fit: contain;
       height: auto;
+    }
+
+    .btn-size-default.btn-icon {
+      height: 40px!important;
     }
   }
 }

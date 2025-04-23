@@ -136,7 +136,7 @@
       &-item {
         &-text {
           max-width: 100%;
-          font-size: 14px;
+          font-size: 12px;
           white-space: nowrap;
         }
       }
@@ -181,7 +181,7 @@
           max-width: 900px;
           height: 100%;
           display: block;
-          margin: auto;
+          object-position: center;
         }
 
         position: static;
@@ -192,7 +192,8 @@
         display: none;
 
         &.active {
-          display: block;
+          display: flex;
+          justify-content: center;
         }
       }
     }

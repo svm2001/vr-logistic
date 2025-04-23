@@ -22,8 +22,8 @@
 
   &__field {
     position: relative;
-    @include dim('min-h', 70, 70);
-    @include dim('h', 70, 70);
+    @include dim('min-h', 70, 52);
+    @include dim('h', 70, 52);
     @include merge;
   }
 
@@ -34,15 +34,15 @@
     cursor: pointer;
     @include dim('pl', 20, 20);
     @include dim('pr', 20, 20);
-    @include dim('pt', 23, 23);
-    @include dim('pb', 22, 22);
+    @include dim('pt', 23, 14);
+    @include dim('pb', 22, 14);
     @include dim('br', 20, 20);
     @include merge;
   }
 
   &__value {
     @include dim('gap', 15, 15);
-    @include dim('fz', 18, 18);
+    @include dim('fz', 18, 14);
     font-weight: 500;
     @include merge;
     display: flex;

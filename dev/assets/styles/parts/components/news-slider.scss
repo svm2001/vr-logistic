@@ -39,7 +39,7 @@
     align-items: center;
     transition: $transition;
     @include dim('gap', 30, 30);
-    @include dim('fz', 25, 20);
+    @include dim('fz', 25, 18);
     @include dim('mb', 95, 40);
     @include merge;
     svg {
@@ -52,7 +52,7 @@
   &__title {
     line-height: 130%;
     font-weight: 600;
-    @include dim('fz', 35, 30);
+    @include dim('fz', 35, 28);
     @include merge;
   }
 
@@ -66,7 +66,7 @@
       @include dim('br', 15, 15);
       @include dim('max-h', 70, 100);
       @include merge;
-      
+
 
       &:has(input:focus){
         border: 2px solid $bg-green;
@@ -229,7 +229,6 @@
     &__top {
       a.headline {
         width: 100%;
-        justify-content: space-between;
       }
     }
 
