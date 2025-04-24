@@ -245,15 +245,15 @@
     overflow: auto;
 
     @media (max-width: 1023px) {
-      display: flex;
-      gap: 10px;
-      margin-bottom: -20px;
-      padding-bottom: 20px;
+      grid-template-columns: 1fr;
     }
 
     @media (max-width: 767px) {
+      display: flex;
       margin-inline: -20px;
       padding-inline: 20px;
+      margin-bottom: -20px;
+      padding-bottom: 20px;
     }
 
     &-item {

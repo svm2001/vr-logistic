@@ -51,7 +51,7 @@
   }
 
   &-people {
-    display: grid;
+    display: none;
     grid-template-columns: repeat(2, 1fr);
     @include dim('gap', 20, 10);
     @include merge;
@@ -63,6 +63,10 @@
       margin: 0 -20px 0;
       padding: 0 20px 0;
       display: flex;
+    }
+
+    &.active {
+      display: grid
     }
 
     &-item {
