@@ -62,11 +62,14 @@
     @media (max-width: 767px) {
       margin: 0 -20px 0;
       padding: 0 20px 0;
-      display: flex;
     }
 
     &.active {
-      display: grid
+      display: grid;
+
+      @media (max-width: 767px) {
+        display: flex;
+      }
     }
 
     &-item {
