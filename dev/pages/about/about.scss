@@ -1,4 +1,77 @@
 @import '@/assets/styles/main';
-@import '@/assets/styles/parts/components/standarts';
 @import '@/assets/styles/parts/components/first-screen';
-@import '@/assets/styles/parts/components/expertise';
+@import '@/assets/styles/parts/components/content/content';
+@import '@/assets/styles/parts/components/content/content-text';
+@import '@/assets/styles/parts/components/team';
+
+
+.team {
+  @include dim('pb', 55, 40);
+  @include dim('pt', 55, 40);
+  @include merge;
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr;
+    @include dim('grid-column-gap', 158, 40);
+    @include dim('grid-row-gap', 50, 40);
+    @include merge;
+
+    @media (max-width: 1023px) {
+      flex-direction: column;
+      display: flex;
+    }
+  }
+
+  &__title {
+    @media (max-width: 1023px) {
+      order: -1;
+    }
+    @media (max-width: 767px) {
+      max-width: 100%;
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 120%;
+    }
+  }
+
+  &__img {
+    overflow: hidden;
+    border-radius: 20px;
+    grid-row: 1 / 3;
+    @include dim('max-width', 680, 335);
+    @include merge;
+
+    @media (max-width: 1023px) {
+      max-width: 100%;
+      order: -1;
+    }
+
+    &-mobile {
+      display: none;
+    }
+
+    @media (max-width: 1023px) {
+
+      &-desktop {
+        display: none;
+      }
+      &-mobile {
+        display: block;
+      }
+    }
+
+    & img {
+      max-width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+
+      @media (max-width: 1023px) {
+        width: 100%;
+        max-height: 400px;
+      }
+    }
+  }
+}

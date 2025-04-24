@@ -74,7 +74,7 @@
         display: block;
         @include dim('w', 21, 21);
         @include dim('h', 21, 21);
-        @include dim('border-width',3, 3);
+        @include dim('border-width', 3, 3);
         @include merge;
         border-radius: 100%;
         border-style: solid;
@@ -115,12 +115,207 @@
     }
   }
 
+  &__ordered-list {
+    @include dim('gap', 20, 10);
+    @include merge;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 540px));
+    counter-reset: list-counter;
+    list-style-type: none;
+
+    @media (max-width: 1023px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    &-title {
+      @include dim('fz', 18, 18);
+      @include merge;
+
+      @media (max-width: 767px) {
+        font-weight: 600;
+      }
+    }
+
+    &-item {
+      width: 100%;
+      @include dim('p', 40, 30);
+      @include dim('gap', 40, 10);
+      @include merge;
+      background: $bg-secondary-light;
+      border-radius: 20px;
+      counter-increment: list-counter;
+      min-height: 256px;
+      display: flex;
+      position: relative;
+
+      &-text {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        line-height: 140%;
+
+        &:before {
+          content: counter(list-counter, decimal-leading-zero) " ";
+          display: block;
+          @include dim('fz', 18, 18);
+          @include merge;
+          color: $text-minimal;
+          font-weight: 500;
+          margin-bottom: auto;
+
+          @media (max-width: 1199px) {
+            padding-bottom: 30px;
+          }
+        }
+      }
+
+      &-icon {
+        flex: none;
+        border-left: 1px solid $bg-line;
+        @include dim('pl', 30, 20);
+        @include merge;
+        padding-top: 15px;
+
+        @media (max-width: 1199px) {
+          position: absolute;
+          top: 35px;
+          right: 34px;
+          padding: 0;
+          border: none;
+        }
+
+        svg {
+          @include dim('w', 67, 50);
+          @include dim('h', 61, 46);
+          @include merge;
+        }
+      }
+    }
+  }
+
+  &__features {
+    border-top: 1px solid $bg-line-dark;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &-item {
+      border-bottom: 1px solid $bg-line-dark;
+      padding-block: 25px;
+      display: grid;
+      grid-template-columns: 38% 58%;
+      gap: 4%;
+
+      @media (max-width: 767px) {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      &-title {
+        font-weight: 400;
+        @include dim('fz', 25, 18);
+        @include merge;
+        line-height: 130%;
+        color: $bg-green;
+
+        @media (max-width: 767px) {
+          font-weight: 600;
+        }
+      }
+
+      &-text {
+        font-weight: 500;
+        @include dim('fz', 18, 16);
+        @include merge;
+        line-height: 140%;
+
+        @media (max-width: 767px) {
+          font-weight: 400;
+          line-height: 130%;
+        }
+      }
+    }
+  }
+
+  &__certificates {
+    display: grid;
+    grid-template-columns:repeat(2, 1fr);
+    @include dim('gap', 20, 10);
+    @include merge;
+    overflow: auto;
+
+    @media (max-width: 1023px) {
+      display: flex;
+      gap: 10px;
+      margin-bottom: -20px;
+      padding-bottom: 20px;
+    }
+
+    @media (max-width: 767px) {
+      margin-inline: -20px;
+      padding-inline: 20px;
+    }
+
+    &-item {
+      border: 1px solid $bg-line-dark;
+      border-radius: 20px;
+      padding: 30px;
+      display: grid;
+      gap: 30px;
+      min-width: 320px;
+
+      &-title {
+        font-weight: 600;
+        @include dim('fz', 25, 18);
+        @include merge;
+        line-height: 130%;
+        text-transform: uppercase;
+
+        @media (max-width: 1023px) {
+          text-transform: initial;
+        }
+
+      }
+
+      &-text {
+        line-height: 145%;
+        @include dim('fz', 18, 16);
+        @include merge;
+
+        @media (max-width: 1023px) {
+          line-height: 130%;
+        }
+      }
+
+      &-link {
+        font-weight: 600;
+        line-height: 1;
+        color: $text-minimal;
+        display: flex;
+        gap: 50px;
+        @include dim('fz', 18, 16);
+        @include merge;
+        transition: $transition;
+
+        & path {
+          transition: $transition;
+        }
+
+        &:hover {
+          color: $bg-green;
+
+          & path {
+            fill: $bg-green;
+          }
+        }
+      }
+    }
+  }
+
   &__sub-title {
     @include dim('mb', 20, 20);
     @include merge;
   }
-
-
 
   &__dashed-links {
     column-count: 2;
@@ -436,7 +631,7 @@
         }
 
         .swiper-slide {
-          width: fit-content!important;
+          width: fit-content !important;
           @include dim('max-w', 229, 229);
           @include dim('min-w', 229, 229);
         }

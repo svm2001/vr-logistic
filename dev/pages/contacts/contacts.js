@@ -5,8 +5,8 @@ import { tabs } from '@/assets/scripts/modules/tabs'
 window.onload = () => {
   main()
   tabs({
-    tabParentSelector: '.tags-line__list',
-    tabHeaderSelector: 'label.tags-line__item',
+    tabParentSelector: '.js-tags-list',
+    tabHeaderSelector: '.js-tags-item',
     tabHeaderActiveClass: 'active',
     tabItemSelector: '.contacts__item',
     tabItemActiveClass: 'active',
