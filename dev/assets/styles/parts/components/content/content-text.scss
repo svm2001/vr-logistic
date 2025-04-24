@@ -78,7 +78,7 @@
     grid-template-columns: repeat(3, 1fr);
 
     &-title {
-      @include dim('fz', 18, 20);
+      @include dim('fz', 18, 18);
       @include merge;
 
       @media (max-width: 767px) {
@@ -103,7 +103,7 @@
         display: block;
         @include dim('w', 21, 21);
         @include dim('h', 21, 21);
-        @include dim('border-width',3, 3);
+        @include dim('border-width', 3, 3);
         @include merge;
         border-radius: 100%;
         border-style: solid;
@@ -129,7 +129,7 @@
       .content-text__unordered-list-item-dot {
         position: relative;
         border: none;
-        @include dim('fz', 30, 20);
+        @include dim('fz', 30, 18);
 
         &:before {
           content: counter(list-counter);
@@ -144,12 +144,207 @@
     }
   }
 
+  &__ordered-list {
+    @include dim('gap', 20, 10);
+    @include merge;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 540px));
+    counter-reset: list-counter;
+    list-style-type: none;
+
+    @media (max-width: 1023px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    &-title {
+      @include dim('fz', 18, 18);
+      @include merge;
+
+      @media (max-width: 767px) {
+        font-weight: 600;
+      }
+    }
+
+    &-item {
+      width: 100%;
+      @include dim('p', 40, 30);
+      @include dim('gap', 40, 10);
+      @include merge;
+      background: $bg-secondary-light;
+      border-radius: 20px;
+      counter-increment: list-counter;
+      min-height: 256px;
+      display: flex;
+      position: relative;
+
+      &-text {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        line-height: 140%;
+
+        &:before {
+          content: counter(list-counter, decimal-leading-zero) " ";
+          display: block;
+          @include dim('fz', 18, 18);
+          @include merge;
+          color: $text-minimal;
+          font-weight: 500;
+          margin-bottom: auto;
+
+          @media (max-width: 1199px) {
+            padding-bottom: 30px;
+          }
+        }
+      }
+
+      &-icon {
+        flex: none;
+        border-left: 1px solid $bg-line;
+        @include dim('pl', 30, 20);
+        @include merge;
+        padding-top: 15px;
+
+        @media (max-width: 1199px) {
+          position: absolute;
+          top: 35px;
+          right: 34px;
+          padding: 0;
+          border: none;
+        }
+
+        svg {
+          @include dim('w', 67, 50);
+          @include dim('h', 61, 46);
+          @include merge;
+        }
+      }
+    }
+  }
+
+  &__features {
+    border-top: 1px solid $bg-line-dark;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &-item {
+      border-bottom: 1px solid $bg-line-dark;
+      padding-block: 25px;
+      display: grid;
+      grid-template-columns: 38% 58%;
+      gap: 4%;
+
+      @media (max-width: 767px) {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      &-title {
+        font-weight: 400;
+        @include dim('fz', 25, 18);
+        @include merge;
+        line-height: 130%;
+        color: $bg-green;
+
+        @media (max-width: 767px) {
+          font-weight: 600;
+        }
+      }
+
+      &-text {
+        font-weight: 500;
+        @include dim('fz', 18, 16);
+        @include merge;
+        line-height: 140%;
+
+        @media (max-width: 767px) {
+          font-weight: 400;
+          line-height: 130%;
+        }
+      }
+    }
+  }
+
+  &__certificates {
+    display: grid;
+    grid-template-columns:repeat(2, 1fr);
+    @include dim('gap', 20, 10);
+    @include merge;
+    overflow: auto;
+
+    @media (max-width: 1023px) {
+      grid-template-columns: 1fr;
+    }
+
+    @media (max-width: 767px) {
+      display: flex;
+      margin-inline: -20px;
+      padding-inline: 20px;
+      margin-bottom: -20px;
+      padding-bottom: 20px;
+    }
+
+    &-item {
+      border: 1px solid $bg-line-dark;
+      border-radius: 20px;
+      padding: 30px;
+      display: grid;
+      gap: 30px;
+      min-width: 320px;
+
+      &-title {
+        font-weight: 600;
+        @include dim('fz', 25, 18);
+        @include merge;
+        line-height: 130%;
+        text-transform: uppercase;
+
+        @media (max-width: 1023px) {
+          text-transform: initial;
+        }
+
+      }
+
+      &-text {
+        line-height: 145%;
+        @include dim('fz', 18, 16);
+        @include merge;
+
+        @media (max-width: 1023px) {
+          line-height: 130%;
+        }
+      }
+
+      &-link {
+        font-weight: 600;
+        line-height: 1;
+        color: $text-minimal;
+        display: flex;
+        gap: 50px;
+        @include dim('fz', 18, 16);
+        @include merge;
+        transition: $transition;
+
+        & path {
+          transition: $transition;
+        }
+
+        &:hover {
+          color: $bg-green;
+
+          & path {
+            fill: $bg-green;
+          }
+        }
+      }
+    }
+  }
+
   &__sub-title {
     @include dim('mb', 20, 20);
     @include merge;
   }
-
-
 
   &__dashed-links {
     column-count: 2;
@@ -200,7 +395,7 @@
       position: relative;
       font-weight: 500;
       @include dim('pl', 40, 40);
-      @include dim('fz', 18, 18);
+      @include dim('fz', 18, 16);
       @include merge;
       line-height: 140%;
 
@@ -244,7 +439,7 @@
         transition: $transition;
 
         @media (max-width: 767px) {
-          font-size: 16px;
+          font-size: 14px;
           font-weight: 600;
           text-transform: none;
         }
@@ -261,6 +456,11 @@
           top: 0;
           border-radius: 100%;
           opacity: 0;
+
+          @media (max-width: 1199px) {
+            opacity: 1;
+            background: #DDDDDD;
+          }
 
           @media (max-width: 1199px) {
             top: 50%;
@@ -293,7 +493,7 @@
         transition: $transition;
 
         @media (max-width: 767px) {
-          font-size: 14px;
+          font-size: 12px;
           font-weight: 400;
         }
       }
@@ -304,6 +504,10 @@
 
           &:before {
             opacity: 1;
+
+            @media (max-width: 1199px) {
+              background: $icon-accent;
+            }
           }
         }
 
@@ -417,7 +621,7 @@
       }
 
       &-description {
-        @include dim('fz', 18, 18);
+        @include dim('fz', 18, 16);
         @include merge;
       }
     }
@@ -482,7 +686,7 @@
         }
 
         .swiper-slide {
-          width: fit-content!important;
+          width: fit-content !important;
           @include dim('max-w', 229, 229);
           @include dim('min-w', 229, 229);
         }
@@ -509,7 +713,7 @@
       }
 
       &-name {
-        @include dim('fz', 20, 20);
+        @include dim('fz', 20, 18);
         @include merge;
         font-weight: 600;
 
@@ -521,7 +725,7 @@
       }
 
       &-job {
-        @include dim('fz', 16, 16);
+        @include dim('fz', 16, 14);
         @include merge;
         display: -webkit-box;
         -webkit-box-orient: vertical;
@@ -553,7 +757,7 @@
 
   .content-text {
     &__top-texts p {
-      font-size: 18px;
+      font-size: 16px;
       line-height: 130%;
     }
 
@@ -577,6 +781,7 @@
 
         &-title {
           min-width: 100%;
+          font-weight: 600;
         }
 
         &-text {
@@ -617,7 +822,7 @@
       &-item {
         &-text {
           min-height: auto;
-          font-size: 18px;
+          font-size: 16px;
           font-weight: 400;
         }
       }
@@ -625,12 +830,12 @@
 
     &__small-title {
       font-weight: 400;
-      font-size: 18px;
+      font-size: 16px;
     }
 
     &__dashed-texts {
       p {
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 400;
         line-height: 130%;
       }
@@ -640,7 +845,7 @@
       grid-template-columns: repeat(1, 1fr);
 
       &-item {
-        font-size: 16px;
+        font-size: 14px;
 
         &-title {
           font-weight: 600;
@@ -682,7 +887,7 @@
         }
 
         &-description {
-          @include dim('fz', 18, 18);
+          @include dim('fz', 18, 16);
           @include merge;
         }
       }

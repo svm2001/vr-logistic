@@ -127,7 +127,7 @@
     
     span:first-child {
       transition: all 0.3s;
-      @include dim('fz', 14, 14);
+      @include dim('fz', 14, 12);
       @include merge;
       font-weight: 700;
       color: $text-invert;
@@ -307,13 +307,13 @@
 @media (max-width: 1200px) {
   .news-item-slider {
     &__title.text--bold {
-      font-size: 18px;
+      font-size: 16px;
       line-height: 130%;
       font-weight: 600;
     }
 
     &__date {
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 400;
     }
 
@@ -324,19 +324,19 @@
 
   .news-item-grid {
     &__title.text--bold {
-      font-size: 18px;
+      font-size: 16px;
       line-height: 130%;
       font-weight: 600;
     }
 
     &__date {
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 400;
     }
 
     &__sticker {
       text-transform: none;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 600;
       line-height: 130%;
     }
@@ -350,12 +350,12 @@
 @media (max-width: 765px) {
   .news-item-slider {
     &__title.text--bold {
-      font-size: 18px;
+      font-size: 16px;
     }
   }
   .news-item-grid {
     &__title.text--bold {
-      font-size: 18px;
+      font-size: 16px;
     }
   }
 }

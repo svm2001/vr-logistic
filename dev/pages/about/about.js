@@ -6,4 +6,12 @@ import { standartsSlider } from "@/assets/scripts/modules/standartsSlider.js"
 
 window.onload = () => {
   main()
+  tabs({
+    tabParentSelector: '.team__content-nav',
+    tabHeaderSelector: '.team__content-nav-item',
+    tabHeaderActiveClass: 'active',
+    tabItemSelector: '.team__content-people',
+    tabItemActiveClass: 'active',
+    event: 'click'
+  })
 }

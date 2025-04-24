@@ -87,7 +87,7 @@
     &__line {
       span.title-line {
         .text--xxs{
-          font-size: 14px;
+          font-size: 12px;
         }
       }
     }
@@ -108,7 +108,7 @@
     height: 465px;
     max-height: 465px;
     gap: 20px;
-    
+
     &__container {
       display: contents;
       flex-direction: column;
@@ -125,7 +125,7 @@
     &__line {
       span.title-line {
         .text--xxs{
-          font-size: 16px;
+          font-size: 14px;
         }
       }
     }

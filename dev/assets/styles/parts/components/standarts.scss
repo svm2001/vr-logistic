@@ -16,7 +16,7 @@
 
   &__wrapper {
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: space-between;
   }
 
@@ -183,26 +183,26 @@
       min-width: 330px;
 
       &-title {
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 600;
         width: 100%;
       }
 
       &-text {
         width: 100%;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 400;
       }
 
       &-post-title {
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 500;
       }
     }
 
     &__list {
       &-text {
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 400;
       }
 
@@ -275,6 +275,7 @@
       border-radius: 0;
       padding: 40px 0 60px 0;
       position: relative;
+      background: #F2F8F2;
 
       &:before {
         content: '';
@@ -283,7 +284,7 @@
         left: -20px;
         width: 20px;
         height: 100%;
-        background: #e4f2e4;
+        background: #F2F8F2;
       }
 
       &:after {
@@ -293,7 +294,7 @@
         right: -20px;
         width: 20px;
         height: 100%;
-        background: #e4f2e4;
+        background: #F2F8F2;
       }
 
       &-poster,
@@ -309,7 +310,7 @@
 
       .swiper {
         overflow-y: auto;
-        padding-bottom: 28px !important;
+        padding-bottom: 35px !important;
       }
 
       .swiper-pagination {
@@ -342,7 +343,7 @@
           line-clamp: 2;
           overflow: hidden;
           min-height: 48px;
-          font-size: 20px;
+          font-size: 18px;
           font-weight: 600;
         }
 
@@ -353,7 +354,7 @@
           line-clamp: 2;
           overflow: hidden;
           min-height: 38px;
-          font-size: 16px;
+          font-size: 14px;
         }
       }
     }

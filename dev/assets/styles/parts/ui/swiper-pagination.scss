@@ -6,10 +6,10 @@
     background: $text-green-light !important;
     opacity: 1 !important;
     transition: $transition !important;
-    @include dim('ml', 5, 5);
-    @include dim('mr', 5, 05);
-    @include dim('h', 15, 15);
-    @include dim('w', 15, 15);
+    @include dim('ml', 5, 3);
+    @include dim('mr', 5, 3);
+    @include dim('h', 15, 10);
+    @include dim('w', 15, 10);
     @include merge;
 
     &.swiper-pagination-bullet-active {

@@ -1,0 +1,87 @@
+-
+  const defaultTeamProps = {
+    classes: '',
+    nav: ['Руководители', 'Эксперты'],
+    supervisor: [
+      {
+        job: 'Директор',
+        name: 'Георгий Моисеенко'
+      },
+      {
+        job: 'Коммерческий директор',
+        name: 'Олеся Полева'
+      },
+      {
+        job: 'Директор по развитию',
+        name: 'Иван Подбуцкий'
+      },
+      {
+        job: 'Директор по маркетингу',
+        name: 'Екатерина Лачугина'
+      },
+    ],
+    expert: [
+      {
+        job: 'Директор',
+        name: 'Георгий Моисеенко'
+      },
+      {
+        job: 'Коммерческий директор',
+        name: 'Олеся Полева'
+      },
+      {
+        job: 'Эксперт',
+        name: 'Иван Подбуцкий'
+      },
+      {
+        job: 'Эксперт',
+        name: 'Екатерина Лачугина'
+      },
+    ],
+
+  }
+
+mixin team(props = defaultTeamProps, ...dataset)
+  -
+    const checkProps = {
+      classes: props.classes ? props.classes : defaultTeamProps.classes,
+      nav: props.nav ? props.nav : defaultTeamProps.nav,
+      supervisor: props.supervisor ? props.supervisor : defaultTeamProps.supervisor,
+      expert: props.expert ? props.expert : defaultTeamProps.expert,
+    }
+
+  .team__content
+    .team__content-nav.no-scrollbar
+      each item, index in checkProps.nav
+        button.team__content-nav-item(class=index === 0 ? "active" : "")=item
+    .team__content-hr
+    .team__content-people.active.no-scrollbar
+      each item in checkProps.supervisor
+        .team__content-people-item
+          +text({
+            text: item.job,
+            variant: 'xs',
+            weight: 'medium',
+            classes: 'team__content-people-item-job'
+          })
+          +text({
+            text: item.name,
+            variant: 'm',
+            weight: 'bold',
+            classes: 'team__content-people-item-name'
+          })
+    .team__content-people.no-scrollbar
+      each item in checkProps.expert
+        .team__content-people-item
+          +text({
+            text: item.job,
+            variant: 'xs',
+            weight: 'medium',
+            classes: 'team__content-people-item-job'
+          })
+          +text({
+            text: item.name,
+            variant: 'm',
+            weight: 'bold',
+            classes: 'team__content-people-item-name'
+          })

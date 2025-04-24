@@ -61,7 +61,6 @@
   const timer = {
     info: {
       title: 'Очные занятия',
-      subtitle: '3 раза в неделю по вечерам, с 17 февраля!',
       btnText: 'Записаться на курс'
     },
     title: 'До старта нового курса осталось:',
@@ -156,7 +155,7 @@ mixin content(props = defaultContentProps, ...dataset)
                             weight: 'bold'
                           })
                           +text({
-                            text: timer.info.subtitle,
+                            text: `3 раза в неделю по вечерам, <br>с 17 февраля!`,
                             variant: 'm',
                             classes: 'timer__info-subtitle',
                             weight: 'medium'

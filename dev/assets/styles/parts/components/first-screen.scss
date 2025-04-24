@@ -22,14 +22,6 @@
     }
   }
 
-  &--career {
-    .first-screen__pattern--desktop {
-      left: auto;
-      width: 49%;
-      right: 0;
-    }
-  }
-
   .container {
     z-index: 2;
     height: 100%;
@@ -82,7 +74,7 @@
   }
 
   &__subtitle {
-    @include dim('fz', 20, 20);
+    @include dim('fz', 20, 18);
     @include dim('max-w', 648, 400);
     @include merge;
     color: $text-primary;
@@ -133,7 +125,7 @@
     &__title {
       -webkit-line-clamp: 4;
       line-clamp: 4;
-      font-size: 32px;
+      font-size: 30px;
     }
 
     &__subtitle {
@@ -173,7 +165,7 @@
   button {
     transition: .1s ease-in-out;
     font-weight: 700;
-    @include dim('fz', 22, 20);
+    @include dim('fz', 22, 18);
     color: $text-primary;
     white-space: nowrap;
 

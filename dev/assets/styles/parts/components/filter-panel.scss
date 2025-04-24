@@ -40,7 +40,7 @@
                 @include dim('pt', 15.5, 15.5);
                 @include dim('pb', 15.5, 15.5);
                 @include dim('pl', 20, 20);
-                @include dim('fz', 18, 18);
+                @include dim('fz', 18, 14);
                 @include dim('h', 48, 48);
                 @include merge;
                 height: 100%;
@@ -79,14 +79,14 @@
         .container{
             align-items: center;
         }
-    
+
         &__search{
             .filter-search{
                 .input__field{
                 }
             }
         }
-    
+
         &__sort{
             position: relative;
             &.active{
@@ -109,7 +109,7 @@
                 height: 100%;
             }
         }
-    
+
         &__sort-container{
             position: absolute;
             max-width: max-content;

@@ -51,7 +51,7 @@
         @include merge;
 
         .contacts__item-link {
-          @include dim('fz', 50, 20);
+          @include dim('fz', 50, 18);
           @include merge;
           line-height: 100%;
         }
@@ -59,7 +59,7 @@
     }
 
     &-link {
-      @include dim('fz', 35, 20);
+      @include dim('fz', 35, 18);
       @include merge;
       line-height: 140%;
       color: $text-secondary;
@@ -78,7 +78,7 @@
 
     &-additional {
       font-weight: 700;
-      @include dim('fz', 18, 16);
+      @include dim('fz', 16, 14);
       @include merge;
       line-height: 140%;
 
@@ -93,7 +93,7 @@
     }
 
     &-email {
-      @include dim('fz', 35, 20);
+      @include dim('fz', 35, 18);
       @include merge;
       line-height: 140%;
       color: $text-secondary;
@@ -125,7 +125,7 @@
 
     &-address {
       font-weight: 700;
-      font-size: 20px;
+      font-size: 18px;
       line-height: 130%;
       min-height: 2lh;
 
@@ -228,7 +228,7 @@
     align-items: center;
     transition: $transition;
     @include dim('gap', 30, 30);
-    @include dim('fz', 25, 20);
+    @include dim('fz', 25, 18);
     @include merge;
 
     svg {
@@ -404,7 +404,7 @@
     }
 
     &__link {
-      font-size: 18px;
+      font-size: 16px;
     }
 
     &__numbers {
@@ -423,7 +423,7 @@
 
       &-value p,
       &-value + span {
-        font-size: 80px;
+        font-size: 78px;
       }
     }
   }
