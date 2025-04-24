@@ -12,12 +12,15 @@
       unorderedListTitle: '',
       conditionsList: [],
       orderedList: [],
+      orderedListWithIcon: [],
       dashedLinks: [],
       dashedTexts: [],
       vacanciesList: [],
       iconList: [],
       scheduleList: [],
-      speakersList: []
+      speakersList: [],
+      features: [],
+      certificates: [],
   }
 
 mixin content-text(props = defaultContentTextProps, ...dataset)
@@ -32,6 +35,7 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
         unorderedList: props.unorderedList ? props.unorderedList : defaultContentTextProps.unorderedList,
         unorderedListTitle: props.unorderedListTitle ? props.unorderedListTitle : defaultContentTextProps.unorderedListTitle,
         orderedList: props.orderedList ? props.orderedList : defaultContentTextProps.orderedList,
+        orderedListWithIcon: props.orderedListWithIcon ? props.orderedListWithIcon : defaultContentTextProps.orderedListWithIcon,
         dashedLinks: props.dashedLinks ? props.dashedLinks : defaultContentTextProps.dashedLinks,
         dashedTexts: props.dashedTexts ? props.dashedTexts : defaultContentTextProps.dashedTexts,
         subTitle: props.subTitle ? props.subTitle : defaultContentTextProps.subTitle,
@@ -41,6 +45,8 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
         iconList: props.iconList ? props.iconList : defaultContentTextProps.iconList,
         scheduleList: props.scheduleList ? props.scheduleList : defaultContentTextProps.scheduleList,
         speakersList: props.speakersList ? props.speakersList : defaultContentTextProps.speakersList,
+        features: props.features ? props.features : defaultContentTextProps.features,
+        certificates: props.certificates ? props.certificates : defaultContentTextProps.certificates,
     }
   include ../../../ui/btn
   include ../../../ui/text
@@ -109,6 +115,26 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
                       variant: 'xxs',
                       weight: 'medium'
                     })
+
+      if checkProps.orderedListWithIcon.length > 0
+        if checkProps.unorderedListTitle
+          +text({
+            variant: 'xs',
+            weight: 'bold',
+            text: checkProps.unorderedListTitle,
+            classes: 'content-text__ordered-list-title'
+          })
+        ol.content-text__ordered-list
+          each item in checkProps.orderedListWithIcon
+            li.content-text__ordered-list-item
+              +text({
+                text: item.text,
+                classes: 'content-text__ordered-list-item-text',
+                variant: 's',
+                weight: 'medium'
+              })
+              span.content-text__ordered-list-item-icon
+                +icon(item.icon)
 
       if checkProps.dashedLinks.length > 0
         if checkProps.subTitle
@@ -218,3 +244,19 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
                                  p.content-text__speakers-item-job= speaker.job
                   .swiper-pagination
 
+      if checkProps.features.length > 0
+        ul.content-text__features
+          each item in checkProps.features
+            li.content-text__features-item
+              p.content-text__features-item-title!=item.title
+              p.content-text__features-item-text!=item.text
+
+      if checkProps.certificates.length > 0
+        .content-text__certificates-wrapper
+          ul.content-text__certificates.no-scrollbar
+            each item in checkProps.certificates
+              li.content-text__certificates-item
+                p.content-text__certificates-item-title!=item.title
+                p.content-text__certificates-item-text!=item.text
+                a.content-text__certificates-item-link(href=item.link)='Посмотреть'
+                  +icon('arrow-right-long')
