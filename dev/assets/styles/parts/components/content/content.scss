@@ -11,6 +11,10 @@
     }
   }
 
+  &__overflow--hidden{
+    overflow: hidden;
+  }
+
   &--internship {
     .content__inner {
       flex-wrap: wrap;
@@ -298,6 +302,54 @@
             }
           }
         }
+      }
+    }
+  }
+
+  img{
+    width: 100%;
+    @include dim('h', 409, 246);
+    @include dim('br', 20, 20);
+    @include merge;
+  }
+
+  .video{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    @include dim('max-h', 409, 249);
+    @include dim('br', 20, 20);
+    @include merge;
+    .container{
+      height: 100%;
+
+    }
+    &__inner{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: 0;
+    }
+
+    &__title{
+      display: none;
+    }
+
+    &__btn{
+      .btn{
+        @include dim('h', 108, 108);
+        @include dim('w', 108, 108);
+        @include merge;
+        .btn__icon{
+          @include dim('h', 43, 43);
+          @include dim('w', 43, 43);
+          @include merge;
+        }
+      }
+
+      .text{
+        display: none;
       }
     }
   }

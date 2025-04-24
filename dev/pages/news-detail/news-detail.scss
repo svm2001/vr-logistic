@@ -1,0 +1,22 @@
+@import '@/assets/styles/main';
+@import '@/assets/styles/parts/components/first-screen';
+@import '@/assets/styles/parts/components/tags-line';
+@import '@/assets/styles/parts/components/social-field';
+@import '@/assets/styles/parts/components/content/content';
+@import '@/assets/styles/parts/components/content/content-text';
+@import '@/assets/styles/parts/components/video';
+@import '@/assets/styles/parts/ui/news-item';
+
+.news-detail__wrapper{
+    background: $bg-secondary;
+}
+
+
+@media (max-width: 765px) {
+    .news-detail__wrapper{
+        .text--medium{
+            font-weight: 400;
+        }
+    }
+  
+}

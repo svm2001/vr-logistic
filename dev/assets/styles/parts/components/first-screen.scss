@@ -60,7 +60,6 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     line-clamp: 2;
-    overflow: hidden;
   }
 
   &__tag {
@@ -89,6 +88,14 @@
     color: $text-primary;
   }
 }
+
+.news-detail__wrapper{
+  .first-screen__content{
+    @include dim('gap', 20, 20);
+    @include merge;
+  }
+}
+
 
 @media (max-width: 1199px) {
   .first-screen {

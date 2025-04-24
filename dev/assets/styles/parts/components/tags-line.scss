@@ -10,12 +10,24 @@
     &__list{
         display: flex;
         flex-wrap: wrap;
-        @include dim('gap', 10, 10);
+        &:not(.tags-sticker){
+            @include dim('gap', 10, 10);
+            @include merge;
+        }
+        &.tags-sticker{
+            @include dim('gap', 20, 10);
+            @include merge;
+        }
+    }
+
+    &__title{
+        line-height: 130%;
+        @include dim('fz', 25, 28);
+        @include dim('mb', 40, 20);
         @include merge;
     }
 
     &__item{        
-        cursor: pointer;
         position: relative;
         transition: all 0.3s;
         display: flex;
@@ -36,9 +48,11 @@
             @include dim('fz', 18, 18);
             @include merge;
         }
-
-        &:hover{
-            background-color: $bg-line-dark;
+        &:not(.tags-sticker){
+            cursor: pointer;
+            &:hover{
+                background-color: $bg-line-dark;
+            }
         }
 
         &.active{
@@ -57,9 +71,16 @@
             padding-left: 30px;
             overflow-x: auto;
         }
+
+        &__title{
+            line-height: 120%;
+            font-weight: 600;
+        }
     
         &__list{
-            flex-wrap: nowrap;
+            &:not(.tags-sticker){
+                flex-wrap: nowrap;
+            }
         }
     
         &__item{

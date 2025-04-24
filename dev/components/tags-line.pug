@@ -1,10 +1,13 @@
 -
   const defaultTagsProps = {
+      type: 'select', // select / sticker
       classes: '',
+      title: false,
+      titleText: '',
       tags: [
         {
           name: '',
-          data: '',
+          data: 'javascript:void(0);',
         },
       ],
   }
@@ -12,25 +15,40 @@
 mixin tags-line(props = defaultTagsProps, ...dataset)
   -
     const checkProps = {
+        type: props.type ? props.type : defaultTagsProps.type,
         classes: props.classes ? props.classes : defaultTagsProps.classes,
         tags: props.tags ? props.tags : defaultTagsProps.tags,
+        title: props.title ? props.title : defaultTagsProps.title,
+        titleText: props.titleText ? props.titleText : defaultTagsProps.titleText,
     }
   include ../ui/text
   section.tags-line(class=`${checkProps.classes}`)&attributes(...dataset)
     .container.no-scrollbar
-      .tags-line__list.js-tags-list
-        each tag, index in checkProps.tags
-          if(index === 0)
-            button.tags-line__item.js-tags-item.active
+      if(checkProps.title)
+        .tags-line__title= checkProps.titleText
+      if(checkProps.type === "select")
+        .tags-line__list.js-tags-list
+          each tag, index in checkProps.tags
+            if(index === 0)
+              button.tags-line__item.js-tags-item.active
+                +text({
+                          variant: 'xs',
+                          weight: 'medium',
+                          text: tag.name,
+                      }) 
+            else
+              button.tags-line__item.js-tags-item
+                +text({
+                        variant: 'xs',
+                        weight: 'medium',
+                        text: tag.name,
+                    })
+      else if(checkProps.type === 'sticker')
+        .tags-line__list.tags-sticker.js-tags-list
+          each tag in checkProps.tags
+            div.tags-line__item.tags-sticker.js-tags-item(href= tag.data)
               +text({
                         variant: 'xs',
                         weight: 'medium',
                         text: tag.name,
                     }) 
-          else
-            button.tags-line__item.js-tags-item
-              +text({
-                      variant: 'xs',
-                      weight: 'medium',
-                      text: tag.name,
-                  })   

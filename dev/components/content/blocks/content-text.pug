@@ -7,6 +7,8 @@
       btn: false,
       btnModal: false,
       topTexts: [],
+      bottomTexts: [],
+      afterTexts:[],
       tags: [],
       unorderedList: [],
       unorderedListTitle: '',
@@ -17,7 +19,10 @@
       vacanciesList: [],
       iconList: [],
       scheduleList: [],
-      speakersList: []
+      speakersList: [],
+      numberedlist: [],
+      bigImg: false,
+      bigImgSrc: '',
   }
 
 mixin content-text(props = defaultContentTextProps, ...dataset)
@@ -25,6 +30,8 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
     const checkProps = {
         classes: props.classes ? props.classes : defaultContentTextProps.classes,
         topTexts: props.topTexts ? props.topTexts : defaultContentTextProps.topTexts,
+        bottomText: props.bottomText ? props.bottomText : defaultContentTextProps.bottomTexts,
+        afterText: props.afterText ? props.afterText : defaultContentTextProps.afterTexts,
         btn: props.btn ? props.btn : defaultContentTextProps.btn,
         btnText: props.btnText ? props.btnText : defaultContentTextProps.btnText,
         btnModal: props.btnModal ? props.btnModal : defaultContentTextProps.btnModal,
@@ -41,6 +48,9 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
         iconList: props.iconList ? props.iconList : defaultContentTextProps.iconList,
         scheduleList: props.scheduleList ? props.scheduleList : defaultContentTextProps.scheduleList,
         speakersList: props.speakersList ? props.speakersList : defaultContentTextProps.speakersList,
+        numberedlist: props.numberedlist ? props.numberedlist : defaultContentTextProps.numberedlist,
+        bigImg: props.bigImg ? props.bigImg : defaultContentTextProps.bigImg,
+        bigImgSrc: props.bigImgSrc ? props.bigImgSrc : defaultContentTextProps.bigImgSrc,
     }
   include ../../../ui/btn
   include ../../../ui/text
@@ -72,6 +82,7 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
                 variant: 'xxs',
                 weight: 'medium'
               })
+      
       if checkProps.unorderedList.length > 0
         if checkProps.unorderedListTitle
           +text({
@@ -110,6 +121,14 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
                       weight: 'medium'
                     })
 
+      if checkProps.smallTitle
+        +text({
+          variant: 's',
+          weight: 'bold',
+          text: checkProps.smallTitle,
+          classes: 'content-text__small-title'
+        })
+
       if checkProps.dashedLinks.length > 0
         if checkProps.subTitle
           +text({
@@ -122,18 +141,28 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
           each link in checkProps.dashedLinks
             a(href="javascript:void(0);")= link
 
-      if checkProps.smallTitle
-        +text({
-          variant: 's',
-          weight: 'bold',
-          text: checkProps.smallTitle,
-          classes: 'content-text__small-title'
-        })
+
+      if checkProps.afterText.length > 0
+        .content-text__top-texts
+            each text in checkProps.afterText
+              +text({
+                text: text,
+                classes: 'content-text__text',
+                variant: 's',
+                weight: 'medium'
+              })
 
       if checkProps.dashedTexts.length > 0
         .content-text__dashed-texts
           each text in checkProps.dashedTexts
             p= text
+
+      if checkProps.bigImg
+        img.lazy(
+            src="./images/no-image.jpg",
+            data-src=checkProps.bigImgSrc,
+            alt='Фото не загружено.'
+          )
 
       if checkProps.vacanciesList.length > 0
         .content-text__vacancies-list
@@ -206,6 +235,16 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
                           })
                       .content-text__schedule-item-description= item.description
 
+      if checkProps.bottomText.length > 0
+        .content-text__top-texts
+            each text in checkProps.bottomText
+              +text({
+                text: text,
+                classes: 'content-text__text',
+                variant: 's',
+                weight: 'medium'
+              })
+
       if checkProps.speakersList.length > 0
           .content-text__speakers-list
               .swiper
@@ -217,4 +256,7 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
                                  p.content-text__speakers-item-name= speaker.name
                                  p.content-text__speakers-item-job= speaker.job
                   .swiper-pagination
-
+      if checkProps.numberedlist.length > 0
+        ol
+          each item in checkProps.numberedlist
+            li= item

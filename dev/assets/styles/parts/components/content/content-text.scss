@@ -4,9 +4,38 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-
   @include dim('gap', 40, 30);
   @include merge;
+
+  &__main-text{
+    display: flex;
+    flex-direction: column;
+    @include dim('gap', 40, 30);
+    @include merge;
+  }
+
+  mark{
+    background-color: transparent;
+    color: $text-accent;
+    font-weight: 700;
+  }
+  p.text{
+    &>a{
+      color: $text-accent;
+      transition: all $transition;
+      &:hover{
+        color: $text-secondary;
+        background-color: $bg-line;
+      }
+    }
+  }
+
+  &__wrapper{
+    display: flex;
+    flex-direction: column;
+    @include dim('gap', 50, 40);
+    @include merge;
+  }
 
   &__top-texts {
     display: flex;
@@ -191,10 +220,8 @@
     }
   }
 
-  &__small-title {
-    @include dim('mb', 40, 30);
-    @include merge;
-  }
+  
+
 
   &__vacancies-list {
     display: flex;
@@ -396,6 +423,34 @@
     }
   }
 
+  ol{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none; 
+	  counter-reset: num;
+    @include dim('gap', 20, 20);
+    @include merge;
+  }
+
+  ol li{
+    display: flex;
+    @include dim('fz', 18, 18);
+    @include merge;
+  }
+
+  ol li::before{
+    content: counter(num) '.'; 
+    counter-increment: num;
+    display: block;
+    text-align: right;
+    width: 100%;
+    @include dim('max-w', 20, 20);
+    @include dim('mr', 10, 10);
+    @include dim('fz', 20, 18);
+    @include merge;
+  }
+  
+
   &__speakers {
 
     &-list {
@@ -478,12 +533,24 @@
   }
 }
 
+.news-detail__wrapper .content-text__small-title {
+  line-height: 140%;
+  @include dim('fz', 22, 20);
+  @include merge;
+}
+
 .ordered-list__btn {
   @include dim('w', 430, 300);
   @include merge;
 }
 
 @media (max-width: 1199px) {
+
+  .news-detail__wrapper .content-text__small-title {
+    font-weight: 600;
+    line-height: 130%;
+  }
+
   .content-text {
     &__top-texts p {
       font-size: 18px;

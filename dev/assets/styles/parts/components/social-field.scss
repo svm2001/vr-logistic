@@ -1,0 +1,109 @@
+@import '../../mixins/vw';
+
+.social-field{
+    position: relative;
+    background-color: $bg-line;
+    overflow: hidden;
+    width: calc( 100% + vw(130));
+    @include dim('btlr', 20, 20);
+    @include dim('bblr', 20, 20);
+    @include merge;
+
+    &__container{
+        display: flex;
+        align-items: center;
+        @include dim('gap', 40, 30);
+        @include dim('pt', 23, 30);
+        @include dim('pb', 23, 30);
+        @include dim('pl', 40, 40);
+        @include dim('pr', 40, 0);
+        @include merge;
+    }
+
+    &__list{
+        display: flex;
+        @include dim('gap', 10, 10);
+        @include merge;
+
+    }
+    &__item.btn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        @include dim('h', 40, 60);
+        @include dim('w', 40, 60);
+        @include dim('min-w', 40, 60);
+        @include dim('max-h', 40, 60);
+        @include dim('br', 10, 10);
+        @include merge;
+        object-fit: contain;
+        .btn__icon{
+            max-height: 40%;
+            max-width: 40%;
+        }
+
+        &.mobile{
+            display: none;
+            .btn__icon{
+                max-height: auto;
+                max-width: 33px;
+                width: 100%;
+            }
+        }
+
+        &.btn-variant-primary:hover{
+            background-color: $bg-line-dark;
+        }
+
+        &.social-telegram:hover{
+            background-color: $tg;
+            svg path{
+                fill: $icon-primary;
+            }
+        }
+
+        &.social-facebook:hover{
+            background-color: $facebook;
+            svg path{
+                fill: $icon-primary;
+            }
+        }
+
+        &.social-vk:hover{
+            background-color: $vk;
+            svg path{
+                fill: $icon-primary;
+            }
+        }
+
+        &.social-youtube:hover{
+            background-color: $youtube;
+            svg path{
+                fill: $icon-primary;
+            }
+        }
+    }
+}
+
+@media (max-width: 1199px) {
+    .social-field{
+        width: calc( 100% + 20px);
+        &__item.btn{
+            &.mobile{
+                display: flex;
+            }
+        }
+    }
+}
+
+
+@media (max-width: 765px) {
+    .social-field{
+        &__container{
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+        }
+    }
+}
