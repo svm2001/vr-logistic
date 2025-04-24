@@ -1,0 +1,97 @@
+@import '../../../mixins/vw';
+
+.content-typo {
+  p {
+    font-weight: 500;
+    line-height: 140%;
+    @include dim('fz', 18, 16);
+    @include merge;
+
+    @media (max-width: 767px) {
+      font-weight: 400;
+      line-height: 130%;
+    }
+
+    h1 + &, h2 + &, h3 + & {
+      margin-top: 0.5em;
+    }
+
+    &:not(:last-child) {
+      margin: 0 0 1em 0;
+    }
+  }
+
+  ul {
+    margin: 0 0 1em 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      position: relative;
+      display: flex;
+      gap: 15px;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 130%;
+
+      @media (max-width: 767px) {
+        font-weight: 400;
+      }
+
+      &:before {
+        content:"";
+        display: block;
+        width: 22px;
+        height: 2px;
+        border-radius: 30px;
+        background-color: $icon-accent;
+        margin-top: 10px;
+        flex: none;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 15px;
+      }
+
+      &.ul-header {
+        font-weight: 700;
+        margin-bottom: 20px;
+
+        &:before {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .ul-group {
+    display: flex;
+    @include dim('gap', 20, 15);
+    @include merge;
+
+    @media (max-width: 1199px) {
+      flex-direction: column;
+    }
+
+    ul {
+      background: $bg-secondary;
+      border-radius: 10px;
+      padding: 30px;
+      max-width: 540px;
+      margin: 0;
+
+      @media (max-width: 1199px) {
+        max-width: initial;
+      }
+    }
+  }
+
+  picture, img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    @include dim('mb', 40, 30);
+    @include merge;
+  }
+}

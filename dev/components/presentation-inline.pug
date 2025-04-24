@@ -1,0 +1,38 @@
+-
+  const defaultPresentationInlineProps = {
+    classes: '',
+    title: 'Оптимизация цепочек поставок с ВР  ЛОГИСТИК',
+    text: 'Используем современные цифровые решения для оптимизации логистики.',
+    img: './images/solutions/presentation-mock.png',
+    link: '#'
+  }
+
+mixin presentationInline(props = defaultPresentationInlineProps, ...dataset)
+  -
+    const checkProps = {
+      classes: props.classes ? props.classes : defaultPresentationInlineProps.classes,
+      title: props.title ? props.title : defaultReviewsProps.title,
+      text: props.text ? props.text : defaultReviewsProps.text,
+      link: props.link ? props.link : defaultReviewsProps.link,
+      img: props.img ? props.img : defaultReviewsProps.img,
+    }
+
+  include ../ui/btn
+  include ../ui/text
+  .presentation-inline(class=`${checkProps.classes}`)&attributes(...dataset)
+    .presentation-inline__info
+      +text({
+        variant: 'm',
+        weight: 'bold',
+        text: checkProps.title,
+        classes: 'presentation-inline__info-title'
+      })
+      +text({
+        variant: 's',
+        weight: 'medium',
+        text: checkProps.text,
+        classes: 'presentation-inline__info-text'
+      })
+      +btn({ name: 'Скачать презентацию', type: 'link',dot: true })
+    .presentation-inline__img
+      img.lazy(src="./images/no-image.jpg" data-src=checkProps.img alt=checkProps.title)

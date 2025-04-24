@@ -25,9 +25,6 @@
     @include dim('p', 50, 30);
     @include dim('min-h', 415, 286);
     @include merge;
-    @media (max-width: 1023px) {
-      border: 1px solid #000;
-    }
   }
 
   &__item {

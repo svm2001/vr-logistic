@@ -2,4 +2,11 @@
 @import '@/assets/styles/parts/components/standarts';
 @import '@/assets/styles/parts/components/first-screen';
 @import '@/assets/styles/parts/components/content/content';
+@import '@/assets/styles/parts/components/services';
 @import '@/assets/styles/parts/components/content/content-text';
+@import '@/assets/styles/parts/components/content/content-typo';
+@import '@/assets/styles/parts/components/presentation-inline';
+
+.solutions-detail-wrapper {
+  background: $bg-secondary;
+}
