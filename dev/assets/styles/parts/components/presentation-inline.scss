@@ -1,0 +1,60 @@
+@import '../../mixins/vw';
+
+.presentation-inline {
+  background: $bg-secondary;
+  border-radius: 10px;
+  @include dim('gap', 31, 40);
+  @include dim('pt', 40, 30);
+  @include dim('pb', 40, 30);
+  @include dim('pl', 60, 30);
+  @include dim('pr', 60, 30);
+  @include merge;
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+  grid-template-columns: minmax(260px, 469px) minmax(300px, 567px);
+
+  @media (max-width: 1023px) {
+    grid-template-columns: 1fr;
+  }
+
+  &__info {
+    &-title {
+      margin-bottom: 20px;
+      @media (max-width: 767px) {
+        font-weight: 600;
+      }
+    }
+
+    &-text {
+      margin-bottom: 40px;
+      @media (max-width: 767px) {
+        font-weight: 400;
+      }
+    }
+
+    & .btn {
+      @include dim('max-w', 469, 300);
+      @include merge;
+      width: 100%;
+    }
+  }
+
+  &__img {
+    text-align: right;
+    @media (max-width: 1023px) {
+      max-width: 567px;
+      text-align: center;
+      order: -1;
+    }
+
+    img {
+      object-fit: cover;
+      object-position: center;
+      max-width: 100%;
+      max-height: 291px;
+    }
+  }
+}
+
+
