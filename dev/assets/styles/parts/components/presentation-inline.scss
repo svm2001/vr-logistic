@@ -3,6 +3,7 @@
 .presentation-inline {
   background: $bg-secondary;
   border-radius: 10px;
+  @include dim('mt', 30, 20);
   @include dim('gap', 31, 40);
   @include dim('pt', 40, 30);
   @include dim('pb', 40, 30);
