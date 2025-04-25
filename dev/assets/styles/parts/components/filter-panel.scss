@@ -72,6 +72,12 @@
     &__icon-mobile{
         display: none;
     }
+
+    &__sort-container{
+        display: flex;
+        @include dim('gap', 70, 30);
+        @include merge;
+    }
 }
 
 @media (max-width: 765px) {
@@ -92,7 +98,7 @@
             &.active{
                 .filter-panel__sort-container{
                     opacity: 1;
-                    z-index: 10;
+                    z-index: 20;
                 }
             }
         }
@@ -111,6 +117,8 @@
         }
 
         &__sort-container{
+            flex-direction: column;
+            gap: 0;
             position: absolute;
             max-width: max-content;
             z-index: -10;

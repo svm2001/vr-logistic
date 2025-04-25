@@ -306,12 +306,24 @@
     }
   }
 
-  img{
+
+  &__img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
     width: 100%;
-    @include dim('h', 409, 246);
+    overflow: hidden;
     @include dim('br', 20, 20);
+    @include dim('h', 409, 246);
     @include merge;
+    img{
+      width: 100%;
+      height: auto;
+    }
   }
+
+  
 
   .video{
     position: relative;
@@ -357,6 +369,7 @@
 
 @media (max-width: 1199px) {
   .content {
+
     &-container {
       max-width: calc(100% - 20px);
     }
@@ -369,6 +382,29 @@
 
 @media (max-width: 767px) {
   .content {
+    .video{
+      &__btn{
+        .btn{
+          min-height: 108px;
+        }
+      }
+    }  
+
+    &__img{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      object-fit: cover;
+      overflow: hidden;
+      height: max-content;
+      max-height: 246px;
+      width: 100%;
+      img{
+        width: 100%;
+        height: auto;
+      }
+    }
+
     .content-container {
       border-radius: 0;
       padding: 40px 20px 40px 20px;

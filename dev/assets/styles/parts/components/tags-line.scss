@@ -81,6 +81,12 @@
         &__list{
             &:not(.tags-sticker){
                 flex-wrap: nowrap;
+                &::after{
+                    content: '';
+                    display: block;
+                    height: 20px;
+                    min-width: 20px;;
+                }
             }
         }
 

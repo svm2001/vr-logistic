@@ -1,0 +1,125 @@
+@import '../../mixins/vw';
+.presentation-item{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    @include dim('br', 15, 15);
+    @include dim('max-h', 365, 295);
+    @include merge;
+
+    &:hover{
+        transition: all $transition;
+        .presentation-item__img{
+            &::before{
+                transition: all $transition;
+                opacity: 0;
+            }
+        }
+    }
+
+    &__container{
+        display: flex;
+        flex-direction: column;
+        @include dim('gap', 20, 0);
+        @include merge;
+    }
+
+    &__img{
+        transition: all $transition;
+        object-fit: cover;
+        position: relative;
+        overflow: hidden;
+        @include dim('min-h', 265, 177);
+        @include dim('max-h', 265, 177);
+        @include dim('br', 15, 15);
+        @include merge;
+        img{
+            width: 100%;
+            height: auto;
+        }
+        &::before{
+            transition: all $transition;
+            content: '';
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #EEEEEE7D;
+            z-index: 5;
+        }
+    }
+
+    &__tag{
+        position: absolute;
+        z-index: 10;
+        bottom: 0;
+        left: 0;
+        background-color: $bg-line;
+        color: $text-secondary;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 700;
+        @include dim('pt', 14, 10);
+        @include dim('pb', 14, 10);
+        @include dim('pl', 51, 40);
+        @include dim('pr', 51, 40);
+        @include dim('btrr', 15, 15);
+        @include merge;
+    }
+    
+    &__download.btn.btn-icon{
+        position: absolute;
+        z-index: 10;
+        @include dim('r', 19, 10);
+        @include dim('t', 20, 10);
+        @include dim('max-h', 51, 40);
+        @include dim('min-h', 51, 40);
+        @include dim('min-w', 51, 40);
+        @include dim('h', 51, 40);
+        @include dim('w', 51, 40);
+        @include dim('br', 100, 100);
+        @include merge;
+        background-color: $bg-line;
+        border: none;
+        svg path{
+            &:first-child{
+                stroke: transparent;
+            }
+            stroke: $icon-dark-green;
+        }
+
+        &:hover{
+            background-color: $icon-dark-green;
+            svg path{
+                &:first-child{
+                    fill: $icon-primary;
+                }
+                stroke: $icon-primary;
+            }
+        }
+    }
+
+    &__title{
+        @include dim('pl', 20, 20);
+        @include dim('pr', 20, 20);
+        @include dim('pb', 18, 20);
+        @include merge;
+    }
+}
+
+@media (max-width: 1199px) {
+    .presentation-item{
+        background-color: $bg-secondary;
+        &__title{
+            padding: 20px;
+            span.text--bold{
+                font-weight: 600;
+            }
+        }
+        &__tag{
+            text-transform: none;
+        }
+    }
+}
+
+
