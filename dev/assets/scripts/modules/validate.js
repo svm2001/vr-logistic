@@ -11,7 +11,7 @@ export default function validate() {
       const inputs = form.querySelectorAll('.input, .checkbox, .textarea'),
         dataReqexp = {
           fio: /^[А-ЯЁа-яё]+(-[А-ЯЁа-яё]+)? [А-ЯЁа-яё]+( [А-ЯЁа-яё]+)?$/,
-          personName: /^[а-яёА-ЯЁ ]+$/u,
+          personName: /^[а-яёА-ЯЁA-Za-z]+$/u,
           email: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
           numbers: /^\d+$/,
         },
@@ -48,18 +48,20 @@ export default function validate() {
             name = field.getAttribute('data-input-name'),
             valueField = field.value
 
-          if (field.hasAttribute('required')) {
+          if (field.hasAttribute('isrequired')) {
             if (field.type === 'file') {
               field.files.length > 0
                 ? error(input).remove()
                 : error(input, 'Выберите файл').set()
+            } else if (valueField === '') {
+              error(input, 'Обязательное поле').set()
             } else if (valueField !== '') {
               switch (name) {
                 case 'name':
                   valueField.length >= 2 &&
                   valueField.match(dataReqexp.personName)
                     ? error(input).remove()
-                    : error(input, 'Введите корректное имя').set()
+                    : error(input, 'Введите корректное ФИО').set()
                   break
                 case 'fio':
                   valueField.length > 5 && valueField.match(dataReqexp.fio)
@@ -124,7 +126,7 @@ export default function validate() {
               } else {
                 input.classList.remove('input--error')
               }
-            } else if (field.type === 'file' && field.hasAttribute('required')) {
+            } else if (field.type === 'file' && field.hasAttribute('isrequired')) {
               if (!field.files.length) {
                 input.classList.add('input--error')
                 errors += 1
@@ -197,6 +199,7 @@ export default function validate() {
       lifeValidate()
       checkFields()
       form.setAttribute('data-validate', 'true')
+  form.setAttribute('novalidate', '')
       validate()
     })
   })

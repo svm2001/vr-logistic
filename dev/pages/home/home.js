@@ -9,6 +9,7 @@ import { standartsSlider } from '@/assets/scripts/modules/standartsSlider.js'
 import { newsSlider } from '@/assets/scripts/modules/newsSlider.js'
 import { feedbackSlider } from '@/assets/scripts/modules/feedbackSlider.js'
 import { initGallery } from '@/assets/scripts/modules/gallery.js'
+import { hero } from '@/assets/scripts/modules/hero'
 
 window.onload = () => {
   main()
@@ -20,6 +21,7 @@ window.onload = () => {
   newsSlider()
   feedbackSlider()
   initGallery()
+  hero()
 
   if (window.innerWidth > 767) {
     tabs({

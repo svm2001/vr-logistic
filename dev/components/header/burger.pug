@@ -7,21 +7,46 @@
               isOpen: false,
               links: [
                   {
-                      name: 'Услугa 1',
+                      name: 'Автомобильные перевозки',
                       href: 'javascript:void(0);'
                   },
                   {
-                      name: 'Услугa 2',
+                      name: 'Авиационные перевозки',
                       href: 'javascript:void(0);'
                   },
                   {
-                      name: 'Услугa 3',
+                      name: 'Железнодорожные перевозки',
                       href: 'javascript:void(0);'
                   },
                   {
-                      name: 'Услугa 4',
+                      name: 'Морские перевозки (мультимодальные)',
                       href: 'javascript:void(0);'
-                  }
+                  },
+                  {
+                      name: 'Проектная логистика',
+                      href: 'javascript:void(0);'
+                  },
+                  {
+                      name: 'Таможенное оформление',
+                      href: 'javascript:void(0);'
+                  },
+                  {
+                      name: 'Сертификация',
+                      href: 'javascript:void(0);'
+                  },
+                  {
+                      name: 'Складская логистика',
+                      href: 'javascript:void(0);'
+                  },
+                  {
+                      name: 'Доставка грузов дронами',
+                      href: 'javascript:void(0);'
+                  },
+                  {
+                      name: 'Страхование',
+                      href: 'javascript:void(0);'
+                  },
+
               ]
           },
           {
@@ -29,19 +54,39 @@
               isOpen: false,
               links: [
                   {
-                      name: 'Экспертиза 1',
+                      name: 'Телекоммуникации',
                       href: 'javascript:void(0);'
                   },
                   {
-                      name: 'Экспертиза 2',
+                      name: 'Автопром',
                       href: 'javascript:void(0);'
                   },
                   {
-                      name: 'Экспертиза 3',
+                      name: 'Спецтехника',
                       href: 'javascript:void(0);'
                   },
                   {
-                      name: 'Экспертиза 4',
+                      name: 'Техника и электроника',
+                      href: 'javascript:void(0);'
+                  },
+                   {
+                      name: 'FMCG',
+                      href: 'javascript:void(0);'
+                  },
+                   {
+                      name: 'Ритейл',
+                      href: 'javascript:void(0);'
+                  },
+                   {
+                      name: 'Нефтегазовая',
+                      href: 'javascript:void(0);'
+                  }, 
+                  {
+                      name: 'Химическая',
+                      href: 'javascript:void(0);'
+                  },
+                   {
+                      name: 'Машиностроение',
                       href: 'javascript:void(0);'
                   }
               ]
@@ -72,18 +117,13 @@ mixin burger(props = defaultBurgerProps, ...dataset)
                   a(href=link.href)= link.name
           a.burger__body-link(href="/news.html") Новости
           a.burger__body-link(href="/career.html") Карьера
+          a.burger__body-link(href="/contacts.html") Контакты
         .burger__btns
           +btn({ name: 'Обратная связь', variant: 'secondary', size: 'small', classes: 'burger-call-form' }, {'data-hystmodal': '#consult-form'})
-          +btn({ name: 'Личный кабинет', size: 'small', type: 'link', target: '_blank' })
-        .burger__requsites
-          p.burger__requsites-title Реквизиты
-          .burger__requsites-list
-            p.burger__requsites-item ООО "Компания"
-            p.burger__requsites-item ИНН 1234567890
-            p.burger__requsites-item ОГРН 1234567890
+          +btn({ name: 'Оставить отзыв', size: 'small', type: 'link', target: '_blank' })
         .burger__links
-          a.burger__links-item(href="javascript:void(0);") Контакты
-          a.burger__links-item(href="javascript:void(0);") Политика конфиденциальности
+          a.burger__links-item(href="tel: +74956469856") +7 (495) 646 98-56 
+          a.burger__links-item(href="mailto:logistic@vr-logistic.ru") logistic@vr-logistic.ru   
         .burger__icons
           +btn({ classes: 'header__custom-btn', name: 'EN', size: 'small', }, {title: 'Выбрать язык'})
           +btn({ classes: 'header__custom-btn', name: '', icon: true, iconName: 'search', size: 'small', }, {title: 'Поиск'})

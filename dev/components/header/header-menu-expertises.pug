@@ -3,85 +3,50 @@
       classes: '',
       links: [
           {
-            mainLink: {
-              name: 'Раздел',
-              link: '/solutions.html',
-            },
-            sublinks: [
-                  {
-                      name: 'Подраздел',
-                      link: '/solutions-detail.html'
-                  },
-                  {
-                      name: 'Подраздел',
-                      link: '/solutions-detail.html'
-                  },
-                  {
-                      name: 'Подраздел',
-                      link: '/solutions-detail.html'
-                  },
-                  {
-                      name: 'Подраздел',
-                      link: '/solutions-detail.html'
-                  },
-                  {
-                      name: 'Подраздел',
-                      link: '/solutions-detail.html'
-                  },
-            ]
+            icon: 'telecom',
+            name: 'Телекоммуникации',
+            link: '/solutions-detail.html'
           },
           {
-              mainLink: {
-                  name: 'Раздел 2',
-                  link: '/solutions.html',
-              },
-              sublinks: [
-                  {
-                      name: 'Подраздел 2',
-                      link: '/solutions-detail.html'
-                  },
-                  {
-                      name: 'Подраздел 2',
-                      link: '/solutions-detail.html'
-                  },
-              ]
+              icon: 'autoprom',
+              name: 'Автопром',
+              link: '/solutions-detail.html'
           },
           {
-              mainLink: {
-                  name: 'Раздел 3',
-                  link: '/solutions.html',
-              },
-              sublinks: [
-                  {
-                      name: 'Подраздел 3',
-                      link: '/solutions-detail.html'
-                  },
-                  {
-                      name: 'Подраздел 3',
-                      link: '/solutions-detail.html'
-                  },
-              ]
+              icon: 'spectechic',
+              name: 'Спецтехника',
+              link: '/solutions-detail.html'
           },
           {
-              mainLink: {
-                  name: 'Раздел 4',
-                  link: '/solutions.html',
-              },
-              sublinks: [
-                  {
-                      name: 'Подраздел 4',
-                      link: '/solutions-detail.html'
-                  },
-                  {
-                      name: 'Подраздел 4',
-                      link: '/solutions-detail.html'
-                  },
-                  {
-                      name: 'Подраздел 4',
-                      link: '/solutions-detail.html'
-                  },
-              ]
-          }
+              icon: 'techs-and-electronics',
+              name: 'Техника и электроника',
+              link: '/solutions-detail.html'
+          },
+          {
+              icon: 'fmcg',
+              name: 'FMCG',
+              link: '/solutions-detail.html'
+          },
+          {
+              icon: 'retail',
+              name: 'Ритейл',
+              link: '/solutions-detail.html'
+          },
+          {
+              icon: 'nefte-gaz',
+              name: 'Нефтегазовая',
+              link: '/solutions-detail.html'
+          },
+          {
+              icon: 'chemistry',
+              name: 'Химическая',
+              link: '/solutions-detail.html'
+          },
+          {
+              icon: 'machine-building',
+              name: 'Машиностроение',
+              link: '/solutions-detail.html'
+          },
       ]
   }
 
@@ -94,17 +59,10 @@ mixin header-menu-expertises(props = defaultHeaderMenuExpertisesProps, ...datase
 
 
 
-  .header-menu.header-menu-expertises(
-    class=`${checkProps.classes}`,
-    data-menu="expertises"
-  )&attributes(...dataset)
+  .header-menu.header-menu-services(class=`${checkProps.classes}`, data-menu="expertises")&attributes(...dataset)
     .container
-      .header-menu-expertises__list
-        each col in checkProps.links
-          .header-menu-expertises__list-col
-            a.header-menu-expertises__list-col-main-link(
-              href=col.mainLink.link
-            )= col.mainLink.name
-            .header-menu-expertises__list-col-list
-              each sublink in col.sublinks
-                a.header-menu-expertises__list-col-list-item(href=sublink.link)= sublink.name
+      .header-menu-services__list
+        each link in checkProps.links
+          a.header-menu-services__item(href=link.link)&attributes(...dataset)
+            +icon(link.icon)
+            +text({ text: link.name, classes: 'header-menu-services__item-name', variant: 's', weight: 'medium', })

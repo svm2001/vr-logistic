@@ -27,8 +27,15 @@
     flex-direction: column;
     max-width: 50%;
     @include dim('gap', 50, 40);
-    bottom: 20%;
+    bottom: 0;
+    opacity: 0;
     @include merge;
+    transition: .9s ease-in-out;
+
+    &.visible {
+      opacity: 1;
+      bottom: 20%;
+    }
   }
 
   &__title {

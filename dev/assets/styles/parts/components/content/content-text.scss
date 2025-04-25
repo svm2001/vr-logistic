@@ -321,10 +321,16 @@
         line-height: 1;
         color: $text-minimal;
         display: flex;
-        gap: 50px;
+        align-items: center;
+        @include dim('gap', 15, 15);
         @include dim('fz', 18, 16);
         @include merge;
         transition: $transition;
+
+        svg {
+          @include dim('w', 56, 56);
+          transition: $transition;
+        }
 
         & path {
           transition: $transition;
@@ -332,6 +338,10 @@
 
         &:hover {
           color: $bg-green;
+
+          svg {
+            transform: translateX(15%);
+          }
 
           & path {
             fill: $bg-green;
@@ -455,12 +465,7 @@
           transition: $transition;
           top: 0;
           border-radius: 100%;
-          opacity: 0;
-
-          @media (max-width: 1199px) {
-            opacity: 1;
-            background: #DDDDDD;
-          }
+          background: #DDDDDD;
 
           @media (max-width: 1199px) {
             top: 50%;
@@ -504,10 +509,7 @@
 
           &:before {
             opacity: 1;
-
-            @media (max-width: 1199px) {
-              background: $icon-accent;
-            }
+            background: $icon-accent;
           }
         }
 

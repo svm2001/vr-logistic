@@ -27,7 +27,7 @@ mixin vacancy-form(props = defaultVacancyFormProps, ...dataset)
             data-allowed-file-formats=['doc', 'docx', 'png', 'jpg', 'jpeg', 'pdf']
             data-allowed-file-max-megabyte-size=20
         )
-            input(type="file" id="vacancy-resume-file" required name='resume-file')
+            input(type="file" id="vacancy-resume-file" name='resume-file')
             label(for="vacancy-resume-file") Прикрепить резюме
             span.input-file__size
             span.input-file__file
@@ -35,28 +35,28 @@ mixin vacancy-form(props = defaultVacancyFormProps, ...dataset)
             h3 Контактные данные
             .vacancy-form__fields-inner
                 +input({
-                    validateName: 'fio',
+                    validateName: 'name',
                     placeholder: 'Иван Иванов',
                     name: 'name',
-                    required: true,
                     classes: 'input--theme--t input--size--l',
-                    label: 'ФИО'
+                    label: 'ФИО',
+                    isRequired: true
                 })
                 +input({
                     placeholder: 'Телефон для связи',
                     name: 'phone',
                     validateName: 'phone',
-                    required: true,
                     classes: 'input--size--l',
-                    label: 'Телефон'
+                    label: 'Телефон',
+                    isRequired: true
                 }, { 'data-input-mask': 'phone'})
                 +input({
                     placeholder: 'Ваша почта',
                     name: 'email',
                     validateName: 'email',
-                    required: false,
                     classes: 'input--size--l',
-                    label: 'E-mail'
+                    label: 'E-mail',
+                    isRequired: false
                 })
         .vacancy-form__submit
             +btn({

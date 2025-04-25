@@ -5,7 +5,7 @@ block content
     include ../../components/routes
     include ../../components/standarts
     include ../../components/first-screen
-    include ../../components/services/services-list
+    include ../../components/expertise/expertise
     include ../../components/consult
     include ../../components/feedback
     include ../../modal-windows/modal
@@ -16,7 +16,71 @@ block content
           title: 'Широкий спектр услуг',
           buttonText: 'Запросить консультацию'
         })
-        +services-list
+        +expertise({
+          classes: 'expertise--services',
+          expertises: [
+            {
+              title: 'Автомобильные перевозки',
+              text: 'Эффективные логистические решения для связи и цифровых технологий',
+              link: '/services-detail.html',
+              icon: 'car',
+            },
+            {
+                title: 'Авиационные перевозки',
+                text: 'Эффективные логистические решения для связи и цифровых технологий',
+                link: '/services-detail.html',
+                icon: 'plane',
+            },
+            {
+                title: 'Железнодорожные перевозки',
+                text: 'Эффективные логистические решения для связи и цифровых технологий',
+                link: '/services-detail.html',
+                icon: 'train',
+            },
+            {
+                title: 'Морские перевозки (мультимодальные)',
+                text: 'Эффективные логистические решения для связи и цифровых технологий',
+                link: '/services-detail.html',
+                icon: 'ship',
+            },
+            {
+                title: 'Проектная логистика',
+                text: 'Эффективные логистические решения для связи и цифровых технологий',
+                link: '/services-detail.html',
+                icon: 'logistic',
+            },
+            {
+                title: 'Таможенное оформление',
+                text: 'Эффективные логистические решения для связи и цифровых технологий',
+                link: '/services-detail.html',
+                icon: 'settings',
+            },
+            {
+                title: 'Сертификация',
+                text: 'Эффективные логистические решения для связи и цифровых технологий',
+                link: '/services-detail.html',
+                icon: 'certificate',
+            },
+            {
+                title: 'Складская логистика',
+                text: 'Эффективные логистические решения для связи и цифровых технологий',
+                link: '/services-detail.html',
+                icon: 'warehouse',
+            },
+            {
+                title: 'Доставка грузов дронами',
+                text: 'Эффективные логистические решения для связи и цифровых технологий',
+                link: '/services-detail.html',
+                icon: 'drone',
+            },
+            {
+                title: 'Страхование',
+                text: 'Эффективные логистические решения для связи и цифровых технологий',
+                link: '/services-detail.html',
+                icon: 'shield',
+            },
+          ]
+        })
         +routes
         +standarts
         +feedback

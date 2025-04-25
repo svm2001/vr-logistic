@@ -32,13 +32,27 @@ mixin consult-form(props = defaultConsultFormProps, ...dataset)
       form.consultForm__form(action, data-validate, no-validate)
         .form__body.js-form__body
           div
-            +input({ validateName: 'fio', placeholder: 'Иван Иванов', name: 'name', required: true, classes: 'input--theme--t input--size--l', label: 'ФИО' })
+            +input({ 
+              validateName: 'name',
+              placeholder: 'Иван Иванов', 
+              name: 'name', 
+              classes: 'input--theme--t input--size--l', 
+              label: 'ФИО',
+              isRequired: true
+              })
           div
-            +input({ placeholder: '+7 (000) 000-00-00', name: 'phone', validateName: 'phone', required: true, classes: 'input--size--l', label: 'Телефон' }, { 'data-input-mask': 'phone'})
+            +input({ 
+              placeholder: '+7 (000) 000-00-00', 
+              name: 'phone', 
+              validateName: 'phone', 
+              classes: 'input--size--l', 
+              label: 'Телефон',
+              isRequired: true
+            }, { 'data-input-mask': 'phone',})
           div
             +btn({ type: 'submit', name: checkProps.buttonText, dot: true, })
           div
-            +checkbox({ name: 'agreement', custom: true, required: true, })
+            +checkbox({ name: 'agreement', custom: true, 'is-required': true, })
               span Я прочитал(а) и согласен(на) c&nbsp;
                 a.agreement-link(href='javascript:void(0)' target="_blank") Политикой конфиденциальности
         +formSuccess()

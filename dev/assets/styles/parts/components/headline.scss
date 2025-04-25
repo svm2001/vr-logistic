@@ -31,6 +31,8 @@
 
 @media (max-width: 767px) {
   .headline {
+    width: 100%;
     font-size: 14px;
+    justify-content: space-between;
   }
 }
