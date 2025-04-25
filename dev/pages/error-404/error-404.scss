@@ -1,9 +1,41 @@
 @import '@/assets/styles/main';
+@import '@/assets/styles/mixins/vw';
+
 .error-404__img{
+    display: flex;
+    justify-content: center;
     width: 100%;
     object-fit: contain;
-    height: auto;
+    @include dim('h', 815, 500);
+    @include merge;
+    overflow: hidden;
     img{
+        height: 100%;
+    }
+}
+
+@media (max-width: 1199px){
+    .error-404__img{
+        display: flex;
+        justify-content: center;
         width: 100%;
+        object-fit: cover;
+        overflow: hidden;
+        height: auto;
+        img{
+            height: auto;
+            width: 100%;;
+        }
+    }
+}
+
+
+@media (max-width: 765px){
+    .error-404__img{
+        object-fit: cover;
+        height: auto;
+        img{
+            width: 100%;
+        }
     }
 }
