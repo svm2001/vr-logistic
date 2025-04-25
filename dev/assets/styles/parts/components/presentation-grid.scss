@@ -1,0 +1,29 @@
+@import '../../mixins/vw';
+
+.presentation-grid{
+    .container{
+        padding-bottom: 70px;
+    }
+    &__wrapper{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        @include dim('gap', 20, 30);
+        @include merge;
+    }
+}
+
+@media (max-width: 1199px) {
+    .presentation-grid .container{
+        padding-bottom: 40px;
+    }
+
+    .presentation-grid__wrapper{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 765px) {
+    .presentation-grid__wrapper{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

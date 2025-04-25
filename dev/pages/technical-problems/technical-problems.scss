@@ -1,0 +1,80 @@
+@import '@/assets/styles/main';
+@import '@/assets/styles/mixins/vw';
+
+.technical-problems{
+    background-color: $bg-secondary;
+
+    &__wrapper{
+        display: flex;
+        @include dim('gap', 123, 44);
+        @include merge;
+    }
+
+    &__column{
+        width: 50%;
+        &:first-child{
+            @include dim('pt', 118, 118);
+            @include dim('max-w', 680, 680);
+            @include merge;
+        }
+    }
+
+    &__title{
+        color: $text-secondary;
+        font-weight: 700;
+        line-height: 120%;
+        @include dim('mb', 50, 44);
+        @include dim('fz', 80, 32);
+        @include merge;
+    }
+
+    &__description{
+        line-height: 130%;
+        @include dim('max-w', 540, 700);
+        @include dim('fz', 20, 18);
+        @include merge;
+    }
+
+    &__img{
+        width: 100%;
+        img{
+            width: 100%;
+        }
+    }
+}
+@media (max-width: 1199px){
+    .technical-problems__column:first-child{
+        padding-top: 60px;
+    }
+}
+
+
+@media (max-width: 765px){
+    .technical-problems{
+        &__wrapper{
+            flex-direction: column;
+        }
+    
+        &__column{
+            width: 100%;
+            &:first-child{
+                padding-top: 40px;
+            }
+        }
+    
+        &__title{
+            color: $text-secondary;
+            font-weight: 700;
+            line-height: 120%;
+        }
+    
+        &__img{
+            position: relative;
+            left: -20px;
+            width: calc(100% + 40px );
+            img{
+                width: 100%;
+            }
+        }
+    }
+}

@@ -45,6 +45,13 @@ mixin filter-panel(props = defaultFilterProps, ...dataset)
         span.filter-panel__icon-mobile.js-filter-button
           +icon('filter')
         .filter-panel__sort-container.js-filter-container
+          if(newsProps.language)
+            +sort-filter({
+              classes: '',
+              options: newsProps.languageProps,
+              pre: false,
+              default: 'Язык',
+            })
           if(newsProps.sort)
             +sort-filter({
               classes: '',

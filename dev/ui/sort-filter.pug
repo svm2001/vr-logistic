@@ -5,6 +5,7 @@
       classes: '',
       pre: false,
       preText: '',
+      default: '',
       options: [
           {
               name: 'Cначала новые',
@@ -28,6 +29,7 @@ mixin sort-filter(props = defaultSortFilterProps)
         options: props.options ? props.options :  defaultSortFilterProps.options,
         pre: props.pre ? props.pre :  defaultSortFilterProps.pre,
         preText: props.preText ? props.preText :  defaultSortFilterProps.preText,
+        default: props.default ? props.default :  defaultSortFilterProps.default,
     }
 
   .sort(
@@ -39,8 +41,8 @@ mixin sort-filter(props = defaultSortFilterProps)
         span=checkProps.preText
     .sort__field(data-sort="main")
       .sort__head(data-sort="head" data-sorting=checkProps.options[checkProps.activeIndex].sort)
-        span.sort__value(data-sort="value")
-          span= checkProps.options[checkProps.activeIndex].name
+        span.sort__value(data-sort="value" class= checkProps.pre ? '' : 'head-text')
+          span= checkProps.default.length > 0 ? checkProps.default : checkProps.options[checkProps.activeIndex].name
         .sort__icon
           +icon('sort-arrow')
       .sort__body(data-sort="body", data-custom-scrollbar)
