@@ -1,0 +1,35 @@
+-
+  const defaultPresentationItemProps = { 
+    classes: '',
+    title: 'Оптимизация цепочек поставок с ВР Логистик',
+    tag: 'Категория 1', 
+    href: './file/test-file', 
+    img: './images/presentation/presentation (1)'}    
+
+
+mixin presentation-item(props = defaultPresentationItemProps, ...dataset)
+  -
+    const checkProps = {
+      classes: props.classes ? props.classes : defaultPresentationItemProps.classes,
+      title: props.title ? props.title : defaultPresentationItemProps.title,
+      tag: props.tag ? props.tag : defaultPresentationItemProps.tag,
+      href: props.href ? props.href : defaultPresentationItemProps.href,
+      img: props.img ? props.img : defaultPresentationItemProps.img,
+    }
+
+  include ../ui/btn
+  .presentation-item
+    .presentation-item__container 
+      .presentation-item__img
+        img.lazy(src="./images/no-image.jpg" data-src=checkProps.img alt=checkProps.title)
+        .presentation-item__tag= checkProps.tag
+        +btn({
+          classes: 'presentation-item__download',
+          type: 'link',
+          link: checkProps.href,
+          icon: true,
+          iconName: 'download'
+        })
+      .presentation-item__title
+        span.text.text--bold.text--m= checkProps.title
+          

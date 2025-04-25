@@ -1,0 +1,25 @@
+extends ../../layouts/layout
+block vars
+block content
+    include ../../components/consult-form
+    include ../../components/consult
+    include ../../components/first-screen
+
+    include ../../components/tags-line
+    include ../../components/filter-panel
+    include ../../components/news-grid
+    include ../../modal-windows/modal
+    .wrapper
+        section.technical-problems 
+          .container
+            .technical-problems__wrapper
+              .technical-problems__column
+                .technical-problems__title Технические неполадки
+                .technical-problems__description Наш сайт находится на техническом обслуживании и скоро будет вновь работать
+              .technical-problems__column
+                .technical-problems__img
+                  img.lazy(src="./images/no-image.jpg" data-src='./images/technical-problems/technical.svg' alt="Технические неполадки")
+
+        +consult({classes: 'consult--page', btnText: 'Жду звонка'})
+    +modal({ id: 'consult-form', classes: 'consult__form' })
+        +consult-form

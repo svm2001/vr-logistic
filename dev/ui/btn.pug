@@ -14,6 +14,7 @@ include ./icon
       size: 'default',
       variant: 'primary',
       dot: false,
+      download: false,
   }
 
 mixin btn(props = defaultBtnProps, ...dataset)
@@ -30,7 +31,8 @@ mixin btn(props = defaultBtnProps, ...dataset)
         classes: props.classes ? props.classes : defaultBtnProps.classes,
         size: props.size ? props.size : defaultBtnProps.size,
         variant: props.variant ? props.variant : defaultBtnProps.variant,
-        dot: props.dot ? props.dot : defaultBtnProps.dot
+        dot: props.dot ? props.dot : defaultBtnProps.dot,
+        download: props.download ? props.download : defaultBtnProps.download,
     }
 
   if (checkProps.type === 'button' || checkProps.type === 'submit')
@@ -62,6 +64,7 @@ mixin btn(props = defaultBtnProps, ...dataset)
   else if (checkProps.type === 'link')
     a.btn(
       href=checkProps.link,
+      download= checkProps.download ? true : false,
       target=checkProps.target === "_self" ? "" : checkProps.target,
       class=checkProps.disabled
         ? `

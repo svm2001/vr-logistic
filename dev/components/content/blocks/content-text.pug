@@ -186,11 +186,12 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
             p= text
 
       if checkProps.bigImg
-        img.lazy(
-            src="./images/no-image.jpg",
-            data-src=checkProps.bigImgSrc,
-            alt='Фото не загружено.'
-          )
+        .content__img
+          img.lazy(
+              src="./images/no-image.jpg",
+              data-src=checkProps.bigImgSrc,
+              alt='Фото не загружено.'
+            )
 
       if checkProps.vacanciesList.length > 0
         .content-text__vacancies-list

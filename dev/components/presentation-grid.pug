@@ -1,0 +1,33 @@
+-
+  const defaultPresentationGridProps = {
+    classes: '',
+    items: [
+        { title: 'Оптимизация цепочек поставок с ВР Логистик', tag: 'Категория 1', href: './file/test-file.pptx', img: './images/presentation/presentation-1.png'},
+        { title: 'Новые горизонты логистики: инновации и решения ВР Логистик', tag: 'Категория 1', href: './file/test-file.pptx', img: '../images/presentation/presentation-2.png'},
+        { title: 'Международные грузоперевозки: ключ к вашему успеху', tag: 'Категория 1', href: './file/test-file.pptx', img: './images/presentation/presentation-3.png'},
+        { title: 'Эффективная логистика: как мы ускоряем ваш бизнес', tag: 'Категория 1', href: './file/test-file.pptx', img: './images/presentation/presentation-4.png'},
+        { title: 'Безграничные возможности перевозок: решения от ВР Логистик', tag: 'Категория 1', href: './file/test-file.pptx', img: '../images/presentation/presentation-5.png'},
+        { title: 'Будущее транспортной логистики: устойчивость и технологии', tag: 'Категория 1', href: './file/test-file.pptx', img: '../images/presentation/presentation-6.png'},
+        { title: 'Секреты успешной логистики: опыт ВР Логистик', tag: 'Категория 1', href: './file/test-file.pptx', img: './images/presentation/presentation-7.png'},
+        { title: 'Ваш надёжный партнёр в логистике: ВР Логистик', tag: 'Категория 1', href: './file/test-file.pptx', img: './images/presentation/presentation-8.png'},
+        { title: 'Решения для сложных маршрутов: новые стандарты ВР Логистик', tag: 'Категория 1', href: './file/test-file.pptx', img: '../images/presentation/presentation-9.png'},
+    ]
+  }
+
+mixin presentation-grid(props = defaultPresentationGridProps, ...dataset)
+  -
+    const checkProps = {
+      classes: props.classes ? props.classes : defaultPresentationGridProps.classes,
+      items: props.items ? props.items : defaultPresentationGridProps.items,
+    }
+  include ../ui/presentation-item
+  section.presentation-grid 
+    .container 
+      .presentation-grid__wrapper
+        each item in checkProps.items
+          +presentation-item({
+            title: item.title,
+            tag: item.tag,
+            href: item.href,
+            img: item.img,
+          })

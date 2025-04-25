@@ -1,0 +1,35 @@
+extends ../../layouts/layout
+block vars
+block content
+    include ../../components/consult-form
+    include ../../components/consult
+    include ../../components/first-screen
+
+    include ../../components/tags-line
+    include ../../components/filter-panel
+    include ../../components/presentation-grid
+    include ../../modal-windows/modal
+    .wrapper
+        +first-screen({
+          patternBgDesktop: './images/pattern-bg/presentation-desktop.svg',
+          patternBgMobile: './images/pattern-bg/presentation-mobile.svg',
+          title: 'Презентации',
+        })
+        +tags-line({
+          tags:[
+            { name: 'Категория 1', data: 'category1' },
+            { name: 'Категория 2', data: 'category2' },
+            { name: 'Категория 3', data: 'category3' },
+            { name: 'Категория 4', data: 'category4' },
+            { name: 'Категория 5', data: 'category5' },
+            { name: 'Категория 6', data: 'category6' },
+            { name: 'Категория 7', data: 'category7' },
+          ]
+        })
+        +filter-panel({
+          language: true,
+        })
+        +presentation-grid
+        +consult({classes: 'consult--page', btnText: 'Жду звонка'})
+    +modal({ id: 'consult-form', classes: 'consult__form' })
+        +consult-form

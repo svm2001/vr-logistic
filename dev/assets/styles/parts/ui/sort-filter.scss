@@ -31,8 +31,10 @@
     }
 
     &__value{
-        text-transform: lowercase;
-        font-weight: 700;
+        &:not(.head-text){
+            text-transform: lowercase;
+            font-weight: 700;
+        }
         @include dim('fz', 18, 16);
         @include merge;
     }
@@ -73,7 +75,6 @@
         transition: all $transition;
         @include dim('br', 15, 15);
         @include merge;
-
         &[data-simplebar] {
             position: absolute;
         }
@@ -117,7 +118,6 @@
 @media (max-width: 765px) {
     .sort{
         flex-direction: column;
-
         &__prefield{
             line-height: 120%;
         }
