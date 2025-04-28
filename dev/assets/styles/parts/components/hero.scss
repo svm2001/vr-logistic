@@ -3,14 +3,31 @@
 .hero {
   position: relative;
   height: calc(100dvh - 4.6875vw);
+  background: #fafafa;
+
+  @media (max-width: 1199px) {
+    height: calc(100dvh - 84px);
+  }
+
+  @media (max-width: 600px) {
+    height: calc(100dvh - 66px);
+  }
 
   .container {
     height: calc(100dvh - 4.6875vw);
     display: flex;
     align-items: flex-end;
+
+    @media (max-width: 1199px) {
+      height: calc(100dvh - 84px);
+    }
+
+    @media (max-width: 600px) {
+      height: calc(100dvh - 66px);
+    }
   }
 
-  video {
+  &__video {
     position: absolute;
     top: 0;
     left: 0;
@@ -18,6 +35,20 @@
     height: 100%;
     object-fit: cover;
     opacity: 0.99;
+    
+    &--mobile {
+      display: none;
+    }
+
+    @media (max-width: 767px) {
+      &--desktop {
+        display: none;
+      }
+
+      &--mobile {
+        display: block;
+      }
+    }
   }
 
   &__inner {
@@ -45,15 +76,16 @@
 
 @media (max-width: 1199px) {
   .hero {
-    height: 532px;
 
-    .container {
-      height: 532px
-    }
     &__inner {
-      position: static;
+      position: relative;
+      top: 20px;
       padding-bottom: 60px;
       max-width: 75%;
+
+      &.visible {
+        top: 0;
+      }
     }
   }
 }

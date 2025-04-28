@@ -3,13 +3,18 @@ export function hero() {
 
   if(!hero) return
 
-  const video = hero.querySelector('video')
+  const videoDesktop = hero.querySelector('.hero__video--desktop')
+  const videoMobile = hero.querySelector('.hero__video--mobile')
   const text = hero.querySelector('.hero__inner')
 
-  if (video && text) {
-    video.addEventListener('timeupdate', () => {
-      const timeLeft = video.duration - video.currentTime
-      if (timeLeft <= 2 && !text.classList.contains('visible')) text.classList.add('visible')
-    })
+  const animation = (video, block, delay) => {
+    if (video && block) {
+      video.addEventListener('timeupdate', () => {
+        const timeLeft = video.duration - video.currentTime
+        if (timeLeft <= delay && !block.classList.contains('visible')) block.classList.add('visible')
+      })
+    }
   }
+
+  window.innerWidth > 767 ? animation(videoDesktop, text, 2) : animation(videoMobile, text, 1)
 }

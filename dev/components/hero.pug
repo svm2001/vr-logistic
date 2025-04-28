@@ -2,7 +2,8 @@
   const defaultHeroProps = {
       classes: '',
       title: 'Международная логистика и таможенное оформление',
-      video: './video/vr.mp4',
+      videoDesktop: './video/vr.mp4',
+      videoMobile: './video/vr-mob.mp4',
       videoType: 'video/mp4',
       buttonText: 'Оставить заявку',
   }
@@ -12,7 +13,8 @@ mixin hero(props = defaultHeroProps, ...dataset)
     const checkProps = {
         classes: props.classes ? props.classes : defaultHeroProps.classes,
         title: props.title ? props.title : defaultHeroProps.title,
-        video: props.video ? props.video : defaultHeroProps.video,
+        videoDesktop: props.videoDesktop ? props.videoDesktop : defaultHeroProps.videoDesktop,
+        videoMobile: props.videoMobile ? props.videoMobile : defaultHeroProps.videoMobile,
         videoType: props.videoType ? props.videoType : defaultHeroProps.videoType,
         buttonText: props.buttonText ? props.buttonText : defaultHeroProps.buttonText,
     }
@@ -20,8 +22,10 @@ mixin hero(props = defaultHeroProps, ...dataset)
   include ../ui/title
   include ../ui/btn
   section.hero(class=`${checkProps.classes}`)&attributes(...dataset)
-    video(playsinline, autoplay, muted)
-      source(src=checkProps.video, type=checkProps.videoType)
+    video.hero__video.hero__video--desktop(playsinline, autoplay, muted)
+      source(src=checkProps.videoDesktop, type=checkProps.videoType)
+    video.hero__video.hero__video--mobile(playsinline, autoplay, muted)
+      source(src=checkProps.videoMobile, type=checkProps.videoType)  
     .container
       .hero__inner
         +title({ classes: 'hero__title', text: checkProps.title, variant: '1' })
