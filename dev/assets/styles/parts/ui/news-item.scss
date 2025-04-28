@@ -17,17 +17,16 @@
       background: #226c2aee;
       transition: all $transition;
       &:after {
-        background: #ffffff00;
+        opacity: 0;
         transition: all $transition;
       }
     }
 
     .news-item-slider__more-detailed {
-      transition: all $transition;
       display: flex;
-      height: auto;
       opacity: 1;
-      transform: translateY(vw(0));
+      transform: translateY(vw(0))scaleY(1);
+      transition: all $transition;
       @include dim('mt', 40, 0);
       @include merge;
     }
@@ -117,12 +116,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: all 0.3s;
-    height: 0;
     overflow: hidden;
+    transition: all 0.3s;
+    height: max-content;
     opacity: 0;
-    transform: translateY(vw(20));
     margin-top: 0;
+    transform: translateY(vw(50))scaleY(0);
     transition: all $transition;
     
     span:first-child {
@@ -138,9 +137,12 @@
       justify-content: center;
       align-items: center;
       background: $bg-line;
+      width: 100%;
       @include dim('br', 50, 50);
-      @include dim('w', 33, 33);
-      @include dim('h', 33, 33);
+      @include dim('min-w', 33, 33);
+      @include dim('min-h', 33, 33);
+      @include dim('max-h', 33, 33);
+      @include dim('max-w', 33, 33);
       @include dim('p', 9, 9);
       @include merge;
       svg {
@@ -165,7 +167,7 @@
 
   &:hover {
     .news-item-grid__container {
-      background: rgb(255, 255, 255);
+      background: rgb(255, 255, 255, 0);
       background: $bg-line;
       transition: all $transition;
       &:after {
