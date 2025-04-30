@@ -6,8 +6,9 @@
     justify-content: center;
     width: 100%;
     object-fit: cover;
-    @include dim('h', 815, 500);
-    @include merge;
+    height: 100%;
+    // @include dim('h', 815, 500);
+    // @include merge;
     overflow: hidden;
     svg{
       height: auto;
@@ -19,6 +20,7 @@
     .error-404__img{
         display: flex;
         justify-content: center;
+        height: 500px;
         width: 100%;
         object-fit: cover;
         overflow: hidden;
