@@ -1,6 +1,13 @@
 @import '../../../mixins/vw';
 
 .content-typo {
+  &__wrapper{
+    display: flex;
+    flex-direction: column;
+    @include dim('gap', 50, 40);
+    @include merge;
+  }
+
   p {
     font-weight: 500;
     line-height: 140%;

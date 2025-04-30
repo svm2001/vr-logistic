@@ -27,7 +27,6 @@
         @include merge;
     }
 
-
     &__item{        
         position: relative;
         transition: all 0.3s;
@@ -46,6 +45,7 @@
         @include dim('max-h', 48,56);
         @include merge;
         .text--xs{
+            color: $text-primary;
             @include dim('fz', 18, 16);
             @include merge;
         }

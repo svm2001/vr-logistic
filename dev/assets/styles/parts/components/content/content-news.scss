@@ -1,0 +1,187 @@
+@import '../../../mixins/vw';
+
+
+.content-news {
+    &__wrapper{
+      display: flex;
+      flex-direction: column;
+      @include dim('gap', 50, 40);
+      @include merge;
+    }
+
+    h4{
+      line-height: 140%;
+      font-weight: 700;
+      @include dim('mb', 40, 30);
+      @include dim('fz', 22, 18);
+      @include merge;
+      &:not(:first-child){
+        margin-top: 50px;
+      }
+    }
+
+    p{
+      font-weight: 500;
+      line-height: 140%;
+      @include dim('fz', 18, 16);
+      @include merge;
+
+      h1 + &, h2 + &, h3 + & {
+
+      }
+
+      &:not(:last-child) {
+        @include dim('mb', 40, 30);
+        @include merge;
+        &:has(+ ol){
+          @include dim('mb', 20, 20);
+          @include merge;
+        }
+        &:has(+ p){
+          @include dim('mb', 15, 5);
+          @include merge;
+        }
+        &:has(+ ul){
+          @include dim('mb', 20, 20);
+          @include merge;
+        }
+      }
+
+      &>a{
+        color: $text-accent;
+        transition: all $transition;
+        &:hover{
+          color: $text-secondary;
+          background-color: $bg-line;
+        }
+      }
+      mark{
+        background-color: transparent;
+        color: $text-accent;
+        font-weight: 700;
+      }
+    }
+  
+    ol{
+      display: flex;
+      flex-direction: column;
+      list-style-type: none; 
+      counter-reset: num;
+      @include dim('gap', 20, 10);
+      @include merge;
+
+      &:not(:last-child){
+        @include dim('mb', 40, 30);
+        @include merge;
+      }
+    
+      li{
+        line-height: 140%;
+        display: flex;
+        @include dim('fz', 16, 14);
+        @include merge;
+        &::before{
+          content: counter(num) '.'; 
+          counter-increment: num;
+          display: block;
+          text-align: right;
+          width: 100%;
+          @include dim('max-w', 20, 20);
+          @include dim('mr', 10, 10);
+          @include dim('fz', 16, 14);
+          @include merge;
+        }
+      }
+    }
+  
+    ul {
+      margin: 0 0 1em 0;
+      padding: 0;
+      list-style: none;
+      @include dim('mb', 40, 30);
+      @include merge;
+  
+      li {
+        position: relative;
+        display: flex;
+        gap: 15px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 130%;
+  
+        @media (max-width: 767px) {
+          font-weight: 400;
+        }
+  
+        &:before {
+          content:"";
+          display: block;
+          width: 22px;
+          height: 2px;
+          border-radius: 30px;
+          background-color: $icon-accent;
+          margin-top: 10px;
+          flex: none;
+        }
+  
+        &:not(:last-child) {
+          margin-bottom: 15px;
+        }
+  
+        &.ul-header {
+          font-weight: 700;
+          margin-bottom: 20px;
+  
+          &:before {
+            display: none;
+          }
+        }
+      }
+    }
+  
+    .ul-group {
+      display: flex;
+      @include dim('gap', 20, 15);
+      @include merge;
+  
+      @media (max-width: 1199px) {
+        flex-direction: column;
+      }
+  
+      ul {
+        background: $bg-secondary;
+        border-radius: 10px;
+        padding: 30px;
+        max-width: 540px;
+        margin: 0;
+  
+        @media (max-width: 1199px) {
+          max-width: initial;
+        }
+      }
+    }
+  
+    picture, img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+      @include dim('mb', 40, 30);
+      @include merge;
+    }
+
+    .content__img{
+      &:not(:last-child){
+        @include dim('mb', 40, 30);
+        @include merge;
+      }
+    }
+  }
+  
+
+  @media (max-width: 767px) {
+    p{
+        font-weight: 400;
+        line-height: 130%;
+    }
+}
