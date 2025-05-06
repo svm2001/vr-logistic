@@ -27,7 +27,7 @@
         @include merge;
     }
 
-    &__item{        
+    &__item{
         position: relative;
         transition: all 0.3s;
         display: flex;
@@ -35,23 +35,22 @@
         justify-content: center;
         background-color: $bg-primary;
         border: 1px solid $bg-line-dark;
+        color: $text-primary;
         width: max-content;
         text-wrap: nowrap;
+        font-weight: 500;
         @include dim('br', 10, 10);
         @include dim('pt', 15, 15);
         @include dim('pb', 15, 15);
         @include dim('pl', 30, 30);
         @include dim('pr', 30, 30);
         @include dim('max-h', 48,56);
+        @include dim('fz', 18, 16);
         @include merge;
-        .text--xs{
-            color: $text-primary;
-            @include dim('fz', 18, 16);
-            @include merge;
-        }
+        line-height: 135%;
         &:not(.tags-sticker){
             cursor: pointer;
-            &:hover{
+            &:not(.active):hover{
                 background-color: $bg-line-dark;
             }
         }
@@ -68,8 +67,6 @@
 @media (max-width: 765px) {
     .tags-line{
         .container{
-            padding-right: 30px;
-            padding-left: 30px;
             overflow-x: auto;
         }
 
@@ -84,15 +81,9 @@
                 &::after{
                     content: '';
                     display: block;
-                    height: 20px;
-                    min-width: 20px;;
+                    height: 10px;
+                    min-width: 10px;;
                 }
-            }
-        }
-
-        &__item{
-            .text--xs{
-                font-size: 18px;
             }
         }
     }

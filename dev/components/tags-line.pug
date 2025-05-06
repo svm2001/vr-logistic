@@ -30,25 +30,10 @@ mixin tags-line(props = defaultTagsProps, ...dataset)
         .tags-line__list.js-tags-list
           each tag, index in checkProps.tags
             if(index === 0)
-              button.tags-line__item.js-tags-item.active
-                +text({
-                          variant: 'xs',
-                          weight: 'medium',
-                          text: tag.name,
-                      }) 
+              button.tags-line__item.js-tags-item.active=tag.name
             else
-              button.tags-line__item.js-tags-item
-                +text({
-                        variant: 'xs',
-                        weight: 'medium',
-                        text: tag.name,
-                    })
+              button.tags-line__item.js-tags-item=tag.name
       else if(checkProps.type === 'sticker')
         .tags-line__list.tags-sticker.js-tags-list
           each tag in checkProps.tags
-            div.tags-line__item.tags-sticker.js-tags-item(href= tag.data)
-              +text({
-                        variant: 'xs',
-                        weight: 'medium',
-                        text: tag.name,
-                    }) 
+            div.tags-line__item.tags-sticker.js-tags-item(href= tag.data)=tag.name
