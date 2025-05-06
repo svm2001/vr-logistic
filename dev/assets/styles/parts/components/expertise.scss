@@ -211,8 +211,8 @@
       order: 1;
       margin-top: auto;
       margin-left: auto;
-      @include dim('w', 140, 70);
-      @include dim('h', 135, 70);
+      @include dim('w', 80, 70);
+      @include dim('h', 80, 70);
       @include merge;
 
       @media (max-width: 767px) {
