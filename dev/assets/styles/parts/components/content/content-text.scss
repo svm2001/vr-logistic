@@ -854,3 +854,18 @@
 .content-no-border .content__inner {
   border-top: none;
 }
+
+@media (max-width: 540px) {
+  .content-text {
+    &__ordered-list {
+      &-item {
+        overflow: hidden;
+        &-text {
+          &:before {
+            margin-bottom: 40px;
+          }
+        }
+      }
+    }
+  }
+}
