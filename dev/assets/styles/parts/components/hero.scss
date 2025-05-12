@@ -53,8 +53,12 @@
 
 @media (max-width: 767px) {
   .hero {
+    height: 435px;
     &__inner {
       max-width: 100%;
+    }
+    .container {
+      height: 435px
     }
 
     &__btn {
