@@ -77,6 +77,34 @@
             }
         }
 
+        &.social-post:hover{
+            background-color: $post;
+            svg path{
+                fill: $icon-primary;
+            }
+        }
+
+        &.social-dzen:hover{
+            background-color: $dzen-black;
+            svg path{
+               
+            }
+        }
+
+        &.social-vrchat:hover{
+            background-color: $vrchat;
+            svg path{
+                fill: $icon-primary;
+            }
+        }
+
+        &.social-whatsapp:hover{
+            background-color: $whatsapp;
+            svg path{
+                fill: $icon-primary;
+            }
+        }
+
         &.social-youtube:hover{
             background-color: $youtube;
             svg path{

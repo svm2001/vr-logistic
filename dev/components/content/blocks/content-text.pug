@@ -26,6 +26,7 @@
       bigImgSrc: '',
       features: [],
       certificates: [],
+      dropDown: [],
   }
 
 mixin content-text(props = defaultContentTextProps, ...dataset)
@@ -57,7 +58,7 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
         bigImgSrc: props.bigImgSrc ? props.bigImgSrc : defaultContentTextProps.bigImgSrc,
         features: props.features ? props.features : defaultContentTextProps.features,
         certificates: props.certificates ? props.certificates : defaultContentTextProps.certificates,
-
+        dropDown: props.dropDown ? props.dropDown : defaultContentTextProps.dropDown,
     }
   include ../../../ui/btn
   include ../../../ui/text
@@ -157,7 +158,7 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
                 +icon(item.icon)
 
 
-      if checkProps.dashedLinks.length > 0
+      if checkProps.dashedLinks.length > 0 || checkProps.dropDown.length > 0
         if checkProps.subTitle
           +text({
             variant: 'l',
@@ -165,9 +166,10 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
             text: checkProps.subTitle,
             classes: 'content-text__sub-title'
           })
-        .content-text__dashed-links
-          each link in checkProps.dashedLinks
-            a(href="javascript:void(0);")= link
+        if checkProps.dashedLinks.length > 0
+          .content-text__dashed-links
+            each link in checkProps.dashedLinks
+              a(href="javascript:void(0);")= link
 
 
       if checkProps.afterText.length > 0
@@ -306,4 +308,14 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
                 p.content-text__certificates-item-text!=item.text
                 a.content-text__certificates-item-link(href=item.link)='Посмотреть'
                   +icon('arrow-right-long')
+
+      if checkProps.dropDown.length > 0
+        .content-text__drop-down
+          each item in checkProps.dropDown
+            .content-text__drop-down-item
+              .content-text__drop-down-head
+                span= item.title
+                +icon('accordion-arrow')
+              .content-text__drop-down-description= item.description
+
       block

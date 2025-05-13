@@ -688,6 +688,86 @@
       }
     }
   }
+  &__drop-down{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    @include dim('gap', 19, 19);
+    @include merge;
+    transition: all $transition;
+    &-item{
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      @include dim('max-w', 515, 515);
+      @include merge;
+      transition: all $transition;
+
+      &.active{
+        transition: all $transition;
+        .content-text__drop-down-head{
+          transition: all $transition;
+          color:#494949;
+          @include dim('mb', 11, 11);
+          @include merge;
+          svg{
+            transition: all $transition;
+            transform: rotate(-180deg);
+            path{
+              fill: #494949;
+            }
+          }
+        }
+        .content-text__drop-down-description{
+          overflow: hidden;
+          transition: all $transition;
+          transform: translateY(0);          
+          max-height: 100%;
+          opacity: 1;
+        }
+      }
+
+      &:hover{
+        transition: all $transition;
+        .content-text__drop-down-head{
+          transition: all $transition;
+          color:#838383;
+          svg path{
+            fill:#838383;
+          }
+        }
+      }
+    }
+    
+
+    &-head{
+      display: flex;
+      text-wrap: nowrap;
+      @include dim('gap', 6, 6);
+      @include merge;
+      color:#43B02A;
+      align-items:center;
+      transition: all $transition;
+      svg{
+        transition: all $transition;
+        @include dim('w', 13, 13);
+        @include merge;
+        path{
+          fill: #43B02A;
+        }
+      }
+    }
+
+    &-description{
+      transition: all $transition;
+      overflow: hidden;
+      height: 100%;
+      transform: translateY(-10%);  
+      max-height: 0;
+      opacity: 0;
+    }
+  }
 }
 
 .news-detail__wrapper .content-text__small-title {
@@ -700,6 +780,7 @@
   @include dim('w', 430, 300);
   @include merge;
 }
+
 
 @media (max-width: 1199px) {
 
@@ -855,4 +936,19 @@
 
 .content-no-border .content__inner {
   border-top: none;
+}
+
+@media (max-width: 540px) {
+  .content-text {
+    &__ordered-list {
+      &-item {
+        overflow: hidden;
+        &-text {
+          &:before {
+            margin-bottom: 40px;
+          }
+        }
+      }
+    }
+  }
 }
