@@ -160,17 +160,16 @@
         }
       }
     }
-  
-    picture, img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-      border-radius: 20px;
-      @include dim('mb', 40, 30);
-      @include merge;
-    }
 
     .content__img{
+      picture, img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        border-radius: 20px;
+        @include dim('mb', 40, 30);
+        @include merge;
+      }
       &:not(:last-child){
         @include dim('mb', 40, 30);
         @include merge;

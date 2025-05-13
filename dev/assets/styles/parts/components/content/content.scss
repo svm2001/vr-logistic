@@ -143,8 +143,6 @@
       .content:last-child .content-container {
         @include dim('border-bottom-left-radius', 20, 20);
       }
-
-
     }
   }
 
@@ -323,15 +321,15 @@
     }
   }
 
-  
-
   .video{
     position: relative;
     width: 100%;
     overflow: hidden;
+    @include dim('min-h', 409, 249);
     @include dim('max-h', 409, 249);
     @include dim('br', 20, 20);
     @include merge;
+
     .container{
       height: 100%;
 
@@ -383,10 +381,19 @@
 @media (max-width: 767px) {
   .content {
     .video{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       &__btn{
         .btn{
           min-height: 108px;
         }
+      }
+
+      video{
+        height: 100%;
+        object-fit: cover;
       }
     }  
 

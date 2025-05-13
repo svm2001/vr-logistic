@@ -178,3 +178,17 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+
+  .career__nav {
+    &-list {
+      overflow: hidden;
+      flex-wrap: wrap;
+      row-gap: 20px;
+      button{
+        font-size: 16px;
+      }
+    }
+  }
+}
