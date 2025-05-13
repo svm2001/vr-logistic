@@ -59,9 +59,7 @@
             cursor: default;
             transition: all $transition;
             background-color: $bg-green;
-            .text--xs{
-                color: $text-invert !important;
-            }
+            color: $text-invert !important;
         }
     }
 }
