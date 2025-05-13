@@ -45,6 +45,10 @@
   --tiktok: #222222;
   --facebook: #0866ff;
   --youtube: #f50021;
+  --post: #2b2b2b;
+  --whatsapp: #5BD066;
+  --vrchat: black;
+  --dzen-black: black;
   --transition: ease-in-out 0.3s;
 }
 
@@ -99,10 +103,15 @@ $prototype-secondary: var(--prototype-secondary);
 $tg: var(--tg);
 $vk: var(--vk);
 $dzen: var(--dzen);
+$dzen-black: var(--dzen-black);
 $instagram: var(--instagram);
 $tiktok: var(--tiktok);
 $facebook: var(--facebook);
 $youtube: var(--youtube);
+$post: var(--post);
+$whatsapp: var(--whatsapp);
+
+$vrchat: var(--vrchat);
 
 // Other
 $transition: var(--transition);
