@@ -57,7 +57,7 @@
       text-decoration: none;
       transition: color 0.2s ease;
 
-      &[data-hover-menu]:before,
+      &:before,
       &.active:before {
         content: '';
         position: absolute;
@@ -184,9 +184,11 @@
       }
 
       &__item {
-        aspect-ratio: 400 / 180;
+        // aspect-ratio: 400 / 180;
+        height: auto;
         @include dim('br', 15, 15);
         @include dim('p', 30, 30);
+        @include dim('pb', 40, 40);
         @include dim('gap', 20, 20);
         @include merge;
         background: $bg-secondary;
