@@ -311,11 +311,19 @@ mixin content-text(props = defaultContentTextProps, ...dataset)
 
       if checkProps.dropDown.length > 0
         .content-text__drop-down
-          each item in checkProps.dropDown
-            .content-text__drop-down-item
-              .content-text__drop-down-head
-                span= item.title
-                +icon('accordion-arrow')
-              .content-text__drop-down-description= item.description
+          .content-text__drop-down__block
+            each item, index in checkProps.dropDown.filter((num, index) => index % 2 === 0)
+              .content-text__drop-down-item
+                .content-text__drop-down-head
+                  span= item.title
+                  +icon('accordion-arrow')
+                .content-text__drop-down-description= item.description
+          .content-text__drop-down__block
+            each item, index in checkProps.dropDown.filter((num, index) => index % 2 !== 0)
+              .content-text__drop-down-item
+                .content-text__drop-down-head
+                  span= item.title
+                  +icon('accordion-arrow')
+                .content-text__drop-down-description= item.description
 
       block

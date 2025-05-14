@@ -728,6 +728,8 @@
         }
       }
 
+     
+
       &:hover{
         transition: all $transition;
         .content-text__drop-down-head{
@@ -739,6 +741,13 @@
         }
       }
     }
+
+    &__block{
+      display: flex;
+      flex-direction: column;
+      @include dim('gap', 19, 19);
+      @include merge;
+    }
     
 
     &-head{
@@ -749,6 +758,10 @@
       color:#43B02A;
       align-items:center;
       transition: all $transition;
+      span{
+        @include dim('fz', 18, 16);
+        @include merge;
+      }
       svg{
         transition: all $transition;
         @include dim('w', 13, 13);
@@ -760,6 +773,8 @@
     }
 
     &-description{
+      @include dim('fz', 16, 14);
+      @include merge;
       transition: all $transition;
       overflow: hidden;
       height: 100%;
@@ -797,6 +812,11 @@
 
     &__unordered-list {
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__drop-down{
+      display: flex;
+      flex-wrap: wrap;
     }
   }
 }
@@ -888,6 +908,16 @@
         &-text {
           font-weight: 400;
         }
+      }
+    }
+
+    
+    &__drop-down{
+      display: flex;
+      flex-wrap: wrap;
+      &-head{
+        justify-content: space-between;
+        text-wrap: wrap;
       }
     }
   }

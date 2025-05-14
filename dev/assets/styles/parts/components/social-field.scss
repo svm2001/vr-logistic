@@ -22,6 +22,7 @@
 
     &__list{
         display: flex;
+        flex-wrap: wrap;
         @include dim('gap', 10, 10);
         @include merge;
 
@@ -44,7 +45,7 @@
         }
 
         &.mobile{
-            display: none;
+            display: flex;
             .btn__icon{
                 max-height: auto;
                 max-width: 33px;
