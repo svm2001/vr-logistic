@@ -33,12 +33,20 @@
 @media (max-width: 1199px) {
   .tags {
     &.no-links{
-      padding-top: 20px;
-      padding-bottom: 20px;
+      position: relative;
+      height: 0;
+      top: -40px;
+      background-color: transparent;
+      padding-top: 0px;
+      padding-bottom: 0px;
       .tags__list{
+        gap: 5px;
         .tags__item{
+          background-color: $white;
           height: 40px;
           font-size: 12px;
+          padding-left: 15px;
+          padding-right: 15px;
         }
       } 
     }
