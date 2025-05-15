@@ -172,9 +172,5 @@
     &:hover {
       color: $icon-accent;
     }
-
-    @media (max-width: 767px) {
-      font-weight: 500;
-    }
   }
 }
