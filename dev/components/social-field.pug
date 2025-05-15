@@ -22,7 +22,7 @@ mixin social-field(props = defaulSocialProps, ...dataset)
       if(checkProps.title.length > 0)
         .social-field__title.text--bold.text--s= checkProps.title
       .social-field__list
-        each item in checkProps.social
+        each item, index in checkProps.social.filter((num, index) => index < 3)
           +btn({
                 name: '',
                 type: 'link',
@@ -39,3 +39,13 @@ mixin social-field(props = defaulSocialProps, ...dataset)
           icon: true,
           iconName: 'social-more',
         })
+        .social-field__all-container
+          each item, index in checkProps.social.filter((num, index) => index >= 3)
+            +btn({
+                  name: '',
+                  type: 'link',
+                  classes: `social-field__item ${item.iconName}`,
+                  href: item.href,
+                  icon: true,
+                  iconName: item.iconName,
+                })

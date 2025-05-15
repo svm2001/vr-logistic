@@ -3,7 +3,7 @@
 .social-field{
     position: relative;
     background-color: $bg-line;
-    overflow: hidden;
+
     width: calc( 100% + vw(130));
     @include dim('btlr', 20, 20);
     @include dim('bblr', 20, 20);
@@ -21,12 +21,50 @@
     }
 
     &__list{
+        position: relative;
         display: flex;
         flex-wrap: wrap;
         @include dim('gap', 10, 10);
         @include merge;
-
     }
+
+    &__all-container{
+        pointer-events: none;
+        left: 100%;
+        display: flex;
+        align-items: center;
+        position: absolute;
+        @include dim('pl', 10, 10);
+        @include dim('gap', 10, 10);
+        @include merge;
+        transform: translate(-20%);
+        opacity: 0;
+        transition: all $transition;
+        z-index: -1;
+
+        @media (max-width: 765px) {
+            max-height: 200px;
+            padding: 10px;
+            flex-direction: column;
+            flex-wrap: wrap;
+            bottom: 100%;
+            left: auto;
+            right: -10px;
+          
+            background-color: $bg-line;
+            border-radius: 10px;
+            transform: translateY(20%);
+        }
+    }
+
+    &__all-container:hover{
+        pointer-events: all;
+        z-index: 10;
+        transition: all $transition;
+        opacity: 1;
+        transform: translate(0);
+    }
+
     &__item.btn{
         display: flex;
         align-items: center;
@@ -49,7 +87,18 @@
             .btn__icon{
                 max-height: auto;
                 max-width: 33px;
+                @include dim('max-w', 33, 33);
+                @include merge;
                 width: 100%;
+            }
+            &:hover{
+                & ~ .social-field__all-container{
+                    pointer-events: all;
+                    z-index: 1;
+                    transition: all $transition;
+                    opacity: 1;
+                    transform: translateX(0);
+                }
             }
         }
 
