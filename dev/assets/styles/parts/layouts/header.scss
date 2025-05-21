@@ -10,7 +10,7 @@
   @include dim('h', 90, 84);
   @include merge;
   background: $bg-secondary;
-  transition: .5s ease-in-out;
+  //transition: .5s ease-in-out;
 
   &.invisible {
     transform: translateY(-100%);
