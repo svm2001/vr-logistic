@@ -1,5 +1,5 @@
 export default function modal() {
-  const padding = '15px'
+  const padding = `${window.innerWidth - document.documentElement.clientWidth}px`
   const body = document.body
   const header = document.querySelector('header')
 
@@ -16,7 +16,7 @@ export default function modal() {
     afterClose: () => {
       if(window.innerWidth > 1199) {
         body.style.paddingRight = '0'
-        header.style.paddingRight = '0' 
+        header.style.paddingRight = '0'
       }
     }
   })
